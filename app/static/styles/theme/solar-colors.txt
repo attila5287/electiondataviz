@@ -1,0 +1,10 @@
+prim #B58900
+dark #073642
+body #002B36
+succ #2AA198
+warn #CB4B16
+seco #839496
+ligh #FDF6E3
+purp #6610f2
+info #268BD2
+dang #D33682

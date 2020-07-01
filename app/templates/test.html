@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" class="favicon" href="/static/img/site/c_hex_aquamarine.ico" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/superhero/bootstrap.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="/static/styles/navbar.css">
+
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+  <!-- FONTS -->
+  <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Orienta' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Baloo+2' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+
+  <title>US Election 2020</title>
+
+
+  </head>
+
+  <body>
+    <style>
+      #map,
+      body,
+      html {
+        height: 90%;
+        < !-- width: 75%;
+        -->
+      }
+
+      .info {
+        padding: 6px 8px;
+        font: 14px/16px Arial, Helvetica, sans-serif;
+        background: white;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+      }
+
+      .info i {
+        margin: 0 0 5px;
+        color: #777;
+      }
+
+      .legend {
+        text-align: left;
+        line-height: 18px;
+        color: #555;
+      }
+
+      .legend i {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-right: 8px;
+        opacity: 0.7;
+      }
+    </style>
+
+    <div class="col-lg-8 offset-md-2">
+      <fieldset
+        class="form-group mb-4 mx-2 my-2 p-3 bg-secondary rounded-2xl text-success shadow-after text-center text-robo bg-black"
+        >
+        <label for="slider">
+          <i class="text-xlarger shadow-after">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            <strong> Presidential </strong>
+            <i class="fas fa-calendar-check ml-2" aria-hidden="true"> </i>
+          </i>
+          <span class="text-2xl bg-black py-2 px-3 text-digi rounded-xl" id="sliderValue">
+            ...
+          </span>
+        </label>
+        <div class="d-flex flex-row justify-content-between text-center text-larger text-digi text-light pr-0 pl-1">
+          <i>1976</i>
+          <i>1980</i>
+          <i>1984</i>
+          <i>1988</i>
+          <i>1992</i>
+          <i>1996</i>
+          <i>2000</i>
+          <i>2004</i>
+          <i>2008</i>
+          <i>2012</i>
+          <i>2016</i>
+        </div>
+        <input type="range" min="1976" max="2016" step="4" id="slider" class="custom-range px-3 ml-3 mr-4 form-control-lg">
+        <!-- <input type="range" min="0" max="30" step="1" id="slider" class="custom-range px-3 mx-3 form-control-lg"> -->
+      </fieldset>
+    </div>
+
+    </div>
+    <div id="map"></div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/        nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous">
+    </script>
+
+    <script src="/static/.devcontainer/mapAccessToken.js "></script>
+    <script src="/static/plugins/ddslick.js"></script>
+
+    <script src="/static/data/geojson/us-states.js"></script>
+    <script src="/static/api/election.js"></script>
+    <!-- <script src="/static/api/logic.js"></script> -->
+    <!-- <script src="/static/api/slider.js"></script> -->
+
+
+  </body>
+
+</html>

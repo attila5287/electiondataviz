@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Choropleth Tutorial - Leaflet</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" class="favicon" href="/static/img/site/c_hex_aquamarine.ico" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/solar/bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/navbar.css">
+
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+      integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""></script>
+
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Baloo+2' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+
+    <title>COVID-19-DataViz</title>
+
+
+  </head>
+
+  <body style="margin-top: 70px;">
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand bg-dark mx-0 p-0 border-0 rounded-xl add-anime"
+          href="https://coronavizdata.herokuapp.com/">
+          <img class="m-0 px-0 py-1" src="/static/img/site/hex_c.png" style="height: 3.75rem;" alt="navbar-icon">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center bg-dark" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <a class="nav-item nav-link rounded-xl add-anime" href="/dashboard">
+              <i class="fas fa-tachometer-alt fa-fw text-wrap"></i>
+              <p class="mb-0 text-balo text-sm">
+                Dashboard
+              </p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime" href="/table">
+              <i class="fas fa-table fa-fw"></i>
+              <p class="mb-0 text-balo text-sm">Table</p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime" href="/interactive-axis">
+              <i class="fas fa-swatchbook fa-fw"></i>
+              <p class="py-0 my-0 text-balo text-sm">Interactive</p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime" href="/leaflet/bubble">
+              <i class="fas fa-globe-americas fa-fw"></i>
+              <p class="py-0 my-0 text-balo text-sm">Bubble</p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime text-nowrap" href="/leaflet/choropleth">
+              <i class="fas fa-flag fa-fw"></i>
+              <p class="py-0 my-0 text-balo text-sm">US (States)</p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime" href="/leaflet/europe">
+              <i class="fas fa-archway fa-fw"></i>
+              <p class="py-0 my-0 text-balo text-sm">Europe</p>
+            </a>
+            
+            <a class="nav-item nav-link rounded-xl add-anime" href="/leaflet/asia">
+              <i class="fas fa-sun"></i>
+              <p class="py-0 my-0 text-balo text-sm">Asia</p>
+            </a>
+
+          </ul>
+          <ul class="nav nav-pills nav-fill text-success w-100">
+
+            <a class="nav-item nav-link text-sm">
+              <i class="fa fa-globe-americas" aria-hidden="true"></i>
+              <em>Deaths</em>
+              <p class="bg-black rounded-lg text-larger text-digi" id="overallDeaths"></p>
+            </a>
+            <a class="nav-item nav-link text-sm">
+              <i class="fa fa-globe-americas" aria-hidden="true"></i>
+              <em>Cases</em>
+              <p class="bg-black rounded-lg text-larger text-digi" id="overallConfirmed"></p>
+            </a>
+            <a class="nav-item nav-link text-uppercase">
+              <div
+                class="card infoboard-section bg-dark border-success  shadow-gold text-success text-center rounded-lg mt-1">
+                <div class="card-body bg-black py-1 m-1 rounded-lg text-larger">
+                  <i id="countryName" class="fa animated infinite fadeIn delay-1s text-success my-0 pt-1 pb-0"
+                    style="font-size:1.5rem ;font-family: 'Orbitron', sans-serif;">
+                  </i>
+                </div>
+              </div>
+
+            </a>
+            <a class="nav-item nav-link text-sm">
+              <i class="far fa-flag" aria-hidden="true"></i>
+              <em>Deaths</em>
+              <p class="bg-black rounded-lg text-larger text-digi" id="countryDeaths">
+              </p>
+            </a>
+            <a class="nav-item nav-link text-sm">
+              <i class="far fa-flag" aria-hidden="true"></i>
+              <em>Cases</em>
+              <p class="bg-black rounded-lg text-larger text-digi" id="countryConfirmed"></p>
+            </a>
+            <a class="nav-item nav-link">
+              <select id="opts">
+              </select>
+            </a>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <style>
+     /* set map, body, and html to 100% of the screen size */
+    #map,
+    body,
+    html {
+      height: 100%;
+    }
+    </style>    
+    
+    <div id='map'></div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script src="/static/plugins/ddslick.js"></script>
+    <script src="/static/data/json/timeseries.js"></script>
+    <script src="/static/data/json/locations.js "></script>
+    
+    <script src="/static/assets/navbars/countries.js"></script>
+    <script src="/static/app/world-bubble.js"></script>
+
+
+  </body>
+
+</html>
+-

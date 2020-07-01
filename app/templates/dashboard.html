@@ -1,0 +1,401 @@
+{% extends 'layout_dash.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="row">
+        <!-- WORLD GEO MAP -->
+        <div class="col-lg-12 text-center">
+            <div id="world-scatter-geo"></div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- GAUGE-INFO -->
+        <div class="col-lg-5 text-center">
+          <div class="card bg-transparent mt-2 mb-1">
+            <div class="card-body text-center py-0">
+              <div>
+                <small><em>
+                    <i class="fa fa-angle-down fa-2x fa-pull-left" aria-hidden="true"></i>
+                    Gauges below shows ratio of deaths/confirmed cases with respect to population of the selected
+                    country
+                  </em>
+                </small>
+              </div>
+            </div>
+          </div>
+          <!-- GAUGE -->
+          <div class="card bg-transparent shadow-before" style="border-radius: 10px;">
+            <div class="dash-section py-0">
+              <div class="row">
+                <div class="col-md-6">
+                  <div id="gauge-deaths"></div>
+                </div>
+                <div class="col-md-6">
+                  <div id="gauge-confirmed"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUBBLE -->
+        <div class="col-lg-7">
+          <div class="card bg-transparent mt-2 mb-1">
+            <div class="card-body text-center py-0">
+              <p class="card-text mb-0">
+                <small><em>
+                    <i class="fa fa-angle-down fa-2x fa-pull-left" aria-hidden="true"></i>
+                    Bubble indicates population while deaths and confirmed cases placed on y-axis
+                    <hr class="my-0">
+                    &middot;
+                    Higher the position of the bubble means higher the count of deaths/confirmed cases.
+                    <hr class="my-0">
+                    &middot;
+                    Thicker the size of the bubble means higher population of the country in question.
+                  </em>
+                </small>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div id="bubble-deaths"></div>
+            </div>
+            <div class="col-lg-6">
+              <div id="bubble-confirmed"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <!-- LINE PLOT TIME SERIES -->
+        <div class="col-lg-6 text-center">
+          <div class="card bg-transparent mt-2 mb-1">
+            <div class="card-body text-center py-0">
+              <small><em>
+                  <i class="fa fa-angle-down fa-2x fa-pull-left" aria-hidden="true"></i>
+                  Line chart below cumulatively shows deaths over time
+                </em>
+              </small>
+            </div>
+          </div>
+          <div id="death-time-series"></div>
+        </div>       
+        <!-- BAR CHART-DEATHS -->
+        <div class="col-lg-3 text-center">
+          <div id="histDesc">
+            <div class="card bg-transparent mt-2 mb-1">
+              <div class="card-body text-center py-0">
+                <small><em>
+                    <i class="fa fa-angle-down fa-2x fa-pull-left" aria-hidden="true"></i>
+                    Bar chart below shows deaths only, placed here for providing help read above bubble chart
+                  </em>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-transparent shadow-before" style="border-radius: 10px;">
+            <div id="histogram-bar-deaths">
+            </div>
+          </div>
+        </div>
+        <!-- BAR CHART-CONF -->
+        <div class="col-lg-3 text-center">
+          <div id="histDesc">
+            <div class="card bg-transparent mt-2 mb-1">
+              <div class="card-body text-center py-0">
+                <small><em>
+                    <i class="fa fa-angle-down fa-2x fa-pull-left" aria-hidden="true"></i>
+                    Bar chart below shows confirmed cases only, placed here for providing help read above bubble chart
+                  </em>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-transparent shadow-before" style="border-radius: 10px;">
+            <div id="histogram-bar-confirmed">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- form to select country and sidebar -->
+    <div class="col-lg-3">
+
+      <!-- showing figures for country -->
+      <div class="container-fluid text-center text-uppercase py-1">
+        <div class="card infoboard-section bg-transparent border-success  shadow-gold text-success text-center">
+          <div class="card-body bg-black py-1 m-2 rounded-2xl">
+            <div class="row">
+              <div class="col-sm-8 offset-2">
+                <div class="d-flex flex-row text-left">
+                  <i class="fa fa-chevron-right text-primary ml-2 animated infinite fadeOutRight delay-2s"
+                    aria-hidden="true" style="font-size: 0.75rem;">
+                    <i style="font-family:'Lucida Grande';">
+                      <em>NOW ON BOARD</em>
+                    </i>
+                  </i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row justify-content-center">
+
+        <div class="card infoboard-section bg-secondary border-secondary text-success text-center mt-1 mb-2"
+          style="border-width: thin;">
+          <div class="card-header bg-slategray py-0 px-2">
+            <div class="d-flex flex-row justify-content-between">
+              <i class="fa fa-minus-circle text-silver" aria-hidden="true"></i>
+              <i class="fa fa-minus-circle text-silver" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="card-body py-0">
+            <p class="card-title text-dark text-uppercase py-0 px-2 mb-0" style="font-size: 2rem;">
+              <i id="countryName"></i>
+            </p>
+          </div>
+          <div class="card-footer bg-slategray py-0 px-1">
+            <div class="d-flex flex-row justify-content-between">
+              <i class="fa fa-minus-circle text-silver" aria-hidden="true"></i>
+              <i class="fa fa-minus-circle text-silver" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- FIGURES FOR SELECTED COUNTRY -->
+      <div class="card-group mt-0 mb-2">
+        <div class="card infoboard-section bg-transparent border-success text-success text-center">
+          <div class="card-header py-1 border-success py-1">
+            <i class="far fa-flag" aria-hidden="true"></i>
+            <small>
+              Deaths
+            </small>
+          </div>
+          <div class="card-body my-0 py-1 py-0">
+            <h4 class="card-title" id="countryDeaths">
+            </h4>
+          </div>
+        </div>
+        <div class="card infoboard-section bg-transparent border-success text-success text-center">
+          <div class="card-header py-1 border-success py-1">
+            <i class="far fa-flag" aria-hidden="true"></i>
+            <small>
+              Confirmed
+            </small>
+          </div>
+          <div class="card-body my-0 py-1 py-0">
+            <h4 class="card-title" id="countryConfirmed">
+            </h4>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- $countrySelect is the opts field of form -->
+      <form method="POST" action="" class="mt-4">
+        <div class="card infoboard-section bg-transparent border-success text-right">
+          <div class="card-header py-1 border-success">
+            <em>
+              <small>
+                Change selection for action!
+              </small>
+            </em>
+            <i class="fa fa-sort text-primary ml-2 animated infinite heartBeat delay-1s" aria-hidden="true"></i>
+          </div>
+          <div class="card-body py-0">
+            <div class="form-group my-0">
+              <select id="opts" class="custom-select border-primary text-center text-title mt-2 mb-0 p-0"
+                style="border-radius: 9px;border-width: 3px;font-size: smaller;">
+              </select>
+            </div>
+            <div class="card-text text-center  text-success py-0 my-0" style="font-size: smaller;">
+              <small>
+                <em>
+                  app sponsored by Hasan Atilla Turkoz
+                </em>
+              </small>
+
+            </div>
+          </div>
+        </div>
+      </form>
+
+
+      <!-- OVERALL FIGURES - TWO CARDS -->
+      <div class="d-flex flex-row justify-content-between my-3">
+        <div class="card infoboard-section bg-transparent border-success text-success text-center">
+          <div class="card-header py-1 border-success py-1">
+            <i class="fa fa-globe-americas" aria-hidden="true"></i>
+            Deaths
+          </div>
+          <div class="card-body my-0 py-1 py-0">
+            <h4 class="card-title" id="overallDeaths">
+            </h4>
+          </div>
+        </div>
+        <div class="card infoboard-section bg-transparent border-success text-success text-center">
+          <div class="card-header py-1 border-success py-1">
+            <i class="fa fa-globe-americas" aria-hidden="true"></i>
+            Confirmed
+
+          </div>
+          <div class="card-body my-0 py-1 py-0">
+            <h4 class="card-title" id="overallConfirmed">
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- square button pulsing -->
+      <div class="d-flex flex-row justify-content-between align-items-center text-center">
+        <div class="fa-fw">
+          <i class="fas fa-cog fa-spin"></i>
+          <span class="fa-stack">
+            <i class="fa fa-certificate fa-stack-2x fa-spin"></i>
+            <i class="fas fa-sun fa-stack-1x fa-spin text-dark"></i>
+          </span>          
+          <i class="fas fa-cog fa-spin"></i>
+        </div>        
+        <div class="fa-fw">
+          <i class="fas fa-cog fa-spin fa-2x"></i>
+          <i class="fas fa-cog fa-spin fa-2x text-success"></i>
+        </div>
+        <div class="fa-fw">
+          <i class="fas fa-sun fa-spin text-success"></i>
+          <span class="fa-stack">
+            <i class="far fa-fw fa-circle fa-stack-2x text-success"></i>
+            <i class="fas fa-fw fa-sun fa-stack-1x fa-spin"></i>
+          </span>
+          <i class="fas fa-cog fa-spin fa-fw"></i>
+        </div>
+        <div class="fa-fw">
+          <i class="fas fa-cog fa-spin"></i>
+          <i class="fas fa-cog fa-spin text-success"></i>
+        </div>
+        <a class="btn btn-dark btn-md border-dark px-3" style="border-width:thick;border-radius: 2rem;">
+          <i class="fa animated infinite pulse delay-1s text-secondary">
+            <em class="text-light">
+              <i id="">
+                CoVid19-Tracker
+              </i>
+            </em>
+          </i>
+        </a>
+        <div class="d-flex flex-column">
+          <span class="fa-stack">
+            <i class="far fa-circle fa-stack-2x  text-success"></i>
+            <i class="fas fa-wifi fa-stack-1x fa-pulse text-secondary"></i>
+          </span>
+          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+          <i class="fa fa-signal text-success" aria-hidden="true"></i>
+        </div>
+
+        <div class="d-flex flex-column">
+          <span class="fa-stack">
+            <i class="fa fa-circle-notch fa-stack-2x fa-pulse text-success"></i>
+            <i class="fas fa-globe-americas fa-stack-1x  text-secondary"></i>
+          </span>
+          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+          <i class="fa fa-sitemap text-success" aria-hidden="true"></i>
+
+        </div>
+        <div class="d-flex flex-column">
+          <span class="fa-stack">
+            <i class="far fa-circle text-success fa-stack-2x" aria-hidden="true"></i>
+            <i class="fa fa-sync text-secondary fa-pulse fa-stack-1x" aria-hidden="true"></i>
+          </span>
+          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+          <i class="fa fa-server text-success" aria-hidden="true"></i>
+        </div>
+      </div>
+      <p class="mt-0  py-0 text-center">
+        <small>
+          <em>
+            by @attila5287
+          </em>
+        </small>
+        <a href="https://github.com/attila5287">
+
+          <span class="fa-stack">
+            <i class="far fa-circle fa-stack-2x text-secondary"></i>
+            <i class="fab fa-github fa-1x fa-inverse" aria-hidden="true"></i>
+          </span>
+
+        </a>
+      </p>
+
+
+      <!-- info card general -->
+      <div class="card infoboard-section bg-transparent border-success text-success text-center mt-2">
+        <div class="card-header pt-1 pb-0 my-0">
+          <div class="row my-0">
+            <div class="col-sm-2 text-center">
+              <hr class="border-success" style="border-width: thin;">
+            </div>
+            <div class="col-sm-2 text-center">
+              <i class="fa fa-info-circle text-success fa-2x" aria-hidden="true"></i>
+            </div>
+            <div class="col-sm-8 text-center">
+              <hr class="border-success" style="border-width: thin;">
+            </div>
+          </div>
+
+
+        </div>
+        <div class="card-body mt-0 mb-1 pt-0 pb-2">
+          <ul class="list-inline text-left text-secondary my-0"
+            style="font-weight: lighter;font-size: smaller;font-style: italic;">
+            <li class="list-inline-item">
+              <i class="fa fa-info-circle text-success" aria-hidden="true"></i>
+              App pulls the latest available data from John Hopkins API
+            </li>
+
+            <li class="list-inline-item">
+              <i class="fa fa-info-circle text-success" aria-hidden="true"></i>
+              Geo-Map:
+              'coronavirus-tracker-api.herokuapp.com/v2/locations'
+            </li>
+            <li class="list-inline-item">
+              <i class="fa fa-info-circle text-success" aria-hidden="true">
+              </i>
+              Time-Series:
+              'https://pomber.github.io/covid19/timeseries.json'
+            </li>
+
+          </ul>
+
+
+        </div>
+      </div>
+    
+          <div class="card bg-transparent mt-2 mb-1">
+            <div class="card-body text-center py-0">
+              <div>
+                <small><em>
+                    <i class="fa fa-angle-down fa-2x fa-pull-left" aria-hidden="true"></i>
+                    Pie chart will group and visualize
+                  </em>
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <div class="card bg-transparent shadow-before" id="pieZone" style="border-radius: 10px;">
+             <div id="pie-deaths"></div>
+          </div>
+
+        </div>        
+      </div>        
+  </div>  
+
+<script src="static/app/dashboard.js"></script>
+{% endblock content %}

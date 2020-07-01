@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" type="image/x-icon" class="favicon" href="static/img/site/virus-free-icon.png" />
+    <link rel="icon" type="image/x-icon" class="favicon" href="favicon.ico" />
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/solar/bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
+
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+      integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- set title on route by render_template(... ,title='test') -->
+    <title>COVID-19-DataViz</title>
+  </head>
+
+  <body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand text-secondary" href="https://coronavizdata.herokuapp.com/"
+        style="font-family: 'Lucida Grande';">
+        <small>
+          CoronaVizData
+        </small>
+        <img class="m-0 p-0" src="/static/img/site/co_hex.png" style="height: 2.75rem;" alt="world-map-background">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <a class="nav-item nav-link rounded-xl add-anime" href="/dashboard">
+              <i class="fas fa-tachometer-alt fa-fw text-wrap"></i>
+              <p class="mb-0 text-balo text-sm">
+                Dashboard
+              </p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime" href="/table">
+              <i class="fas fa-table fa-fw"></i>
+              <p class="mb-0 text-balo text-sm">Table</p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime" href="/interactive-axis">
+              <i class="fas fa-swatchbook fa-fw"></i>
+              <p class="py-0 my-0 text-balo text-sm">Interactive</p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime" href="/leaflet/bubble">
+              <i class="fas fa-globe-americas fa-fw"></i>
+              <p class="py-0 my-0 text-balo text-sm">Bubble</p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime text-nowrap" href="/leaflet/choropleth">
+              <i class="fas fa-flag fa-fw"></i>
+              <p class="py-0 my-0 text-balo text-sm">US (States)</p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime" href="/leaflet/europe">
+              <i class="fas fa-archway fa-fw"></i>
+              <p class="py-0 my-0 text-balo text-sm">Europe</p>
+            </a>
+            <a class="nav-item nav-link rounded-xl add-anime" href="/leaflet/asia">
+              <i class="fas fa-sun"></i>
+              <p class="py-0 my-0 text-balo text-sm">Asia</p>
+            </a>            
+          </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <!-- legend for country board -->
+          <ul class="list-inline my-1" style="font-size:smaller;">
+            <li class="list-inline-item">
+              <i class="fa fa-flag" aria-hidden="true"></i>
+              Code
+            </li>
+            <li class="list-inline-item">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              Population
+            </li>
+
+            <li class="list-inline-item">
+              <span class="fa-stack text-center">
+                <i class="fas fa-globe fa-stack-1x text-secondary"></i>
+                <i class="fas fa-minus fa-stack-1x text-primary"></i>
+              </span>
+              Latitude
+            </li>
+            <li class="list-inline-item">
+              <span class="fa-stack text-center">
+                <i class="fas fa-globe fa-stack-1x text-secondary"></i>
+                <i class="fas fa-minus fa-stack-1x fa-rotate-90 text-primary"></i>
+              </span>
+              Longitude
+            </li>
+          </ul>
+          <div class="btn-group ml-2 my-0" role="group" aria-label="Button group">
+            <button class="btn btn-lg btn-outline-success rounded-2xl disabled my-2 my-sm-0">
+              <i class="fa fa-flag" aria-hidden="true"></i>
+              <i id="countryCode"></i>
+            </button>
+            <button class="btn btn-lg btn-outline-success rounded-2xl disabled my-2 my-sm-0">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <i id="countryPop"></i>
+            </button>
+            <button class="btn btn-lg btn-outline-success rounded-2xl disabled my-2 my-sm-0">
+              <span class="fa-stack text-center">
+                <i class="fas fa-globe fa-stack-1x text-success"></i>
+                <i class="fas fa-minus fa-stack-1x text-primary"></i>
+              </span>
+              <i id="countryLat"></i>
+            </button>
+            <button class="btn btn-lg btn-outline-success rounded-2xl disabled my-2 my-sm-0">
+              <span class="fa-stack text-center">
+                <i class="fas fa-globe fa-stack-1x text-success"></i>
+                <i class="fas fa-minus fa-stack-1x fa-rotate-90 text-primary"></i>
+              </span>
+              <i id="countryLong"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </nav>
+    <main role="main" class="container-fluid" style="margin-top: 70px;">
+    <hr class="mt-0 mb-3" style="border-color: #2aa198;border-width: thin;">
+    <div class="jumbotron hero-image m-0"
+    style="background-image: url('/static/img/site/world-map-transparent.png');opacity: 0.8;"> 
+      <div class="jumbotron hero-image m-0"
+        style="background-image: url('https://pbs.twimg.com/profile_images/1208017758467829760/RdbFo5Xr_400x400.jpg');opacity: 0.5;">
+        <div class="chart m-0" id="my_dataviz">
+          <svg></svg>
+        </div>
+      </div>
+      <hr class="my-0 border-success">
+      <table class="table table-hover table-striped text-left">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+      <!-- form to select country and sidebar -->
+      <div class="row">
+        <div class="col-lg-9">
+        </div>
+        <div class="col-lg-3">
+
+          <!-- now on board -->
+          <div class="container-fluid text-center text-uppercase py-1">
+            <div class="card infoboard-section bg-transparent border-success  shadow-gold text-success text-center">
+              <div class="card-body bg-black py-1 m-2 rounded-2xl">
+                <div class="row">
+                  <div class="col-sm-8 offset-2">
+                    <div class="d-flex flex-row text-left">
+                      <i class="fa fa-chevron-right text-primary ml-2 animated infinite fadeOutRight delay-2s"
+                        aria-hidden="true" style="font-size: 0.75rem;">
+                        <i style="font-family:'Lucida Grande';">
+                          <em>NOW ON BOARD</em>
+                        </i>
+                      </i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="d-flex flex-row justify-content-center">
+
+            <div class="card infoboard-section bg-secondary border-secondary text-success text-center mt-1 mb-2"
+              style="border-width: thin;">
+              <div class="card-header bg-slategray py-0 px-2">
+                <div class="d-flex flex-row justify-content-between">
+                  <i class="fa fa-minus-circle text-silver" aria-hidden="true"></i>
+                  <i class="fa fa-minus-circle text-silver" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="card-body py-0">
+                <p class="card-title text-dark text-uppercase py-0 px-2 mb-0" style="font-size: 2rem;">
+                  <i id="countryName"></i>
+                </p>
+              </div>
+              <div class="card-footer bg-slategray py-0 px-1">
+                <div class="d-flex flex-row justify-content-between">
+                  <i class="fa fa-minus-circle text-silver" aria-hidden="true"></i>
+                  <i class="fa fa-minus-circle text-silver" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- FIGURES FOR SELECTED COUNTRY -->
+          <div class="card-group mt-0 mb-2">
+            <div class="card infoboard-section bg-transparent border-success text-success text-center">
+              <div class="card-header py-1 border-success py-1">
+                <i class="far fa-flag" aria-hidden="true"></i>
+                <small>
+                  Deaths
+                </small>
+              </div>
+              <div class="card-body my-0 py-1 py-0">
+                <h4 class="card-title" id="countryDeaths">
+                </h4>
+              </div>
+            </div>
+            <div class="card infoboard-section bg-transparent border-success text-success text-center">
+              <div class="card-header py-1 border-success py-1">
+                <i class="far fa-flag" aria-hidden="true"></i>
+                <small>
+                  Confirmed
+                </small>
+              </div>
+              <div class="card-body my-0 py-1 py-0">
+                <h4 class="card-title" id="countryConfirmed">
+                </h4>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- $countrySelect is the opts field of form -->
+          <form method="POST" action="" class="mt-4">
+            <div class="card infoboard-section bg-dark border-success text-right">
+              <div class="card-header py-1 border-success">
+                <em>
+                  <small>
+                    Change selection for action!
+                  </small>
+                </em>
+                <i class="fa fa-sort text-primary ml-2 animated infinite heartBeat delay-1s" aria-hidden="true"></i>
+              </div>
+              <div class="container text-center mt-2">
+                <style>
+                  .dd-desc {
+                    color: #839496;
+                    display: block;
+                    overflow: hidden;
+                    font-weight: normal;
+                    line-height: 1.4em;
+                  }
+
+                  .dd-selected:focus {
+                    z-index: 2001;
+                  }
+
+                  .dd-pointer {
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    margin-top: -3px;
+                  }
+
+                  .dd-selected:focus+.dd-pointer {
+                    z-index: 2002;
+                  }
+
+                  .dd-pointer-down {
+                    border: solid 5px transparent;
+                    border-top: solid 5px #000;
+                  }
+
+                  .dd-pointer-up {
+                    border: solid 5px transparent !important;
+                    border-bottom: solid 5px #000 !important;
+                    margin-top: -8px;
+                  }
+
+                  .dd-options {
+                    border: solid 1px #2AA198;
+                    border-top: none;
+                    list-style: none;
+                    box-shadow: 0px 1px 5px #ddd;
+                    display: none;
+                    position: absolute;
+                    z-index: 2000;
+                    margin: 0;
+                    padding: 0;
+                    background: #002B36;
+                    overflow: visible;
+                  }
+
+                  .dd-options:focus {
+                    outline: 0;
+                  }
+
+                  .dd-option {
+                    padding: 10px;
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                    border-bottom: solid 1px #002B36;
+                    overflow: visible;
+                    text-decoration: none;
+                    color: #2AA198;
+                    cursor: pointer;
+                    -webkit-transition: all 0.25s ease-in-out;
+                    -moz-transition: all 0.25s ease-in-out;
+                    -o-transition: all 0.25s ease-in-out;
+                    -ms-transition: all 0.25s ease-in-out;
+                    box-sizing: border-box;
+                  }
+
+                  .dd-options>.dd-option:last-child {
+                    border-bottom: none;
+                  }
+
+                  .dd-option:hover,
+                  .dd-option:active,
+                  .dd-option:focus {
+                    background: #002B36;
+                    color: #2AA198;
+                    z-index: 2001;
+                  }
+
+                  .dd-selected-description-truncated {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+
+                  .dd-option-selected {
+                    background: #002B36;
+                  }
+
+                  .dd-option-image,
+                  .dd-selected-image {
+                    vertical-align: middle;
+                    float: left;
+                    margin-right: 5px;
+                    max-width: 64px;
+                  }
+
+                  .dd-image-right {
+                    float: right;
+                    margin-right: 15px;
+                    margin-left: 5px;
+                  }
+
+                  ​ .dd-selected-text {
+                    font-weight: bold;
+                    color: #2AA198;
+                  }
+
+
+                  .dd-container {
+                    position: relative;
+                    background-color: #002B36;
+                  }
+
+                  .dd-selected {
+                    background-color: #002B36;
+                    position: relative;
+                    overflow: hidden;
+                    display: block;
+                    padding: 8px;
+                    font-weight: normal;
+                    width: 100%;
+                    text-align: left;
+                    color: #2AA198;
+                    border: solid 1px #2AA198;
+                    border-radius: 2px;
+                  }
+
+                  .dd-select {
+                    position: relative;
+                    cursor: pointer;
+                    background-color: #002B36;
+                    border: solid 4px rgb(53, 108, 128);
+                    border-radius: 6px;
+                  }
+                </style>
+                <!--  ### ddSlick ### -->
+                <div class="container-fluid text-center">
+                  <div id="opts"></div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+
+          <!-- OVERALL FIGURES - TWO CARDS -->
+          <div class="d-flex flex-row justify-content-between my-3">
+            <div class="card infoboard-section bg-transparent border-success text-success text-center">
+              <div class="card-header py-1 border-success py-1">
+                <i class="fa fa-globe-americas" aria-hidden="true"></i>
+                Deaths
+              </div>
+              <div class="card-body my-0 py-1 py-0">
+                <h4 class="card-title" id="overallDeaths">
+                </h4>
+              </div>
+            </div>
+            <div class="card infoboard-section bg-transparent border-success text-success text-center">
+              <div class="card-header py-1 border-success py-1">
+                <i class="fa fa-globe-americas" aria-hidden="true"></i>
+                Confirmed
+
+              </div>
+              <div class="card-body my-0 py-1 py-0">
+                <h4 class="card-title" id="overallConfirmed">
+                </h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- square button pulsing -->
+          <div class="d-flex flex-row justify-content-between align-items-center text-center">
+            <div class="fa-fw">
+              <i class="fas fa-cog fa-spin"></i>
+              <span class="fa-stack">
+                <i class="fa fa-certificate fa-stack-2x fa-spin"></i>
+                <i class="fas fa-sun fa-stack-1x fa-spin fa-inverse"></i>
+              </span>
+              <i class="fas fa-cog fa-spin"></i>
+            </div>
+            <div class="fa-fw">
+              <i class="fas fa-cog fa-spin fa-2x"></i>
+              <i class="fas fa-cog fa-spin fa-2x text-success"></i>
+            </div>
+            <div class="fa-fw">
+              <i class="fas fa-sun fa-spin text-success"></i>
+              <span class="fa-stack">
+                <i class="far fa-fw fa-circle fa-stack-2x text-success"></i>
+                <i class="fas fa-fw fa-sun fa-stack-1x fa-spin"></i>
+              </span>
+              <i class="fas fa-cog fa-spin fa-fw"></i>
+            </div>
+            <div class="fa-fw">
+              <i class="fas fa-cog fa-spin"></i>
+              <i class="fas fa-cog fa-spin text-success"></i>
+            </div>
+            <a class="btn btn-dark btn-md border-dark px-3" style="border-width:thick;border-radius: 2rem;">
+              <i class="fa animated infinite pulse delay-1s text-secondary">
+                <em class="text-light">
+                  <i id="">
+                    CoVid19-Tracker
+                  </i>
+                </em>
+              </i>
+            </a>
+            <div class="d-flex flex-column">
+              <span class="fa-stack">
+                <i class="fa fa-circle-notch fa-stack-2x text-success"></i>
+                <i class="fas fa-wifi fa-stack-1x fa-pulse text-secondary"></i>
+              </span>
+              <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+              <i class="fa fa-signal text-success" aria-hidden="true"></i>
+            </div>
+
+            <div class="d-flex flex-column">
+              <span class="fa-stack">
+                <i class="fa fa-circle-notch fa-stack-2x fa-pulse text-success"></i>
+                <i class="fas fa-globe-americas fa-stack-1x  text-secondary"></i>
+              </span>
+              <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+              <i class="fa fa-sitemap text-success" aria-hidden="true"></i>
+
+            </div>
+            <div class="d-flex flex-column">
+              <span class="fa-stack">
+                <i class="fa fa-circle-notch fa-stack-2x text-success fa-rotate-180"></i>
+                <i class="fa fa-sync text-secondary fa-pulse fa-stack-1x" aria-hidden="true"></i>
+              </span>
+              <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+              <i class="fa fa-server text-success" aria-hidden="true"></i>
+            </div>
+          </div>
+          <p class="mt-0  py-0 text-center">
+            <small>
+              <em>
+                by @attila5287
+              </em>
+            </small>
+            <a href="https://github.com/attila5287">
+
+              <span class="fa-stack">
+                <i class="far fa-circle fa-stack-2x text-secondary"></i>
+                <i class="fab fa-github fa-1x fa-inverse" aria-hidden="true"></i>
+              </span>
+
+            </a>
+          </p>
+
+
+          <!-- info card general -->
+          <div class="card infoboard-section bg-transparent border-success text-success text-center mt-2">
+            <div class="card-header pt-1 pb-0 my-0">
+              <div class="row my-0">
+                <div class="col-sm-2 text-center">
+                  <hr class="border-success" style="border-width: thin;">
+                </div>
+                <div class="col-sm-2 text-center">
+                  <i class="fa fa-info-circle text-success fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="col-sm-8 text-center">
+                  <hr class="border-success" style="border-width: thin;">
+                </div>
+              </div>
+
+
+            </div>
+            <div class="card-body mt-0 mb-1 pt-0 pb-2">
+              <ul class="list-inline text-left text-secondary my-0"
+                style="font-weight: lighter;font-size: smaller;font-style: italic;">
+                <li class="list-inline-item">
+                  <i class="fa fa-info-circle text-success" aria-hidden="true"></i>
+                  App pulls the latest available data from John Hopkins API
+                </li>
+
+                <li class="list-inline-item">
+                  <i class="fa fa-info-circle text-success" aria-hidden="true"></i>
+                  Geo-Map:
+                  'coronavirus-tracker-api.herokuapp.com/v2/locations'
+                </li>
+                <li class="list-inline-item">
+                  <i class="fa fa-info-circle text-success" aria-hidden="true">
+                  </i>
+                  Time-Series:
+                  'https://pomber.github.io/covid19/timeseries.json'
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </main>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.rawgit.com/jsmodules/ddslick/master/dist/jquery.ddslick.min.js"></script>
+    <script src="/static/plugins/ddslick.js"></script>
+
+    <script src="/static/data/json/locations.js "></script>
+    <script src="/static/data/json/timeseries.js"></script>
+
+    <script src="/static/app/time-series.js"></script>
+
+  </body>
+</html>
