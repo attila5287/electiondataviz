@@ -1,6 +1,6 @@
 import os
 from flask import render_template, url_for, flash, redirect, request, abort, jsonify
-from coronavizdata import app, db
+from app import app, db
 # import requests
 
 
@@ -60,10 +60,8 @@ def test():
 def jsonify_maptoken():
     ''' RETURNS JSONIFIED DATA FOR SQUARES-HOME SELECT ELEMENT'''
     pass
-
     mapAccessToken = os.environ.get('MAP_ACCESS_TOKEN')
-
     # print(' --- mapAccessToken ---')
     # print(mapAccessToken)
-
     return jsonify({'doNotTell': mapAccessToken})
+
