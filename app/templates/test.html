@@ -76,40 +76,47 @@
         opacity: 0.7;
       }
     </style>
-
-    <div class="col-lg-8 offset-md-2">
-      <fieldset
-        class="form-group mb-4 mx-2 my-2 p-3 bg-secondary rounded-2xl text-success shadow-after text-center text-robo bg-black"
-        >
-        <label for="slider">
-          <i class="text-xlarger shadow-after">
-            <i class="fas fa-user" aria-hidden="true"></i>
-            <strong> Presidential </strong>
-            <i class="fas fa-calendar-check ml-2" aria-hidden="true"> </i>
-          </i>
-          <span class="text-2xl bg-black py-2 px-3 text-digi rounded-xl" id="sliderValue">
-            ...
-          </span>
-        </label>
-        <div class="d-flex flex-row justify-content-between text-center text-larger text-digi text-light pr-0 pl-1">
-          <i>1976</i>
-          <i>1980</i>
-          <i>1984</i>
-          <i>1988</i>
-          <i>1992</i>
-          <i>1996</i>
-          <i>2000</i>
-          <i>2004</i>
-          <i>2008</i>
-          <i>2012</i>
-          <i>2016</i>
-        </div>
-        <input type="range" min="1976" max="2016" step="4" id="slider" class="custom-range px-3 ml-3 mr-4 form-control-lg">
-        <!-- <input type="range" min="0" max="30" step="1" id="slider" class="custom-range px-3 mx-3 form-control-lg"> -->
-      </fieldset>
+    <div class="row text-center">
+      <div class="col-sm-2">
+        <div class="card bg-transparent text-right add-anime shadow-after rounded-2xl">
+          <img class="card-img bg-transparent ml-4 mt-1 p-0 opac-30 w-75 text-right" src="../static/img/party/republican.png" alt="party-tp-png" id="party-img">
+          <div class="card-img-overlay">
+            <p class="card-text text-nowrap text-xlarger text-light shadow-turq bg-transparent mt-1 mb-0" >
+              <strong id="prez-name">
+                Trump, Donald J
+              </strong>
+            </p>
+            <i class="card-text text-light my-0 text-sm text-uppercase" id="party-name">
+              republican</i>
+          </div>
+        </div>        
+      </div>
+      <div class="col-sm-8">
+        <fieldset
+        class="form-group mx-2 mt-2 py-1 rounded-2xl bg-transparent shadow-after text-center">
+          <div class="d-flex flex-row justify-content-between text-center text-xs text-digi text-light pr-0 pl-1">
+            <i>1976</i>
+            <i>1980</i>
+            <i>1984</i>
+            <i>1988</i>
+            <i>1992</i>
+            <i>1996</i>
+            <i>2000</i>
+            <i>2004</i>
+            <i>2008</i>
+            <i>2012</i>
+            <i>2016</i>
+          </div>
+          <input type="range" min="1976" max="2016" step="4" id="slider" class="custom-range bg-transparent rounded-xl mx-0 mb-0">
+          <label class="text-larger my-0" for="slider" id="sliderValue"></label>
+          
+        </fieldset>
+      </div>
+      <div class="col-sm-2 text-center">
+        <img class="card-img border-0 rounded-3xl add-anime shadow-after p-0 mb-0 mt-1" src="../static/img/prez/2016.jpg" alt="prez-thumbnail" id="prez-img" style="height:6rem;" >
+      </div>
     </div>
 
-    </div>
     <div id="map"></div>
 
     <!-- Optional JavaScript -->

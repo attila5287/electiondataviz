@@ -1,6 +1,7 @@
 // CODE WORKS HOWEVER RUNS SLOWLY DUE TO NEW MAP EVERY CHANGE ON SLIDER
 const urlPrezTest = '../static/data/csv/president.csv';
 
+
 function presidentialUp( url, year ) {
   const formt = d3.format( ',' );
   const formatDecimal = d3.format( '.4' );
@@ -12,7 +13,8 @@ function presidentialUp( url, year ) {
       // ------------ 
       const colors = {
         republican: "red",
-        democrat: "blue"
+        democrat: "blue",
+        "democratic-farmer-labor": "blue"
       };
 
       let winners = {};
@@ -35,7 +37,7 @@ function presidentialUp( url, year ) {
         winners[ d.key ] = d.values[ 0 ].key;
       } );
 
-      console.log( 'winners :>> ', winners );
+      // console.log( 'winners :>> ', winners );
 
       statesData.features.forEach( d => {
         const nameState = d.properties.name;
@@ -171,7 +173,8 @@ function presidentialUp( url, year ) {
     function getColor( d ) {
       const partyColor = {
         republican: "#d73027",
-        democrat: "#4575b4"
+        democrat: "#4575b4",
+        "democratic-farmer-labor": "#4575b4"
       };
       // console.log( 'colors[d] :>> ', partyColor[ d ] );
       return partyColor[ d ];
@@ -237,9 +240,43 @@ function presidentialUp( url, year ) {
     }
 
     slideMyYears( year );
+    
 
   } );
 
 }
 
-presidentialUp( urlPrezTest, 2008 );
+
+presidentialUp( urlPrezTest, 2016 );
+prezWinnersUp( 2016 );
+
+function  prezWinnersUp( year ) {
+  const urlPrezWTest = '../static/data/csv/prezWinners.csv';
+  d3.csv(urlPrezWTest,
+  (error, data) => {
+    if (error) {
+        console.error(error);
+    } else {
+      function slideWinner(data, sliderYear) {
+        console.log('sliderYear :>> ', sliderYear);
+        const d = data.filter(d=> d["year"] == sliderYear)[0];
+      // [ "year", "president", "party", "prior" ]
+        d3.select('#prez-name').text(d.president);
+        
+        const imgPrez= '../static/img/prez/' + sliderYear + '.jpg';
+        const imgParty = '../static/img/party/'+ d.party+'.png';
+        d3.select('#prez-img').attr("src", imgPrez);
+        d3.select('#party-img').attr("src", imgParty);
+
+        d3.select('#party-name').text(d.party);
+      }
+
+      // --------------------- SLIDER ----------------
+      d3.select( "#slider" ).on( "input", function () {
+        slideWinner( data, +this.value );
+      } );
+      
+
+    }
+  });
+}
