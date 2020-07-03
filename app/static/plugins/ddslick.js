@@ -22,7 +22,7 @@
         defaults = {
             data: [],
             keepJSONItemsOnTop: false,
-            width: 240,
+            width: 200,
             height: 70,
             background: "#073642",
             selectText: "",
@@ -257,7 +257,7 @@
         //If set to display to full html, add html
         if ( settings.showSelectedHTML ) {
             ddSelected.html(
-                ( selectedData.imageSrc ? '<img class="dd-selected-image' + ( settings.imagePosition == "right" ? ' dd-image-right' : '' ) + '" src="' + selectedData.imageSrc + '" />' : '' ) +
+                ( selectedData.imageSrc ? '<img class="rounded-xl shadow-turqoise mt-1 opac-50 dd-selected-image' + ( settings.imagePosition == "right" ? ' dd-image-right' : '' ) + '" src="' + selectedData.imageSrc + '" />' : '' ) +
                 ( selectedData.text ? '<label class="dd-selected-text" style="margin-bottom:4px;">' + selectedData.text + '</label>' : '' ) +
                 ( selectedData.description ? '<small class="dd-selected-description dd-desc' + ( settings.truncateDescription ? ' dd-selected-description-truncated' : '' ) + '" >' + selectedData.description + '</small>' : '' )
             );

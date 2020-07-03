@@ -19,11 +19,12 @@ flash	../app\routes.py	/^from flask import render_template, url_for, flash, redi
 home	../app\routes.py	/^def home():$/;"	kind:function	line:17
 interactive_axis	../app\routes.py	/^def interactive_axis():$/;"	kind:function	line:25
 jsonify	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
-jsonify_maptoken	../app\routes.py	/^def jsonify_maptoken():$/;"	kind:function	line:53
+jsonify_maptoken	../app\routes.py	/^def jsonify_maptoken():$/;"	kind:function	line:58
 leaflet_bubble	../app\routes.py	/^def leaflet_bubble():$/;"	kind:function	line:29
 leaflet_choropleth	../app\routes.py	/^def leaflet_choropleth():$/;"	kind:function	line:33
 leaflet_choropleth_asia	../app\routes.py	/^def leaflet_choropleth_asia():$/;"	kind:function	line:42
 leaflet_choropleth_europe	../app\routes.py	/^def leaflet_choropleth_europe():$/;"	kind:function	line:37
+map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:52
 os	../app\__init__.py	/^import os$/;"	kind:namespace	line:3
 os	../app\routes.py	/^import os$/;"	kind:namespace	line:1
 redirect	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2

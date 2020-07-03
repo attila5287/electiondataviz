@@ -48,6 +48,11 @@ def test():
     return render_template('test.html', title='Test')
 
 
+@app.route("/map")
+def map_states():
+    return render_template('map.html', title='Colored Map')
+
+
 # squares for dynamic field
 @app.route('/fetch/but', methods=['GET', 'POST'])
 def jsonify_maptoken():
