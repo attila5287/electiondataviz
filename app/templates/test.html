@@ -7,7 +7,7 @@
   <link rel="icon" type="image/x-icon" class="favicon" href="../static/img/election/ballotIn.ico" />
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/cerulean/bootstrap.min.css" />
+    href="/static/styles/theme/cerulean.css" />
 
   <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
   <link rel="stylesheet" type="text/css" href="/static/styles/navbar.css">
@@ -55,9 +55,9 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse text-center bg-transparent" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto text-md">
+          <ul class="navbar-nav mr-auto">
             <a class="nav-item nav-link rounded-xl add-anime" href="/latest">
-              <i class="fas fa-sliders-h fa-fw text-onerem mt-2"></i>
+              <i class="fas fa-sliders-h fa-fw text-onerem mt-1"></i>
               <p class="mb-0 text-balo text-onerem">Latest</p>
             </a>
             <a class="nav-item nav-link rounded-xl add-anime" href="/table">
@@ -69,17 +69,25 @@
               <p class="py-0 my-0 text-balo text-onerem"> Map</p>
             </a>
             <a class="nav-item nav-link rounded-xl add-anime disabled">
-              <p class="text-light" aria-hidden="true"> (D) Biden </p>
+              <h6 class="text-secondary" aria-hidden="true"> 
+                <strong>
+                  Democrats
+                </strong>
+                  </h6>
               <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="">
+                id="dem-percentage">
                 00.00
                 <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
               </p>
             </a>
             <a class="nav-item nav-link rounded-xl add-anime disabled">
-              <p class="text-light" aria-hidden="true"> (R) Trump </p>
+              <h6 class="text-secondary" aria-hidden="true"> 
+                <strong>
+                  Republicans 
+                </strong>
+              </h6>
               <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="">
+                id="rep-percentage">
                 00.00
                 <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
               </p>
@@ -107,9 +115,9 @@
         </div>
         <div class="col-sm-8">
           <fieldset
-          class="form-group mx-2 mt-2 py-1 px-2 rounded-xl bg-dark shadow-turqoise text-center">
+          class="form-group mx-2 mt-2 py-1 px-2 rounded-xl bg-dark shadow-after text-center">
           <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1">
-              <i>1976</i>
+            <i>1976</i>
               <i>1980</i>
               <i>1984</i>
               <i>1988</i>
@@ -120,18 +128,21 @@
               <i>2008</i>
               <i>2012</i>
               <i>2016</i>
+            </div>
+            <input type="range" min="1976" max="2016" step="4" id="slider" class="custom-range">
+          </fieldset>
+          <fieldset
+          class="form-group mx-2 mt-1 py-1 px-2 rounded-xl bg-dark shadow-after text-center">
+          <div class="d-flex flex-row justify-content-center align-items-center">
+            <h5 class="text-nowrap text-larger shadow-turq bg-transparent px-4 mt-2" id="party-name">
+              republican </h5>          
+            <span class="text-larger bg-black py-1 px-4 mb-1 mt-1 text-digi text-primary shadow-turq rounded-xl" id="sliderValue"> 
+              2008
+            </span>
+            <h5 class="text-nowrap text-larger shadow-turq bg-transparent px-4 mt-2" id="prez-name">
+              Trump, Donald J.
+            </h5>
           </div>
-          <input type="range" min="1976" max="2016" step="4" id="slider" class="custom-range">
-        <div class="d-flex flex-row justify-content-center align-items-center">
-          <h5 class=" my-0 text-md text-capitalize shadow-turq px-4" id="party-name"> republican </h5>          
-          <span class="text-larger bg-black py-1 px-4 mb-2 text-digi text-primary shadow-turq rounded-xl" id="sliderValue"> 
-            2008
-          </span>
-          <h5 class="text-nowrap text-larger shadow-turq bg-transparent px-4 mt-2" id="prez-name">
-              Trump, Donald J
-          </h5>
-            
-        </div>
         </fieldset>
       </div>
       <div class="col-sm-2 text-center">
@@ -139,8 +150,9 @@
       </div>
     </div>
 
-    <div id="map"></div>
-
+    <!-- <div id="map"></div> -->
+    
+    <div id="table-goes-here"></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -151,13 +163,15 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/        nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous">
     </script>
+    <script src="/static/data/json/statePOs.js"></script>
+    <script src="/static/data/json/stateSeats.js"></script>
 
     <script src="/static/plugins/ddslick.js"></script>
 
     <script src="/static/data/geojson/us-states.js"></script>
     <script src="/static/assets/navbars/states.js"></script>
-    <script src="/static/assets/tables/test.js"></script>
-
+    <script src="/static/app/test.js"></script>
+    <!-- <script src="/static/api/map-states.js"></script> -->
 
   </body>
 

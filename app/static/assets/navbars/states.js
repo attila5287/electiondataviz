@@ -99,7 +99,7 @@ function dropDownUpdateStates( data, static_or_latest ) {
       text: row.Province_State,
       value: row.Province_State,
       selected: false,
-      description: `deaths ${format(row.Deaths)} cases ${format(row.Confirmed)}`,
+      description: `deaths ${format(row.Deaths)} `,
       imageSrc: '/static/img/states/' + row.Province_State.toLowerCase().replace( ' ', '-' ) + '-flag-small.png'
 
     };

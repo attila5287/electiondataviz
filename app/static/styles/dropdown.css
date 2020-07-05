@@ -1,0 +1,140 @@
+// --------------- ddslick
+
+.dd-desc {
+  color: powderblue;
+  display: block;
+  overflow: hidden;
+  font-weight: normal;
+  line-height: 1.4em;
+}
+
+.dd-selected:focus {
+  z-index: 2001;
+}
+
+.dd-pointer {
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -3px;
+}
+
+.dd-selected:focus+.dd-pointer {
+  z-index: 2002;
+}
+
+.dd-pointer-down {
+  border: solid 5px transparent;
+  border-top: solid 5px #000;
+}
+
+.dd-pointer-up {
+  border: solid 5px transparent !important;
+  border-bottom: solid 5px #000 !important;
+  margin-top: -8px;
+}
+
+.dd-options {
+  border: solid 1px #2AA198;
+  border-top: none;
+  list-style: none;
+  box-shadow: 0px 5px 5px #2FA4E7;
+  display: none;
+  position: absolute;
+  z-index: 2000;
+  margin: 0;
+  padding: 0;
+  
+  overflow: visible;
+}
+
+.dd-options:focus {
+  outline: 0;
+}
+
+.dd-option {
+  padding: 10px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-bottom: solid 1px #002B36;
+  overflow: visible;
+  text-decoration: none;
+  color: #2AA198;
+  cursor: pointer;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  box-sizing: border-box;
+}
+
+.dd-options>.dd-option:last-child {
+  border-bottom: none;
+}
+
+.dd-option:hover,
+.dd-option:active,
+.dd-option:focus {
+  background: #2FA4E7;
+  color: #2AA198;
+  z-index: 2001;
+}
+
+.dd-selected-description-truncated {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dd-option-selected {
+  background: #002B36;
+}
+
+.dd-option-image,
+.dd-selected-image {
+  vertical-align: middle;
+  float: left;
+  margin-right: 5px;
+  max-width: 64px;
+}
+
+.dd-image-right {
+  float: right;
+  margin-right: 15px;
+  margin-left: 5px;
+}
+
+​ .dd-selected-text {
+  font-weight: bold;
+  color: #2AA198;
+}
+
+
+.dd-container {
+  position: relative;
+  background-color: #033C73;
+}
+
+.dd-selected {
+  background-color: #033C73;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding: 4px;
+  font-weight: normal;
+  width: 100%;
+  text-align: left;
+  color: #2AA198;
+  /* border: solid 1px #2AA198; */
+  border-radius: 2px;
+}
+
+.dd-select {
+  position: relative;
+  cursor: pointer;
+  background-color: #033C73;
+  border: solid 4px rgb(53, 108, 128);
+  border-radius: 6px;
+}
