@@ -7,9 +7,6 @@
 .opac-30 {
 	opacity: 0.3;
 }
-.shadow-turq {
-	text-shadow: 1px 3px 8px #2aa198;
-}
 .bordered {
 	border-color: #2aa198;
 	border-radius: 4px;
@@ -44,19 +41,30 @@
 	fill: #e75480;
 }
 .add-anime {
-	transition: ease 0.25s;
+	transition: ease 0.1s;
+  box-shadow: 0 1rem 2rem rgba(112, 150, 255, 0.371);
 }
 .add-anime:hover {
-  box-shadow: rgb(143, 250, 227) 
-   15px 15px;
-	color: #2aa198;
-	transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+  box-shadow: rgb(111, 230, 141) 5px 15px 15px;
 }
 .add-anime:hover:first-child {
-	box-shadow: rgb(177, 159, 238) -5px 15px 15px;
+	box-shadow: rgb(166, 57, 255)5px 15px 15px;
+}
+.add-anime:hover:nth-last-child(4) {
+	box-shadow: rgb(230, 111, 137) 5px 15px 15px;
+}
+.add-anime:hover:nth-last-child(3) {
+	box-shadow: rgb(111, 230, 141) 5px 15px 15px;
+}
+.add-anime:hover:nth-last-child(2) {
+	box-shadow: rgb(219, 223, 0) 5px 15px 15px;
+}
+.add-anime:hover:nth-last-child(1) {
+	box-shadow: rgb(228, 151, 8) 5px 15px 15px;
 }
 .add-anime:hover:last-child {
-	box-shadow: rgb(230, 194, 111) 5px 15px 15px;
+	box-shadow: rgb(111, 230, 161) 5px 15px 15px;
 }
 .text-italic {
 	font-style: italic;
@@ -85,8 +93,8 @@
 .text-3xs {
 	font-size: 0.50rem;
 }
-.text-orient {
-	font-family: 'Orienta', sans-serif;
+.text-comfo {
+	font-family: 'Comfortaa', sans-serif;
 }
 .text-digi {
 	font-family: 'Orbitron', sans-serif;
@@ -160,20 +168,16 @@
 	border-radius: 8px;
 }
 /* ----- default for boilerplate from corey's----- */
-body {
-	margin-top: 0rem;
-}
 h1,
 h2,
 h3,
 h4,
 h5,
-h6
- {
-   font-style: bold ;
-   margin: 1px;
-  }
-  /* font-family: 'Baloo 2', sans-serif; */
+h6 {
+	font-family: 'Comfortaa', sans-serif;
+	font-style: bold;
+	margin: 2px;
+}
 .bg-steel {
 	background-color: #5f788a;
 }
@@ -183,6 +187,18 @@ h6
 	margin-bottom: 20px;
 	margin-top: 10px;
 	padding: 10px 20px;
+}
+.rounded-third {
+	border-radius: 40% / 50%;
+}
+.rounded-half {
+	border-radius: 50% / 50%;
+}
+.rounded-med {
+	border-radius: 8px;
+}
+.rounded-large {
+	border-radius: 10px;
 }
 .rounded-xl {
 	border-radius: 8px;
@@ -215,10 +231,12 @@ h6
 	vertical-align: top;
 	width: 100%;
 }
+.border-body {
+	border-color: #8ab4d1;
+}
 .bg-body {
 	background-color: #8ab4d1;
 }
-
 .btn.btn-square:hover {
 	box-shadow: rgb(188, 143, 250) 0px 15px 15px;
 	transform: scale(1.1, 1.1);
@@ -255,13 +273,30 @@ h6
 	-webkit-box-shadow: 0 0.5rem 1rem rgba(190, 170, 147, 0.271) !important;
 	box-shadow: 0 0.5rem 1rem rgba(190, 170, 147, 0.271) !important;
 }
-.shadow-before {
-	-webkit-box-shadow: 0 0.125rem 0.25rem rgba(190, 47, 195, 0.231) !important;
-	box-shadow: 0 0.125rem 0.25rem rgba(190, 47, 195, 0.231) !important;
+.text-outlined{
+  text-shadow: -1px 0 white,
+                0 1px white,
+                1px 0 white,
+                0 -1px white;
 }
+.shadow-before {
+	-webkit-box-shadow: 0 1rem 2rem rgba(0, 255, 234, 0.515) !important;
+  box-shadow: 0 1rem 2rem rgba(0, 255, 255, 0.531) !important;
+}
+shadow-after {
+	-webkit-box-shadow: 0 1rem 2rem rgba(0, 255, 255, 0.531) !important;
+	box-shadow: 0 1rem 2rem rgba(0, 255, 255, 0.531) !important;
+}
+tbody tr td:first-child{border-radius: 0.75em 0 0 0.75em;}
+tbody td:nth-child(2){border-radius: 0 0 0 0;}
+tbody td:nth-child(3){border-radius: 0 0 0 0;}
+tbody td:nth-child(4){border-radius: 0 0 0 0;}
+tbody td:nth-child(5){border-radius: 0 0 0 0;}
+tbody td:nth-child(6){border-radius: 0 0 0 0;}
+tbody td:last-child{border-radius: 0 0.75em 0.75em 0;}
 .shadow-after {
-	-webkit-box-shadow: 0 1rem 2rem rgba(190, 47, 195, 0.371) !important;
-	box-shadow: 0 1rem 2rem rgba(190, 47, 195, 0.371) !important;
+	-webkit-box-shadow: 0 1rem 2rem rgba(190, 47, 195, 0.271) !important;
+	box-shadow: 0 1rem 2rem rgba(190, 47, 195, 0.271) !important;
 }
 .info-section {
 	border-radius: 4px;
@@ -285,28 +320,10 @@ html {
 	height: 90%;
 }
 .info {
- 	background: rgba(255, 255, 255, 0.8);
-	border-radius: 5px;
+	border-radius: 8px;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-	font: 14px/16px Arial, Helvetica, sans-serif;
-	padding: 6px 8px;
-}
-.info h4 {
-	color: #777;
-	margin: 0 0 5px;
-}
-.legend {
-	color: #555;
-	line-height: 18px;
-	text-align: left;
-}
-.legend i {
-	float: left;
-	font-size: 8px;
-	height: 18px;
-	margin-right: 8px;
-	opacity: 0.7;
-	width: 18px;
+	padding: 4px 6px;
+	text-align: center;
 }
 html {
 	font-size: 10px;
@@ -316,5 +333,3 @@ html {
 		font-size: 14px;
 	}
 }
-
-

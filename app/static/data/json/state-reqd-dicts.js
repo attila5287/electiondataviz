@@ -8,7 +8,7 @@ var nameByStatePO = {
   "CA": "California",
   "CO": "Colorado",
   "CT": "Connecticut",
-  "DC": "District Of Columbia",
+  "DC": "D C",
   "DE": "Delaware",
   "FL": "Florida",
   "GA": "Georgia",
@@ -27,11 +27,11 @@ var nameByStatePO = {
   "MI": "Michigan",
   "MN": "Minnesota",
   "MO": "Missouri",
-  "MP": "Northern Mariana Is",
+  "MP": "N Mariana Is",
   "MS": "Mississippi",
   "MT": "Montana",
-  "NC": "North Carolina",
-  "ND": "North Dakota",
+  "NC": "N Carolina",
+  "ND": "N Dakota",
   "NE": "Nebraska",
   "NH": "New Hampshire",
   "NJ": "New Jersey",
@@ -44,8 +44,8 @@ var nameByStatePO = {
   "PA": "Pennsylvania",
   "PR": "Puerto Rico",
   "RI": "Rhode Island",
-  "SC": "South Carolina",
-  "SD": "South Dakota",
+  "SC": "S Carolina",
+  "SD": "S Dakota",
   "TN": "Tennessee",
   "TX": "Texas",
   "UT": "Utah",
@@ -54,9 +54,10 @@ var nameByStatePO = {
   "VT": "Vermont",
   "WA": "Washington",
   "WI": "Wisconsin",
-  "WV": "West Virginia",
+  "WV": "W Virginia",
   "WY": "Wyoming"
 };
+
 // value is the state seat count, key is state name: Colorado
 var seatsByState ={
 "Alabama": 7, 
@@ -110,19 +111,28 @@ var seatsByState ={
 "Wisconsin": 8, 
 "Wyoming": 1, 
 
-      };
+};
 
 // console.log('test nameByStatePO :>> ', nameByStatePO);
-let sumCheckTotal = 0;  
-var seatCountByStatePO = {};
-// state_po is the state postal code provided on MIT dataset
-Object.keys(nameByStatePO).forEach(PO =>{
-  seatCountByStatePO[PO] = seatsByState[nameByStatePO[PO]];
-  sumCheckTotal = sumCheckTotal + seatsByState[nameByStatePO[PO]];
-}
-);
-// console.log('sumCheckTotal needs 435 :>> ', sumCheckTotal);
-// console.log(' *** test *** seatCountByStatePO :>> ', seatCountByStatePO);
+
+// Calculation Of Dictionary for  state seat by state postal 
+// ex: key CO pairs 7 | modify: 0 for states with no seat
+// -------------------------------------------------------
+// var seatByStatePO = {};
+// // state_po is the state postal code provided on MIT dataset
+// let sumCheckTotal = 0;  
+// Object.keys(nameByStatePO).forEach(PO =>{
+  //   if (seatsByState[nameByStatePO[PO]] == undefined) {
+    //     // req'd for those without a seat like DC or Am.Samoa
+    //     seatByStatePO[PO] = 0;
+    //   } else { // for all states with seat
+    //     seatByStatePO[PO] = seatsByState[nameByStatePO[PO]];
+    //   }
+    //   sumCheckTotal = sumCheckTotal + seatsByState[nameByStatePO[PO]];
+    // });
+    // console.log('sumCheckTotal needs 435 :>> ', sumCheckTotal);
+    // console.log(' *** final *** seatByStatePO :>> ', seatByStatePO);
+    // -------------------------------------------------------
 
 var seatByStatePO = {
   "AK": 1,
@@ -183,5 +193,6 @@ var seatByStatePO = {
   "WY": 1,
 };
 
-// console.log( 'test seatByStatePO for Colorado:>> ', seatByStatePO[ "CO" ] );
+// console.log( 'test seatByStatePO copy paste for all:>> ', seatByStatePO );
 
+// console.log( 'test seatByStatePO for Colorado:>> ', seatByStatePO[ "CO" ] );

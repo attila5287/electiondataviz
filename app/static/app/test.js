@@ -2,34 +2,120 @@
 // console.log('test global var nameByStatePO :>> ', nameByStatePO);
 var urlPrezT3st = '../static/data/csv/president.csv';
 
-function prezUpTable( url, year ) {
+function prezTableUp( url, year ) {
+  d3.select( "#table-goes-here" )
+  .select( "table" )
+  .remove();
+  // --------------
   const fComma = d3.format( ',' );
-  const fDecimal = d3.format( '.2' );
+  const fDecimal = d3.format( '.3' );
   // --------------
   let table = d3.select( "#table-goes-here" )
        .append( "table" )
-       .attr( "class", "table table-condensed table-striped table-hover text-center text-xlarger py-0 text-success" ),
-       thead = table.append( "thead" ),
-       tbody = table.append( "tbody" );
+       .attr( "class", "table table-sm bg-transparent table-bordered text-center text-comfo px-4" ),
+       thead = table.append( "thead" )
+       tbody = table.append( "tbody" ).attr('class','bg-transparent');
+     
   d3.csv( url, ( error, data ) => {
     if ( error ) {
       console.error( error );
     } else {
-      // ------------ 
-      const rows = dataPrepRows( data );
-      // console.log('rows Test :>> ', rows);
+      let columns = [ ];
+      const rowsData = dataPrepRows( data );
 
-      
-      
+      Object.keys(rowsData[0]).forEach(key =>{
+        // console.log('key :>> ', key);
+        columns.push(key)
+      });
+      console.log('columns :>> ', columns);
+      let header = thead.append( "tr" ).attr('class','bg-transparent')
+      .selectAll( "th" )
+       .data(  columns )
+       .enter()
+       .append( "th" )
+       .attr('class','text-sm  bg-dark rounded-3xl add-anime pb-2 pt-0 text-light')
+       .text(  d =>  d )
+        ;
+      // ----- table rows tr
+      const partyColors = {
+        "REP" :'text-danger' ,
+        "DEM" :'text-primary' ,
+      };
+      let x = 'text-danger'
+      let rows = tbody.selectAll( "tr" )
+       .data( rowsData )
+       .enter()
+       .append( "tr" )
+       .attr('class',d => {
+         const redWins = (d["REP"]>d["DEM"]);
+         if (redWins) {
+           return 'bg-transparent add-anime text-danger';
+         } else {
+           return 'bg-transparent add-anime text-primary';
+         }
+       })
+       .on( "mouseover", function ( d, i ) {
+         console.log('d :>> ', d);
+        //  d3.select( this ).attr( "class", "bg-transparent add-anime" );
+       } )
+       .on( "mouseout", function ( d ) {
+         console.log('d :>> ', d);
+        //  d3.select( this ).attr( "class", "bg-transparent add-anime" );
+       } );
+      let cells = rows.selectAll( "td" )
+       .data( function ( row ) {
+         return Object.keys(row).map( function ( d, i ) {
+           if ( d == "Flag" ) {
+             return {
+               i: d,
+               value: row[d].trim().toLowerCase().replace( ' ', '-' )
+             };
+           } else {
+             return {
+               i: d,
+               value: row[ d ]
+             };
+           }
+         } );
+       } )
+       .enter()
+       .append( "td" )
+       .attr( "class", "bg-dark" )
+       .html( function ( d ) {
+         if ( d.i == "Flag" ) {
+           return '<img class="img-thumbnail shadow-before  border-0  p-0 m-0 rounded-xl" src="' +
+             '/static/img/states/' +
+             d.value +
+             '-flag-small.png' +
+             '" alt="' +
+             d.value +
+             '  " style="height: 1.75rem;opacity:70%"></img>';
+         } else if ( d.i == "StateName" ) {
+           return '<strong class="text-robo text-larger text-outlined">' +
+             '<em>' +
+             d.value +
+             '</em>' +
+             '</strong>';
+         } else if ( d.i == "PO" ) {
+           return '<strong class="text-robo text-larger text-light">' +
+             '<em>' +
+             d.value +
+             '</em>' +
+             '</strong>';
+         } else {
+           return '<i class="text-comfo text-light">'+ fDecimal( d.value )+'</i>';
+         }
+       } );
+     // console.log('d :>> ', cells);
     }      
     // --------------------- SLIDER ----------------
     // console.log('data :>> ', data);
-    d3.select( "#slider" ).on( "change", function () {
-      slideMyYears( +this.value );
+    // d3.select( "#slider" ).on( "change", function () {
+      // slideMyYears( +this.value );
       // console.log('test d3-slider: +this.value :>> ', +this.value);
-      prezUpTable( urlPrezT3st, +this.value );
-      onlyColorUp( +this.value );
-    } );
+      // prezTableUp( urlPrezT3st, +this.value );
+      // onlyColorUp( +this.value );
+    // } );
 
     function slideMyYears( slider ) {
       // adjust the text on the range slider
@@ -57,8 +143,7 @@ function prezUpTable( url, year ) {
           } );
         } )
         .entries( data.filter( d => d[ "year" ] == selectedYear ) );
-
-
+        
       nested.forEach( d => {
         winners[ d.key ] = d.values[ 0 ].key;
       } );
@@ -71,11 +156,6 @@ function prezUpTable( url, year ) {
         d.properties[ "color" ] = colors[ winners[ nameState ] ];
         // console.log('d :>> ', d.properties);
       } );
-      
-
-
-
-
     }
 
     slideMyYears( year );
@@ -135,39 +215,33 @@ function prezUpTable( url, year ) {
     filteredStateTotals.forEach( d => {
       let sumEach = 0;
       let row = {};
-
       // console.log('d :>> ', d.key);
       // console.log('all parties  :>> ', d.values);
       d.values.forEach( z => {
         // console.log('z :>> ', z);
         sumEach = sumEach + z.value;
       } );
-
       // console.log('sumEach :>> ', sumEach);
       // will use below keys as Table Headers
-      row[ "PO" ] = d.key;
-      row[ "Republican" ] = d.values.filter( z => z.key == "republican" )[ 0 ].value / sumEach * 100;
-      row[ "Democrat" ] = d.values.filter( z => z.key == "democrat" )[ 0 ].value / sumEach * 100;
-      row[ "Others" ] = 100 - row[ "Republican" ] - row[ "Democrat" ];
+      row[ "Flag"] = nameByStatePO[d.key];
       row[ "StateName"] = nameByStatePO[d.key];
-      row[ "NumOfSeats"] = seatByStatePO[d.key];
+      row[ "REP" ] = d.values.filter( z => z.key == "republican" )[ 0 ].value / sumEach * 100;
+      row[ "DEM" ] = d.values.filter( z => z.key == "democrat" || z.key == 'democratic-farmer-labor' )[ 0 ].value / sumEach * 100;
+      row[ "Others" ] = 100 - row[ "REP" ] - row[ "DEM" ];
+      row[ "Seats"] = seatByStatePO[d.key];
+      row[ "PO" ] = d.key;
       // console.log('row :>> ', row);
       r0ws.push( row );
     } );
 
-    // console.log( 'row for table per each state-51+ :>> ', r0ws );
-    console.log( 'row test for Colorado :>> ', r0ws[5] );
-
+    console.log( 'rows test for Colorado :>> ', r0ws[5] );
     return r0ws;
   }
-}
 
-prezUpTable( urlPrezT3st, 2016 );
-prezTableTopUp( 2016 );
+}
 
 function prezTableTopUp( year ) {
   const urlPrezWTest = '../static/data/csv/prezWinners.csv';
-  
   d3.csv(urlPrezWTest,
   (error, data) => {
     if (error) {
@@ -194,3 +268,6 @@ function prezTableTopUp( year ) {
     }
   });
 }
+
+prezTableUp( urlPrezT3st, 2016 );
+prezTableTopUp( 2016 );

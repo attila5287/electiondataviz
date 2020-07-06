@@ -55,7 +55,7 @@ function presidentialUp( url, year ) {
           } );
         } )
         .entries( data );
-      console.log('presidentialUp|set up map for selected year :', year);  
+      console.log('year :>> ', year);  
       
       // -------------------------------
     }
@@ -214,8 +214,6 @@ function presidentialUp( url, year ) {
     d3.select( "#slider" ).on( "change", function () {
       slideMyYears( +this.value );
       // console.log('test d3-slider: +this.value :>> ', +this.value);
-      console.log('urlPrezT3st :>> ', urlPrezT3st);
-      prezTableUp( urlPrezT3st, +this.value );
       onlyColorUp( +this.value );
     } );
 
@@ -226,7 +224,7 @@ function presidentialUp( url, year ) {
     }
 
     function onlyColorUp( selectedYear ) {
-      console.log( 'onlyColorUp|modify map layer for selected year :>> ', selectedYear );
+      console.log( 'onlyColorUp selected year :>> ', selectedYear );
       const colors = {
         republican: "red",
         democrat: "blue"

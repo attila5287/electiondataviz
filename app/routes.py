@@ -50,6 +50,7 @@ def test():
 
 @app.route("/map")
 def map_states():
+    pass
     return render_template('map.html', title='Colored Map')
 
 

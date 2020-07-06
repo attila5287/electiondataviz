@@ -5,16 +5,17 @@ const format = d3.format( ',' );
 
  //  tableInteractive( urlTest, columnsDisplayed );
  tableInteractive( urlCompiled, columnsDisplayed );
+
  function tableInteractive( url, c0lumns ) {
    // const format = d3.format( ',' );
    let columns = [ 'Flag' ];
    c0lumns.forEach( element => {
      columns.push( element )
-   } );   
-   console.log('object :>> ', object);  
+   } );
+   
    let table = d3.select( "#table-goes-here" )
      .append( "table" )
-     .attr( "class", "table table-condensed table-striped table-hover text-center text-xlarger py-0 text-success w-75" ),
+     .attr( "class", "table table-condensed table-striped table-hover text-center text-xlarger py-0 text-success" ),
      thead = table.append( "thead" ),
      tbody = table.append( "tbody" );
 

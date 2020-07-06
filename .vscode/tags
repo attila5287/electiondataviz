@@ -19,7 +19,7 @@ flash	../app\routes.py	/^from flask import render_template, url_for, flash, redi
 home	../app\routes.py	/^def home():$/;"	kind:function	line:17
 interactive_axis	../app\routes.py	/^def interactive_axis():$/;"	kind:function	line:25
 jsonify	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
-jsonify_maptoken	../app\routes.py	/^def jsonify_maptoken():$/;"	kind:function	line:58
+jsonify_maptoken	../app\routes.py	/^def jsonify_maptoken():$/;"	kind:function	line:59
 leaflet_bubble	../app\routes.py	/^def leaflet_bubble():$/;"	kind:function	line:29
 leaflet_choropleth	../app\routes.py	/^def leaflet_choropleth():$/;"	kind:function	line:33
 leaflet_choropleth_asia	../app\routes.py	/^def leaflet_choropleth_asia():$/;"	kind:function	line:42
