@@ -9,6 +9,10 @@ def dashboard():
     return render_template('dashboard.html', title='dashBoard')
 
 @app.route("/")
+@app.route("/candidates")
+def table():
+    return render_template('candidates.html', title='Candidates')
+
 @app.route("/table")
 def table():
     return render_template('table.html', title='Table')

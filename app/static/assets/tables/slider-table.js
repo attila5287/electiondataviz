@@ -33,7 +33,7 @@ function prezTableUp( url, year ) {
        .data(  columns )
        .enter()
        .append( "th" )
-       .attr('class','text-sm  bg-dark rounded-3xl add-anime pb-2 pt-0 text-light')
+       .attr('class','text-sm  bg-dark rounded-xl add-anime pb-2 pt-1 text-light')
        .text(  d =>  d )
         ;
       // ----- table rows tr
@@ -157,9 +157,7 @@ function prezTableUp( url, year ) {
         // console.log('d :>> ', d.properties);
       } );
     }
-
     slideMyYears( year );
-    
   } );
 
   function dataPrepRows ( data ) {

@@ -55,8 +55,8 @@ function presidentialUp( url, year ) {
           } );
         } )
         .entries( data );
-      console.log('presidentialUp|set up map for selected year :', year);  
-      
+      // console.log('presidentialUp|set up map for selected year :', year);  
+      // // console.log('totalByYear :>> ', totalByYear);
       // -------------------------------
     }
 
@@ -72,10 +72,10 @@ function presidentialUp( url, year ) {
 
     L.tileLayer( 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
       id: 'mapbox/dark-v10',
-      attribution: '<a href="https://www.openstreetmap.org/"> @attila5287 </a> Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-        'Imagery © ' + '<a href="https://www.mapbox.com/">Mapbox</a>',
+      attribution: '<a href="https://github.com/attila5287/electiondataviz"> @attila5287 </a> <a href="https://www.openstreetmap.org/">OpenStreetMap</a> ' +
+        ' ' + '<a href="https://www.mapbox.com/">Mapbox</a>',
       tileSize: 512,
-      zoomOffset: -1
+      zoomOffset: 0
     } ).addTo( map );
 
     map.createPane( 'labels' );
@@ -83,7 +83,7 @@ function presidentialUp( url, year ) {
     map.getPane( 'labels' ).style.pointerEvents = 'none';
 
     var positronLabels = L.tileLayer( 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
-      attribution: '©OpenStreetMap, ©CartoDB',
+      attribution: ' ©CartoDB',
       pane: 'labels'
     } ).addTo( map );
 
@@ -178,7 +178,10 @@ function presidentialUp( url, year ) {
     legend.onAdd = function ( map ) {
       var div = L.DomUtil.create( 'div', 'legend' ),
         partyNames = [ "republican", "democrat" ],
-        colors = [ "#d73027", "#4575b4" ];
+        colors = [ 
+          "#d73027", 
+          "#4575b4", 
+        ];
 
       // loop through our deaths intervals and generate a label with a colored square for each interval
       for ( var i = 0; i < partyNames.length; i++ ) {
@@ -214,9 +217,11 @@ function presidentialUp( url, year ) {
     d3.select( "#slider" ).on( "change", function () {
       slideMyYears( +this.value );
       // console.log('test d3-slider: +this.value :>> ', +this.value);
-      console.log('urlPrezT3st :>> ', urlPrezT3st);
+      // console.log('urlPrezT3st :>> ', urlPrezT3st);
       prezTableUp( urlPrezT3st, +this.value );
-      onlyColorUp( +this.value );
+      onlyColorUp( +this.value  );
+      candsVotesUp (+this.value)
+      prezCandidatesUp(data, +this.value)
     } );
 
     function slideMyYears( slider ) {
@@ -226,7 +231,7 @@ function presidentialUp( url, year ) {
     }
 
     function onlyColorUp( selectedYear ) {
-      console.log( 'onlyColorUp|modify map layer for selected year :>> ', selectedYear );
+      // console.log( 'onlyColorUp|modify map layer for selected year :>> ', selectedYear );
       const colors = {
         republican: "red",
         democrat: "blue"
@@ -337,7 +342,7 @@ function presidentialUp( url, year ) {
         r0ws.push( row );
       } );
 
-      console.log( 'rows test for Colorado :>> ', r0ws[5] );
+      // console.log( 'rows test for Colorado :>> ', r0ws[5] );
       return r0ws;
     }
 
@@ -358,7 +363,7 @@ function  prezWinnersUp( year ) {
         console.error(error);
     } else {
       function slideWinner(data, sliderYear) {
-        console.log('slideWinner|prez img name etc :>> ', sliderYear);
+        // console.log('slideWinner|prez img name etc :>> ', sliderYear);
         
         const d = data.filter(d=> d["year"] == sliderYear)[0];
       // [ "year", "president", "party", "prior" ]
