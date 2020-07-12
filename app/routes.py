@@ -10,7 +10,7 @@ def dashboard():
 
 @app.route("/")
 @app.route("/candidates")
-def table():
+def candidates():
     return render_template('candidates.html', title='Candidates')
 
 @app.route("/table")
