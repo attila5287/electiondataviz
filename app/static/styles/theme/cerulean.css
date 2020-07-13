@@ -4403,11 +4403,11 @@ input[type="button"].btn-block {
 }
 
 .custom-range::-moz-range-thumb {
-  width: 1rem;
-  height: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: #2FA4E7;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 1rem 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

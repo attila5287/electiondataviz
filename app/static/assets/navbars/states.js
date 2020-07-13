@@ -86,8 +86,6 @@ function overallCountUpStates( data ) {
   // console.log(totalConfirmed);
 
   const format = d3.format( ',' );
-  d3.select( '#overallDeaths' ).text( format( totalDeaths ) );
-  d3.select( '#overallConfirmed' ).text( format( totalConfirmed ) );
 }
 
 function dropDownUpdateStates( data, static_or_latest ) {

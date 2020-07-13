@@ -220,8 +220,8 @@ function presidentialUp( url, year ) {
       // console.log('urlPrezT3st :>> ', urlPrezT3st);
       prezTableUp( urlPrezT3st, +this.value );
       onlyColorUp( +this.value  );
-      candsVotesUp (+this.value)
-      prezCandidatesUp(data, +this.value)
+      candsVotesUp (+this.value);
+      prezCandidatesUp(data, +this.value);
     } );
 
     function slideMyYears( slider ) {

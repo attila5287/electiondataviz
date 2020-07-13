@@ -400,3 +400,18 @@ max-height: 10rempx !important;
 height: 128px !important;
 max-height: 256px !important;
 }
+.custom-range::-moz-range-thumb {
+  width: 1.5rem;
+  height: 2.75rem;
+  color : white;
+  border-radius: 1.25rem 1.25rem 0.5rem 0.5rem;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#64dfdf), color-stop(60%, #1de3fd), to(#aff0e5));
+  
+  background-image: linear-gradient(#f5c07a, #a77b42 60%, #a5620b);  
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -moz-appearance: none;
+       appearance: none;
+}

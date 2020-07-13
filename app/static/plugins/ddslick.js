@@ -22,7 +22,7 @@
         defaults = {
             data: [],
             keepJSONItemsOnTop: false,
-            width: 180,
+            width: 220,
             height: 60,
             background: "#073642",
             selectText: "",
@@ -40,7 +40,7 @@
         //CSS for ddSlick
         ddslickCSS = '<style id="css-ddslick" type="text/css">' +
         '.dd-select{border-radius:12px;margin-bottom:4;  border:solid 0px #02a198; position:relative; cursor:pointer;box-shadow:0px 2px 3px #2aa198;}' +
-        '.dd-desc { color:#839496; display:block; overflow: hidden; font-weight:normal; line-height: 1em; }' +
+        '.dd-desc { color:#839496; display:block; overflow: hidden; font-weight:bold;color:#2aa198;font-size:1rem; line-height: 1em; }' +
         '.dd-selected{border-radius:12px; overflow:ellipsis; display:block; padding:2px;padding-bottom:10px; font-weight:bold}' +
         '.dd-pointer{ width:0; height:0; position:absolute; right:10px; top:50%; margin-top:-3px;}' +
         '.dd-pointer-down{ border:solid 5px transparent; border-top:solid 5px white; }' +
