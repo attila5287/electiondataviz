@@ -29,12 +29,12 @@ function prezTableUp( url, year ) {
         columns.push( key )
       } );
       // console.log('columns :>> ', columns);
-      let header = thead.append( "tr" ).attr( 'class', 'bg-transparent shadow-after' )
+      let header = thead.append( "tr" ).attr( 'class', 'bg-transparent shadow-before' )
         .selectAll( "th" )
         .data( columns )
         .enter()
         .append( "th" )
-        .attr( 'class', 'text-sm  bg-dark rounded-xl add-anime pb-2 pt-1 text-light' )
+        .attr( 'class', 'text-xs  bg-green rounded-xl add-anime pb-2 pt-1 text-light' )
         .text( d => d );
       // ----- table rows tr
       let rows = tbody.selectAll( "tr" )
@@ -90,7 +90,7 @@ function prezTableUp( url, year ) {
               d.value +
               '</strong>';
           } else if ( d.i == "PO" ) {
-            return '<strong class="text-robo text-onerem text-secondary">' +
+            return '<strong class="text-robo text-onerem text-light opac-70">' +
               '<em>' +
               d.value +
               '</em>' +
@@ -295,6 +295,8 @@ function candsVotesUp( yearUpdated ) {
     d3.select( '#dem-prez-prior' ).text( blue[ "prezPrior" ] );
     d3.select( '#dem-elec-vote' ).text( blue[ "eleVo" ] );
     d3.select( '#dem-pop-vote' ).text( blue[ "popVo" ] );
+    d3.select( '#blue-popvote-perc' ).text( blue[ "popVo" ] );
+    d3.select( '#blue-elecvote-perc' ).text( blue[ "eleVo" ] );
 
     // src="../static/img/cands/vp2016d.jpg" 
     d3.select( '#dem-vp-img' ).attr( "src", '../static/img/cands/vp' + yearUpdated + "d.jpg" );
@@ -309,6 +311,9 @@ function candsVotesUp( yearUpdated ) {
 
     d3.select( '#rep-elec-vote' ).text( red[ "eleVo" ] );
     d3.select( '#rep-pop-vote' ).text( red[ "popVo" ] );
+    d3.select( '#red-popvote-perc' ).text( red[ "popVo" ] );
+    d3.select( '#red-elecvote-perc' ).text( red[ "eleVo" ] );
+
     d3.select( '#rep-vp-img' ).attr( "src", '../static/img/cands/vp' + yearUpdated + "r.jpg" );
     d3.select( '#rep-prez-img' ).attr( "src", '../static/img/cands/p' + yearUpdated + "r.jpg" );
     // d3.select( '#dem-p-img' ).attr("src", '../static/img/cands/vp'+yearUpdated+"d.jpg" );
@@ -393,7 +398,7 @@ function dropDownUp( slideYear ) {
               obj[ "PO" ] = d.key;
               //- options push each
               obj["imageSrc"] = '/static/img/states/' + nameByStatePO[ d.key ].toLowerCase().replace( ' ', '-' ) + '-flag-small.png'
-              obj[ "text" ] = `${nameByStatePO[ d.key ]}<em class="text-success text-sm ml-1">@${slideYear}</em> `;
+              obj[ "text" ] = `${nameByStatePO[ d.key ]}<em class="text-light opac-70 text-xs ml-1">@${slideYear}</em> `;
               obj[ "description" ] = `<em class="text-sm opac-80 mr-1">D</em> ${form4t(obj["Democrat"])}% <em class="text-sm opac-80 mr-1">R</em>${form4t(obj["Republican"])}% `,
               obj[ "value" ] = d.key;
               obj[ "selected" ] = false;

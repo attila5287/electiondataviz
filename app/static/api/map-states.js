@@ -222,6 +222,7 @@ function presidentialUp( url, year ) {
       onlyColorUp( +this.value  );
       candsVotesUp (+this.value);
       prezCandidatesUp(data, +this.value);
+      dropDownUp( +this.value );
     } );
 
     function slideMyYears( slider ) {
@@ -379,6 +380,8 @@ function  prezWinnersUp( year ) {
       // --------------------- SLIDER ----------------
       d3.select( "#slider" ).on( "input", function () {
         slideWinner( data, +this.value );
+        
+        
       } );
       
 

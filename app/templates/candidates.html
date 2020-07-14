@@ -38,7 +38,7 @@
   <body class="bg-body" style="margin-top: 60px;">
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark py-0 my-0">
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-purple py-1 my-0">
         <a class="navbar-brand bg-transparent mx-0 p-0 border-0 rounded-xl add-anime"
           href="https://electiondataviz.herokuapp.com/">
           <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 3rem;" alt="navbar-icon">
@@ -49,48 +49,79 @@
         </button>
         <div class="collapse navbar-collapse text-center bg-transparent" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <a class="nav-item nav-link rounded-xl add-anime" href="/latest">
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/test">
               <i class="fas fa-sliders-h fa-fw text-onerem mt-1"></i>
               <p class="mb-0 text-comfo text-onerem">Latest</p>
             </a>
-            <a class="nav-item nav-link rounded-xl add-anime" href="/table">
-              <i class="fas fa-table fa-fw text-onerem mt-1"></i>
-              <p class="mb-0 text-comfo text-onerem">Table</p>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/candidates">
+              <i class="fas fa-users fa-fw text-onerem mt-1"></i>
+              <p class="mb-0 text-comfo text-onerem">Cand's</p>
             </a>
-            <a class="nav-item nav-link rounded-xl add-anime" href="/interactive-axis">
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/interactive-axis">
               <i class="fas fa-globe-americas fa-fw text-onerem mt-1"></i>
               <p class="py-0 my-0 text-comfo text-onerem"> Map</p>
             </a>
-            <a class="nav-item nav-link rounded-xl add-anime disabled">
-              <h6 class="text-secondary" aria-hidden="true">
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
+              <h6 class="text-light opac-80" aria-hidden="true">
                 <strong>
                   Democrats
                 </strong>
               </h6>
               <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="blue-percentage">
-                00.00
+                id="blue-popvote-perc">
+                00.0
                 <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
               </p>
             </a>
-            <a class="nav-item nav-link rounded-xl add-anime" href="https://electiondataviz.herokuapp.com/">
-              <img class="opac-50 m-0 px-0 py-0" src="/static/img/election/ballot.png" style="height: 3.75rem;"
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime mx-0 px-0" href="https://electiondataviz.herokuapp.com/">
+              <img class="opac-50 m-0 px-0 py-0" src="/static/img/election/ballot.png" style="height: 3rem;"
                 alt="navbar-icon">
+                <p class="text-xs text-nowrap mb-0 opac-50"><strong>Popular Vote</strong></p>
             </a>
-
-            <a class="nav-item nav-link rounded-xl add-anime disabled">
-              <h6 class="text-secondary" aria-hidden="true">
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
+              <h6 class="text-light opac-80" aria-hidden="true">
                 <strong>
                   Republicans
                 </strong>
               </h6>
               <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="red-percentage">
-                00.00
+                id="red-popvote-perc"
+                >
+                00.0
+                <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
+              </p> 
+            </a>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
+              <h6 class="text-light opac-80" aria-hidden="true">
+                <strong>
+                  Democrats
+                </strong>
+              </h6>
+              <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+                id="blue-elecvote-perc"
+                >
+                00.0
+                <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
+              </p>
+            </a>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="https://electiondataviz.herokuapp.com/">
+              <img class="opac-70 m-0 px-0 py-0" src="/static/img/election/ball0t.png" style="height: 4rem;"
+                alt="navbar-icon">
+            </a>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
+              <h6 class="text-light opac-80" aria-hidden="true">
+                <strong>
+                  Republicans
+                </strong>
+              </h6>
+              <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+                id="red-elecvote-perc"
+                >
+                00.0
                 <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
               </p>
             </a>
-            <a class="nav-item nav-link">
+            <a class="nav-item nav-link bg-transparent">
               <select class="bg-transparent" id="opts">
               </select>
             </a>
@@ -105,8 +136,7 @@
         width: 100%;
       }
     </style>
-
-
+ 
     <div class="row">
       <div class="col-sm-5 text-center">
         <div id="table-goes-here">
@@ -114,8 +144,7 @@
         </div>
       </div>
       <div class="col-sm-7 text-center">
-
-        <fieldset class="form-group mx-2 mt-2 py-1 px-2 rounded-xl bg-dark shadow-after text-center">
+        <fieldset class="form-group add-anime mx-2 mt-2 py-2 px-3 rounded-xl bg-green shadow-after text-center">
           <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1">
             <i>1976</i>
             <i>1980</i>
@@ -129,29 +158,31 @@
             <i>2012</i>
             <i>2016</i>
           </div>
-          <input type="range" min="1976" max="2016" step="4" id="slider" class="custom-range">
+          <input type="range" min="1976" max="2016" step="4" id="slider" class="custom-range mt-3">
         </fieldset>
-        <fieldset class="form-group mx-2 mt-1 py-1 px-2 rounded-xl bg-dark shadow-after text-center">
           <div class="d-flex flex-row justify-content-center align-items-center">
-            <h5 class="text-nowrap text-larger shadow-turq bg-transparent px-4 mt-2" id="party-name">
-              republican </h5>
-            <span class="text-larger bg-black py-1 px-4 mb-1 mt-1 text-digi text-primary shadow-turq rounded-xl"
+        <fieldset class="form-group add-anime rounded-med bg-purple text-light text-comfo text-xlarger shadow-after text-center px-4 py-3">            
+              republican 
+        </fieldset>
+        <fieldset class="form-group add-anime rounded-xl bg-purple text-light shadow-after text-center px-4 py-3 mx-1">              
+            <span class="text-2xl bg-black py-1 px-3 mb-1 mt-1 text-digi text-purple shadow-turq rounded-large"
               id="sliderValue">
-              2008
+              2016
             </span>
-            <h5 class="text-nowrap text-larger shadow-turq bg-transparent px-4 mt-2" id="prez-name">
+        </fieldset>
+        <fieldset class="form-group rounded-med bg-purple text-light text-comfo text-xlarger shadow-after text-center px-4 py-3">            
               Trump, Donald J.
-            </h5>
           </div>
         </fieldset>
+        
         
         <div class="d-flex flex-row justify-content-around  px-2">
           <div class="card-group px-2 mt-3 mb-5">
             <div class="card rounded-2xl anime-blue bg-dark text-light">
               <img src="../static/img/cands/vp2016d.jpg" class="card-img-top rounded-2xl opac-80 " alt="VP cand blue" id="dem-vp-img">
               <div class="card-body">
-                <h5 class="card-title text-secondary" id="dem-vp">...</h5>
-                <p class="card-text text-secondary" id="dem-vp-prior"></p>
+                <h5 class="card-title text-light opac-80" id="dem-vp">...</h5>
+                <p class="card-text text-light opac-80" id="dem-vp-prior"></p>
               </div>
               <div class="card-footer">
                 <small class="text-muted">VP candidate</small>
@@ -182,8 +213,8 @@
             <div class="card rounded-2xl anime-red bg-red text-light">
               <img src="/static/img/cands/vp2016r.jpg" class="card-img-top rounded-2xl opac-80 " alt="..." id="rep-vp-img">
               <div class="card-body">
-                <h5 class="card-title text-secondary" id="rep-vp">...</h5>
-                <p class="card-text text-secondary" id="rep-vp-prior"></p>
+                <h5 class="card-title text-light opac-80" id="rep-vp">...</h5>
+                <p class="card-text text-light opac-80" id="rep-vp-prior"></p>
               </div>
               <div class="card-footer">
                 <small class="text-muted">VP Cand.</small>
@@ -198,7 +229,7 @@
                 <h1 class="card-title text-info text-outlined text-nowrap" id="dem-pop-vote">...</h1>
               </div>
               <div class="card-footer">
-                <small class="text-muted text-onerem text-nowrap">
+                <small class="text-muted text-onerem">
                   <i class="fas fa-users fa-fw text-larger text-light mt-1"></i>
                   Popular Vote</small>
               </div>
@@ -208,7 +239,7 @@
                 <h1 class="card-title text-outlined text-info text-nowrap" id="dem-elec-vote">...</h1>
               </div>
               <div class="card-footer">
-                <small class="text-muted text-onerem text-nowrap">
+                <small class="text-muted text-onerem">
                   <i class="fas fa-microphone fa-fw text-larger text-light mt-1"></i>
                   Electoral Vote</small>
               </div>
@@ -220,7 +251,7 @@
                 <h1 class="card-title text-danger text-outlined" id="rep-elec-vote">...</h1>
               </div>
               <div class="card-footer">
-                <small class="text-muted text-onerem text-nowrap">
+                <small class="text-muted text-onerem">
                   <i class="fas fa-microphone fa-fw text-larger text-light mt-1"></i>
                   Electoral Vote</small>
               </div>
@@ -232,7 +263,7 @@
                 id="rep-pop-vote">...</h1>
               </div>
               <div class="card-footer">
-                <small class="text-muted text-onerem text-nowrap text-light">
+                <small class="text-muted text-onerem text-light">
                   <i class="fas fa-users fa-fw text-larger text-light mt-1"></i>
                   Popular Vote</small>
               </div>
@@ -240,7 +271,7 @@
           </div>
         </div>
 
-        <div class="card shadow-after mr-auto bordered bg-dark">
+        <div class="card shadow-after mr-auto bordered bg-green border-0">
           <div class="card-body px-4 pt-3 pb-5 rounded-2xl">
             <div class="container shadow-before rounded-3xl" id="map"></div>
           </div>
@@ -263,8 +294,10 @@
 
     <script src="/static/plugins/ddslick.js"></script>
     <script src="/static/data/geojson/us-states.js"></script>
+    
     <script src="/static/assets/navbars/states.js"></script>
-    <script src="/static/assets/slider-cands.js"></script>
+
+    <script src="/static/assets/candidates.js"></script>
     <script src="/static/api/map-states.js"></script>
 
   </body>

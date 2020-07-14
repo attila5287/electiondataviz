@@ -34,7 +34,7 @@
             onSelected: function () {}
         },
 
-        ddSelectHtml = '<div class="dd-select bg-dark text-light add-anime "><input class="dd-selected-value" type="hidden" /><a class="dd-selected btn-info bg-info "></a><span class="dd-pointer dd-pointer-down"></span></div>',
+        ddSelectHtml = '<div class="dd-select bg-transparent text-light add-anime "><input class="dd-selected-value" type="hidden" /><a class="dd-selected btn-info bg-purple"></a><span class="dd-pointer dd-pointer-down"></span></div>',
         ddOptionsHtml = '<ul class="dd-options bg-info"></ul>',
 
         //CSS for ddSlick
@@ -258,7 +258,7 @@
         if ( settings.showSelectedHTML ) {
             ddSelected.html(
                 ( selectedData.imageSrc ? '<img class="rounded-xl shadow-turqoise mt-1 opac-50 dd-selected-image' + ( settings.imagePosition == "right" ? ' dd-image-right' : '' ) + '" src="' + selectedData.imageSrc + '" />' : '' ) +
-                ( selectedData.text ? '<label class="dd-selected-text text-comfo text-onerem text-secondary" style="margin-bottom:2px;">' + selectedData.text + '</label>' : '' ) +
+                ( selectedData.text ? '<label class="dd-selected-text text-comfo text-onerem text-light opac-80" style="margin-bottom:1px;">' + selectedData.text + '</label>' : '' ) +
                 ( selectedData.description ? '<small class="dd-selected-description dd-desc' + ( settings.truncateDescription ? ' dd-selected-description-truncated' : '' ) + '" >' + selectedData.description + '</small>' : '' )
             );
 
