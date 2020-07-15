@@ -44,9 +44,9 @@ function prezTableUp( url, year ) {
         .attr( 'class', d => {
           const redWins = ( d[ "REP" ] > d[ "DEM" ] );
           if ( redWins ) {
-            return 'bg-brick anime-danger text-danger';
+            return 'bg-red anime-danger text-danger';
           } else {
-            return 'bg-ocean anime-primary text-info';
+            return 'bg-dark anime-primary text-info';
           }
         } )
         .on( "mouseover", function ( d, i ) {
