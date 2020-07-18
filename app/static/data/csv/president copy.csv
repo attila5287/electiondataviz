@@ -1,5 +1,4 @@
-"year","state","state_po","state_fips","state_cen","state_ic","office","candidate","party","writein","candidatevotes","
-votes","version","notes"
+"year","state","state_po","state_fips","state_cen","state_ic","office","candidate","party","writein","candidatevotes","totalvotes","version","notes"
 1976,"Alabama","AL",1,63,41,"US President","Carter, Jimmy","democrat",FALSE,659170,1182850,20171015,NA
 1976,"Alabama","AL",1,63,41,"US President","Ford, Gerald","republican",FALSE,504070,1182850,20171015,NA
 1976,"Alabama","AL",1,63,41,"US President","Maddox, Lester","american independent party",FALSE,9198,1182850,20171015,NA
@@ -2210,7 +2209,7 @@ votes","version","notes"
 2000,"Michigan","MI",26,34,23,"US President","Phillips, Howard","u.s. taxpayers party",FALSE,3791,4232501,20171015,NA
 2000,"Michigan","MI",26,34,23,"US President","Hagelin, John","natural law",FALSE,2426,4232501,20171015,NA
 2000,"Michigan","MI",26,34,23,"US President","","",TRUE,1851,4232501,20171015,NA
-2000,"Minnesota","MN",27,41,33,"US President","Gore, Al","democrat",FALSE,1168266,2438685,20171015,NA
+2000,"Minnesota","MN",27,41,33,"US President","Gore, Al","democratic-farmer-labor",FALSE,1168266,2438685,20171015,NA
 2000,"Minnesota","MN",27,41,33,"US President","Bush, George W.","republican",FALSE,1109659,2438685,20171015,NA
 2000,"Minnesota","MN",27,41,33,"US President","Nader, Ralph","green",FALSE,126696,2438685,20171015,NA
 2000,"Minnesota","MN",27,41,33,"US President","Buchanan, Patrick """"Pat""""","reform party minnesota",FALSE,22166,2438685,20171015,NA
@@ -2559,7 +2558,7 @@ votes","version","notes"
 2004,"Michigan","MI",26,34,23,"US President","Cobb, David","green",FALSE,5325,4839252,20171015,NA
 2004,"Michigan","MI",26,34,23,"US President","Peroutka, Michael","u.s. taxpayers party",FALSE,4980,4839252,20171015,NA
 2004,"Michigan","MI",26,34,23,"US President","Brown, Walt","natural law",FALSE,1431,4839252,20171015,NA
-2004,"Minnesota","MN",27,41,33,"US President","Kerry, John","democrat",FALSE,1445014,2828387,20171015,NA
+2004,"Minnesota","MN",27,41,33,"US President","Kerry, John","democratic-farmer-labor",FALSE,1445014,2828387,20171015,NA
 2004,"Minnesota","MN",27,41,33,"US President","Bush, George W.","republican",FALSE,1346695,2828387,20171015,NA
 2004,"Minnesota","MN",27,41,33,"US President","Nader, Ralph","better life",FALSE,18683,2828387,20171015,NA
 2004,"Minnesota","MN",27,41,33,"US President","Badnarik, Michael","libertarian",FALSE,4639,2828387,20171015,NA
@@ -3225,7 +3224,7 @@ votes","version","notes"
 2012,"Michigan","MI",26,34,23,"US President","Goode, Virgil Hamlin, Jr.","u.s. taxpayers party",FALSE,16119,4730961,20171015,NA
 2012,"Michigan","MI",26,34,23,"US President","","",TRUE,7973,4730961,20171015,NA
 2012,"Michigan","MI",26,34,23,"US President","Anderson, Ross Carl """"Rocky""""","natural law",FALSE,5147,4730961,20171015,NA
-2012,"Minnesota","MN",27,41,33,"US President","Obama, Barack H.","democrat",FALSE,1546167,2936561,20171015,NA
+2012,"Minnesota","MN",27,41,33,"US President","Obama, Barack H.","democratic-farmer-labor",FALSE,1546167,2936561,20171015,NA
 2012,"Minnesota","MN",27,41,33,"US President","Romney, Mitt","republican",FALSE,1320225,2936561,20171015,NA
 2012,"Minnesota","MN",27,41,33,"US President","Johnson, Gary","libertarian",FALSE,35098,2936561,20171015,NA
 2012,"Minnesota","MN",27,41,33,"US President","Stein, Jill","green",FALSE,13023,2936561,20171015,NA

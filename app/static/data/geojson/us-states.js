@@ -4617,7 +4617,6 @@ var geoStateNames  = [
   "District of Columbia",
   "Florida",
   "Georgia",
-  "Grand Princess",
   "Guam",
   "Hawaii",
   "Idaho",
