@@ -13,9 +13,8 @@
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
       integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>    
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
       crossorigin="" />
@@ -72,7 +71,7 @@
       font-family: 'Comfortaa';
       font-weight: bold;
       fill: #ffbfac;
-      text-shadow: 2px 2px #6b2a1f;
+      text-shadow: 1px 1px #6b2a1f;
     }
 
     .horizontal line {
@@ -87,21 +86,38 @@
     }
 
     .horizontal text {
+      font-size: 0.75rem;
+      font-family: 'Comfortaa';
+      font-weight: bold;
+      fill: #bb1900;
+      text-shadow: 1px 1px #ffdddd;
+    }
+    
+    .title {
+      font-size: 2rem;
       font-family: 'Baloo 2';
       font-weight: bold;
-      fill: #a13b2e;
-      text-shadow: 0px 2px #ffdddd;
-    }
-
-    .title {
+      text-anchor:middle;
       fill: #ff9081;
       text-shadow: 3px 3px #9e5c5c;
     }
+
+    .bg-coral {
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
+      background-image: linear-gradient(#f8a4a4, #df5656 60%, #a34141);
+      background-repeat: no-repeat;
+      -webkit-filter: none;
+      filter: none;
+      border: 0px solid #ff8b8b;
+      box-shadow: 0px 0px 15px #ff7676, inset 0px 0px 15px #d65757;
+    }
+
   </style>
+  
   <body class="bg-body" style="margin-top: 70px;">
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-green py-1 my-0">
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-coral py-1 my-0">
         <a class="navbar-brand bg-transparent mx-0 p-0 border-0 rounded-xl add-anime"
           href="https://electiondataviz.herokuapp.com/">
           <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 3rem;" alt="navbar-icon">
@@ -192,21 +208,21 @@
       </nav>
     </header>
 
-    <div class="container-fluid hero-image bg-body">
-      <div id="connected-time-series" class="text-center bg-coral opac-90 rounded-qtr mx-2"></div>
-    </div>
-
     <div class="row mt-2">
+
       <div class="col-sm-4 text-center mt-2">
         <div id="table-goes-here">
           <table></table>
         </div>
       </div>
-      <div class="col-sm-8 text-center mt-2">
-        <div class=" container-fluid text-center"></div>
-      </div>
-    </div>
 
+      <div class="col-sm-8 text-center mt-2"> 
+        <div class="card-deck">
+          <div id="time-series-perc" class="text-center bg-green  rounded-qtr"></div>
+          <div id="time-series-count" class="text-center bg-ocean  rounded-qtr mx-2 my-2"></div> 
+        </div>
+      </div>
+        
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -217,9 +233,10 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="/static/data/json/state-reqd-dicts.js"></script>
-    <!-- <script src="/static/plugins/ddslick.js"></script> -->
-    <!-- <script src="/static/assets/navbars/fixed-top.js"></script> -->
-    <!-- <script src="/static/assets/tables/light-mini.js"></script> -->
+    <script src="/static/util/abbrNum.js"></script>
+    <script src="/static/plugins/ddslick.js"></script>
+    <script src="/static/assets/navbars/fixed-top.js"></script>
+    <script src="/static/assets/tables/light-mini.js"></script>
     <script src="/static/assets/test.js"></script>
 
 
