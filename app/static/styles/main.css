@@ -308,7 +308,7 @@ h6 {
 }
 
 .rounded-qtr {
-  border-radius: 11% / 24%;
+  border-radius: 7% / 13%;
 }
 
 .rounded-half {
@@ -544,7 +544,6 @@ html {
   border: 1px solid #36b340;
   box-shadow: 0px 0px 5px #36b340, inset 0px 0px 2px #36b340;
 }
-}
  
 .bg-brick {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
@@ -554,16 +553,6 @@ html {
   filter: none;
   border: 1px solid #333;
   box-shadow: 0px 0px 5px #b84242, inset 0px 0px 2px #b84242;
-}
-
-.bg-ocean {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
-  background-image: linear-gradient(#6baed6, #08519c 60%, #00406b);
-  background-repeat: no-repeat;
-  -webkit-filter: none;
-  filter: none;
-  border: 1px solid #333;
-  box-shadow: 0px 0px 5px rgb(0, 38, 255), inset 0px 0px 2px rgb(5, 1, 212);
 }
 
 .bg-orange {
@@ -578,6 +567,7 @@ html {
 
 .bg-body {
   background-color: #8ab4d1;
+  
 }
 
 .border-body {
@@ -590,7 +580,7 @@ html {
 
 .bg-mini-table {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
-  background-image: linear-gradient(#b1bec7, #8ab4d1 60%, #4a99d1);
+  background-image: linear-gradient(#b1bec7, #97bbff 60%, #4c93dadc);
   background-repeat: no-repeat;
   -webkit-filter: none;
   filter: none;
@@ -606,4 +596,91 @@ html {
   filter: none;
   border: 0px solid #ff8b8b;
   box-shadow: 0px 0px 15px #ff7676, inset 0px 0px 15px #d65757;
+}
+
+.bg-ocean {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
+  
+  background-image: linear-gradient(#ffffff, #80bbf7 60%, #22445a);
+  background-repeat: no-repeat;
+  -webkit-filter: none;
+  filter: none;
+  border: 0px solid #6baed6;
+  box-shadow: 0px 0px 15px #6baed6, inset 0px 0px 12px #6baed6;
+}
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.blue {
+  stroke: rgb(1, 1, 139);
+}
+
+.red {
+  stroke: rgb(138, 1, 1);
+}
+
+.solid {
+  stroke-dasharray: 0 0;
+}
+
+.dashed {
+  stroke-dasharray: 3, 3;
+}
+
+.vertical line {
+  stroke: rgb(255, 255, 255);
+  stroke-opacity: 0.2;
+}
+
+.vertical path {
+  stroke-width: 0px;
+}
+
+.vertical text {
+  font-family: 'Comfortaa';
+  fill: #cbcdce;
+  text-shadow: 1px 2px #032757;
+}
+
+.horizontal line {
+  stroke: rgb(10, 55, 153);
+  stroke-width: 2px;
+  stroke-opacity: 0.2;
+}
+
+.horizontal path {
+  stroke-width: 0px;
+}
+
+.horizontal text {
+  font-size: 1.1rem;
+  font-family: 'Baloo 2';
+  font-weight: bold;
+  fill: #2657a7;
+  text-shadow: 1px 2px #c8daf3;
+}
+
+.title {
+  font-size: 1.50rem;
+  font-family: 'Baloo 2';
+  text-anchor: middle;
+  fill: #aabdc9;
+  text-shadow: 2px 2px #04145a;
+}
+
+.bg-glass {
+  margin-bottom: 8px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
+
+  background-image: linear-gradient(#124281, #4c93dadc 60%, #8ab4d1);
+
+  background-image: linear-gradient(#8ab4d1, #4c93dadc 60%, #124281);
+  background-repeat: no-repeat;
+  -webkit-filter: none;
+  filter: none;
+  border: 0px solid #333;
+  box-shadow: 0px 0px 15px rgb(45, 129, 168), inset 0px 0px 3px #8ab4d1;
 }

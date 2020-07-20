@@ -33,4 +33,4 @@ function abbrNum(number, decPlaces) {
 
     return number;
 }
-console.log('abbrNum(1300000, 2) :>> ', abbrNum(1300000, 2));;
+// console.log('abbrNum(1300000, 2) :>> ', abbrNum(1300000, 2));;

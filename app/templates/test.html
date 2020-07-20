@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
       integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <script src="https://d3js.org/d3.v4.js"></script>    
+    <script src="https://d3js.org/d3.v4.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -34,85 +34,7 @@
     <title>US Election 2020</title>
 
   </head>
-  <style>
-    .line {
-      fill: none;
-      stroke-width: 2px;
-    }
-
-    .blue {
-      stroke: rgb(1, 1, 139);
-    }
-
-    .red {
-      stroke: rgb(138, 1, 1);
-    }
-
-    .solid {
-      stroke-dasharray: 0 0;
-    }
-
-    .dashed {
-      stroke-dasharray: 3, 3;
-    }
-
-    .vertical line {
-      stroke: rgb(255, 159, 159);
-    }
-
-    .vertical path {
-      stroke: rgb(182, 100, 100);
-      stroke-width: 0px;
-      stroke-opacity: 0.1;
-      stroke-linecap: round;
-    }
-
-    .vertical text {
-      font-family: 'Comfortaa';
-      font-weight: bold;
-      fill: #ffbfac;
-      text-shadow: 1px 1px #6b2a1f;
-    }
-
-    .horizontal line {
-      stroke: rgb(182, 100, 100);
-    }
-
-    .horizontal path {
-      stroke: rgb(182, 100, 100);
-      stroke-width: 0px;
-      stroke-opacity: 0.1;
-      stroke-linecap: round;
-    }
-
-    .horizontal text {
-      font-size: 0.75rem;
-      font-family: 'Comfortaa';
-      font-weight: bold;
-      fill: #bb1900;
-      text-shadow: 1px 1px #ffdddd;
-    }
-    
-    .title {
-      font-size: 2rem;
-      font-family: 'Baloo 2';
-      font-weight: bold;
-      text-anchor:middle;
-      fill: #ff9081;
-      text-shadow: 3px 3px #9e5c5c;
-    }
-
-    .bg-coral {
-      background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
-      background-image: linear-gradient(#f8a4a4, #df5656 60%, #a34141);
-      background-repeat: no-repeat;
-      -webkit-filter: none;
-      filter: none;
-      border: 0px solid #ff8b8b;
-      box-shadow: 0px 0px 15px #ff7676, inset 0px 0px 15px #d65757;
-    }
-
-  </style>
+  
   
   <body class="bg-body" style="margin-top: 70px;">
     <header>
@@ -126,7 +48,7 @@
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse text-center bg-transparent" id="navbarCollapse">
+        <div class="collapse navbar-collapse text-center bg-coral" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/latest">
               <i class="fas fa-sliders-h fa-fw text-onerem mt-1"></i>
@@ -209,20 +131,23 @@
     </header>
 
     <div class="row mt-2">
-
-      <div class="col-sm-4 text-center mt-2">
+      <div class="col-sm-4 text-center mt-2 mx-2">
+        <div class="card border-0 bg-transparent">
+          <div id="time-series-count" class="text-center bg-glass  rounded-qtr"></div>
+        </div>
+      </div>
+      <div class="col-sm-4 text-center mt-2 mx-2">
+        <div class="card border-0 bg-transparent">
+          <div id="time-series-perc" class="text-center bg-glass  rounded-qtr"></div>
+        </div>
+      </div>
+      <div class="col-sm-4 text-center mt-2 mx-2">
         <div id="table-goes-here">
           <table></table>
         </div>
       </div>
+    </div>
 
-      <div class="col-sm-8 text-center mt-2"> 
-        <div class="card-deck">
-          <div id="time-series-perc" class="text-center bg-green  rounded-qtr"></div>
-          <div id="time-series-count" class="text-center bg-ocean  rounded-qtr mx-2 my-2"></div> 
-        </div>
-      </div>
-        
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -236,8 +161,12 @@
     <script src="/static/util/abbrNum.js"></script>
     <script src="/static/plugins/ddslick.js"></script>
     <script src="/static/assets/navbars/fixed-top.js"></script>
+
+    <script src="/static/assets/state-prep-data.js"></script>
+    <script src="/static/assets/state-time-perc.js"></script>
+    <script src="/static/assets/state-time-count.js"></script>
+
     <script src="/static/assets/tables/light-mini.js"></script>
-    <script src="/static/assets/test.js"></script>
 
 
   </body>

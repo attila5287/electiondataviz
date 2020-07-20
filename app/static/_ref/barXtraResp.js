@@ -13,6 +13,7 @@ function handleResize() {
   }
 }
 
+
 function loadChart() {
   var svgWidth = window.innerWidth;
   var svgHeight = window.innerHeight;

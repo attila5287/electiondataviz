@@ -5,9 +5,9 @@ let urlFreshTime = 'https://pomber.github.io/covid19/timeseries.json';
   const format = d3.format( ',' );
   const formatDecimal = d3.format( '.4' );
   const formatDate = d3.timeFormat( "%d-%b" );
+  
   d3.json( url, function ( error, raw ) {
     const names = [name];
-
     var aspect_ratio = 0.4;
     var frame_width = $('#scatter-line-time').width();
     var frame_height = aspect_ratio * frame_width;

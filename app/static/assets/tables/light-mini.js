@@ -91,8 +91,30 @@ function prezTableUp( url, year ) {
         .enter()
         .append( "th" )
         .attr( 'class', 'text-sm  bg-coral rounded-lg add-anime pb-2 pt-1 text-light' )
-        .text( d => d );
-      // ----- table rows tr
+        .text( d => d )
+        .on( "click", function ( d ) {
+          if ( d == "StateName" ) {
+            rows.sort( function ( a, b ) {
+              if ( a[ d ] < b[ d ] ) {
+                return -1;
+              }
+              if ( a[ d ] > b[ d ] ) {
+                return 1;
+              } else {
+                return 0;
+              }
+            } );
+          } else if ( d.split( " " )[ 0 ] == "Percent" ) {
+            rows.sort( function ( a, b ) {
+              return +b[ d ].split( "%" )[ 0 ] - +a[ d ].split( "%" )[ 0 ];
+            } );
+          } else {
+            rows.sort( function ( a, b ) {
+              return b[ d ] - a[ d ];
+            } );
+          }
+         } );
+          // ----- table rows tr
       let rows = tbody.selectAll( "tr" )
         .data( rowsData )
         .enter()
@@ -112,7 +134,18 @@ function prezTableUp( url, year ) {
         .on( "mouseout", function ( d ) {
           //  console.log('d :>> ', d);
           //  d3.select( this ).attr( "class", " add-anime" );
-        } );
+        } )
+        .on( "click", function ( d ) {
+          console.log('d :>> ', d.StateName);
+
+          timeSeriesPerc(d.StateName);
+          timeSeriesCount(d.StateName);
+          
+
+        })
+        ;
+
+
       let cells = rows.selectAll( "td" )
         .data( function ( row ) {
           return Object.keys( row ).map( function ( d, i ) {

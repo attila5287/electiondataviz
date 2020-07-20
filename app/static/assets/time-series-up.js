@@ -50,7 +50,7 @@ function timeSeriesCount() {
         } );
 
         //Step 4-cont'd:  prep data from csv to {name:[{date/value}]}
-        let dataReady = prepTimeSerData( data, state );
+        let dataReady = prepTimeSerData( data, "Alabama" );
 
         let numYears = dataReady.blue.count.values.length;
 
@@ -145,7 +145,7 @@ function timeSeriesCount() {
 
 }
 
-function timeSeriesPerc(state) {
+function timeSeriesPerc() {
   // Step 1: Set up our chart
   let svgWidth = $( `#time-series-perc` ).width();
   let svgHeight = 0.4 * svgWidth;
@@ -194,7 +194,7 @@ function timeSeriesPerc(state) {
         } );
 
         //Step 4-cont'd:  prep data from csv to {name:[{date/value}]}
-        let dataReady = prepTimeSerData( data, state );
+        let dataReady = prepTimeSerData( data, "Alabama" );
 
         let numYears = dataReady.blue.count.values.length;
 
@@ -293,6 +293,5 @@ function timeSeriesPerc(state) {
 
 }
 
-timeSeriesPerc("Colorado");
-
-timeSeriesCount("Colorado");
+timeSeriesCount(`#time-series-count`);
+timeSeriesPerc(`#time-series-perc`);

@@ -1,33 +1,38 @@
-
-function timeSeriesPerc() {
-   
+function timeSeriesCount(state) {
+  // Step 0: Remove existing chart if any
+  //=========================
+  var svgArea = d3.select(`#time-series-count`).select("svg");
+  // clear svg is not empty
+  if (!svgArea.empty()) {
+    svgArea.remove();
+  }  
   // Step 1: Set up our chart
-  //= ================================
-  var svgWidth = 280;
-  var svgHeight = 290;
+  //=========================
+  let svgWidth = $( `#time-series-count` ).width();
+  let svgHeight = 0.4 * svgWidth;
 
-  var margin = {
-    top: 25,
-    right: 25,
-    left: 25,
-    bottom: 20,
+  let margin = {
+    top: 20,
+    right: 50,
+    left: 50,
+    bottom: 25,
   };
 
-  var width = svgWidth - margin.left - margin.right;
-  var height = svgHeight - margin.top - margin.bottom;
+  let width = svgWidth - margin.left - margin.right;
+  let height = svgHeight - margin.top - margin.bottom;
 
   // Step 2: Create an SVG wrapper,
   // append an SVG group that will hold our chart,
   // and shift the latter by left and top margins.
   // =================================
-  var svg = d3
-    .select( "#time-series-perc" )
+  let svg = d3
+    .select( "#time-series-count" )
     .append( "svg" )
     .classed( "my-2 mx-0", true )
     .attr( "width", svgWidth )
     .attr( "height", svgHeight );
 
-  var chartGroup = svg.append( "g" )
+  let chartGroup = svg.append( "g" )
     .attr( "transform", `translate(${margin.left}, ${margin.top})` );
   // Step 3:
   // Import data from the .csv file
@@ -41,7 +46,7 @@ function timeSeriesPerc() {
         // Format the data and convert to numerical and date values
         // =================================
         // req'd before sumEach
-        var parseTime = d3.timeFormat( "%Y" );
+        let parseTime = d3.timeFormat( "%Y" );
         // Format the data
         data.forEach( row => {
           // console.log( 'row :>> ', row );
@@ -52,38 +57,35 @@ function timeSeriesPerc() {
         } );
 
         //Step 4-cont'd:  prep data from csv to {name:[{date/value}]}
-        let dataReady = prepTimeSerData( data, "Alabama" );
+        let dataReady = prepTimeSerData( data, state );
 
-        var numYears = dataReady.blue.count.values.length;
+        let numYears = dataReady.blue.count.values.length;
 
-        console.log( 'numYears :>> ', numYears );
-
+        // console.log( 'numYears :>> ', numYears );
 
         let years = [
-          d3.min( dataReady.blue.perc.values, d => +d.year ) - 2,
-          d3.max( dataReady.red.perc.values, d => +d.year ) + 2
+          d3.min( dataReady.blue.count.values, d => +d.year ),
+          d3.max( dataReady.red.count.values, d => +d.year )
         ];
-        console.log( 'years :>> ', years );
+        // console.log( 'years :>> ', years );
 
         let lows = [
-          d3.min( dataReady.blue.perc.values, d => +d.perc ),
-          d3.min( dataReady.red.perc.values, d => +d.perc )
+          d3.min( dataReady.blue.count.values, d => +d.count ),
+          d3.min( dataReady.red.count.values, d => +d.count )
         ];
         let highs = [
-          d3.max( dataReady.blue.perc.values, d => +d.perc ),
-          d3.max( dataReady.red.perc.values, d => +d.perc )
+          d3.max( dataReady.blue.count.values, d => +d.count ),
+          d3.max( dataReady.red.count.values, d => +d.count )
         ];
         // Step 5: Create Scales
         //=============================================
-        var x = d3.scaleLinear()
-          .domain( d3.extent( dataReady.blue.perc.values, d => d.year ) )
+        let x = d3.scaleLinear()
+          .domain( d3.extent( dataReady.blue.count.values, d => d.year ) )
           .range( [ 0, width ] );
 
-        var y = d3.scaleLinear()
+        let y = d3.scaleLinear()
           .domain( [ d3.min( lows, d => d * .95 ), d3.max( highs, d => d * 1.05 ) ] )
           .range( [ height, 0 ] );
-
-        var fortime = d3.time.format( "%Y" );
 
         // Step 6: Create Axes // Step 7: Append the axes to 
         // ==============================================
@@ -96,35 +98,34 @@ function timeSeriesPerc() {
             .tickFormat( d3.format( "" ) )
             .tickSize( -height )
           )
-          .classed( 'horizontal text-md', true );
+          .classed( 'horizontal ', true );
 
         // Add leftAxis to the left side of the display
         chartGroup
           .append( "g" )
-          .classed( 'vertical text-md opac-60', true )
+          .classed( 'vertical', true )
           .call( d3
             .axisLeft( y )
             .tickSize( -width )
-            .tickFormat( d3.format( ".0%" ) )
           );
 
         // Add rightAxis to the right side of the display
         chartGroup
           .append( "g" )
           .attr( "transform", `translate(${width}, 0)` )
-          .classed( 'vertical text-md opac-70', true )
+          .classed( 'vertical', true )
           .call( d3.axisRight( y )
-            .tickFormat( d3.format( ".0%" ) ) );
+            .tickFormat( d3.format( "," ) ) );
 
         // Step 8: Set up two line generators and append two SVG paths
         // ==============================================
         // Line generators for each line
-        var line1 = d3
+        let line1 = d3
           .line()
           .x( d => x( d.year ) )
-          .y( d => y( d.perc ) );
+          .y( d => y( d.count ) );
 
-        var line2 = d3
+        let line2 = d3
           .line()
           .x( d => x( d.year ) )
           .y( d => yCountLinearScale( d.count ) );
@@ -132,23 +133,23 @@ function timeSeriesPerc() {
 
         chartGroup.append( "path" )
           // .data([mojoData]) 
-          .attr( "d", line1( dataReady.blue.perc.values ) )
+          .attr( "d", line1( dataReady.blue.count.values ) )
           .classed( "line blue solid", true );
 
 
         chartGroup.append( "path" )
-          .attr( "d", line1( dataReady.red.perc.values ) )
+          .attr( "d", line1( dataReady.red.count.values ) )
           .classed( "line red solid", true );
 
 
         // Step 9: Title  
         chartGroup.append( "text" )
-          .attr( "transform", `translate(${width / 2}, ${height+5})` )
-          .attr( "text-anchor", "middle" )
-          .text( `Vote Perc ${dataReady.state}` )
-          .classed( 'title text-balo text-2xl', true );
+          .attr( "transform", `translate(${width / 2}, ${height+20})` )
+          .text( `Vote Count ${dataReady.state}` )
+          .classed( 'title', true );
       }
     } );
 
 }
-timeSeriesPerc();
+
+timeSeriesCount( "Colorado");
