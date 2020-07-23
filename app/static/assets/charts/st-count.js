@@ -176,6 +176,7 @@ function timeSeriesCount(state) {
           .transition()
           .duration(1000)
           .attr( "r", 8 )
+          .delay(function(d,i){ return 1100-100*i; }) 
           .attr( "cx", d => x( d.year ) )
             .attr( "cy", d => y( d.count ) )
             ;

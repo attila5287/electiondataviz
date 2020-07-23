@@ -176,6 +176,7 @@ function timeSeriesPerc( state ) {
           // transition on page load
           chartGroup.selectAll("circle")
             .transition()
+            .delay(function(d,i){ return 100*i; }) 
             .duration(1000)
             .attr( "cx", d => x( d.year ) )
             .attr( "cy", d => y( d.perc ) )
