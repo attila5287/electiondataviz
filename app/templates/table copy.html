@@ -27,7 +27,7 @@
     <title>COVID-19-DataViz</title>
   </head>
 
-  <body style="margin-top:70px;">
+  <body>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand text-secondary" href="https://coronavizdata.herokuapp.com/"
@@ -128,20 +128,6 @@
         </form>
       </div>
     </nav>
-    <div class="row mt-2">
-      <div class="col-sm-4 text-center mt-2 mx-2">
-        <div class="card border-0 bg-transparent">
-          <div id="time-series-perc" class="text-center"></div>
-        </div>
-      </div>
-      
-      <div class="col-sm-4 text-center mt-2 mx-2">
-        <div class="card border-0 bg-transparent">
-          <div id="time-series-count" class="text-center bg-glass  rounded-qtr"></div>
-        </div>
-      </div>
-      
-    </div>+
     <main role="main" class="container-fluid" style="margin-top: 70px;">
     <hr class="mt-0 mb-3" style="border-color: #2aa198;border-width: thin;">
     <div class="jumbotron hero-image m-0"
@@ -408,11 +394,6 @@
         </div>
       </div>
       </div>
-      <div class="col-sm-4 text-center mt-2 mx-2">
-        <div id="table-goes-here">
-          <table></table>
-        </div>
-      </div>
     </main>
 
 
@@ -437,15 +418,5 @@
 
     <script src="/static/assets/time-series.js"></script>
 
-<script src="/static/data/json/st-dicts.js"></script>
-    <script src="/static/util/abbrNum.js"></script>
-    <script src="/static/plugins/ddslick.js"></script>
-    <!-- <script src="/static/plugins/d3-tip.js"></script> -->
-    <script src="/static/assets/navbars/fixed-top.js"></script>
-
-    <script src="/static/assets/st-prep.js"></script>
-    <script src="/static/assets/st-perc.js"></script>
-    <script src="/static/assets/st-count.js"></script>
-    <script src="/static/assets/tables/tb-light.js"></script>
   </body>
 </html>

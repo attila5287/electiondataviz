@@ -1,25 +1,23 @@
-function timeSeriesPerc( state ) {
+function timeSeriesCount(state) {
   // Step 0: Remove existing chart if any
   //=========================
-  const  svgArea = d3.select(`#time-series-perc`).select("svg");
+  const svgArea = d3.select(`#time-series-count`).select("svg");
   // clear svg is not empty
   if (!svgArea.empty()) {
     svgArea.remove();
   }  
   // Step 1: Set up our chart
   //=========================
-  let svgWidth = $( `#time-series-perc` ).width();
+  let svgWidth = $( `#time-series-count` ).width();
   let svgHeight = 0.4 * svgWidth;
 
-  // Step 1: Set up our chart
-  let svgWidth = $( `#time-series-perc` ).width();
-  let svgHeight = 0.4 * svgWidth;
   let margin = {
     top: 20,
     right: 50,
     left: 50,
     bottom: 25,
   };
+
   let width = svgWidth - margin.left - margin.right;
   let height = svgHeight - margin.top - margin.bottom;
 
@@ -28,7 +26,7 @@ function timeSeriesPerc( state ) {
   // and shift the latter by left and top margins.
   // =================================
   let svg = d3
-    .select( `#time-series-perc` )
+    .select( "#time-series-count" )
     .append( "svg" )
     .classed( "my-2 mx-0", true )
     .attr( "width", svgWidth )
@@ -65,32 +63,29 @@ function timeSeriesPerc( state ) {
 
         // console.log( 'numYears :>> ', numYears );
 
-
         let years = [
-          d3.min( dataReady.blue.perc.values, d => +d.year ),
-          d3.max( dataReady.red.perc.values, d => +d.year )
+          d3.min( dataReady.blue.count.values, d => +d.year ),
+          d3.max( dataReady.red.count.values, d => +d.year )
         ];
-        console.log( 'years :>> ', years );
+        // console.log( 'years :>> ', years );
 
         let lows = [
-          d3.min( dataReady.blue.perc.values, d => +d.perc ),
-          d3.min( dataReady.red.perc.values, d => +d.perc )
+          d3.min( dataReady.blue.count.values, d => +d.count ),
+          d3.min( dataReady.red.count.values, d => +d.count )
         ];
         let highs = [
-          d3.max( dataReady.blue.perc.values, d => +d.perc ),
-          d3.max( dataReady.red.perc.values, d => +d.perc )
+          d3.max( dataReady.blue.count.values, d => +d.count ),
+          d3.max( dataReady.red.count.values, d => +d.count )
         ];
         // Step 5: Create Scales
         //=============================================
-        let x = d3.scaleTime()
-          .domain( years )
+        let x = d3.scaleLinear()
+          .domain( d3.extent( dataReady.blue.count.values, d => d.year ) )
           .range( [ 0, width ] );
+
         let y = d3.scaleLinear()
-          .domain( [ d3.min( lows, d => d * 1 ), d3.max( highs, d => d * 1 ) ] )
+          .domain( [ d3.min( lows, d => d * .95 ), d3.max( highs, d => d * 1.05 ) ] )
           .range( [ height, 0 ] );
-
-
-        // d3.axisBottom(x).ticks(d3.timeYear.every(1))
 
         // Step 6: Create Axes // Step 7: Append the axes to 
         // ==============================================
@@ -100,7 +95,7 @@ function timeSeriesPerc( state ) {
           .call( d3
             .axisTop( x )
             .ticks( numYears )
-            .tickFormat( d3.format( ".4" ) )
+            .tickFormat( d3.format( "" ) )
             .tickSize( -height )
           )
           .classed( 'horizontal ', true );
@@ -112,7 +107,6 @@ function timeSeriesPerc( state ) {
           .call( d3
             .axisLeft( y )
             .tickSize( -width )
-            .tickFormat( d3.format( ".0%" ) )
           );
 
         // Add rightAxis to the right side of the display
@@ -121,80 +115,97 @@ function timeSeriesPerc( state ) {
           .attr( "transform", `translate(${width}, 0)` )
           .classed( 'vertical', true )
           .call( d3.axisRight( y )
-            .tickFormat( d3.format( ".0%" ) ) );
+            .tickFormat( d3.format( "," ) ) );
 
         // Step 8: Set up two line generators and append two SVG paths
         // ==============================================
         // Line generators for each line
         let line1 = d3
           .line()
-          .x( ( d, i ) => x( d.year ) )
-          .y( d => y( d.perc ) );
+          .x( d => x( d.year ) )
+          .y( d => y( d.count ) );
+
+        let line2 = d3
+          .line()
+          .x( d => x( d.year ) )
+          .y( d => yCountLinearScale( d.count ) );
+
 
         chartGroup.append( "path" )
           // .data([mojoData]) 
-          .attr( "d", line1( dataReady.blue.perc.values ) )
-          .classed( "line blue solid", true );
+          .attr( "d", line1( dataReady.blue.count.values ) )
+          .classed( "line blue dashed", true );
+
+
         chartGroup.append( "path" )
-          .attr( "d", line1( dataReady.red.perc.values ) )
-          .classed( "line red solid", true );
+          .attr( "d", line1( dataReady.red.count.values ) )
+          .classed( "line red dashed", true );
 
 
         // Step 9: Title  
-        // ==============================================
         chartGroup.append( "text" )
-          .attr( "transform", `translate(${width / 2}, ${height+15})` )
-          .text( `Vote Perc ${dataReady.state}` )
+          .attr( "transform", `translate(${width / 2}, ${height+20})` )
+          .text( `Vote Count ${dataReady.state}` )
           .classed( 'title', true );
-
         // Step 10: Circles
         // ==============================================
         let myColor = {};
-        myColor[ dataReady.blue.perc.name ] = "#01018B";
-        myColor[ dataReady.red.perc.name ] = "#8A0101";
+        myColor[ dataReady.blue.count.name ] = "#01018B";
+        myColor[ dataReady.red.count.name ] = "#8A0101";
 
         // Add the points
         let circlesGroup = chartGroup
           // First we need to enter in a group
           .selectAll( "myDots" )
           .data(
-            [ dataReady.blue.perc,
-              dataReady.red.perc
+            [ dataReady.blue.count,
+              dataReady.red.count
             ]
           )
           .enter()
           .append( 'g' )
           .style( "fill", d => myColor[ d.name ] )
-          // Second we need to enter in the 'values' part of this group
           .selectAll( "myPoints" )
           .data( d => d.values )
           .enter()
           .append( "circle" )
-          .attr( "r",  )
+          .attr( "r", 1 )
+          ;
+          // transition on page load
+          chartGroup.selectAll("circle")
+          .transition()
+          .duration(1000)
+          .attr( "r", 8 )
           .attr( "cx", d => x( d.year ) )
-          .attr( "cy", d => y( d.perc ) );
+            .attr( "cy", d => y( d.count ) )
+            ;
+          
 
-        const format = d3.format( ".0%" );
+
+        const format = d3.format( "," );
 
         let toolTip = d3
           .tip()
           .attr( "class", "tooltip" )
           .offset( [ 40, -30 ] )
           .html( d =>
-            `<strong class="mt-2 mx-4 mb-0">${format(d.perc)}</strong><hr class="my-0"><strong class="mt-0 mb-3">${d.year}</strong>` );
+            `<strong class="mt-2 mx-4 mb-0">${format(d.count)}</strong><hr class="my-0"><strong class="mt-0 mb-3">${d.year}</strong>` );
 
         circlesGroup.call( toolTip );
         circlesGroup.on( "mouseover", function ( d, i ) {
-            toolTip.show( d );
+          console.log( d );
+            console.log( i );
             console.log( 'd :>> ', d.year );
-          } )
-          // onmouseout event
-          .on( "mouseout", function ( data, index ) {
-            toolTip.hide( 'TEST' );
+            toolTip.show( d );
           } );
 
+        circlesGroup
+          .on( "mouseout", function ( d ) {
+            toolTip.hide( 'TEST' );
+          } );          
       }
     } );
+
 }
 
-timeSeriesPerc( "Colorado" );
+timeSeriesCount( "Colorado");

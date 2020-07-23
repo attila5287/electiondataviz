@@ -125,7 +125,6 @@ let urlFreshTime = 'https://pomber.github.io/covid19/timeseries.json';
       .call( d3.axisRight( y ) );
 
     // --------------- AXIS TOP BOTTOM RIGHT - CHECK
-
     let line = d3.line()
       .x( function ( d, i ) {
         return x( i )
@@ -216,7 +215,6 @@ let urlFreshTime = 'https://pomber.github.io/covid19/timeseries.json';
     // console.log( toolTip );
 
     circlesGroup.call( toolTip );
-
     // console.log(toolTip);
 
     circlesGroup.on( "mouseover", function ( d, i ) {

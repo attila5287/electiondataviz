@@ -70,8 +70,9 @@ function prezTableUp( url, year ) {
   let table = d3.select( "#table-goes-here" )
     .append( "table" )
     .attr( "class", "table table-sm table-borderless bg-transparent text-center mx-4" ),
-    thead = table.append( "thead" )
-  tbody = table.append( "tbody" ).attr( 'class', '' );
+    thead = table.append( "thead" ),
+    tbody = table.append( "tbody" ).attr( 'class', '' )
+  ;
 
   d3.csv( url, ( error, data ) => {
     if ( error ) {
@@ -137,11 +138,8 @@ function prezTableUp( url, year ) {
         } )
         .on( "click", function ( d ) {
           console.log('d :>> ', d.StateName);
-
           timeSeriesPerc(d.StateName);
           timeSeriesCount(d.StateName);
-          
-
         })
         ;
 
@@ -164,7 +162,7 @@ function prezTableUp( url, year ) {
         } )
         .enter()
         .append( "td" )
-        .attr( "class", "bg-mini-table" )
+        .attr( "class", "bg-tableMini pb-3" )
         .html( function ( d ) {
           if ( d.i == "Flag" ) {
             return '<img class="img-thumbnail border-0 p-0 my-0 mx-2" src="' +
@@ -175,9 +173,8 @@ function prezTableUp( url, year ) {
               d.value +
               '  " style="height: 1rem;opacity:70%"></img>';
           } else if ( d.i == "StateName" ) {
-            return '<strong class="text-balo text-md">' +
-              d.value +
-              '</strong>';
+            return '<strong class="text-balo text-md">'  +
+              d.value + '</strong>';
           } else if ( d.i == "PO" ) {
             return '<strong class="text-balo text-md opac-70">' +
               '<em>' +
@@ -185,7 +182,7 @@ function prezTableUp( url, year ) {
               '</em>' +
               '</strong>';
           } else {
-            return '<i class="text-balo text-md">' + fDecimal( d.value ) + '</i>';
+            return '<strong class="text-balo text-md">' + fDecimal( d.value ) + '</strong>';
           }
         } );
       // console.log('d :>> ', cells);

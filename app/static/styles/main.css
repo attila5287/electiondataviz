@@ -217,22 +217,6 @@ border-width: 4px; */
   color: #002B36;
 }
 
-.tooltip {
-  background: #073642;
-  border: 0, border-color: #2AA198;
-  border-radius: 14px;
-  border-width: thin;
-  box-shadow: 0 0.5rem 1rem rgba(2, 211, 243, 0.717) !important;
-  color: #2AA198;
-  font: 14px sans-serif;
-  height: 60px;
-  padding: 1px;
-  padding-top: 2px;
-  position: absolute;
-  text-align: center;
-  width: 100px;
-}
-
 .axisGold line {
   stroke: none;
 }
@@ -567,7 +551,6 @@ html {
 
 .bg-body {
   background-color: #8ab4d1;
-  
 }
 
 .border-body {
@@ -578,14 +561,14 @@ html {
   color: #8ab4d1;
 }
 
-.bg-mini-table {
+.bg-tableMini {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
-  background-image: linear-gradient(#b1bec7, #97bbff 60%, #4c93dadc);
+  background-image: linear-gradient(#12428100, #1242813b 60%, #124281);
   background-repeat: no-repeat;
   -webkit-filter: none;
   filter: none;
-  box-shadow: 0px 0px 5px #8ab4d1, inset 0px 0px 5px #8ab4d1;
-  border: 1px solid #8ab4d1;
+  box-shadow: 0px 0px 3px #8ab4d1, inset 0px 0px 3px #8ab4d1;
+  border: 0px solid #8ab4d1;
 }
 
 .bg-coral {
@@ -615,11 +598,11 @@ html {
 }
 
 .blue {
-  stroke: rgb(1, 1, 139);
+  stroke:#01018B;;
 }
 
 .red {
-  stroke: rgb(138, 1, 1);
+  stroke: #8A0101;
 }
 
 .solid {
@@ -656,7 +639,7 @@ html {
 }
 
 .horizontal text {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-family: 'Baloo 2';
   font-weight: bold;
   fill: #2657a7;
@@ -673,14 +656,34 @@ html {
 
 .bg-glass {
   margin-bottom: 8px;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
-
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#8ab4d1), color-stop(60%, #4c93dadc), to(#124281));
   background-image: linear-gradient(#124281, #4c93dadc 60%, #8ab4d1);
 
   background-image: linear-gradient(#8ab4d1, #4c93dadc 60%, #124281);
+  
   background-repeat: no-repeat;
   -webkit-filter: none;
   filter: none;
   border: 0px solid #333;
   box-shadow: 0px 0px 15px rgb(45, 129, 168), inset 0px 0px 3px #8ab4d1;
+}
+
+.tooltip {
+  background-image: linear-gradient(#8ab4d1, #4c93dadc 60%, #124281);
+  box-shadow: 0px 0px 15px rgb(45, 129, 168), inset 0px 0px 3px #8ab4d1;
+  border-radius: 12px;
+  color: #d1d8ff;
+  position: absolute;
+  text-align: center;
+  font-size: 1.25rem;
+  font-family: 'Baloo 2';
+  text-anchor: middle;
+  fill: #aabdc9;
+  text-shadow: 1px 1px #04145a;
+}
+.text-bold {
+  font-style: bold;
+}
+.text-bold text {
+  font-style: bold;
 }
