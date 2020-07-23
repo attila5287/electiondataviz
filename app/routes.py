@@ -17,6 +17,10 @@ def candidates():
 def table():
     return render_template('table.html', title='Table')
 
+@app.route("/timeseries")
+def timeseries():
+    return render_template('timeseries.html', title='Table')
+
 @app.route("/home")
 def home():
     return render_template('home.html', title='Home')

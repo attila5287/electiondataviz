@@ -8,7 +8,7 @@ Flask	../app\__init__.py	/^from flask import Flask$/;"	kind:namespace	line:1
 SQLAlchemy	../app\__init__.py	/^from flask_sqlalchemy import SQLAlchemy$/;"	kind:namespace	line:2
 __init__.py	../app\__init__.py	1;"	kind:file	line:1
 abort	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
-about	../app\routes.py	/^def about():$/;"	kind:function	line:25
+about	../app\routes.py	/^def about():$/;"	kind:function	line:29
 app	../app\__init__.py	/^app = Flask(__name__)$/;"	kind:variable	line:5
 app	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:3
 app	../run.py	/^from app import app$/;"	kind:namespace	line:1
@@ -17,15 +17,15 @@ dashboard	../app\routes.py	/^def dashboard():$/;"	kind:function	line:8
 db	../app\__init__.py	/^db = SQLAlchemy(app)$/;"	kind:variable	line:10
 db	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:3
 flash	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
-home	../app\routes.py	/^def home():$/;"	kind:function	line:21
-interactive_axis	../app\routes.py	/^def interactive_axis():$/;"	kind:function	line:29
+home	../app\routes.py	/^def home():$/;"	kind:function	line:25
+interactive_axis	../app\routes.py	/^def interactive_axis():$/;"	kind:function	line:33
 jsonify	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
-jsonify_maptoken	../app\routes.py	/^def jsonify_maptoken():$/;"	kind:function	line:63
-leaflet_bubble	../app\routes.py	/^def leaflet_bubble():$/;"	kind:function	line:33
-leaflet_choropleth	../app\routes.py	/^def leaflet_choropleth():$/;"	kind:function	line:37
-leaflet_choropleth_asia	../app\routes.py	/^def leaflet_choropleth_asia():$/;"	kind:function	line:46
-leaflet_choropleth_europe	../app\routes.py	/^def leaflet_choropleth_europe():$/;"	kind:function	line:41
-map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:56
+jsonify_maptoken	../app\routes.py	/^def jsonify_maptoken():$/;"	kind:function	line:67
+leaflet_bubble	../app\routes.py	/^def leaflet_bubble():$/;"	kind:function	line:37
+leaflet_choropleth	../app\routes.py	/^def leaflet_choropleth():$/;"	kind:function	line:41
+leaflet_choropleth_asia	../app\routes.py	/^def leaflet_choropleth_asia():$/;"	kind:function	line:50
+leaflet_choropleth_europe	../app\routes.py	/^def leaflet_choropleth_europe():$/;"	kind:function	line:45
+map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:60
 os	../app\__init__.py	/^import os$/;"	kind:namespace	line:3
 os	../app\routes.py	/^import os$/;"	kind:namespace	line:1
 redirect	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
@@ -35,5 +35,6 @@ routes	../app\__init__.py	/^from app import routes$/;"	kind:namespace	line:12
 routes.py	../app\routes.py	1;"	kind:file	line:1
 run.py	../run.py	1;"	kind:file	line:1
 table	../app\routes.py	/^def table():$/;"	kind:function	line:17
-test	../app\routes.py	/^def test():$/;"	kind:function	line:51
+test	../app\routes.py	/^def test():$/;"	kind:function	line:55
+timeseries	../app\routes.py	/^def timeseries():$/;"	kind:function	line:21
 url_for	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2

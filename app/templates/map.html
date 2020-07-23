@@ -39,52 +39,89 @@
   <body class="bg-body" style="margin-top: 75px;" >
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark py-0 my-0">
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-coral py-1 my-0">
         <a class="navbar-brand bg-transparent mx-0 p-0 border-0 rounded-xl add-anime"
           href="https://electiondataviz.herokuapp.com/">
-          <img class="m-0 px-0 py-0" src="/static/img/election/ballot.png" style="height: 3.75rem;" alt="navbar-icon">
+          <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 3rem;" alt="navbar-icon">
         </a>
-        <button 
-          class="navbar-toggler" 
-          type="button" 
-          data-toggle="collapse" 
-          data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse text-center bg-transparent" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto text-md">
-            <a class="nav-item nav-link rounded-xl add-anime" href="/latest">
-              <i class="fas fa-sliders-h fa-fw text-onerem mt-2"></i>
-              <p class="mb-0 text-balo text-onerem">Latest</p>
+        <div class="collapse navbar-collapse text-center bg-coral" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/timeseries">
+              <i class="fas fa-chart-line fa-fw text-onerem mt-1"></i>
+              <p class="mb-0 text-comfo text-onerem">TimeSrs</p>
             </a>
-            <a class="nav-item nav-link rounded-xl add-anime" href="/table">
-              <i class="fas fa-table fa-fw text-onerem mt-1"></i>
-              <p class="mb-0 text-balo text-onerem">Table</p>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/candidates">
+              <i class="fas fa-users fa-fw text-onerem mt-1"></i>
+              <p class="mb-0 text-comfo text-onerem">Cand's</p>
             </a>
-            <a class="nav-item nav-link rounded-xl add-anime" href="/interactive-axis">
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/interactive-axis">
               <i class="fas fa-globe-americas fa-fw text-onerem mt-1"></i>
-              <p class="py-0 my-0 text-balo text-onerem"> Map</p>
+              <p class="py-0 my-0 text-comfo text-onerem"> Map</p>
             </a>
-            <a class="nav-item nav-link rounded-xl add-anime disabled">
-              <p class="text-light" aria-hidden="true"> (D) Biden </p>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
+              <h6 class="text-light opac-90 " aria-hidden="true">
+                <strong>
+                  Democrats
+                </strong>
+              </h6>
               <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="">
-                00.00
+                id="blue-popvote-perc">
+                00.0
                 <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
               </p>
             </a>
-            <a class="nav-item nav-link rounded-xl add-anime disabled">
-              <p class="text-light" aria-hidden="true"> (R) Trump </p>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime mx-0 px-0"
+              href="https://electiondataviz.herokuapp.com/">
+              <img class="opac-50 m-0 px-0 py-0" src="/static/img/election/ballot.png" style="height: 3rem;"
+                alt="navbar-icon">
+              <p class="text-xs text-nowrap mb-0 opac-50"><strong>Popular Vote</strong></p>
+            </a>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
+              <h6 class="text-light opac-90 " aria-hidden="true">
+                <strong>
+                  Republicans
+                </strong>
+              </h6>
               <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="">
-                00.00
+                id="red-popvote-perc">
+                00.0
                 <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
               </p>
             </a>
-            <a class="nav-item nav-link">
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
+              <h6 class="text-light opac-90 " aria-hidden="true">
+                <strong>
+                  Democrats
+                </strong>
+              </h6>
+              <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+                id="blue-elecvote-perc">
+                00.0
+                <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
+              </p>
+            </a>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime"
+              href="https://electiondataviz.herokuapp.com/">
+              <img class="opac-70 m-0 px-0 py-0" src="/static/img/election/ball0t.png" style="height: 4rem;"
+                alt="navbar-icon">
+            </a>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
+              <h6 class="text-light opac-90 " aria-hidden="true">
+                <strong>
+                  Republicans
+                </strong>
+              </h6>
+              <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+                id="red-elecvote-perc">
+                00.0
+                <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
+              </p>
+            </a>
+            <a class="nav-item nav-link bg-transparent">
               <select class="bg-transparent" id="opts">
               </select>
             </a>
