@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
+
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" class="favicon" href="../static/img/election/favicon.ico" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/solar/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/solar/bootstrap.min.css" />
 
     <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
 
@@ -22,6 +24,7 @@
     <!-- set title on route by render_template(... ,title='test') -->
     <title>COVID-19-DataViz</title>
   </head>
+
   <body class="bg-body" style="margin-top: 70px;">
     <header>
       <!-- Fixed navbar -->
@@ -117,35 +120,33 @@
     </header>
 
     <div class="row mt-2">
-      <div class="col-sm-4 text-center mt-2 mx-2">
+      <div class="col-md-4 text-center mt-2 mx-2">
         <div class="card border-0 bg-transparent">
           <div id="bars-count" class=" text-center bg-glass rounded-qtr"></div>
-          
         </div>
       </div>
-      <div class="col-sm-4 text-center mt-2 mx-2">
+      <div class="col-md-4 text-center mt-2 mx-2">
         <div class="card border-0 bg-transparent">
           <div id="bars-perc" class="text-center bg-glass rounded-qtr"></div>
         </div>
       </div>
-    
-      <div class="col-sm-4 text-center mt-2 mx-2">
+      <div class="col-md-4 text-center mt-2 mx-2">
         <div class="card border-0 bg-transparent">
           <div id="time-series-count" class="text-center bg-glass  rounded-qtr"></div>
         </div>
       </div>
-      <div class="col-sm-4 text-center mt-2 mx-2">
-      <div class="card border-0 bg-transparent">
+      <div class="col-md-4 text-center mt-2 mx-2">
+        <div class="card border-0 bg-transparent">
           <div id="time-series-perc" class="text-center bg-glass  rounded-qtr"></div>
         </div>
       </div>
-      <div class="col-sm-4 text-center mt-2 mx-2">
+      <div class="col-md-4 text-center mt-2 mx-2">
         <div id="table-goes-here">
           <table></table>
         </div>
       </div>
     </div>
-    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -154,7 +155,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script> 
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
@@ -168,9 +169,9 @@
     <script src="/static/assets/charts/st-prepTime.js"></script>
     <script src="/static/assets/charts/st-perc.js"></script>
     <script src="/static/assets/charts/st-count.js"></script>
-    
+
     <script src="/static/assets/charts/st-bars.js"></script>
-    
+
     <script src="/static/assets/tables/tb-light.js"></script>
   </body>
 

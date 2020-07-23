@@ -140,6 +140,8 @@ function prezTableUp( url, year ) {
           console.log('d :>> ', d.StateName);
           timeSeriesPerc(d.StateName);
           timeSeriesCount(d.StateName);
+          barsPerc(d.StateName);
+          barsCount(d.StateName);
         })
         ;
 
