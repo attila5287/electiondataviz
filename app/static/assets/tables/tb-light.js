@@ -2,7 +2,11 @@
 // console.log('test global var nameByStatePO :>> ', nameByStatePO);
 var mitPrez1976_2016 = '../static/data/csv/president.csv';
 function prezTableUp( url, year ) {
-  const geoStateNames = [
+  d3.csv( url, ( error, data ) => {
+    if ( error ) {
+      console.error( error );
+    } else {
+        const geoStateNames = [
     "Alabama",
     "Alaska",
     "American Samoa",
@@ -74,10 +78,6 @@ function prezTableUp( url, year ) {
     tbody = table.append( "tbody" ).attr( 'class', '' )
   ;
 
-  d3.csv( url, ( error, data ) => {
-    if ( error ) {
-      console.error( error );
-    } else {
       let columns = [];
       const rowsData = dataPrepRows( data );
 
@@ -123,9 +123,9 @@ function prezTableUp( url, year ) {
         .attr( 'class', d => {
           const redWins = ( d[ "REP" ] > d[ "DEM" ] );
           if ( redWins ) {
-            return 'anime-danger text-danger';
+            return 'anime-danger text-balo text-danger';
           } else {
-            return 'anime-primary text-info';
+            return 'anime-primary text-balo text-dark';
           }
         } )
         .on( "mouseover", function ( d, i ) {
@@ -137,11 +137,7 @@ function prezTableUp( url, year ) {
           //  d3.select( this ).attr( "class", " add-anime" );
         } )
         .on( "click", function ( d ) {
-          console.log('d :>> ', d.StateName);
-          timeSeriesPerc(d.StateName);
-          timeSeriesCount(d.StateName);
-          barsPerc(d.StateName);
-          barsCount(d.StateName);
+          init(d.StateName)
         })
         ;
 
@@ -164,7 +160,7 @@ function prezTableUp( url, year ) {
         } )
         .enter()
         .append( "td" )
-        .attr( "class", "bg-tableMini pb-3" )
+        .attr( "class", "bg-tableMini pb-2" )
         .html( function ( d ) {
           if ( d.i == "Flag" ) {
             return '<img class="img-thumbnail border-0 p-0 my-0 mx-2" src="' +
@@ -317,3 +313,4 @@ function prezTableUp( url, year ) {
 }
 
 prezTableUp( mitPrez1976_2016, 2016 );
+

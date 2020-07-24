@@ -195,9 +195,8 @@ function timeSeriesCount(state) {
         circlesGroup.call( toolTip );
         circlesGroup.on( "mouseover", function ( d, i ) {
           console.log( d );
-            console.log( i );
-            console.log( 'd :>> ', d.year );
-            toolTip.show( d );
+          console.log( i );
+          toolTip.show( d );
           } );
 
         circlesGroup
