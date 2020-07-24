@@ -1,5 +1,4 @@
 function timeSersPercUp ( dataReady ) {
-  const format = d3.format( ".4" );
   const svgArea = d3.select( `#time-series-perc` ).select( "svg" );
   // clear svg is not empty
   if ( !svgArea.empty() ) {
@@ -72,7 +71,7 @@ function timeSersPercUp ( dataReady ) {
     .call( d3
       .axisTop( x )
       .ticks( numYears )
-      .tickFormat( format )
+      .tickFormat( d3.format( ".4" ) )
       .tickSize( -height )
     )
     .classed( 'horizontal ', true );
@@ -84,7 +83,7 @@ function timeSersPercUp ( dataReady ) {
     .call( d3
       .axisLeft( y )
       .tickSize( -width )
-      .tickFormat( format )
+      .tickFormat( d3.format( ".0%" ) )
     );
 
   // Add rightAxis to the right side of the display
@@ -93,7 +92,7 @@ function timeSersPercUp ( dataReady ) {
     .attr( "transform", `translate(${width}, 0)` )
     .classed( 'vertical', true )
     .call( d3.axisRight( y )
-      .tickFormat( format ) );
+      .tickFormat( d3.format( ".0%" ) ) );
 
   // Step 8: Set up two line generators and append two SVG paths
   // ==============================================
@@ -155,6 +154,8 @@ function timeSersPercUp ( dataReady ) {
     .attr( "cy", d => y( d.perc ) );
 
 
+  const format = d3.format( ".0%" );
+
   let toolTip = d3
     .tip()
     .attr( "class", "tooltip" )
@@ -172,6 +173,7 @@ function timeSersPercUp ( dataReady ) {
       toolTip.hide( 'TEST' );
     } );
 }
+
 function timeSersCountUp ( dataReady ) {
   const format = d3.format(",");
   const svgArea = d3.select( `#time-series-count` ).select( "svg" );
@@ -246,7 +248,7 @@ function timeSersCountUp ( dataReady ) {
     .call( d3
       .axisTop( x )
       .ticks( numYears )
-      .tickFormat( format )
+      .tickFormat( d3.format('.4') )
       .tickSize( -height )
     )
     .classed( 'horizontal ', true );
@@ -292,7 +294,7 @@ function timeSersCountUp ( dataReady ) {
   // ==============================================
   chartGroup.append( "text" )
     .attr( "transform", `translate(${width / 2}, ${height + 15})` )
-    .text( `Vote Perc ${dataReady.state}` )
+    .text( `Vote Count ${dataReady.state}` )
     .classed( 'title', true );
 
   // Step 10: Circles
@@ -327,6 +329,9 @@ function timeSersCountUp ( dataReady ) {
     .duration( 1000 )
     .attr( "cx", d => x( d.year ) )
     .attr( "cy", d => y( d.count ) );
+
+
+  
 
   let toolTip = d3
     .tip()

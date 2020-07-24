@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
-
-  <head>
+    <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" class="favicon" href="../static/img/election/favicon.ico" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/solar/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/solar/bootstrap.min.css" />
 
     <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
 
@@ -24,11 +22,10 @@
     <!-- set title on route by render_template(... ,title='test') -->
     <title>COVID-19-DataViz</title>
   </head>
-
   <body class="bg-body" style="margin-top: 70px;">
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-coral py-1 my-0">
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-coral py-1 my-0">
         <a class="navbar-brand bg-transparent mx-0 p-0 border-0 rounded-xl add-anime"
           href="https://electiondataviz.herokuapp.com/">
           <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 3rem;" alt="navbar-icon">
@@ -39,15 +36,15 @@
         </button>
         <div class="collapse navbar-collapse text-center bg-coral" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/latest">
-              <i class="fas fa-sliders-h fa-fw text-onerem mt-1"></i>
-              <p class="mb-0 text-comfo text-onerem">Latest</p>
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/timeseries">
+              <i class="fas fa-chart-line fa-fw text-onerem mt-1"></i>
+              <p class="mb-0 text-comfo text-onerem">TimeSrs</p>
             </a>
             <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/candidates">
               <i class="fas fa-users fa-fw text-onerem mt-1"></i>
               <p class="mb-0 text-comfo text-onerem">Cand's</p>
             </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/interactive-axis">
+            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/map">
               <i class="fas fa-globe-americas fa-fw text-onerem mt-1"></i>
               <p class="py-0 my-0 text-comfo text-onerem"> Map</p>
             </a>
@@ -120,33 +117,35 @@
     </header>
 
     <div class="row mt-2">
-      <div class="col-md-4 text-center mt-2 mx-2">
+      <div class="col-sm-4 text-center mt-2 mx-2">
         <div class="card border-0 bg-transparent">
-          <div id="time-series-count" class=" text-center bg-glass rounded-qtr"></div>
+          <div id="bars-count" class=" text-center bg-glass rounded-qtr"></div>
+          
         </div>
       </div>
-      <div class="col-md-4 text-center mt-2 mx-2">
+      <div class="col-sm-4 text-center mt-2 mx-2">
         <div class="card border-0 bg-transparent">
-          <div id="bars-count" class="text-center bg-glass rounded-qtr"></div>
+          <div id="bars-perc" class="text-center bg-glass rounded-qtr"></div>
         </div>
       </div>
-      <div class="col-md-4 text-center mt-2 mx-2">
+    
+      <div class="col-sm-4 text-center mt-2 mx-2">
         <div class="card border-0 bg-transparent">
+          <div id="time-series-count" class="text-center bg-glass  rounded-qtr"></div>
+        </div>
+      </div>
+      <div class="col-sm-4 text-center mt-2 mx-2">
+      <div class="card border-0 bg-transparent">
           <div id="time-series-perc" class="text-center bg-glass  rounded-qtr"></div>
         </div>
       </div>
-      <div class="col-md-4 text-center mt-2 mx-2">
-        <div class="card border-0 bg-transparent">
-          <div id="bars-perc" class="text-center bg-glass  rounded-qtr"></div>
-        </div>
-      </div>
-      <div class="col-md-4 text-center mt-2 mx-2">
+      <div class="col-sm-4 text-center mt-2 mx-2">
         <div id="table-goes-here">
           <table></table>
         </div>
       </div>
     </div>
-
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -155,7 +154,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
+    </script> 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
@@ -167,10 +166,8 @@
     <script src="/static/assets/navbars/fixed-top.js"></script>
 
     <script src="/static/assets/charts/st-prepTime.js"></script>
-    <script src="/static/assets/charts/st-circles.js"></script>
-    <script src="/static/assets/charts/st-bars.js"></script>
-    <script src="/static/assets/charts/init.js"></script>
-
+    <script src="/static/assets/test.js"></script>
+    
     <script src="/static/assets/tables/tb-light.js"></script>
   </body>
 
