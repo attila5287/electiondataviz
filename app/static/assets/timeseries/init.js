@@ -11,7 +11,8 @@ function init (stateName) {
     timeSersPercUp( dataRe4dy);
     timeSersCountUp( dataRe4dy );
     gaugeUp( dataRe4dy );
-    stNumbersUpdate( stateName )
+    stNumbersUpdate( stateName );
+    dropDownYearUp ( 2016, data );
 
   } ); 
 }

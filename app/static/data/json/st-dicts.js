@@ -350,7 +350,7 @@ var nameByStatePO = {
   "CA": "California",
   "CO": "Colorado",
   "CT": "Connecticut",
-  "DC": "D C",
+  "DC": "District of Columbia",
   "DE": "Delaware",
   "FL": "Florida",
   "GA": "Georgia",
