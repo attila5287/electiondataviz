@@ -1,4 +1,3 @@
-
 // CODE WORKS HOWEVER RUNS SLOWLY DUE TO NEW MAP EVERY CHANGE ON SLIDER
 const urlPrezTest = '../static/data/csv/president.csv';
 
@@ -221,7 +220,6 @@ function presidentialUp( url, year ) {
       prezTableUp( urlPrezT3st, +this.value );
       onlyColorUp( +this.value  );
       candsVotesUp (+this.value);
-      prezCandidatesUp(data, +this.value);
       dropDownUp( +this.value );
     } );
 
@@ -380,7 +378,6 @@ function  prezWinnersUp( year ) {
       // --------------------- SLIDER ----------------
       d3.select( "#slider" ).on( "input", function () {
         slideWinner( data, +this.value );
-        
         
       } );
       

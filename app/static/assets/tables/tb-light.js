@@ -137,7 +137,7 @@ function prezTableUp( url, year ) {
           //  d3.select( this ).attr( "class", " add-anime" );
         } )
         .on( "click", function ( d ) {
-          init(d.StateName)
+          init(d.StateName);
         })
         ;
 

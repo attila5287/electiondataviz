@@ -567,7 +567,7 @@ html {
   background-repeat: no-repeat;
   -webkit-filter: none;
   filter: none;
-  box-shadow: 0px 0px 3px #8ab4d1, inset 0px 0px 3px #8ab4d1;
+  box-shadow: 0px 0px 2px #8ab4d1, inset 0px 0px 2px #8ab4d1;
   border: 0px solid #8ab4d1;
 }
 
@@ -676,14 +676,107 @@ html {
   position: absolute;
   text-align: center;
   font-size: 1.25rem;
-  font-family: 'Baloo 2';
+
   text-anchor: middle;
   fill: #aabdc9;
   text-shadow: 1px 1px #04145a;
 }
 .text-bold {
-  font-style: bold;
+  font-weight: bold;
 }
 .text-bold text {
-  font-style: bold;
+  font-weight: bold;
+}
+.needle {
+  stroke: rgb(255, 255, 255);
+  stroke-width: 3px;
+  stroke-opacity: 0.99;
+  stroke-linecap:round;  
+}
+.scoreBlue {
+  font-family: 'Baloo 2';
+  font-weight: bold;
+  text-anchor: middle;
+  fill: #073572;
+  text-shadow: 1px 2px #d1d5e9;
+}
+.scoreRed {
+  font-weight: bold;
+  font-family: 'Baloo 2';
+  text-anchor: middle;
+  fill: #9b0e0e;
+  text-shadow: 1px 2px #d1d5e9;
+}
+
+.partyColor  {
+  fill: #ff6a657e;
+  fill: #5093ff81;
+  fill: #ffbb00;
+}
+
+.text-courier  {
+  font-weight: bold;
+  font-family: 'Courier', sans-serif;
+}
+
+
+.text-pacif {
+  font-family: 'Pacifico', cursive;
+}
+.text-ptmono {
+  font-family: 'PT Mono', monospace;
+}
+
+
+.nametag  {
+  font-size: 2rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.911);
+  color: rgb(246, 103, 103);
+  font-family: 'Pacifico', cursive;
+  text-shadow: -2px 2px #000000;
+}
+
+.gen  {
+  font-family: 'Baloo 2';
+  font-size: 1rem;
+  border: 0 aqua;
+  color: rgb(12, 12, 12);
+  text-shadow: -1px 1px #d1d5e9;
+}
+
+.led-lg  {
+  font-size: 1.50rem;
+  padding: 1px 6px 1px 4px;
+  border-radius: 7% / 13%;
+  background-color: rgb(0, 0, 0);
+  color: rgb(253, 109, 14);
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0px 0px #d1d5e9;
+}
+.led-md  {
+  font-size: 1.25rem;
+  padding: 1px 6px 1px 4px;
+  border-radius: 7% / 13%;
+  background-color: rgb(0, 0, 0);
+  color: rgb(253, 109, 14);
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0px 0px #d1d5e9;
+}
+.led-sm  {
+  font-size: 1rem;
+  padding: 1px 6px 1px 4px;
+  border-radius: 7% / 13%;
+  background-color: rgb(0, 0, 0);
+  color: rgb(253, 109, 14);
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0px 0px #d1d5e9;
+}
+
+.neg  {
+  font-family: 'Baloo 2';
+  font-size: 1rem;
+  font-style:bold;
+  border: 0 aqua;
+  color: #d1d5e9;
 }

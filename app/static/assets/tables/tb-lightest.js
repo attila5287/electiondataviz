@@ -2,7 +2,11 @@
 // console.log('test global var nameByStatePO :>> ', nameByStatePO);
 var mitPrez1976_2016 = '../static/data/csv/president.csv';
 function prezTableUp( url, year ) {
-  const geoStateNames = [
+  d3.csv( url, ( error, data ) => {
+    if ( error ) {
+      console.error( error );
+    } else {
+        const geoStateNames = [
     "Alabama",
     "Alaska",
     "American Samoa",
@@ -69,14 +73,11 @@ function prezTableUp( url, year ) {
   // --------------
   let table = d3.select( "#table-goes-here" )
     .append( "table" )
-    .attr( "class", "table table-sm table-borderless bg-transparent text-center" ),
-    thead = table.append( "thead" )
-  tbody = table.append( "tbody" ).attr( 'class', '' );
+    .attr( "class", "table table-sm table-borderless bg-transparent text-center mx-4" ),
+    thead = table.append( "thead" ),
+    tbody = table.append( "tbody" ).attr( 'class', '' )
+  ;
 
-  d3.csv( url, ( error, data ) => {
-    if ( error ) {
-      console.error( error );
-    } else {
       let columns = [];
       const rowsData = dataPrepRows( data );
 
@@ -91,8 +92,30 @@ function prezTableUp( url, year ) {
         .enter()
         .append( "th" )
         .attr( 'class', 'text-sm  bg-coral rounded-lg add-anime pb-2 pt-1 text-light' )
-        .text( d => d );
-      // ----- table rows tr
+        .text( d => d )
+        .on( "click", function ( d ) {
+          if ( d == "StateName" ) {
+            rows.sort( function ( a, b ) {
+              if ( a[ d ] < b[ d ] ) {
+                return -1;
+              }
+              if ( a[ d ] > b[ d ] ) {
+                return 1;
+              } else {
+                return 0;
+              }
+            } );
+          } else if ( d == "margin" ) {
+            rows.sort( function ( a, b ) {
+              return a[ d ] - b[ d ];              
+            } );
+          } else {
+            rows.sort( function ( a, b ) {
+              return b[ d ] - a[ d ];
+            } );
+          }
+         } );
+          // ----- table rows tr
       let rows = tbody.selectAll( "tr" )
         .data( rowsData )
         .enter()
@@ -100,9 +123,9 @@ function prezTableUp( url, year ) {
         .attr( 'class', d => {
           const redWins = ( d[ "REP" ] > d[ "DEM" ] );
           if ( redWins ) {
-            return 'anime-danger text-danger';
+            return 'anime-danger text-balo text-danger';
           } else {
-            return 'anime-primary text-info';
+            return 'anime-primary text-balo text-dark';
           }
         } )
         .on( "mouseover", function ( d, i ) {
@@ -112,7 +135,13 @@ function prezTableUp( url, year ) {
         .on( "mouseout", function ( d ) {
           //  console.log('d :>> ', d);
           //  d3.select( this ).attr( "class", " add-anime" );
-        } );
+        } )
+        .on( "click", function ( d ) {
+          init(d.StateName);
+        })
+        ;
+
+
       let cells = rows.selectAll( "td" )
         .data( function ( row ) {
           return Object.keys( row ).map( function ( d, i ) {
@@ -131,7 +160,7 @@ function prezTableUp( url, year ) {
         } )
         .enter()
         .append( "td" )
-        .attr( "class", "bg-mini-table" )
+        .attr( "class", "bg-tableMini pb-2" )
         .html( function ( d ) {
           if ( d.i == "Flag" ) {
             return '<img class="img-thumbnail border-0 p-0 my-0 mx-2" src="' +
@@ -142,9 +171,8 @@ function prezTableUp( url, year ) {
               d.value +
               '  " style="height: 1rem;opacity:70%"></img>';
           } else if ( d.i == "StateName" ) {
-            return '<strong class="text-balo text-md">' +
-              d.value +
-              '</strong>';
+            return '<strong class="text-balo text-md">'  +
+              d.value + '</strong>';
           } else if ( d.i == "PO" ) {
             return '<strong class="text-balo text-md opac-70">' +
               '<em>' +
@@ -152,7 +180,7 @@ function prezTableUp( url, year ) {
               '</em>' +
               '</strong>';
           } else {
-            return '<i class="text-balo text-md">' + fDecimal( d.value ) + '</i>';
+            return '<strong class="text-balo text-md">' + fDecimal( d.value ) + '</strong>';
           }
         } );
       // console.log('d :>> ', cells);
@@ -273,9 +301,8 @@ function prezTableUp( url, year ) {
       row[ "StateName" ] = nameByStatePO[ d.key ];
       row[ "REP" ] = d.values.filter( z => z.key == "republican" )[ 0 ].value / sumEach * 100;
       row[ "DEM" ] = d.values.filter( z => z.key == "democrat" || z.key == 'democratic-farmer-labor' )[ 0 ].value / sumEach * 100;
-      row[ "Others" ] = 100 - row[ "REP" ] - row[ "DEM" ];
+      row[ "margin" ] = Math.abs(row['DEM']-row['REP']);
       row[ "Seats" ] = seatByStatePO[ d.key ];
-      row[ "PO" ] = d.key;
       // console.log('row :>> ', row);
       r0ws.push( row );
     } );
@@ -287,3 +314,4 @@ function prezTableUp( url, year ) {
 }
 
 prezTableUp( mitPrez1976_2016, 2016 );
+
