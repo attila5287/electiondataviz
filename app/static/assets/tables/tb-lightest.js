@@ -91,7 +91,7 @@ function prezTableUp( url, year ) {
         .data( columns )
         .enter()
         .append( "th" )
-        .attr( 'class', 'text-sm  bg-coral rounded-lg add-anime pb-2 pt-1 text-light' )
+        .attr( 'class', 'text-sm  bg-theme rounded-lg add-anime pb-2 pt-1 text-light' )
         .text( d => d )
         .on( "click", function ( d ) {
           if ( d == "StateName" ) {

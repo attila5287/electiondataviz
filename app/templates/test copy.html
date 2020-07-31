@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-
 <html>
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" class="favicon" href="../static/img/election/ballotIn.ico" />
+    <link rel="icon" type="image/x-icon" class="favicon" href="../static/img/election/nav2020.ico" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/cerulean/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/theme/cerulean.css" />
 
     <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
 
@@ -29,18 +27,19 @@
     <!-- FONTS -->
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Baloo+2' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@800&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
     <title>US Election 2020</title>
 
   </head>
 
-  <body class="bg-body" style="margin-top: 75px;">
+  <body class="bg-body" style="margin-top: 60px;">
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-theme py-1 my-0">
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-coral py-1 my-0">
         <a class="navbar-brand bg-transparent mx-0 p-0 border-0 rounded-xl add-anime"
           href="https://electiondataviz.herokuapp.com/">
           <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 3rem;" alt="navbar-icon">
@@ -49,7 +48,7 @@
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse text-center bg-theme" id="navbarCollapse">
+        <div class="collapse navbar-collapse text-center bg-coral" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/timeseries">
               <i class="fas fa-chart-line fa-fw text-onerem mt-1"></i>
@@ -161,23 +160,22 @@
           </ul>
         </div>
       </nav>
-    </header>
+    </header>                  
 
     <style>
-      #map,
-      body,
-      html {
-        height: 90%;
+      #map {
+        height: 500px;
+        width: 100%;
       }
     </style>
-    <div class="row text-center">
-      <div class="col-sm-2">
-        <img src="../static/img/party/republican.png"
-          class="img-fluid card-img border-0 rounded-3xl add-anime shadow-turqoise p-0 m-2 opac-50" alt="party-tp-png"
-          id="party-img" style="max-width:8rem;">
+
+    <div class="row">
+      <div class="col-sm-5 text-center">
+        <div id="table-goes-here">
+        </div>
       </div>
-      <div class="col-sm-8">
-        <fieldset class="form-group mx-2 mt-2 py-1 px-2 rounded-xl bg-dark shadow-turqoise text-center">
+      <div class="col-sm-7 text-center">
+        <fieldset class="form-group add-anime mx-2 mt-2 py-2 px-3 rounded-xl bg-coral shadow-after text-center">
           <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1">
             <i>1976</i>
             <i>1980</i>
@@ -191,27 +189,130 @@
             <i>2012</i>
             <i>2016</i>
           </div>
-          <input type="range" min="1976" max="2016" step="4" id="slider" class="custom-range">
-          <div class="d-flex flex-row justify-content-center align-items-center">
-            <h5 class=" my-0 text-md text-capitalize shadow-turq px-4" id="party-name"> republican </h5>
-            <span class="text-larger bg-black py-1 px-4 mb-2 text-digi text-primary shadow-turq rounded-xl"
-              id="sliderValue">
-              2008
-            </span>
-            <h5 class="text-nowrap text-larger shadow-turq bg-transparent px-4 mt-2" id="prez-name">
-              Trump, Donald J
-            </h5>
-
-          </div>
+          <input type="range" min="1976" max="2016" step="4" id="slider" class="custom-range mt-3">
         </fieldset>
-      </div>
-      <div class="col-sm-2">
-        <img class="img-fluid card-img border-0 rounded-3xl add-anime shadow-turqoise p-0 m-2 opac-70"
-          src="../static/img/prez/2016.jpg" alt="prez-thumbnail" id="prez-img" style="max-width:8rem;">
+        <div class="d-flex flex-row justify-content-center align-items-center">
+          <fieldset
+            class="form-group add-anime rounded-med bg-coral text-light text-comfo text-xlarger shadow-after text-center px-4 py-3">
+            republican
+          </fieldset>
+          <fieldset class="form-group add-anime rounded-xl bg-coral text-light shadow-after text-center px-4 py-3 mx-1">
+            <span class="text-2xl bg-black py-1 px-3 mb-1 mt-1 text-digi text-purple shadow-turq rounded-large"
+              id="sliderValue">
+              2016
+            </span>
+          </fieldset>
+          <fieldset
+            class="form-group rounded-med bg-coral text-light text-comfo text-xlarger shadow-after text-center px-4 py-3">
+            Trump, Donald J.
+        </div>
+        </fieldset>
+
+
+        <div class="d-flex flex-row justify-content-around  px-2">
+          <div class="card-group px-2 mt-3 mb-5">
+            <div class="card rounded-2xl anime-blue bg-ocean border-0 text-light">
+              <img src="../static/img/cands/vp2016d.jpg" class="card-img-top rounded-2xl opac-80 " alt="VP cand blue"
+                id="dem-vp-img">
+              <div class="card-body">
+                <h5 class="card-title text-light opac-90 " id="dem-vp">...</h5>
+                <p class="card-text text-light opac-90 " id="dem-vp-prior"></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">VP cand.</small>
+              </div>
+            </div>
+            <div class="card rounded-2xl anime-blue bg-ocean border-0 text-light">
+              <img src="../static/img/cands/p2016d.jpg" class="card-img-top rounded-2xl opac-80 " alt="..."
+                id="dem-prez-img">
+              <div class="card-body">
+                <h5 class="card-title text-light" id="dem-prez">...</h5>
+                <p class="card-text" id="dem-prez-prior"></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Pres. Cand.</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-group px-2 mt-3 mb-5">
+            <div class="card rounded-2xl anime-red bg-brick border-0 text-light">
+              <img src="/static/img/cands/p2016r.jpg" class="card-img-top rounded-2xl opac-80 " alt="..."
+                id="rep-prez-img">
+              <div class="card-body">
+                <h5 class="card-title text-light" id="rep-prez">...</h5>
+                <p class="card-text" id="rep-prez-prior"></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Pres. Cand.</small>
+              </div>
+            </div>
+            <div class="card rounded-2xl anime-red bg-brick border-0 text-light">
+              <img src="/static/img/cands/vp2016r.jpg" class="card-img-top rounded-2xl opac-80 " alt="..."
+                id="rep-vp-img">
+              <div class="card-body">
+                <h5 class="card-title text-light opac-90 " id="rep-vp">...</h5>
+                <p class="card-text text-light opac-90 " id="rep-vp-prior"></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">VP Cand.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow-after mr-auto bordered bg-green border-0">
+          <div class="card-body px-4 pt-3 pb-5 rounded-2xl">
+            <div class="container shadow-before rounded-3xl" id="map"></div>
+          </div>
+        </div>
+        <div class="d-flex flex-row justify-content-around  px-2">
+          <div class="card-group px-1 mt-3 mb-5">
+            <div class="card rounded-2xl anime-blue bg-ocean border-0 text-light">
+              <div class="card-body">
+                <h1 class="card-title text-info text-outlined text-nowrap" id="dem-pop-vote">...</h1>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted text-onerem">
+                  <i class="fas fa-users fa-fw text-larger text-light mt-1"></i>
+                  Popular Vote</small>
+              </div>
+            </div>
+            <div class="card rounded-2xl anime-blue bg-ocean border-0  text-light">
+              <div class="card-body">
+                <h1 class="card-title text-outlined text-info text-nowrap" id="dem-elec-vote">...</h1>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted text-onerem">
+                  <i class="fas fa-microphone fa-fw text-larger text-light mt-1"></i>
+                  Electoral Vote</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-group px-1 mt-3 mb-5">
+            <div class="card rounded-2xl anime-red bg-brick border-0 text-light">
+              <div class="card-body">
+                <h1 class="card-title text-danger text-outlined" id="rep-elec-vote">...</h1>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted text-onerem">
+                  <i class="fas fa-microphone fa-fw text-larger text-light mt-1"></i>
+                  Electoral Vote</small>
+              </div>
+            </div>
+            <div class="card rounded-2xl anime-red bg-brick border-0 text-light">
+              <div class="card-body">
+                <h1 class="card-title text-danger text-outlined" id="rep-pop-vote">...</h1>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted text-onerem text-light">
+                  <i class="fas fa-users fa-fw text-larger text-light mt-1"></i>
+                  Popular Vote</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <div id="map"></div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -222,16 +323,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script src="/static/data/json/st-dicts.js"></script>
 
     <script src="/static/plugins/ddslick.js"></script>
 
     <script src="/static/data/geojson/us-states.js"></script>
-    <script src="/static/data/json/st-dicts.js"></script>
 
+    <script src="/static/assets/leaflet/sm-map-slider.js"></script>
     <script src="/static/assets/dropdowns/slider-ddslick.js"></script>
-    <script src="/static/assets/map/map-slider.js"></script>
-    <script src="/static/assets/map/map-no-table.js"></script>
-
+    <script src="/static/assets/candidates/test.js"></script>
+    <script src="/static/assets/candidates/test2.js"></script>
 
   </body>
 

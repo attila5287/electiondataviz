@@ -319,7 +319,8 @@ function candsVotesUp( yearUpdated ) {
     d3.select( '#rep-vp-img' ).attr( "src", '../static/img/cands/vp' + yearUpdated + "r.jpg" );
     d3.select( '#rep-prez-img' ).attr( "src", '../static/img/cands/p' + yearUpdated + "r.jpg" );
     // d3.select( '#dem-p-img' ).attr("src", '../static/img/cands/vp'+yearUpdated+"d.jpg" );
-
+d3.select( '#blue-house-seats' ).text( Math.round(blue[ "eleVo" ]*535/100) );
+    d3.select( '#red-house-seats' ).text( Math.round(red[ "eleVo" ]*535/100) );
   } );
 }
 

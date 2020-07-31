@@ -34,8 +34,8 @@
             onSelected: function () {}
         },
 
-        ddSelectHtml = '<div class="dd-select bg-coral text-light add-anime "><input class="dd-selected-value" type="hidden" /><a class="dd-selected btn-info bg-coral"></a><span class="dd-pointer dd-pointer-down"></span></div>',
-        ddOptionsHtml = '<ul class="dd-options bg-coral"></ul>',
+        ddSelectHtml = '<div class="dd-select bg-theme text-light add-anime "><input class="dd-selected-value" type="hidden" /><a class="dd-selected btn-info bg-theme"></a><span class="dd-pointer dd-pointer-down"></span></div>',
+        ddOptionsHtml = '<ul class="dd-options bg-theme"></ul>',
 
         //CSS for ddSlick
         ddslickCSS = '<style id="css-ddslick" type="text/css">' +
