@@ -108,9 +108,9 @@ function barsCountUp ( dataReady ) {
 
   // Step 10: Bars
   // ==============================================
-  let myColor = {};
-  myColor[ dataReady.blue.count.name ] = "#01018B";
-  myColor[ dataReady.red.count.name ] = "#8A0101";
+  let colors = {};
+  colors[ dataReady.blue.count.name ] = "#01018B";
+  colors[ dataReady.red.count.name ] = "#8A0101";
 
 
   // trick to show the second grp offsett behind first
@@ -129,7 +129,7 @@ function barsCountUp ( dataReady ) {
     )
     .enter()
     .append( 'g' )
-    .style( "fill", d => myColor[ d.name ] )
+    .style( "fill", d => colors[ d.name ] )
     // Second we need to enter in the 'values' part of this group
     .selectAll( "myPoints" )
     .data( d => d.values )
@@ -180,7 +180,7 @@ function barsCountUp ( dataReady ) {
       d3.select( this )
         .transition()
         .duration( 1000 )
-        .attr( "fill", myColor[ data.name ] );
+        .attr( "fill", colors[ data.name ] );
     } );
 
 }
@@ -294,9 +294,9 @@ function barsPercUp ( dataReady ) {
 
   // Step 10: Bars
   // ==============================================
-  let myColor = {};
-  myColor[ dataReady.blue.perc.name ] = "#01018B";
-  myColor[ dataReady.red.perc.name ] = "#8A0101";
+  let colors = {};
+  colors[ dataReady.blue.perc.name ] = "#01018B";
+  colors[ dataReady.red.perc.name ] = "#8A0101";
 
 
   // trick to show the second grp offsett behind first
@@ -315,7 +315,7 @@ function barsPercUp ( dataReady ) {
     )
     .enter()
     .append( 'g' )
-    .style( "fill", d => myColor[ d.name ] )
+    .style( "fill", d => colors[ d.name ] )
     // Second we need to enter in the 'values' part of this group
     .selectAll( "myPoints" )
     .data( d => d.values )
@@ -366,7 +366,7 @@ function barsPercUp ( dataReady ) {
       d3.select( this )
         .transition()
         .duration( 1000 )
-        .attr( "fill", myColor[ data.name ] );
+        .attr( "fill", colors[ data.name ] );
 
     } );
 

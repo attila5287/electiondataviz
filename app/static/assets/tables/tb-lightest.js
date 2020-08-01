@@ -6,94 +6,28 @@ function prezTableUp( url, year ) {
     if ( error ) {
       console.error( error );
     } else {
-        const geoStateNames = [
-    "Alabama",
-    "Alaska",
-    "American Samoa",
-    "Arizona",
-    "Arkansas",
-    "California",
-    "Colorado",
-    "Connecticut",
-    "Delaware",
-    "Diamond Princess",
-    "District of Columbia",
-    "Florida",
-    "Georgia",
-    "Hawaii",
-    "Idaho",
-    "Illinois",
-    "Indiana",
-    "Iowa",
-    "Kansas",
-    "Kentucky",
-    "Louisiana",
-    "Maine",
-    "Maryland",
-    "Massachusetts",
-    "Michigan",
-    "Minnesota",
-    "Mississippi",
-    "Missouri",
-    "Montana",
-    "Nebraska",
-    "Nevada",
-    "New Hampshire",
-    "New Jersey",
-    "New Mexico",
-    "New York",
-    "North Carolina",
-    "North Dakota",
-    "Northern Mariana Islands",
-    "Ohio",
-    "Oklahoma",
-    "Oregon",
-    "Pennsylvania",
-    "Puerto Rico",
-    "Rhode Island",
-    "South Carolina",
-    "South Dakota",
-    "Tennessee",
-    "Texas",
-    "Utah",
-    "Vermont",
-    "Virgin Islands",
-    "Virginia",
-    "Washington",
-    "West Virginia",
-    "Wisconsin",
-    "Wyoming",
-  ];
-  d3.select( "#table-goes-here" )
-    .select( "table" )
-    .remove();
-  // --------------
-  const fComma = d3.format( ',' );
-  const fDecimal = d3.format( '.3' );
-  // --------------
-  let table = d3.select( "#table-goes-here" )
-    .append( "table" )
-    .attr( "class", "table table-sm table-borderless bg-transparent text-center mx-4" ),
-    thead = table.append( "thead" ),
-    tbody = table.append( "tbody" ).attr( 'class', '' )
-  ;
-
-      let columns = [];
+      
+      d3.select( "#table-goes-here" )
+        .select( "table" )
+        .remove();
+      // --------------
+      const fComma = d3.format( ',' );
+      const fDecimal = d3.format( '.3' );
+      // --------------
       const rowsData = dataPrepRows( data );
-
-      Object.keys( rowsData[ 0 ] ).forEach( key => {
-        // console.log('key :>> ', key);
-        columns.push( key )
-      } );
-      // console.log('columns :>> ', columns);
-      let header = thead.append( "tr" ).attr( 'class', 'bg-transparent' )
+      // console.log('rowsData :>> ', rowsData[5]);
+      const names = rowsData.map(d => d.StateName);
+     
+      
+      let header = d3
+        .selectAll('.thd')
         .selectAll( "th" )
-        .data( columns )
+        .data( Object.keys(rowsData[5]) )
         .enter()
-        .append( "th" )
-        .attr( 'class', 'text-sm  bg-theme rounded-lg add-anime pb-2 pt-1 text-light' )
-        .text( d => d )
-        .on( "click", function ( d ) {
+          .append( "th" )
+          .attr( 'class', 'text-sm bg-theme rounded-lg add-anime text-light' )
+          .text( d => d )
+          .on( "click", function ( d ) {
           if ( d == "StateName" ) {
             rows.sort( function ( a, b ) {
               if ( a[ d ] < b[ d ] ) {
@@ -115,11 +49,10 @@ function prezTableUp( url, year ) {
             } );
           }
          } );
-          // ----- table rows tr
-      let rows = tbody.selectAll( "tr" )
+         // ----- table rows tr
+     let rows = d3
+        .selectAll( ".tbl" )
         .data( rowsData )
-        .enter()
-        .append( "tr" )
         .attr( 'class', d => {
           const redWins = ( d[ "REP" ] > d[ "DEM" ] );
           if ( redWins ) {
@@ -160,10 +93,10 @@ function prezTableUp( url, year ) {
         } )
         .enter()
         .append( "td" )
-        .attr( "class", "bg-tableMini pb-2" )
+        .attr( "class", "bg-tableMini pb-1" )
         .html( function ( d ) {
           if ( d.i == "Flag" ) {
-            return '<img class="img-thumbnail border-0 p-0 my-0 mx-2" src="' +
+            return '<img class="img-thumbnail border-0 p-0 my-0 mx-0" src="' +
               '/static/img/states/' +
               d.value +
               '-flag-small.png' +
@@ -228,7 +161,7 @@ function prezTableUp( url, year ) {
 
       // console.log( 'winners :>> ', winners );
 
-      geoStateNames.forEach( d => {
+      names.forEach( d => {
         const nameState = d.properties.name;
         d.properties[ "winner" ] = winners[ nameState ];
         d.properties[ "color" ] = colors[ winners[ nameState ] ];

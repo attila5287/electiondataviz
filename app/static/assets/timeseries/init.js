@@ -9,7 +9,7 @@ function init (stateName) {
     barsPercUp( dataRe4dy );
     barsCountUp( dataRe4dy );
     timeSersPercUp( dataRe4dy);
-    timeSersCountUp( dataRe4dy );
+    // timeSersCountUp( dataRe4dy );
     gaugeUp( dataRe4dy );
     stNumbersUpdate( stateName );
     dropDownYearUp ( 2016, data );

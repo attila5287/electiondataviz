@@ -11,11 +11,11 @@ function gaugeUp (dataReady) {
 
   // console.log('round*svgWidth :>> ', round(svgWidth));
 
-  let svgHeight = 0.7 * svgWidth;
+  let svgHeight = 0.66 * svgWidth;
   const fivePercent = round(svgWidth*0.05);
   const tenPercent = fivePercent*2;
   let margin = {
-    top: tenPercent,
+    top: fivePercent,
     bottom:fivePercent,
     left: fivePercent,
     right: fivePercent,
@@ -131,7 +131,7 @@ function gaugeUp (dataReady) {
   // ==============================================
   svg.append( "text" )
   .attr( "transform", `translate(${svgWidth*0.5}, ${svgHeight-25 })` )
-  .text( `Last 11 Elections, ${dataReady.state}` )
+  .text( "Last 11 Elections" )
   .classed( 'title', true );
   // Step : Score Total  blue
   // ==============================================

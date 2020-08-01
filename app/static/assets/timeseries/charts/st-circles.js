@@ -6,7 +6,7 @@ function timeSersPercUp ( dataReady ) {
   }
   // Step 1: Set up our chart
   let svgWidth = $( `#time-series-perc` ).width();
-  let svgHeight = 0.4 * svgWidth;
+  let svgHeight = 0.3 * svgWidth;
   let margin = {
     top: 20,
     right: 50,
@@ -183,7 +183,7 @@ function timeSersCountUp ( dataReady ) {
   }
   // Step 1: Set up our chart
   let svgWidth = $( `#time-series-count` ).width();
-  let svgHeight = 0.4 * svgWidth;
+  let svgHeight = 0.3 * svgWidth;
   let margin = {
     top: 20,
     right: 50,

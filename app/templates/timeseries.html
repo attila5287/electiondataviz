@@ -47,48 +47,176 @@
     #map {
       height: 220px;
       width: 95%;
-      margin: 12px;
+      margin: 8px 8px 22px 8px;
     }
   </style>
 
-  <body class="bg-body" style="margin-top: 70px;">
+  <body class="bg-body">
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-theme py-1 my-0">
-        <a class="navbar-brand bg-transparent mx-0 p-0 border-0 rounded-xl add-anime"
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-theme text-center py-0 my-0">
+        <a class="navbar-brand bg-transparent border-0 rounded-xl add-anime mx-1 p-1"
           href="https://electiondataviz.herokuapp.com/">
-          <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 3rem;" alt="navbar-icon">
+          <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 35px;" alt="navbar-icon">
+        </a>
+        <a class="navbar-brand  rounded-xl add-anime" href="/timeseries">
+          <i class="fas fa-chart-line"></i>
+          <p class="py-0 my-0 text-comfo text-sm">TimeSrs</p>
+        </a>
+        <a class="navbar-brand nav-link  rounded-xl add-anime" href="/candidates">
+          <i class="fas fa-users text-sm"></i>
+          <p class="py-0 my-0 text-comfo text-sm">Cand's</p>
+        </a>
+        <a class="navbar-brand nav-link  rounded-xl add-anime" href="/map">
+          <i class="fas fa-globe-americas text-sm"></i>
+          <p class="py-0 my-0 text-comfo text-sm"> Map</p>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse text-center bg-theme" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/timeseries">
-              <i class="fas fa-chart-line fa-fw text-onerem mt-1"></i>
-              <p class="mb-0 text-comfo text-onerem">TimeSrs</p>
+        <div class="collapse navbar-collapse justify-content-md-center bg-theme py-0" id="navbarCollapse">
+          <ul class="navbar-nav">
+            <!-- population/median hhi -->
+            <a class="nav-item nav-link py-0 my-0 ">
+              Median HHI*<br>
+              <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stMedHHI">
+                00,00
+              </i>
+              $/yr
             </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/candidates">
-              <i class="fas fa-users fa-fw text-onerem mt-1"></i>
-              <p class="mb-0 text-comfo text-onerem">Cand's</p>
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/map">
-              <i class="fas fa-globe-americas fa-fw text-onerem mt-1"></i>
-              <p class="py-0 my-0 text-comfo text-onerem"> Map</p>
-            </a>
-            <a class="nav-item nav-link bg-transparent">
-              <select class="bg-transparent" id="opts">
+            <a class="nav-item nav-link py-0 my-0 ">
+              Min Wage <br>
+              <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stMinWage">
+                00,00
+              </i>
+              $/hr
+            </a>        
+            
+            <a class="nav-item nav-link py-0 my-0 ">
+              <select class="" id="opts">
               </select>
+            </a>
+            <a class="nav-item nav-link py-0 my-0 "> 
+              State Population*<br>
+              <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stPop">
+                00,00
+              </i>
+            </a>
+            <a class="nav-item nav-link py-0 my-0 "> 
+              Perc Over 18<br>
+              <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stAge18Perc">
+                00,00
+              </i>
+            %  
+            </a>
+            <a class="nav-item nav-link py-0 my-0 "> 
+              Median Age<br>
+              <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stMedAge">
+                00,00
+              </i>
+            %  
+
+            </a>
+            <a class="nav-item nav-link py-0 my-0 "> 
+
             </a>
           </ul>
         </div>
       </nav>
     </header>
 
-    <div class="row mt-2">
-      <!-- state focused map and charts -->
-      <div class="col-md-2">
+    <div class="row">
+      <!-- table -->
+        <div class="col-sm-2 text-center">
+        <table class="table table-sm bg-transparent table-borderless text-center text-comfo"
+        >
+        <thead class="bg-theme text-comfo text-light"
+        >
+        <tr class="thd">
+        </tr>
+      </thead>
+          <tbody class="bg-transparent">
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- charts -->
+      <div class="col-md-4">
+        <!-- bars perc -->
+        <div class="card border-0 bg-transparent">
+          <div id="bars-perc" class="text-center bg-glass  rounded-qtr"></div>
+        </div>
+
+        <!-- time series perc -->
+        <div class="card border-0 bg-transparent">
+          <div id="time-series-perc" class="text-center bg-glass  rounded-qtr"></div>
+        </div>
+        <!-- map -->
+        <div class="card border-0 bg-theme rounded-qtr">
+          <div class="container bg-transparent rounded-qtr" id="map">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- charts 2nd column -->
+      <div class="col-md-4">
+        <div class="row">
+          <!-- state flag and name -->
+          <div class="col-sm-4">
+            <div class="steamy card bg-transparent text-center text-light">
+              <div class="card-body py-1 mb-1">
+              <p class=" card-text bg-glass rounded-2xl text-titlecase text-comfo px-3 py-2"
+                id="stName">
+                ...
+              </p>
+            </div>
+            </div>>
+              <div class="steamy card bg-transparent text-center text-light">
+              <img class="card-img-top text-center opac-30 p-3" src="../static/img/states/colorado-flag-small.png" alt="state-flag" 
+                id="stFlag"
+                >
+            </div>
+          </div>
+          <!--gauge  -->
+          <div class="col-sm-8">
+            <div class="card border-0 bg-transparent">
+              <div class="card-body">
+                <div id="gauge-swing" class="bg-glass rounded-qtr"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- bars count -->
+        <div class="card border-0 bg-transparent">
+          <div id="bars-count" class=" text-center bg-glass rounded-qtr"></div>
+        </div>
+        
         <!-- demographic profile -->
         <div class="card bg-glass rounded-3xl">
           <div class="card-body py-1 mt-4 mb-4">
@@ -136,157 +264,50 @@
             </div>
           </div>
         </div>
-        <!-- population/median hhi -->
-        <div class="card bg-glass rounded-3xl">
-          <div class="card-body py-1 mt-3 mb-4">
-              <ul class="list-group list-group-flush text-bold text-left mb-2">
-                <li class="list-group-item py-0 bg-transparent gen">
-                  Median HHI*<br>
-                    <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stMedHHI">
-                    00,00
-                  </i>
-                  $/yr
-
-                </li>
-                <li class="list-group-item py-0 bg-transparent gen">
-                  Ranking** <br>
-                  <i class="led-sm mt-0 mb-1 px-3" id="stMedHHIRank">
-                    00
-                  </i>
-                  th
-                </li>
-              
-                <li class="list-group-item py-0 bg-transparent gen">
-                  Min Wage <br>
-                  <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stMinWage">
-                    00,00
-                  </i>
-                  $/hr
-                </li>
-                <li class="list-group-item py-0 bg-transparent gen">
-                  Ranking**<br>
-                  <i class="led-sm text-nowrap mt-0 mb-1 px-3" id="stMinWgRank">
-                    00
-                  </i>
-                  th
-                </li>
-              </ul>
-            <div class="neg card-footer py-0">
-              * Household Income <br>
-              ** National Ranking (0-51)
-            </div>
-          </div>
-        </div>
-        <div class="card bg-glass rounded-3xl">
-          <div class="card-body py-1 mt-3 mb-4">
-              <ul class="list-group list-group-flush text-bold text-left mb-2">
-                <li class="list-group-item py-0 bg-transparent gen">
-                  State Population*
-                    <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stPop">
-                    00,00
-                  </i>
-                </li>
-                <li class="list-group-item py-0 bg-transparent gen">
-                  Ranking** <br>
-                  <i class="led-sm mt-0 mb-1 px-3" id="stPopRank">
-                    00
-                  </i>
-                  th
-                </li>
-                <li class="list-group-item py-0 bg-transparent gen">
-                  Perc Over 18<br>
-                  <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stAge18Perc">
-                    00,00
-                  </i>
-                %  
-                </li>
-                <li class="list-group-item py-0 bg-transparent gen">
-                  Ranking**<br>
-                  <i class="led-sm text-nowrap mt-0 mb-1 px-3" id="stMinWgRank">
-                    00
-                  </i>
-                  th
-                </li>
-                <li class="list-group-item py-0 bg-transparent gen">
-                  Median Age<br>
-                  <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stMedAge">
-                    00,00
-                  </i>
-                %  
-                </li>
-                <li class="list-group-item py-0 bg-transparent gen">
-                  Ranking**<br>
-                  <i class="led-sm text-nowrap mt-0 mb-1 px-3" id="stMedAgeRank">
-                    00
-                  </i>
-                  th
-                </li>
-              </ul>
-            <div class="neg card-footer py-0">
-              * Estimated '20 <br>
-              ** National Ranking (0-51)
-            </div>
-          </div>
-        </div>
 
       </div>
-      <!-- charts -->
-      <div class="col-md-4">
-        <!-- map -->
-        <div class="card border-0 bg-glass rounded-qtr">
-          <div class="container shadow-before rounded-3xl" id="map" style="box-shadow:0 0 4px 8px #01325296 inset;">
-          </div>
-        </div>
-        <!-- bars perc -->
-        <div class="card border-0 bg-transparent">
-          <div id="bars-perc" class="text-center bg-glass  rounded-qtr"></div>
-        </div>
-        <!-- time series perc -->
-        <div class="card border-0 bg-transparent">
-          <div id="time-series-perc" class="text-center bg-glass  rounded-qtr"></div>
-        </div>
+      
+      <div class="col-md-2">
+        <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
+          <thead class="bg-theme text-comfo text-light"
+          >
+          <tr
+          class="thd"
+            >
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="col-md-4">
-        <div class="row">
-          <!-- state flag and name -->
-          <div class="col-sm-4">
-            <div class="card bg-glass text-center text-light rounded-3xl mx-0 p-2">
-              <img class="card-img-bottom bg-glass text-center opac-60 rounded-3xl p-3  mt-2 mb-1" src="../static/img/states/colorado-flag-small.png" alt="state-flag" style="box-shadow:0 0 4px 8px #01325296 inset;" id="stFlag">
-              
-                <div class="card-body py-1 mb-1">
-                <p class=" card-text bg-dark text-titlecase text-comfo rounded-2xl p-1"
-                  id="stName">
-                  ...
-                </p>
-              </div>
-                <div class="card-footer py-1 mb-1">
-            </div>
-            </div>
-          </div>
-          <!--gauge  -->
-          <div class="col-sm-8">
-            <div class="card border-0 bg-transparent">
-              <div class="card-body">
-                <div id="gauge-swing" class="bg-glass rounded-qtr"></div>
-              </div>
-            </div>
-        </div>
-        </div>
-        <!-- bars count -->
-        <div class="card border-0 bg-transparent">
-          <div id="bars-count" class=" text-center bg-glass rounded-qtr"></div>
-        </div>
-        <!-- time ser count -->
-        <div class="card border-0 bg-transparent">
-          <div id="time-series-count" class="text-center bg-glass rounded-qtr"></div>
-        </div>
-      </div>
-      <!-- table -->
-      <div class="col-md-2 text-center mt-2">
-        <div id="table-goes-here">
-          <table></table>
-        </div>
-      </div>
+
+
     </div>
 
     <!-- Optional JavaScript -->
@@ -324,6 +345,8 @@
     <script src="/static/assets/timeseries/init.js"></script>
     
     <script src="/static/assets/tables/tb-lightest.js"></script>
+
+    
 
   </body>
 
