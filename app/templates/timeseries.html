@@ -26,6 +26,7 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""></script>
+      <script src="/static/assets/timeseries/xtra/count-up.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <!-- set title on route by render_template(... ,title='test') -->
     <!-- FONTS -->
@@ -41,7 +42,6 @@
 
     <!-- title -->
     <title>US States Time Series</title>
-
   </head>
   <style>
     #map {
@@ -76,7 +76,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-md-center bg-theme py-0" id="navbarCollapse">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav bg-theme">
             <!-- population/median hhi -->
             <a class="nav-item nav-link py-0 my-0 ">
               Median HHI*<br>
@@ -85,6 +85,15 @@
               </i>
               $/yr
             </a>
+            <a class="nav-item nav-link py-0 my-0 ">
+              Primo<br>
+              <span id="primo" class="countup led-md" cup-end="100" cup-append="%" cup-prepend=""></span>
+            </a>
+            <a class="nav-item nav-link py-0 my-0 ">
+              Secondo<br>
+              <span id="secondo" class="countup led-md" cup-end="1500" cup-duration="2000"></span>
+            </a>            
+            
             <a class="nav-item nav-link py-0 my-0 ">
               Min Wage <br>
               <i class="led-md text-nowrap mt-0 mb-1 px-3" id="stMinWage">
@@ -116,19 +125,18 @@
                 00,00
               </i>
             %  
-
             </a>
-            <a class="nav-item nav-link py-0 my-0 "> 
 
-            </a>
           </ul>
         </div>
       </nav>
     </header>
+    
+    
 
     <div class="row">
       <!-- table -->
-        <div class="col-sm-2 text-center">
+        <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo"
         >
         <thead class="bg-theme text-comfo text-light"
@@ -183,28 +191,36 @@
         </div>
 
       </div>
-
       <!-- charts 2nd column -->
       <div class="col-md-4">
         <div class="row">
           <!-- state flag and name -->
-          <div class="col-sm-4">
-            <div class="steamy card bg-transparent text-center text-light">
-              <div class="card-body py-1 mb-1">
-              <p class=" card-text bg-glass rounded-2xl text-titlecase text-comfo px-3 py-2"
+          <div class="col-md-4 px-0 mx-0">
+            <div class="card steamy bg-transparent text-left text-secondary pt-1 pb-3">
+              <div class="card-header text-center text-light  mb-0 py-0">
+                <i class="fas fa-angle-right"></i>
+                visualizing data for:
+              </div>
+              <div class="card-body py-0 my-0">
+              <h6 class="card-title bg-black rounded-lg text-center text-comfo text-nowrap text-xl text-bold py-1 mb-0"
                 id="stName">
                 ...
-              </p>
+              </h6>
             </div>
-            </div>>
-              <div class="steamy card bg-transparent text-center text-light">
-              <img class="card-img-top text-center opac-30 p-3" src="../static/img/states/colorado-flag-small.png" alt="state-flag" 
-                id="stFlag"
-                >
-            </div>
+          </div>>
+          <div class="card steamy bg-transparent text-left text-secondary">
+            <div class="card-body py-0 my-0">
+                  <p class="card-text text-sm p-2 mb-1">
+                      <i class="fas fa-info-circle"></i> 
+                      Want to see another state? 
+                      <i class="fas fa-info-circle"></i> 
+                      Click on table row or use dropdown menu above
+                  </p>
+                </div>
+              </div>
           </div>
           <!--gauge  -->
-          <div class="col-sm-8">
+          <div class="col-md-8">
             <div class="card border-0 bg-transparent">
               <div class="card-body">
                 <div id="gauge-swing" class="bg-glass rounded-qtr"></div>
@@ -216,12 +232,16 @@
         <div class="card border-0 bg-transparent">
           <div id="bars-count" class=" text-center bg-glass rounded-qtr"></div>
         </div>
-        
+
         <!-- demographic profile -->
-        <div class="card bg-glass rounded-3xl">
-          <div class="card-body py-1 mt-4 mb-4">
-            <div class="d-flex flex-row justify-content-around">
-              <ul class="list-group list-group-flush text-bold text-right mb-2">
+        <div class="card bg-transparent rounded-3xl">
+          <img class="card-img ovrly text-left opac-30 p-4" 
+              src="../static/img/states/colorado-flag-small.png" 
+              alt="state-flag" 
+              id="stFlag"
+              >
+          <div class="card-img-overlay bg-glass text-right py-1 mt-4 mb-4">
+              <ul class="list-group list-group-flush text-bold text-right mb-2 bg-transparent">
                 <li class="list-group-item py-0 bg-transparent gen">
                   White
                   <i class="led-sm text-nowrap mt-0 mb-1 mx-2 px-3" id="stWhite">
@@ -240,8 +260,6 @@
                     00,00
                   </i>
                 </li>
-              </ul>
-              <ul class="list-group list-group-flush text-bold text-right mb-2">
                 <li class="list-group-item py-0 bg-transparent gen">
                   Asian
                   <i class="led-sm text-nowrap mt-0 mb-1 mx-2 px-3" id="stAsian">
@@ -261,14 +279,14 @@
                   </i>
                 </li>
               </ul>
-            </div>
           </div>
         </div>
 
       </div>
       
       <div class="col-md-2">
-        <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
+        <table class="table table-sm bg-transparent table-borderless text-center text-comfo"
+        >
           <thead class="bg-theme text-comfo text-light"
           >
           <tr
@@ -344,10 +362,10 @@
     <script src="/static/assets/timeseries/xtra/st-numbers.js"></script>
     <script src="/static/assets/timeseries/init.js"></script>
     
+
     <script src="/static/assets/tables/tb-lightest.js"></script>
-
     
-
+<script src="/static/assets/timeseries/xtra/count-up.js"></script>
   </body>
 
 </html>

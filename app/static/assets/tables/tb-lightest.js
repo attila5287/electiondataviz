@@ -58,7 +58,7 @@ function prezTableUp( url, year ) {
           if ( redWins ) {
             return 'anime-danger text-balo text-danger';
           } else {
-            return 'anime-primary text-balo text-dark';
+            return 'anime-primary text-balo text-info';
           }
         } )
         .on( "mouseover", function ( d, i ) {
@@ -93,7 +93,7 @@ function prezTableUp( url, year ) {
         } )
         .enter()
         .append( "td" )
-        .attr( "class", "bg-tableMini pb-1" )
+        .classed( "td-glass pb-1", true )
         .html( function ( d ) {
           if ( d.i == "Flag" ) {
             return '<img class="img-thumbnail border-0 p-0 my-0 mx-0" src="' +

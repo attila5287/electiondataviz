@@ -13,6 +13,6 @@ function init (stateName) {
     gaugeUp( dataRe4dy );
     stNumbersUpdate( stateName );
     dropDownYearUp ( 2016, data );
-
+    startCountingNumbers(stateName);
   } ); 
 }

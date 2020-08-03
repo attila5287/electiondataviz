@@ -1,5 +1,5 @@
 function stNumbersUpdate( state ) {
-  d3.csv( '../../static/data/csv/state_pop_race_perc.csv', function ( data ) {
+  d3.csv( '../../static/data/csv/st-info-master.csv', function ( data ) {
     console.log( 'sample row :>> ', data[ 5 ] );
     const fPerct = d3.format( ".4" );
     const fComma = d3.format( "," );
@@ -7,11 +7,11 @@ function stNumbersUpdate( state ) {
 
     data.forEach( d => {
       diversityBySt[ d.state ] = {
-        white: +d[ 'white' ],
-        hisp: +d[ 'hisp' ],
-        black: +d[ 'black' ],
-        asian: +d[ 'asian' ],
-        native: +d[ 'native' ],
+        white: +d[ 'whitePerc' ],
+        hisp: +d[ 'hispPerc' ],
+        black: +d[ 'blackPerc' ],
+        asian: +d[ 'asianPerc' ],
+        native: +d[ 'nativePerc' ],
         minTotal : 0
       };
     });
@@ -19,10 +19,10 @@ function stNumbersUpdate( state ) {
     Object.keys(diversityBySt).forEach(d=>{
       // console.log('d :>> ', d);
       // console.log('d :>> ', diversityBySt[d]);
-      diversityBySt[d].minTotal = diversityBySt[d].hisp
-                                  +diversityBySt[d].black
-                                  +diversityBySt[d].asian
-                                  +diversityBySt[d].native;
+      diversityBySt[d].minTotal = diversityBySt[d].hispPerc
+                                  +diversityBySt[d].blackPerc
+                                  +diversityBySt[d].asianPerc
+                                  +diversityBySt[d].nativePerc;
     });
 
     // console.log('diversityBySt :>> ', diversityBySt[state]);
@@ -37,31 +37,33 @@ function stNumbersUpdate( state ) {
     
     d3.select( "#stName" ).text( state );
     d3.select( "#stFlag" ).attr( 'src', '../static/img/states/' + state.trim().toLowerCase().replace( ' ', '-' ) + '-flag-small.png' );
-    d3.select( "#stMedHHI" ).text( fComma(medianHHIbySt[ state ]) );
-    d3.select( "#stMinWage" ).text( fPerct(+minWageBySt[ state ]) );
-    d3.select( "#stPop" ).text( fComma( +populationBySt[ state ] ) );
-    d3.select( "#stAge18Perc" ).text( +over18PercBySt[ state ] );
-    d3.select( "#stMedAge" ).text( +over18PercBySt[ state ] );
-
-
+    
+    
 
   } );
-
 }
 
-// "#stRankMedHHI"
-// "#stMinWageRank"
-// stNumbersUpdate( 'Arkansas' );
+function startCountingNumbers (state) {
+  const fPerct = d3.format( ".4" );
+  const fComma = d3.format( "," );
+  d3.select( "#stMedHHI" ).text( fComma( medianHHIbySt[ state ] ) );
+  d3.select( "#stMinWage" ).text( fPerct( +minWageBySt[ state ] ) );
+  d3.select( "#stPop" ).text( fComma( +populationBySt[ state ] ) );
+  d3.select( "#stAge18Perc" ).text( +over18PercBySt[ state ] );
+  d3.select( "#stMedAge" ).text( +over18PercBySt[ state ] );
+  
+  
+}
 
-// prezWinners.csv
-// state_minWage2020.csv
-// state_population.csv
-// states.csv
-// president.csv
-// state_HHI.csv
-// state_pop_race_count.csv
-// state_POs.csv
-// prezTickets.csv
-// state_medAge.csv
-// state_pop_race_perc.csv
-// state_seats.csv
+var arr = [50, 55, 53];
+
+d3.selectAll(".countup")
+.data(arr)
+.classed('countup led-lg text-primary',true )
+.attr('cup-end', d=>d)
+.attr('cup-append', "")
+.attr('cup-prepend', "$")
+.exit()
+.remove()
+;
+    
