@@ -3,7 +3,7 @@ function counterUp(_props) {
 	"use strict";
 
 	this.defaults = {
-		duration: 3000,				// duration in seconds
+		duration: 1000,				// duration in seconds
 		prepend: '',				// string to prepend to the value
 		append: '', 				// string to apend to the value
 		selector: '.countup',		// selector used to find elements on wich applycountUp
@@ -100,7 +100,7 @@ counterUp.prototype.update = function() {
 
 var cu = new counterUp({
   start: 0,	
-  duration: 3000,
+  duration: 4000,
   intvalues: true,
   interval: 100,
   prepend: '€',

@@ -350,10 +350,6 @@ function presidentialUp( url, year ) {
   } );
 
 }
-
-presidentialUp( urlPrezTest, 2016 );
-prezWinnersUp( 2016 );
-
 function  prezWinnersUp( year ) {
   const urlPrezWTest = '../static/data/csv/prezWinners.csv';
   d3.csv(urlPrezWTest,
@@ -385,3 +381,6 @@ function  prezWinnersUp( year ) {
     }
   });
 }
+
+presidentialUp( urlPrezTest, 2016 );
+prezWinnersUp( 2016 );

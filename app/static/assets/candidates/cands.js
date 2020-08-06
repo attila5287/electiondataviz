@@ -50,22 +50,6 @@ function prezTableUp( url, year ) {
           //  d3.select( this ).attr( "class", "bg-transparent add-anime" );
         } );
 
-      function update( data ) {
-
-        var selection = d3.select( "#content" ).selectAll( ".temps" )
-          .data( austinTemps );
-
-        selection.enter()
-          .append( "div" )
-          .classed( "temps", true )
-          .merge( selection )
-          .style( "height", function ( d ) {
-            return d + "px";
-          } );
-
-        selection.exit().remove();
-      }
-      
       let cells = rows.selectAll( "td" )
       .data( function ( row ) {
           return Object.keys( row ).map( function ( d, i ) {

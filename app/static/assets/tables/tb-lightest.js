@@ -7,9 +7,6 @@ function prezTableUp( url, year ) {
       console.error( error );
     } else {
       
-      d3.select( "#table-goes-here" )
-        .select( "table" )
-        .remove();
       // --------------
       const fComma = d3.format( ',' );
       const fDecimal = d3.format( '.3' );
@@ -50,6 +47,8 @@ function prezTableUp( url, year ) {
           }
          } );
          // ----- table rows tr
+
+        //  console.log('rowsData :>> ', rowsData);
      let rows = d3
         .selectAll( ".tbl" )
         .data( rowsData )

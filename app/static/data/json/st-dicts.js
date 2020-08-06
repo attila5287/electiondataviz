@@ -1,3 +1,523 @@
+var diversityPart2 = {
+  Alabama:  {
+    black: 26.7,
+    asian: 1.3,
+    native: 0.5
+  },
+  Alaska:  {
+    black: 2.9,
+    asian: 6.6,
+    native: 14.2
+  },
+  Arizona:  {
+    black: 4.1,
+    asian: 3.2,
+    native: 3.9
+  },
+  Arkansas:  {
+    black: 15.2,
+    asian: 1.6,
+    native: 0.6
+  },
+  California:  {
+    black: 5.5,
+    asian: 14.4,
+    native: 0.4
+  },
+  Colorado:  {
+    black: 3.9,
+    asian: 3.1,
+    native: 0.6
+  },
+  Connecticut:  {
+    black: 9.9,
+    asian: 4.5,
+    native: 0.2
+  },
+  Delaware:  {
+    black: 21.5,
+    asian: 4,
+    native: 0.2
+  },
+  "District of Columbia":  {
+    black: 45.3,
+    asian: 4,
+    native: 0.2
+  },
+  Florida:  {
+    black: 15.4,
+    asian: 2.8,
+    native: 0.2
+  },
+  Georgia:  {
+    black: 31.1,
+    asian: 3.9,
+    native: 0.2
+  },
+  Hawaii:  {
+    black: 1.6,
+    asian: 37.3,
+    native: 0.1
+  },
+  Idaho:  {
+    black: 0.6,
+    asian: 1.3,
+    native: 1.1
+  },
+  Illinois:  {
+    black: 14,
+    asian: 5.4,
+    native: 0.1
+  },
+  Indiana:  {
+    black: 9.2,
+    asian: 2.2,
+    native: 0.1
+  },
+  Iowa:  {
+    black: 3.3,
+    asian: 2.6,
+    native: 0.2
+  },
+  Kansas:  {
+    black: 5.5,
+    asian: 2.9,
+    native: 0.6
+  },
+  Kentucky:  {
+    black: 8,
+    asian: 1.4,
+    native: 0.2
+  },
+  Louisiana:  {
+    black: 32.1,
+    asian: 1.8,
+    native: 0.5
+  },
+  Maine:  {
+    black: 1.2,
+    asian: 1.1,
+    native: 0.6
+  },
+  Maryland:  {
+    black: 29.4,
+    asian: 6.4,
+    native: 0.2
+  },
+  Massachusetts:  {
+    black: 7,
+    asian: 6.6,
+    native: 0.1
+  },
+  Michigan:  {
+    black: 13.6,
+    asian: 3.1,
+    native: 0.5
+  },
+  Minnesota:  {
+    black: 6.4,
+    asian: 4.9,
+    native: 1
+  },
+  Mississippi:  {
+    black: 37.9,
+    asian: 0.9,
+    native: 0.4
+  },
+  Missouri:  {
+    black: 11.4,
+    asian: 2,
+    native: 0.3
+  },
+  Montana:  {
+    black: 0.4,
+    asian: 0.7,
+    native: 5.9
+  },
+  Nebraska:  {
+    black: 4.5,
+    asian: 2.4,
+    native: 0.7
+  },
+  Nevada:  {
+    black: 8.9,
+    asian: 8.3,
+    native: 0.9
+  },
+  "New Hampshire":  {
+    black: 1.3,
+    asian: 2.7,
+    native: 0.1
+  },
+  "New Jersey":  {
+    black: 12.8,
+    asian: 9.8,
+    native: 0.1
+  },
+  "New Mexico":  {
+    black: 1.8,
+    asian: 1.3,
+    native: 8.8
+  },
+  "New York":  {
+    black: 14.3,
+    asian: 8.7,
+    native: 0.2
+  },
+  "North Carolina":  {
+    black: 21.2,
+    asian: 2.9,
+    native: 1.1
+  },
+  "North Dakota":  {
+    black: 3,
+    asian: 1.7,
+    native: 5.4
+  },
+  Ohio:  {
+    black: 12.2,
+    asian: 2.2,
+    native: 0.2
+  },
+  Oklahoma:  {
+    black: 7.2,
+    asian: 2.1,
+    native: 7.3
+  },
+  Oregon:  {
+    black: 1.8,
+    asian: 4.3,
+    native: 0.9
+  },
+  Pennsylvania:  {
+    black: 10.7,
+    asian: 3.5,
+    native: 0.1
+  },
+  "Rhode Island":  {
+    black: 5.4,
+    asian: 3.6,
+    native: 0.3
+  },
+  "South Carolina":  {
+    black: 26.8,
+    asian: 1.5,
+    native: 0.2
+  },
+  "South Dakota":  {
+    black: 1.9,
+    asian: 1.2,
+    native: 8.6
+  },
+  Tennessee:  {
+    black: 16.6,
+    asian: 1.8,
+    native: 0.2
+  },
+  Texas:  {
+    black: 11.8,
+    asian: 4.8,
+    native: 0.3
+  },
+  Utah:  {
+    black: 1.2,
+    asian: 2.4,
+    native: 1
+  },
+  Vermont:  {
+    black: 1.2,
+    asian: 1.8,
+    native: 0.3
+  },
+  Virginia:  {
+    black: 18.8,
+    asian: 6.4,
+    native: 0.2
+  },
+  Washington:  {
+    black: 3.5,
+    asian: 8.5,
+    native: 1
+  },
+  "West Virginia":  {
+    black: 3.9,
+    asian: 0.8,
+    native: 0.1
+  },
+  Wisconsin:  {
+    black: 6.3,
+    asian: 2.7,
+    native: 0.8
+  },
+  Wyoming:  {
+    black: 0.9,
+    asian: 0.8,
+    native: 2.1
+  },
+};
+
+// console.log('diversityPart2 :>> ', diversityPart2);
+// console.log('diversityPart2 :>> ', diversityPart2["Colorado"]);
+
+var diversityPart1 = {
+  Alabama: {
+    white: 65.5,
+    minTotal: 34.5,
+    hisp: 4.1
+  },
+  Alaska: {
+    white: 60.6,
+    minTotal: 39.4,
+    hisp: 7
+  },
+  Arizona: {
+    white: 54.7,
+    minTotal: 45.3,
+    hisp: 31.4
+  },
+  Arkansas: {
+    white: 72.3,
+    minTotal: 27.7,
+    hisp: 7.4
+  },
+  California: {
+    white: 37,
+    minTotal: 63,
+    hisp: 39.1
+  },
+  Colorado: {
+    white: 68.2,
+    minTotal: 31.8,
+    hisp: 21.5
+  },
+  Connecticut: {
+    white: 66.7,
+    minTotal: 33.3,
+    hisp: 16.1
+  },
+  Delaware: {
+    white: 62.2,
+    minTotal: 37.8,
+    hisp: 9.3
+  },
+  "District of Columbia": {
+    white: 36.5,
+    minTotal: 63.5,
+    hisp: 11
+  },
+  Florida: {
+    white: 53.8,
+    minTotal: 46.2,
+    hisp: 25.6
+  },
+  Georgia: {
+    white: 52.6,
+    minTotal: 47.4,
+    hisp: 9.6
+  },
+  Hawaii: {
+    white: 21.8,
+    minTotal: 78.2,
+    hisp: 10.5
+  },
+  Idaho: {
+    white: 82,
+    minTotal: 18,
+    hisp: 12.4
+  },
+  Illinois: {
+    white: 61.2,
+    minTotal: 38.8,
+    hisp: 17.2
+  },
+  Indiana: {
+    white: 79.2,
+    minTotal: 20.8,
+    hisp: 6.9
+  },
+  Iowa: {
+    white: 85.9,
+    minTotal: 14.1,
+    hisp: 5.9
+  },
+  Kansas: {
+    white: 75.9,
+    minTotal: 24.1,
+    hisp: 11.9
+  },
+  Kentucky: {
+    white: 84.6,
+    minTotal: 15.4,
+    hisp: 3.5
+  },
+  Louisiana: {
+    white: 58.5,
+    minTotal: 41.5,
+    hisp: 5.2
+  },
+  Maine: {
+    white: 93.4,
+    minTotal: 6.6,
+    hisp: 1.6
+  },
+  Maryland: {
+    white: 50.7,
+    minTotal: 49.3,
+    hisp: 10.1
+  },
+  Massachusetts: {
+    white: 71.5,
+    minTotal: 28.5,
+    hisp: 11.8
+  },
+  Michigan: {
+    white: 75,
+    minTotal: 25,
+    hisp: 5.1
+  },
+  Minnesota: {
+    white: 79.9,
+    minTotal: 20.1,
+    hisp: 5.3
+  },
+  Mississippi: {
+    white: 56.6,
+    minTotal: 43.4,
+    hisp: 2.9
+  },
+  Missouri: {
+    white: 79.4,
+    minTotal: 20.6,
+    hisp: 4.2
+  },
+  Montana: {
+    white: 86.3,
+    minTotal: 13.7,
+    hisp: 3.7
+  },
+  Nebraska: {
+    white: 79,
+    minTotal: 21,
+    hisp: 10.9
+  },
+  Nevada: {
+    white: 48.8,
+    minTotal: 51.2,
+    hisp: 28.8
+  },
+  "New Hampshire": {
+    white: 90.3,
+    minTotal: 9.7,
+    hisp: 3.8
+  },
+  "New Jersey": {
+    white: 54.8,
+    minTotal: 45.2,
+    hisp: 20.4
+  },
+  "New Mexico": {
+    white: 37.4,
+    minTotal: 62.6,
+    hisp: 48.8
+  },
+  "New York": {
+    white: 55.1,
+    minTotal: 44.9,
+    hisp: 19.2
+  },
+  "North Carolina": {
+    white: 63,
+    minTotal: 37,
+    hisp: 9.4
+  },
+  "North Dakota": {
+    white: 84.4,
+    minTotal: 15.6,
+    hisp: 3.5
+  },
+  Ohio: {
+    white: 78.9,
+    minTotal: 21.1,
+    hisp: 3.7
+  },
+  Oklahoma: {
+    white: 65.6,
+    minTotal: 34.4,
+    hisp: 10.6
+  },
+  Oregon: {
+    white: 75.6,
+    minTotal: 24.4,
+    hisp: 13.1
+  },
+  Pennsylvania: {
+    white: 76.4,
+    minTotal: 23.6,
+    hisp: 7.3
+  },
+  "Rhode Island": {
+    white: 72.1,
+    minTotal: 27.9,
+    hisp: 15.4
+  },
+  "South Carolina": {
+    white: 63.6,
+    minTotal: 36.4,
+    hisp: 5.7
+  },
+  "South Dakota": {
+    white: 82.3,
+    minTotal: 17.7,
+    hisp: 3.6
+  },
+  Tennessee: {
+    white: 73.9,
+    minTotal: 26.1,
+    hisp: 5.4
+  },
+  Texas: {
+    white: 41.9,
+    minTotal: 58.1,
+    hisp: 39.4
+  },
+  Utah: {
+    white: 78.3,
+    minTotal: 21.7,
+    hisp: 14
+  },
+  Vermont: {
+    white: 92.8,
+    minTotal: 7.2,
+    hisp: 1.9
+  },
+  Virginia: {
+    white: 61.7,
+    minTotal: 38.3,
+    hisp: 9.3
+  },
+  Washington: {
+    white: 68.6,
+    minTotal: 31.4,
+    hisp: 12.7
+  },
+  "West Virginia": {
+    white: 92,
+    minTotal: 8,
+    hisp: 1.3
+  },
+  Wisconsin: {
+    white: 81.2,
+    minTotal: 18.8,
+    hisp: 6.9
+  },
+  Wyoming: {
+    white: 84,
+    minTotal: 16,
+    hisp: 10
+  },
+};
+// console.log('diversityPart1 :>> ', diversityPart1);
+// console.log('diversityPart1 :>> ', diversityPart1);
 
 var medAgeBySt = {
   Alabama: 4864680,
@@ -110,6 +630,7 @@ var over18PercBySt = {
   Wyoming: "76.9"
 };
 // console.log('over18PercBySt :>> ', over18PercBySt);
+
 // console.log('over18PercBySt :>> ', over18PercBySt['Colorado']);
 
 var populationBySt = {

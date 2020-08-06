@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Presidents</title>
+  <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>The "data-" attribute</h1>
+
+    <!-- Presidents will get dumped here -->
+    <div id="presidents-view"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+    <script type="text/javascript">
+      // Initial array of presidents
+      var presidents = ["Washington", "Adams", "Jefferson"];
+
+      // Function for displaying presidents
+      function render() {
+
+        // Looping through the array of presidents
+        for (var i = 0; i < presidents.length; i++) {
+
+          // Then dynamicaly generating buttons for each movie in the array.
+          var a = d3.select("#presidents-view").append("h2");
+          // Adding a class
+          a.attr("class", "prez")
+          // Adding a data- attribute with the name of the president
+          .attr("data-name", presidents[i])
+          // Adding a data- attribute with the number of the presidency
+          .attr("data-number", i+1)
+          // Setting the text of the HTML <h2> element to be the president's name
+          .text(presidents[i]);
+        }
+      }
+
+      // Call the function to render the page.
+      render();
+    </script>
+  </div>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 function counterUp(_props) {
-  console.log('test :>> ');
+  console.log('counterUp plugins :>> ');
 	"use strict";
 
 	this.defaults = {

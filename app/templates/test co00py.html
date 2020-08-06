@@ -96,7 +96,13 @@
       <div class="col-md-4 text-center">
         <div class="card bg-transparent">
           <div class="card-body bg-glass rounded-2xl">
-            <ul class="list-group bg-transparent border-0" id="hldr-diversity">
+            <ul class="list-group bg-transparent border-0">
+              <li>White Perc<span class="countup led-lg text-primary" id="stWhite"></span></li>
+              <li>Minority Total<span class="countup led-lg text-primary" id="stMinTotal"></span></li>
+              <li>Hisp Perc<span class="countup led-lg text-primary" id="stHisp"></span></li>
+              <li>Black Perc<span class="countup led-lg text-primary" id="stBlack"></span></li>
+              <li>Asian Perc<span class="countup led-lg text-primary" id="stAsian"></span></li>
+              <li>Native Perc<span class="countup led-lg text-primary" id="stNative"></span></li>
             </ul>
           </div>
         </div>
@@ -105,7 +111,16 @@
       <div class="col-md-4 text-center">
         <div class="card bg-transparent">
           <div class="card-body bg-glass rounded-2xl">
-            <ul class="list-group bg-transparent border-0" id="hlder-main">
+            <ul class="list-group bg-transparent border-0 holder-animated-main">
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- demographic profile -->
+      <div class="col-md-4 text-center">
+        <div class="card bg-transparent">
+          <div class="card-body bg-glass rounded-2xl">
+            <ul class="list-group bg-transparent border-0 holder">
             </ul>
           </div>
         </div>
@@ -282,10 +297,10 @@
     <script src="/static/assets/leaflet/st-focused.js"></script>
 
     <script src="/static/assets/timeseries/xtra/st-numbers.js"></script>
-    
+    <script src="/static/assets/timeseries/init.js"></script>
+
     <script src="/static/assets/tables/tb-lightest.js"></script>
     <script src="/static/plugins/count-up.js"></script>
-    <script src="/static/assets/timeseries/init.js"></script>
 
   </body>
 
