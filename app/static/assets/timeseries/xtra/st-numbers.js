@@ -150,11 +150,10 @@ function renderStateDemo ( dataReady ) { // countup st demographic
   d3.select("#hldr-diversity").selectAll("li").remove();
   dataReady.forEach(d => {
     console.log('d :>> ', d);
-    var li = d3.select("#hldr-diversity").append("li").classed('list-group-item bg-transparent py-0',true);
+    var li = d3.select("#hldr-diversity").append("li").classed('list-group-item bg-transparent text-lg py-0',true);
     li.text(d.label)
     .classed( 'text-light', true )
       ;
-
     li.append( "span" )
       .classed( 'countup led-lg text-primary', true )
       .html(d.value + " %")
@@ -163,8 +162,6 @@ function renderStateDemo ( dataReady ) { // countup st demographic
       .attr( 'cup-prepend', d.prepend )
       .attr( 'cup-append', d.append )
       ;
-
-    
   });
 // var presidents = ["Washington", "Adams", "Jefferson"];
 // function render() {
@@ -210,7 +207,7 @@ function renderStateMain ( dataReady ) { // countup st demographic
   d3.select("#hlder-main").selectAll("li").remove();
   dataReady.forEach(d => {
     console.log('d :>> ', d);
-    var li = d3.select("#hlder-main").append("li").classed('list-group-item bg-transparent py-0',true);
+    var li = d3.select("#hlder-main").append("li").classed('list-group-item bg-transparent text-lg py-0',true);
     li.text(d.label)
     .classed( 'text-light', true )
       ;

@@ -35,8 +35,8 @@ tbody td:last-child {
 .ovrly {
   border-radius: 1rem;
   padding: 4px 8px 4px 8px;
-  width: 50% !important;
-  height: 15rem !important;
+  width: 90% !important;
+  height: 10rem !important;
   max-height: 20rem !important;
 }
 
