@@ -74,53 +74,19 @@ function dropDownYearUp ( slideYear, csvData ) {
       data: options,
       names: names
     };
+
     return result;
+
   }
   $( '#opts' ).ddslick( {
     data: genDDoptions( csvData, slideYear ).data,
     defaultSelectedIndex: 5,
     onSelected: function ( d, i ) {
       const stateName = genDDoptions( csvData, slideYear ).names[ d.selectedIndex ];
-      console.log( 'stateName selected dropdown menu :>> ', stateName );
+
+      console.log( 'stateName :>> ', stateName );
       init( stateName );
+
     }
   } );
 }
-
-function dropDownLite (defIndex) {
-  console.log('test drop down lite :>> ');
-  function prepBasicMenu(){ 
-    const result=[];  // generate dropdown menu with req'd keys
-    const names =[];  // names req'd for init selected state flag
-
-    Object.keys(seatsByState).forEach(k => {
-      const name = k;
-      names.push(name)
-      result.push({
-        text: name,
-        // description: '',
-        description: `Num of Seats: ${seatsByState[ k ]}`,
-        value: name,
-        selected: false,
-        imageSrc: '/static/img/states/' + name.toLowerCase().replace( ' ', '-' ) + '-flag-small.png',
-      })
-      }
-    )
-
-    console.log('defIndex :>> ', defIndex);
-    return {data:result,names:names};
-  }
-  const basicMenuReady = prepBasicMenu();
-  $( '#opts2' ).ddslick( {
-    data: basicMenuReady.data,
-    defaultSelectedIndex: defIndex,
-    // truncateDescription: true,
-    onSelected: function ( d, i ) {
-      const stateName = basicMenuReady.names[ d.selectedIndex ];
-      console.log( 'stateName selected dropdown menu :>> ', stateName );
-      init( stateName );
-    }
-  } );
-
-}
-// dropDownLite (5);

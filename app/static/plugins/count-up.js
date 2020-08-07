@@ -1,5 +1,5 @@
 function counterUp(_props) {
-  console.log('counterUp plugins :>> ');
+  // console.log('counterUp plugins :>> ');
 	"use strict";
 
 	this.defaults = {
@@ -33,7 +33,7 @@ function counterUp(_props) {
 
 	this.domelems.forEach( function(el) {
 
-    console.log('el :>> ', el);
+    // console.log('el :>> ', el);
 		cur.obj = el;
 
 

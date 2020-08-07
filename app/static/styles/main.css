@@ -167,6 +167,10 @@ border-width: 4px; */
   font-size: 1rem;
 }
 
+.text-upmd {
+  font-size: 1.125rem;
+}
+
 .text-lg {
   font-size: 1.25rem;
 }

@@ -24,10 +24,10 @@ function init( stateName ) {
     timeSersPercUp( dataReady );
     gaugeUp( dataReady );
     updateImgTxt( stateName );
+    // dropDownYearUp ( 2016, data );
   } );
 }
 
-// dropDownYearUp ( 2016, data );
 // stNumsUpdate(stateName);
 // timeSersCountUp( dataRe4dy );
 
@@ -36,3 +36,4 @@ function updateImgTxt( state ) {
   d3.select( "#stName" ).text( state );
   d3.select( "#stFlag" ).attr( 'src', '../static/img/states/' + state.trim().toLowerCase().replace( ' ', '-' ) + '-flag-small.png' );
 }
+dropDownLite (5);

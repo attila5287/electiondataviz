@@ -137,7 +137,7 @@ function prepStateMain( state ) { // data prep array of objs
     result.push( obj );
   } );
   // console.log( 'result :>> ', result[ 3 ] );
-  console.log( 'result :>> ', result );
+  // console.log( 'result :>> ', result );
   return result;
 }
 
@@ -150,7 +150,7 @@ function renderStateDemo ( dataReady ) { // countup st demographic
   d3.select("#hldr-diversity").selectAll("li").remove();
 
   dataReady.forEach(d => {
-    console.log('d :>> ', d);
+    // console.log('d :>> ', d);
     var li = d3.select("#hldr-diversity").append("li").classed('nav-item bg-transparent text-md py-0',true);
     li.text(d.label)
     .classed( 'text-light', true )
@@ -172,7 +172,7 @@ function renderStateMain ( dataReady ) { // countup st demographic
   d3.select("#hlder-main").selectAll("li").selectAll("span").remove();
   d3.select("#hlder-main").selectAll("li").remove();
   dataReady.forEach(d => {
-    console.log('d :>> ', d);
+    // console.log('d :>> ', d);
     var li = d3.select("#hlder-main").append("li").classed('nav-item bg-transparent text-md text-nowrap py-0',true);
     li.text(d.label)
     .classed( 'text-light', true )

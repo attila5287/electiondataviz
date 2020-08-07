@@ -56,7 +56,7 @@
 
   <body class="bg-body-mini">
     <header>
-      <nav class="navbar nav-mini navbar-expand-md navbar-dark fixed-top bg-theme">
+      <nav class="navbar nav-mini navbar-expand-sm navbar-dark fixed-top bg-theme">
         <a class="navbar-brand bg-transparent border-0 rounded-xl add-anime mx-1 p-0"
           href="https://electiondataviz.herokuapp.com/">
           <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 30px;" alt="navbar-icon">
@@ -84,8 +84,8 @@
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
-            <select class="" id="opts">
-            </select>
+            <select id="opts"></select>
+            <select id="opts2"></select>
           </form>
         </div>
       </nav>
@@ -175,9 +175,9 @@
                   </div>
                 </div>>
                 <!-- flag -->
-                <div class="card bg-transparent">
-                  <img class="card-img ovrly text-left opac-30 p-4" src="../static/img/states/colorado-flag-small.png"
-                    alt="state-flag" id="stFlag">
+                <div class="card bg-transparent text-center">
+                  <img class="card-img opac-30 p-4" src="../static/img/states/colorado-flag-small.png"
+                    alt="state-flag" id="stFlag" style="max-height:10rem;max-width:25rem">
                   <div class="card-img-overlay bg-glass rounded-2xl text-right py-1 mt-4 mb-4">
                   </div>
                 </div>
