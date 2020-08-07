@@ -8,7 +8,7 @@ function barsCountUp ( dataReady ) {
   }
   // Step 1: Set up our chart
   let svgWidth = $( `#bars-count` ).width();
-  let svgHeight = 0.35 * svgWidth;
+  let svgHeight = 0.40 * svgWidth;
   let margin = {
     top: 20,
     right: 50,
@@ -194,7 +194,7 @@ function barsPercUp ( dataReady ) {
   }
   // Step 1: Set up our chart
   let svgWidth = $( `#bars-perc` ).width();
-  let svgHeight = 0.35 * svgWidth;
+  let svgHeight = 0.40 * svgWidth;
   let margin = {
     top: 20,
     right: 50,

@@ -148,9 +148,10 @@ function renderStateDemo ( dataReady ) { // countup st demographic
   // console.log('dataReady :>> ', dataReady);
   d3.select("#hldr-diversity").selectAll("li").selectAll("span").remove();
   d3.select("#hldr-diversity").selectAll("li").remove();
+
   dataReady.forEach(d => {
     console.log('d :>> ', d);
-    var li = d3.select("#hldr-diversity").append("li").classed('list-group-item bg-transparent text-lg py-0',true);
+    var li = d3.select("#hldr-diversity").append("li").classed('nav-item bg-transparent text-md py-0',true);
     li.text(d.label)
     .classed( 'text-light', true )
       ;
@@ -163,41 +164,6 @@ function renderStateDemo ( dataReady ) { // countup st demographic
       .attr( 'cup-append', d.append )
       ;
   });
-// var presidents = ["Washington", "Adams", "Jefferson"];
-// function render() {
-//   for (var i = 0; i < presidents.length; i++) {
-//     // Then dynamicaly generating buttons for each movie in the array.
-//     var a = d3.select("#presidents-view").append("h2");
-//     // Adding a class
-//     a.attr("class", "prez")
-//     // Adding a data- attribute with the name of the president
-//     .attr("data-name", presidents[i])
-//     // Adding a data- attribute with the number of the presidency
-//     .attr("data-number", i+1)
-//     // Setting the text of the HTML <h2> element to be the president's name
-//     .text(presidents[i]);
-//   }
-// }
-
-// // Call the function to render the page.
-// render();
-
-  // const list =listElements = d3
-  //   .select( '.hldr' )
-  //   .data( dataReady )
-  //   .attr( 'class', 'bg-transparent')
-  //   ;
-  //   listElements
-  //   .selectAll("li")
-  //   .enter()
-  //   .append( "span" )
-  //   .classed( 'countup led-lg text-primary', true )
-  //   .attr( 'cup-end', d => d.value )
-  //   .attr( 'cup-append', d => d.append )
-  //   .attr( 'cup-prepend', d => d.prepend )
-  //   .exit()
-  //   .remove()
-  //   ;
 
 } 
 
@@ -207,13 +173,13 @@ function renderStateMain ( dataReady ) { // countup st demographic
   d3.select("#hlder-main").selectAll("li").remove();
   dataReady.forEach(d => {
     console.log('d :>> ', d);
-    var li = d3.select("#hlder-main").append("li").classed('list-group-item bg-transparent text-lg py-0',true);
+    var li = d3.select("#hlder-main").append("li").classed('nav-item bg-transparent text-md text-nowrap py-0',true);
     li.text(d.label)
     .classed( 'text-light', true )
       ;
 -+98
     li.append( "span" )
-      .classed( 'countup led-lg text-primary', true )
+      .classed( 'countup led-horizontal text-primary', true )
       .html(d.value + " %")
       .attr( 'cup-start', 0 )
       .attr( 'cup-end', d.value )
