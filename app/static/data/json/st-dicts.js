@@ -1,4 +1,31 @@
-var ddNameIdx = {
+var prezCandsByYr = {
+  p1976r: "Ford, Gerald",
+  p1980r: "Reagan, Ronald",
+  p1984r: "Reagan, Ronald",
+  p1988r: "Bush, George H.W.",
+  p1992r: "Bush, George H.W.",
+  p1996r: "Dole, Robert",
+  p2000r: "Bush, George W.",
+  p2004r: "Bush, George W.",
+  p2008r: "McCain, John",
+  p2012r: "Romney, Mitt",
+  p2016r: "Trump, Donald J.",
+  p1976d: "Carter, Jimmy",
+  p1980d: "Carter, Jimmy",
+  p1984d: "Mondale, Walter",
+  p1988d: "Dukakis, Michael",
+  p1992d: "Clinton, Bill",
+  p1996d: "Clinton, Bill",
+  p2000d: "Gore, Al",
+  p2004d: "Kerry, John",
+  p2008d: "Obama, Barack H.",
+  p2012d: "Obama, Barack H.",
+  p2016d: "Clinton, Hillary"
+};
+
+console.log('prezCandsByYr :>> ', prezCandsByYr);
+
+var indexNoBySt = {
   Alabama: 0,
   Alaska: 1,
   Arizona: 2,
@@ -51,8 +78,7 @@ var ddNameIdx = {
   Wisconsin: 49,
   Wyoming: 50
 };
-
-console.log('ddNameIdx :>> ', ddNameIdx);
+// console.log('indexByState :>> ', indexNoBySt);
 
 var diversityPart2 = {
   Alabama:  {

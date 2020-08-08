@@ -345,7 +345,19 @@ function barsPercUp ( dataReady ) {
     .tip()
     .attr( "class", "tooltip" )
     .offset( [ 40, -30 ] )
-    .html( d => `<strong class="mt-2 mx-4 mb-0">${format( d.perc )}</strong><hr class="my-0"><strong class="mt-0 mb-3">${d.year}</strong>` );
+    .html( d => `
+    <img class="toolt1p border-0 bg-transparent opac-60"
+        src="../static/img/cands/p${d.ye4r}${d.nam3}.jpg" 
+        alt="cand-img">
+     <strong class="mt-2 mx-4 mb-0">
+      ${format( d.perc )}
+      <hr class="my-0">
+      ${ prezCandsByYr[`p${d.ye4r}${d.nam3}`]}
+     </strong>
+     <hr class="my-0">
+     <strong class="mt-0 mb-3">${d.ye4r}</strong>
+     `
+     );
 
   barsGroup.call( toolTip );
   barsGroup.on( "mouseover", function ( d, i ) {

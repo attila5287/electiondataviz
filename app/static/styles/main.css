@@ -32,10 +32,11 @@ tbody td:last-child {
   max-height: 55px !important;
 }
 
-.ovrly {
-  border-radius: 1rem;
+.toolt1p {
+  opacity: 0.5;
+  border-radius: 2rem;
   padding: 4px 8px 4px 8px;
-  width: 90% !important;
+  max-width: 45rem !important;
   height: 10rem !important;
   max-height: 20rem !important;
 }

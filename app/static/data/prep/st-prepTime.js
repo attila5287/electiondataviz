@@ -57,7 +57,12 @@ function prepTimeSerData( data, state ) {// console.log( 'state :>> ', state );
     redPerc[ "perc" ] = redCount[ "count" ] / sumEach;
     bluePerc[ "year" ] = +d.key;
     bluePerc[ "perc" ] = blueCount[ "count" ] / sumEach;
-
+    
+    // these four only req'd for tooltip to show img's
+    redPerc[ "ye4r" ] = +d.key;
+    redPerc[ "nam3" ] = 'r';
+    bluePerc[ "ye4r" ] = +d.key;
+    bluePerc[ "nam3" ] = 'd';
     redsP.values.push( redPerc );
     bluesP.values.push( bluePerc );
   } );
