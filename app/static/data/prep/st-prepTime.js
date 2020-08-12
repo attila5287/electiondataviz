@@ -36,12 +36,19 @@ function prepTimeSerData( data, state ) {// console.log( 'state :>> ', state );
     let redPerc = {};
     let sumEach = 0;
     // console.log( 'year; :>> ', d.key );
+    
+    // year and count is necessary for data viz
+    // ye4r and nam3 only needed for extravaganza tooltip
 
     blueCount[ "year" ] = +d.key;
     blueCount[ "count" ] = +d.values.filter( d => d.key == "democrat" )[ 0 ].value;
+    blueCount[ "ye4r" ] = +d.key;
+    blueCount[ "nam3" ] = 'd';
 
 
     redCount[ "year" ] = +d.key;
+    redCount[ "ye4r" ] = +d.key;
+    redCount[ "nam3" ] = 'r';
     redCount[ "count" ] = +d.values.filter( d => d.key == "republican" )[ 0 ].value;
 
     redsV.values.push( redCount );

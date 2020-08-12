@@ -1,11 +1,11 @@
 // console.log('test global var seatByStatePO :>> ', seatByStatePO);
 // console.log('test global var nameByStatePO :>> ', nameByStatePO);
 var urlPrezT3st = '../static/data/csv/president.csv';
-var urlTickets = '../static/data/csv/prezTickets.csv';
+var urlTickets  = '../static/data/csv/prezTickets.csv';
 
 
 function prezTableUp( url, year ) {
-  console.log('test :>> ', url);
+  // console.log('test :>> ', url);
   // d3.select( "#table-goes-here" )
   //   .select( "table" )
   //   .remove();
@@ -222,7 +222,7 @@ function prezTableUp( url, year ) {
       row[ "StateName" ] = nameByStatePO[ d.key ];
       row[ "REP" ] = d.values.filter( z => z.key == "republican" )[ 0 ].value / sumEach * 100;
       row[ "DEM" ] = d.values.filter( z => z.key == "democrat" || z.key == 'democratic-farmer-labor' )[ 0 ].value / sumEach * 100;
-      row[ "Others" ] = 100 - row[ "REP" ] - row[ "DEM" ];
+      row[ "Margin" ] = Math.abs(row[ "REP" ] - row[ "DEM" ]);
       row[ "Seats" ] = seatByStatePO[ d.key ];
       row[ "PO" ] = d.key;
       // console.log('row :>> ', row);
@@ -243,6 +243,7 @@ function prezTableTopUp( year ) {
         console.error( error );
       } else {
         function slideWinner( data, sliderYear ) {
+          houseSeatsCirclesUp( data, +this.value );
           // [ "year", "president", "party", "prior" ]
           console.log( 'prezWinnersUp sliderYear :>> ', sliderYear );
           const d = data.filter( d => d[ "year" ] == sliderYear )[ 0 ];
@@ -256,7 +257,10 @@ function prezTableTopUp( year ) {
 
         // --------------------- SLIDER ----------------
         d3.select( "#slider" ).on( "input", function () {
+          
           slideWinner( data, +this.value );
+          
+
         } );
 
 
@@ -264,13 +268,12 @@ function prezTableTopUp( year ) {
     } );
 }
 
-prezTableUp( urlPrezT3st, 2016 );
-prezTableTopUp( 2016 );
-
-
-
 function candsVotesUp( yearUpdated ) {
   d3.csv( urlTickets, function ( err, data ) {
+    //--- add house seats colored circles
+    houseSeatsCirclesUp( data, yearUpdated);
+
+    //--- the end ---
     const nested = d3.nest()
       .key( d => d.party )
       .entries( data.filter( d => d[ "year" ] == yearUpdated ) );
@@ -322,3 +325,5 @@ d3.select( '#blue-house-seats' ).text( Math.round(blue[ "eleVo" ]*535/100) );
 }
 
 candsVotesUp( 2016 );
+prezTableUp( urlPrezT3st, 2016 );
+prezTableTopUp( 2016 )

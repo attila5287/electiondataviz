@@ -159,7 +159,20 @@ function barsCountUp ( dataReady ) {
     .tip()
     .attr( "class", "tooltip" )
     .offset( [ 40, -30 ] )
-    .html( d => `<strong class="mt-2 mx-4 mb-0">${format( d.count )}</strong><hr class="my-0"><strong class="mt-0 mb-3">${d.year}</strong>` );
+    .html( d => 
+    `<div class="card rounded-2xl bg-transparent text-bold text-balo text-light">
+      <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/cands/p${d.ye4r}${d.nam3}.jpg" alt="tooltip-img">
+      <div class="card-body shadow-turqoise">
+        <h5 class="card-title text-light">
+          ${ prezCandsByYr[`p${d.ye4r}${d.nam3}`]}
+        </h5>
+        <hr class="my-0 border-secondary opac-30>
+        <p class="card-title my-0">
+          ${format( d.count )} @ ${d.ye4r}
+        </p>
+      </div>
+    </div>`
+    );
 
   barsGroup.call( toolTip );
   barsGroup.on( "mouseover", function ( d, i ) {
@@ -346,16 +359,18 @@ function barsPercUp ( dataReady ) {
     .attr( "class", "tooltip" )
     .offset( [ 40, -30 ] )
     .html( d => `
-    <img class="toolt1p border-0 bg-transparent opac-60"
-        src="../static/img/cands/p${d.ye4r}${d.nam3}.jpg" 
-        alt="cand-img">
-     <strong class="mt-2 mx-4 mb-0">
-      ${format( d.perc )}
-      <hr class="my-0">
-      ${ prezCandsByYr[`p${d.ye4r}${d.nam3}`]}
-     </strong>
-     <hr class="my-0">
-     <strong class="mt-0 mb-3">${d.ye4r}</strong>
+    <div class="card rounded-2xl bg-transparent text-bold text-balo text-light">
+      <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/cands/p${d.ye4r}${d.nam3}.jpg" alt="cand-img">
+      <div class="card-body shadow-turqoise">
+        <h5 class="card-title text-light">
+          ${ prezCandsByYr[`p${d.ye4r}${d.nam3}`]}
+        </h5>
+        <hr class="my-0 border-secondary opac-30>
+        <p class="card-title my-0">
+          ${format( d.perc )} @ ${d.ye4r}
+        </p>
+      </div>
+    </div>
      `
      );
 

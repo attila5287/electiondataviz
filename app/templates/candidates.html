@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
   <head>
@@ -36,157 +35,151 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
     <title>US Election 2020</title>
-
   </head>
+  <style>
+    #map {
+      height: 250px;
+      width: 100%;
+    }
 
-  <body class="bg-body" style="margin-top: 60px;">
-    <header>
-      <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-theme justify-content-md-center py-1 my-0">
-        <a class="navbar-brand bg-transparent mx-0 p-0 border-0 rounded-xl add-anime"
-          href="https://electiondataviz.herokuapp.com/">
-          <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 3rem;" alt="navbar-icon">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-md-center bg-theme" id="navbarCollapse">
-          <ul class="navbar-nav justify-content-center text-center">
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/timeseries">
-              <i class="fas fa-chart-line fa-fw text-onerem mt-1"></i>
-              <p class="mb-0 text-comfo text-onerem">TimeSrs</p>
-            </a>
-            <a class="nav-item nav-link active bg-transparent rounded-xl add-anime" href="/candidates">
-              <i class="fas fa-users fa-fw text-onerem mt-1"></i>
-              <p class="mb-0 text-comfo text-onerem">Cand's</p>
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime" href="/map">
-              <i class="fas fa-globe-americas fa-fw text-onerem mt-1"></i>
-              <p class="py-0 my-0 text-comfo text-onerem"> Map</p>
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
-              <h6 class="text-light opac-90 " aria-hidden="true">
-                <strong>
-                  Democrats
-                </strong>
-              </h6>
-              <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="blue-popvote-perc">
-                00.0
-                <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
-              </p>
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime mx-0 px-0"
-              href="https://electiondataviz.herokuapp.com/">
-              <img class="opac-50 m-0 px-0 py-0" src="/static/img/election/ballot.png" style="height: 3rem;"
-                alt="navbar-icon">
-              <p class="text-xs text-nowrap mb-0 opac-50"><strong>Popular Vote</strong></p>
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
-              <h6 class="text-light opac-90 " aria-hidden="true">
-                <strong>
-                  Republicans
-                </strong>
-              </h6>
-              <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="red-popvote-perc">
-                00.0
-                <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
-              </p>
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
-              <p class="led-xl mb-0 mt-2" id="sliderValue">
-                2016
-              </p>
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
-              <h6 class="text-light opac-90 " aria-hidden="true">
-                <strong>
-                  Democrats
-                </strong>
-              </h6>
-              <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="blue-elecvote-perc">
-                00.0
-                <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
-              </p>
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime"
-              href="https://electiondataviz.herokuapp.com/">
-              <img class="opac-70 m-0 px-0 py-0" src="/static/img/election/ball0t.png" style="height: 4rem;"
-                alt="navbar-icon">
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
-              <h6 class="text-light opac-90 " aria-hidden="true">
-                <strong>
-                  Republicans
-                </strong>
-              </h6>
-              <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="red-elecvote-perc">
-                00.0
-                <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
-              </p>
-            </a>
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
-              <h6 class="text-light opac-90 " aria-hidden="true">
-                <strong>
-                  Democrats
-                </strong>
-              </h6>
-              <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="blue-house-seats">
-                000
-              </p>
-            </a>
+    html,
+    body {
+      height: 100%;
+      max-width: 100%;
+    }
+  </style>
 
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime"
-              href="https://electiondataviz.herokuapp.com/">
-              <img class="opac-70 m-0 px-0 py-0" src="/static/img/election/seat.png" style="height: 4rem;"
-                alt="navbar-icon">
-            </a>
+  <body class="bg-body" style="margin-top: 0px;">
+    <footer>
+      <!-- not-Fixed navbar -->
+      <nav
+        class="navbar nav-mini navbar-expand-sm fixed-bottom  navbar-dark bg-theme justify-content-sm-start py-1 my-0">
+        <ul class="nav">
+          <a class="navbar-brand bg-transparent mx-0 p-0 border-0 rounded-xl"
+            href="https://electiondataviz.herokuapp.com/">
+            <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 3rem;"
+              alt="navbar-icon">
+          </a>
+          <a class="nav-item nav-link bg-transparent rounded-xl" href="/timeseries">
+            <i class="fas fa-chart-line fa-fw text-onerem mt-1"></i>
+            <p class="mb-0 text-comfo text-onerem">TimeSrs</p>
+          </a>
+          <a class="nav-item nav-link active bg-transparent rounded-xl" href="/candidates">
+            <i class="fas fa-users fa-fw text-onerem mt-1"></i>
+            <p class="mb-0 text-comfo text-onerem">Cand's</p>
+          </a>
+          <a class="nav-item nav-link bg-transparent rounded-xl" href="/map">
+            <i class="fas fa-globe-americas fa-fw text-onerem mt-1"></i>
+            <p class="py-0 my-0 text-comfo text-onerem"> Map</p>
+          </a>
+        </ul>
+        <ul class="nav justify-content-center text-center">
+          <a class="nav-item nav-link bg-theme rounded-xl disabled">
+            <h6 class="text-light opac-90 " aria-hidden="true">
+              <strong>
+                Democrats
+              </strong>
+            </h6>
+            <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+              id="blue-popvote-perc">
+              00.0
+              <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
+            </p>
+          </a>
+          <a class="nav-item nav-link disabled mx-0 px-0" href="https://electiondataviz.herokuapp.com/">
+            <img class="opac-50 m-0 px-0 py-0" src="/static/img/election/ballot.png" style="height: 3rem;"
+              alt="navbar-icon">
+            <p class="text-xs text-nowrap mb-0 opac-50"><strong>Popular Vote</strong></p>
+          </a>
+          <a class="nav-item nav-link bg-theme rounded-xl disabled">
+            <h6 class="text-light opac-90 " aria-hidden="true">
+              <strong>
+                Republicans
+              </strong>
+            </h6>
+            <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+              id="red-popvote-perc">
+              00.0
+              <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
+            </p>
+          </a>
+          <a class="nav-item nav-link bg-theme rounded-xl disabled">
+            <p class="led-xl mb-0 mt-2" id="sliderValue">
+              2016
+            </p>
+          </a>
+          <a class="nav-item nav-link bg-theme rounded-xl disabled">
+            <h6 class="text-light opac-90 " aria-hidden="true">
+              <strong>
+                Democrats
+              </strong>
+            </h6>
+            <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+              id="blue-elecvote-perc">
+              00.0
+              <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
+            </p>
+          </a>
+          <a class="nav-item nav-link disabled mx-0 px-0" href="https://electiondataviz.herokuapp.com/">
+            <img class="opac-70 m-0 px-0 py-0" src="/static/img/election/ball0t.png" style="height: 4rem;"
+              alt="navbar-icon">
+          </a>
+          <a class="nav-item nav-link bg-theme rounded-xl disabled">
+            <h6 class="text-light opac-90 " aria-hidden="true">
+              <strong>
+                Republicans
+              </strong>
+            </h6>
+            <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+              id="red-elecvote-perc">
+              00.0
+              <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
+            </p>
+          </a>
+          <a class="nav-item nav-link bg-theme rounded-xl disabled">
+            <h6 class="text-light opac-90 " aria-hidden="true">
+              <strong>
+                Democrats
+              </strong>
+            </h6>
+            <p class="rounded-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+              id="blue-house-seats">
+              000
+            </p>
+          </a>
 
-            <a class="nav-item nav-link bg-transparent rounded-xl add-anime disabled">
-              <h6 class="text-light opac-90 " aria-hidden="true">
-                <strong>
-                  Republicans
-                </strong>
-              </h6>
-              <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-                id="red-house-seats">
-                000
-              </p>
-            </a>
+          <a class="nav-item nav-link disabled mx-0 px-0" href="https://electiondataviz.herokuapp.com/">
+            <img class="opac-70 m-0 px-0 py-0" src="/static/img/election/seat.png" style="height: 4rem;"
+              alt="navbar-icon">
+          </a>
 
-            <!-- <a class="nav-item nav-link bg-transparent"> -->
-            <!-- <select class="bg-transparent" id="opts">
-              </select> -->
-            <!-- </a> -->
+          <a class="nav-item nav-link bg-theme rounded-xl disabled">
+            <h6 class="text-light opac-90 " aria-hidden="true">
+              <strong>
+                Republicans
+              </strong>
+            </h6>
+            <p class="rounded-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
+              id="red-house-seats">
+              000
+            </p>
+          </a>
 
-          </ul>
-        </div>
+        </ul>
       </nav>
-    </header>
-
-    <style>
-      #map {
-        height: 250px;
-        width: 100%;
-      }
-    </style>
+    </footer>
 
     <div class="row">
-      <div class="col-sm-3 text-center">
-        <table class="table table-sm bg-transparent table-borderless text-center text-comfo mt-1">
+      <div class="col-md-3 text-center">
+        <table class="table table-sm bg-transparent table-borderless text-center text-comfo mt-0">
           <thead class="bg-theme text-comfo text-light">
             <tr>
               <th>Flag</th>
               <th>State</th>
               <th>Rep</th>
               <th>Dem</th>
-              <th>Difference</th>
-              <th>Seat Ct.</th>
+              <th>Margin</th>
+              <th>SeatCt.</th>
               <th>PO</th>
             </tr>
           </thead>
@@ -219,8 +212,8 @@
           </tbody>
         </table>
       </div>
-      <div class="col-sm-6 text-center">
-        <fieldset class="form-group steamy mx-2 mt-2 py-2 px-3 rounded-xl bg-transparent shadow-after text-center">
+      <div class="col-md-6 text-center">
+        <fieldset class="form-group steamy mx-2 mt-2 py-2 px-3 rounded-xl bg-theme shadow-after text-center">
           <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1">
             <i>1976</i>
             <i>1980</i>
@@ -240,88 +233,86 @@
         <div class="d-flex flex-row justify-content-around">
           <div class="card-deck cands">
             <div class="card bg-transparent text-center text-light rounded-3xl mx-0 p-2">
-              <img class="card-img-bottom bg-transparent text-center opac-60 rounded-3xl p-3  mt-2 mb-1"
-                src="../static/img/cands/vp2016d.jpg" alt="cand-img"
-                style="box-shadow:0 0 4px 8px #01325296 inset;" id="dem-vp-img">
+              <img class="card-img ovrly bg-transparent text-center opac-60 rounded-3xl p-3  mt-2 mb-1"
+                src="../static/img/cands/vp2016d.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
+                id="dem-vp-img">
 
-              <div class="card-body py-1 mb-1">
-                <p class=" card-text bg-ocean text-titlecase text-comfo rounded-2xl p-1" id="dem-vp">
+              <div class="card-img-overlay py-1 mb-1">
+                <p class=" card-text text-titlecase text-comfo rounded-2xl p-1" id="dem-vp">
                   ...
                 </p>
               </div>
-              <div class="card-footer py-1 mb-1" id="dem-vp-prior"> 
+              <div class="card-footer text-nowrap py-0 my-0" id="dem-vp-prior">
               </div>
             </div>
             <div class="card bg-transparent text-center text-light rounded-3xl mx-0 p-2">
-              <img class="card-img-bottom bg-transparent text-center opac-60 rounded-3xl p-3  mt-2 mb-1"
-                src="../static/img/cands/p2016d.jpg" 
-                alt="cand-img"
-                style="box-shadow:0 0 4px 8px #01325296 inset;" id="dem-prez-img">
-              <div class="card-body py-1 mb-1">
-                <p class=" card-text bg-ocean text-titlecase text-comfo rounded-2xl p-1" id="dem-prez">
+              <img class="card-img ovrly bg-transparent text-center opac-60 rounded-3xl p-3  mt-2 mb-1"
+                src="../static/img/cands/p2016d.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
+                id="dem-prez-img">
+              <div class="card-img-overlay py-1 mb-1">
+                <p class=" card-text text-titlecase text-comfo rounded-2xl p-1" id="dem-prez">
                   ...
                 </p>
               </div>
-              <div class="card-footer py-1 mb-1" id="dem-prez-prior">
+              <div class="card-footer text-nowrap py-0 my-0" id="dem-prez-prior">
               </div>
             </div>
-              <div class="card bg-transparent text-center text-light rounded-3xl mx-0 p-2">
-              <img class="card-img-bottom bg-transparent text-center opac-30 rounded-3xl p-3  mt-2 mb-1"
-                src="../static/img/party/republican.png"
-                alt="cand-img"
-                style="box-shadow:0 0 4px 8px #01325296 inset;" id="party-img">
+            <div class="card bg-transparent text-center text-light rounded-3xl mx-0 p-2">
+              <img class="card-img ovrly bg-transparent text-center opac-30 rounded-3xl p-3  mt-2 mb-1"
+                src="../static/img/party/republican.png" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
+                id="party-img">
 
-              <div class="card-body py-1 mb-1">
+              <div class="card-img-overlay py-1 mb-1">
                 <p class=" card-title text-lg  text-outlined text-dark" id="prez-name">
                   Trump, Donald J
                 </p>
-              </div>
-              <div class="card-footer py-1 mb-1" id="party-name">
-                republican
+                <div class="card-footer text-nowrap py-0 my-0" id="party-name">
+                  republican
+                </div>
               </div>
             </div>
             <div class="card bg-transparent text-center text-light rounded-3xl mx-0 p-2">
-              <img class="card-img-bottom bg-transparent text-center opac-60 rounded-3xl p-3  mt-2 mb-1"
-                src="../static/img/cands/p2016r.jpg"alt="cand-img"
-                style="box-shadow:0 0 4px 8px #01325296 inset;" id="rep-prez-img">
+              <img class="card-img ovrly bg-transparent text-center opac-60 rounded-3xl p-3  mt-2 mb-1"
+                src="../static/img/cands/p2016r.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
+                id="rep-prez-img">
 
-              <div class="card-body py-1 mb-1">
-                <p class=" card-text bg-brick text-titlecase text-comfo rounded-2xl p-1" id="rep-prez">
+              <div class="card-img-overlay py-1 mb-1">
+                <p class=" card-text text-titlecase text-comfo rounded-2xl p-1" id="rep-prez">
                   ...
                 </p>
               </div>
-              <div class="card-footer py-1 mb-1" id="rep-prez-prior">
+              <div class="card-footer text-nowrap py-0 my-0" id="rep-prez-prior">
               </div>
             </div>
             <div class="card bg-transparent text-center text-light rounded-3xl mx-0 p-1 mb-2">
-              <img class="card-img-bottom bg-transparent text-center opac-60 rounded-3xl p-3  mt-2 mb-1"
-                src="../static/img/cands/vp2016r.jpg"
-                alt="cand-img"
-                style="box-shadow:0 0 4px 8px #01325296 inset;" id="rep-vp-img">
+              <img class="card-img ovrly bg-transparent text-center opac-60 rounded-3xl p-3  mt-2 mb-1"
+                src="../static/img/cands/vp2016r.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
+                id="rep-vp-img">
 
-              <div class="card-body py-1 mb-1">
-                <p class=" card-text bg-brick text-titlecase text-comfo rounded-2xl p-1" id="rep-vp">
+              <div class="card-img-overlay py-1 mb-1">
+                <p class=" card-text text-titlecase text-comfo rounded-2xl p-1" id="rep-vp">
                   ...
                 </p>
               </div>
-              <div class="card-footer py-1 mb-1" id="rep-vp-prior"></div>
+              <div class="card-footer text-nowrap py-0 my-0" id="rep-vp-prior"></div>
             </div>
           </div>
         </div>
+        <div id="house-seats"></div>
 
-            <div class="container shadow-before rounded-3xl" id="map"></div>
+        <div class="container shadow-before rounded-3xl" id="map"></div>
 
       </div>
-      <div class="col-sm-3 text-center">
-        <table class="table table-sm bg-transparent table-borderless text-center text-comfo mt-1">
+      <div class="col-md-3 text-center">
+        <table class="table table-sm bg-transparent table-borderless text-center text-comfo mt-0">
           <thead class="bg-theme text-comfo text-light">
             <tr>
               <th>Flag</th>
               <th>State</th>
               <th>Rep</th>
               <th>Dem</th>
-              <th>Difference</th>
-              <th>Seat Ct.</th>
+              <th>Margin</th>
+              <th>SeatCt.</th>
               <th>PO</th>
             </tr>
           </thead>
@@ -356,7 +347,9 @@
         </table>
       </div>
     </div>
-    
+
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -374,6 +367,8 @@
 
     <script src="/static/assets/leaflet/sm-map-slider.js"></script>
     <script src="/static/assets/candidates/cands.js"></script>
+    <script src="/static/assets/candidates/prepRadial.js"></script>
+    <script src="/static/assets/candidates/circles-houseseats.js"></script>
 
   </body>
 

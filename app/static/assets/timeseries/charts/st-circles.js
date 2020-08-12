@@ -1,6 +1,6 @@
 function timeSersPercUp ( dataReady ) {
   const svgArea = d3.select( `#time-series-perc` ).select( "svg" );
-  // clear svg is not empty
+  // step ground-zero: clear svg is not empty
   if ( !svgArea.empty() ) {
     svgArea.remove();
   }
@@ -125,7 +125,7 @@ function timeSersPercUp ( dataReady ) {
   let myColor = {};
   myColor[ dataReady.blue.perc.name ] = "#01018B";
   myColor[ dataReady.red.perc.name ] = "#8A0101";
-
+  
   // Add the points
   let circlesGroup = chartGroup
     // First we need to enter in a group
@@ -160,7 +160,20 @@ function timeSersPercUp ( dataReady ) {
     .tip()
     .attr( "class", "tooltip" )
     .offset( [ 40, -30 ] )
-    .html( d => `<strong class="mt-2 mx-4 mb-0">${format( d.perc )}</strong><hr class="my-0"><strong class="mt-0 mb-3">${d.year}</strong>` );
+    .html( d => `
+    <div class="card rounded-2xl bg-transparent text-bold text-balo text-light">
+      <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/cands/p${d.ye4r}${d.nam3}.jpg" alt="cand-img">
+      <div class="card-body shadow-turqoise">
+        <h5 class="card-title text-light">
+          ${ prezCandsByYr[`p${d.ye4r}${d.nam3}`]}
+        </h5>
+        <hr class="my-0 border-secondary opac-30>
+        <p class="card-title my-0">
+          ${format( d.perc )} @ ${d.ye4r}
+        </p>
+      </div>
+    </div>
+    ` );
 
   circlesGroup.call( toolTip );
   circlesGroup.on( "mouseover", function ( d, i ) {
@@ -304,7 +317,7 @@ function timeSersCountUp ( dataReady ) {
   myColor[ dataReady.red.count.name ] = "#8A0101";
 
   // Add the points
-  let circlesGroup = chartGroup
+   let circlesGroup = chartGroup
     // First we need to enter in a group
     .selectAll( "myDots" )
     .data(
@@ -331,13 +344,24 @@ function timeSersCountUp ( dataReady ) {
     .attr( "cy", d => y( d.count ) );
 
 
-  
-
   let toolTip = d3
     .tip()
     .attr( "class", "tooltip" )
     .offset( [ 40, -30 ] )
-    .html( d => `<strong class="mt-2 mx-4 mb-0">${format( d.count )}</strong><hr class="my-0"><strong class="mt-0 mb-3">${d.year}</strong>` );
+    .html( d => `
+        <div class="card rounded-2xl bg-transparent text-bold text-balo text-light">
+      <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/cands/p${d.ye4r}${d.nam3}.jpg" alt="cand-img">
+      <div class="card-body shadow-turqoise">
+        <h5 class="card-title text-light">
+          ${ prezCandsByYr[`p${d.ye4r}${d.nam3}`]}
+        </h5>
+        <hr class="my-0 border-secondary opac-30>
+        <p class="card-title my-0">
+          ${format( d.perc )} @ ${d.ye4r}
+        </p>
+      </div>
+    </div>
+    ` );
 
   circlesGroup.call( toolTip );
   circlesGroup.on( "mouseover", function ( d, i ) {

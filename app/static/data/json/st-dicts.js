@@ -23,7 +23,7 @@ var prezCandsByYr = {
   p2016d: "Clinton, Hillary"
 };
 
-console.log('prezCandsByYr :>> ', prezCandsByYr);
+// console.log('prezCandsByYr :>> ', prezCandsByYr);
 
 var indexNoBySt = {
   Alabama: 0,

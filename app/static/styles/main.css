@@ -305,6 +305,10 @@ h6 {
   padding: 10px 20px;
 }
 
+.rounded-arc {
+  border-radius: 49% 49% 7% 7% ;
+}
+
 .rounded-qtr {
   border-radius: 7% / 13%;
 }
@@ -837,13 +841,6 @@ padding:1rem;
 border-radius:2rem;
 }
 
-/* set map, body, and html to 100% of the screen size */
-body,
-html {
-  width: 100%;
-  height: 100%;
-}
-
 
 .steamy {
   border: 0px solid turquoise;
@@ -928,4 +925,11 @@ html {
   height: 40px !important;
   max-height: 45px !important;
 
+}
+
+/* set map, body, and html to 100% of the screen size */
+body,
+html {
+  width: 99.4%;
+  height: 99%;
 }
