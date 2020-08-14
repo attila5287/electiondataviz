@@ -3,7 +3,6 @@
 var urlPrezT3st = '../static/data/csv/president.csv';
 var urlTickets  = '../static/data/csv/prezTickets.csv';
 
-
 function prezTableUp( url, year ) {
   // console.log('test :>> ', url);
   // d3.select( "#table-goes-here" )
@@ -17,7 +16,7 @@ function prezTableUp( url, year ) {
   d3.csv( url, ( error, data ) => {
     if ( error ) {
       console.error( error );
-    } else {
+    } else {// 
       const rowsData = dataPrepRows( data );
 
       let arr = [];
@@ -327,3 +326,5 @@ d3.select( '#blue-house-seats' ).text( Math.round(blue[ "eleVo" ]*535/100) );
 candsVotesUp( 2016 );
 prezTableUp( urlPrezT3st, 2016 );
 prezTableTopUp( 2016 )
+
+// saved here

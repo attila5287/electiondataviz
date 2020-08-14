@@ -8,10 +8,10 @@ function houseSeatsCirclesUp( data, yearSelected ) {
   let svgWidth = $( `#house-seats` ).width();
   let svgHeight = 0.55 * svgWidth;
   let margin = {
-    top: 30,
-    right: 20,
-    left: 20,
-    bottom: 20,
+    top: 10,
+    right: 10,
+    left: 10,
+    bottom: 10,
   };
   let width = svgWidth - margin.left - margin.right;
   let height = svgHeight - margin.top - margin.bottom;
@@ -23,10 +23,10 @@ function houseSeatsCirclesUp( data, yearSelected ) {
   let svg = d3
     .select( `#house-seats` )
     .append( "svg" )
-    .classed( "bg-glass opac-70 rounded-arc my-2 mx-0", true )
+    .classed( "bg-glass rnd-arc m-0 p-0", true )
     .attr( "width", svgWidth )
     .attr( "height", svgHeight );
-
+  
   let chartGroup = svg.append( "g" )
     .attr( "transform", `translate(${margin.left}, ${margin.top})` );
 
@@ -59,16 +59,24 @@ function houseSeatsCirclesUp( data, yearSelected ) {
 
   // append circles to data points
   var circlesGroup = chartGroup.selectAll( "circle" )
-    .data( dataReady )
-    .enter()
-    .append( "circle" )
+  .data( dataReady )
+  .enter()
+  .append( "circle" )
+  .attr( "cx", d =>  width*0.7 + Math.floor(Math.random()*width*0.2 ))     // returns a random integer from 0 to width 
+  .attr( "cx", d =>  height*0.7 + Math.floor(Math.random()*height*0.2) )    // returns a random integer from 0 to height 
+  .attr( "fill", d => d.fill )
+  .attr( "fill-opacity", d => 0.77 )
+  .attr( "stroke", d => "white" )
+  .attr( "stroke-opacity", d => 0.7 )
+  .attr( "r", "4" )
+  ;
+  
+  var circlesGroup = chartGroup.selectAll( "circle" )
+    .transition()
+    .duration(2000)
     .attr( "cx", d => xScale( d.cos * ( data.length * .5 ) + ( data.length / 2 ) ) )
     .attr( "cy", d => yScale( d.sin ) )
-    .attr( "fill", d => d.fill )
-    .attr( "fill-opacity", d => 0.77 )
-    .attr( "stroke", d => "white" )
-    .attr( "stroke-opacity", d => 0.7 )
-    .attr( "r", "4" );
+    ;
 
   const redTitle = `Red ${seatRed}`;
   const bluTitle = `Blue ${seatBlu}`;

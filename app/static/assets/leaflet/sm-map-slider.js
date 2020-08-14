@@ -212,12 +212,6 @@ function presidentialUp( url, year ) {
         return partyColor[ d ];
       }
 
-      function slideMyYears( slider ) {
-        // adjust the text on the range slider
-        d3.select( "#sliderValue" ).text( slider );
-        d3.select( "#slider" ).property( "value", slider );
-      }
-
       function onlyColorUp( selectedYear ) {
         // console.log( 'onlyColorUp|modify map layer for selected year :>> ', selectedYear );
         const colors = {
@@ -334,9 +328,15 @@ function presidentialUp( url, year ) {
         return r0ws;
       }
 
+      function slideMyYears( slider ) {
+        // adjust the text on the range slider
+        d3.select( "#sliderValue" ).text( slider );
+        d3.select( "#slider" ).property( "value", slider );
+      }
+
       slideMyYears( year );
 
-      
+
       // --------------------- SLIDER ----------------
       d3.select( "#slider" ).on( "change", function () {
         slideMyYears( +this.value );
@@ -381,7 +381,6 @@ function prezWinnersUp( year ) {
           slideWinner( data, +this.value );
 
         } );
-
 
       }
     } );
