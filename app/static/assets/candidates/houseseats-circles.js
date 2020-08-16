@@ -69,33 +69,38 @@ function houseSeatsCirclesUp( data, year ) {
     .attr( "cx", d => xScale( d.cos * ( data.length * .5 ) + ( data.length / 2 ) ) )
     .attr( "cy", d => yScale( d.sin ) );
 
-  const redTitle = seatsByState[ 'e' + year + 'd' ];
-  const bluTitle = seatsByState[ 'e' + year + 'r' ];
-  const othTitle = seatsByState[ 'e' + year + 'r' ];
+  const af = 535/100;  
+  const redTitle = Math.round(eleVoByYr[ 'e' + year + 'd' ]*af);
+  const bluTitle = Math.round(eleVoByYr[ 'e' + year + 'r' ]*af);
+  const othTitle = 538-redTitle-bluTitle;
 
 
-  const tenPrc = height * .1;
+  //  prezCandsByYr
+//  p1976r: "Ford, Gerald"
+
+  const mrgn = height * .07;
 
   const title2 = svg.append( 'text' )
-    .classed( 'text-outlined text-3xl', true )
+    .classed( 'text-outlined text-2xl', true )
     .attr( 'fill', "blue" )
-    .attr( 'x', width / 2 - 20 )
-    .attr( 'y', height - 2 * tenPrc )
-    .text( bluTitle );
+    .attr( 'x', width / 2 -90  )
+    .attr( 'y', height - 2 * mrgn )
+    .text( prezCandsByYr['p'+year+'d']+': '+bluTitle );
 
   const title1 = svg.append( 'text' )
-    .classed( 'text-outlined text-3xl', true )
+    .classed( 'text-outlined text-2xl', true )
     .attr( 'fill', "red" )
-    .attr( 'x', width / 2 - 20 )
-    .attr( 'y', height - tenPrc )
-    .text( redTitle );
+    .attr( 'x', width / 2 -90  )
+    .attr( 'y', height - mrgn )
+    .text( prezCandsByYr['p'+year+'r'] +': ' +redTitle );
 
   const title3 = svg.append( 'text' )
-    .classed( 'text-outlined text-3xl', true )
+    .classed( 'text-outlined text-2xl', true )
     .attr( 'fill', "goldenrod" )
-    .attr( 'x', width / 2 - 20 )
+    .attr( 'x', width / 2 -90  )
     .attr( 'y', height )
-    .text( othTitle );
+    .text( 'Other Cands: '+othTitle );
+
 
   // Step 1: Initialize Tooltip
 

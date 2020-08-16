@@ -15,9 +15,9 @@ function prepRadialData( data, year) {
   const sin = n => Math.sin( n * PI / 180 );
   
   let my = {
-    blu: "#01018B",
-    red: "#8A0101",
-    other: "#ffaf018e",
+    democrat: "#01018B",
+    republican: "#8A0101",
+    independent: "#ffaf018e",
   };
 
   for ( let i = 3; i < 57; i++ ) {
@@ -34,7 +34,7 @@ function prepRadialData( data, year) {
       if (radius ==15 || radius ==20 ) {
         // console.log('skip at thirteen :>> ');
       }else {
-        result.push( {cos: cos( n ) * r, sin: sin( n ) * r, fill: my.blu} );
+        result.push( {cos: cos( n ) * r, sin: sin( n ) * r, } );
       }
 
     }
@@ -48,18 +48,60 @@ function prepRadialData( data, year) {
   // console.log( 'result.length 538 -> chk :>> ', result.length );
   
   // lastly color the circles
-  for ( let i = 0; i < numRedSeats; i++ ) {
-    const d = result[ i ];
-    d[ "fill" ] = my.red;
+  // for ( let i = 0; i < numRedSeats; i++ ) {
+  //   const d = result[ i ];
+  //   d[ "fill" ] = my.red;
+  // }
+  
+  // // independents as gold
+  // for ( let i = result.length-1; i > result.length-1-numOtherSeats; i-- ) {
+  //   const d = result[ i ];
+  //   d[ "fill" ] = my.independent;
+  // };
+  
+  let names = [];
+  
+  Object.keys(seatsByState).forEach( s => {
+    for (let i = 0; i < seatsByState[s]; i++) {
+      names.push(s);
+    }
+  });
+
+    console.log('names :>> ', names);
+    let winners = {};
+
+    const nested = d3.nest()
+      .key( function ( d ) {
+        return d.state;
+      } )
+      .key( function ( d ) {
+        return d.party;
+      } )
+      .rollup( function ( v ) {
+        return d3.max( v, function ( d ) {
+          return d.candidatevotes;
+        } );
+      } )
+      .entries( data.filter( d => d[ "year" ] == year ) );
+
+    nested.forEach( d => {
+      winners[ d.key ] = d.values[ 0 ].key;
+    } );
+    
+  console.log('winners :>> ', winners);  
+
+  
+  // each object to be modified with state name>winner>fill>flag
+  for (let i = 0; i < result.length; i++) {
+    let obj = result[i];
+    obj['name'] = names[i];
+    obj['winner'] = winners[obj['name'].trim()];
+    obj['fill'] = my[obj['winner']]
+    console.log( obj);
+    // obj
   }
-  
-  // others as gold
-  for ( let i = result.length-1; i > result.length-1-numOtherSeats; i-- ) {
-    const d = result[ i ];
-    d[ "fill" ] = my.other;
-  };
-  
-  
-  console.log('data :>> ', data);
+
+  console.log('finalCheck');
   return result;
 }
+
