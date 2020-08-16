@@ -10,7 +10,7 @@ function importWinnerCSV( year ) { //import csv each update
       }
 
       function updateWinner( data, sliderYear ) { //Party Img Prez Name  
-        console.log( 'updateWinner under importWinnerCSV sliderYear :>> ', sliderYear );
+        // console.log( 'updateWinner under importWinnerCSV sliderYear :>> ', sliderYear );
 
         const d = data.filter( d => d[ "year" ] == sliderYear )[ 0 ];
 

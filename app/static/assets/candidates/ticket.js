@@ -7,13 +7,11 @@ function importTicketsCSV() { //import csv then update w/ slider
         //--- add house seats colored circles
         importWinnerCSV( 2016 );
         updateTickets( data, 2016 );
-        houseSeatsCirclesUp( data, 2016 );
       }
       // --------- slider-INPUT ----------
       d3.select( "#slider" ).on( "input", function () {
         importWinnerCSV( +this.value );
         updateTickets( data, +this.value );
-        houseSeatsCirclesUp( data, +this.value );
       } );
       //--- end of csv namespace //no more (data) beyond this point
     } );

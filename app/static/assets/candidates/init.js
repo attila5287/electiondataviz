@@ -1,7 +1,7 @@
-function init() {
-  importPrezCSV();
-  importWinnerCSV( 2016 );
+function init(year) {
+  importPrezCSV(year);
+  importWinnerCSV( year );
   importTicketsCSV();
 }
 
-init();
+init(2016);

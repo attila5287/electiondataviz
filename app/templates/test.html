@@ -16,11 +16,8 @@
       integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
-
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
       crossorigin="" />
@@ -34,15 +31,19 @@
     <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Baloo+2' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    
     <title>US Election 2020</title>
+
   </head>
+
   <style>
     #map {
       height: 250px;
       width: 100%;
+      margin-bottom: 4rem;
     }
 
     html,
@@ -52,11 +53,10 @@
     }
   </style>
 
-  <body class="bg-body" style="margin-top: 45px;">
+  <body class="bg-body" style="margin-top: 50px;">
     <header>
       <nav class="navbar nav-midi navbar-expand-sm navbar-dark fixed-top bg-transparent">
-        <a class="navbar-brand bg-transparent border-0 rnd-xl add-anime mx-1 p-0"
-          href="https://electiondataviz.herokuapp.com/">
+        <a class="navbar-brand bg-transparent border-0 rnd-xl add-anime mx-1 p-0" href="https://electiondataviz.herokuapp.com/">
           <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 30px;" alt="navbar-icon">
         </a>
         <button class="navbar-toggler bg-theme rnd-lg" type="button" data-toggle="collapse"
@@ -64,7 +64,8 @@
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-md-center text-center bg-transparent" id="navbarCollapse">
+        <div class="collapse navbar-collapse justify-content-md-center text-center bg-transparent mt-2"
+          id="navbarCollapse">
           <ul class="navbar-nav mt-2 pt-3">
             <li class="nav-item bg-themy add-anime mx-2">
               <a class="nav-link animated infinite pulse text-comfo" href="/candidates">
@@ -151,6 +152,7 @@
         </div>
       </nav>
     </header>
+
     <div class="row">
       <div class="col-md-3 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo mt-0">
@@ -196,15 +198,23 @@
       </div>
       <div class="col-md-6 text-center">
         <div class="row">
+          <div class="col-md-12">
+            <!-- time series perc -->
+            <div class="card border-0 bg-transparent">
+              <div id="time-series-perc" class="text-center bg-glass  rnd-qtr"></div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div id="house-seats"></div>
+          </div>
         </div>
-        <div class="row">
-
+        <div class="row mt-2">
           <div class="col-md-2">
             <div class="card bg-transparent text-center text-light rnd-3xl mx-0">
               <img class="card-img ovrly bg-transparent text-center opac-60 rnd-3xl  mt-2 mb-1"
                 src="../static/img/cands/p2016d.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
                 id="dem-prez-img">
-              <div class="card-img-overlay py-1 mb-1">
+              <div class="card-body bg-glass rounded-lg pt-0 pb-1 mb-1">
                 <p class=" card-text text-titlecase text-comfo rnd-2xl p-1" id="dem-prez">
                   ...
                 </p>
@@ -217,7 +227,7 @@
                 src="../static/img/cands/vp2016d.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
                 id="dem-vp-img">
 
-              <div class="card-img-overlay py-1 mb-1">
+              <div class="card-body bg-glass rounded-lg pt-0 pb-1 mb-1">
                 <p class=" card-text text-titlecase text-comfo rnd-2xl p-1" id="dem-vp">
                   ...
                 </p>
@@ -226,18 +236,17 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-8">
-          <div class="bg-glass pt-2 pb-3 px-3 rnd-2xl">
-            <div class="container shadow-before rnd-2xl bg-transparent" id="map"></div>
-          </div>
+            <div class="bg-glass pt-2 pb-3 px-3 rnd-2xl">
+              <div class="container shadow-before rnd-2xl bg-transparent" id="map"></div>
+            </div>
           </div>
           <div class="col-md-2">
             <div class="card bg-transparent text-center text-light rnd-3xl mx-0">
               <img class="card-img ovrly bg-transparent text-center opac-60 rnd-3xl  mt-2 mb-1"
                 src="../static/img/cands/p2016r.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
                 id="rep-prez-img">
-              <div class="card-img-overlay py-1 mb-1">
+              <div class="card-body bg-glass rounded-lg pt-0 pb-1 mb-1">
                 <p class=" card-text text-titlecase text-comfo rnd-2xl p-1" id="rep-prez">
                   ...
                 </p>
@@ -250,20 +259,13 @@
                 src="../static/img/cands/vp2016r.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
                 id="rep-vp-img">
 
-              <div class="card-img-overlay py-1 mb-1">
+              <div class="card-body bg-glass rounded-lg pt-0 pb-1 mb-1">
                 <p class=" card-text text-titlecase text-comfo rnd-2xl p-1" id="rep-vp">
                   ...
                 </p>
               </div>
               <div class="card-footer text-nowrap py-0 my-0" id="rep-vp-prior"></div>
             </div>
-          </div>
-
-        </div>
-
-        <div class="row mt-2">
-          <div class="col-md-12">
-            <div id="house-seats"></div>
           </div>
         </div>
       </div>
@@ -312,12 +314,13 @@
       </div>
     </div>
 
-
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-transparent shd-themy text-center">
+      
       <a class="navbar-brand text-comfo" href="electiondataviz.herokuapp.com">
         <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 30px;" alt="navbar-icon">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+
+      <button class="navbar-toggler bg-theme" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -424,7 +427,7 @@
           </li>
         </ul>
       </div>
-    </nav>`
+    </nav>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -435,20 +438,27 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+
     <script src="/static/data/json/st-dicts.js"></script>
 
     <script src="/static/plugins/ddslick.js"></script>
 
+    <script src="/static/data/prep/st-prepTime.js"></script>
+
     <script src="/static/data/geojson/us-states.js"></script>
 
     <script src="/static/assets/candidates/prepRadial.js"></script>
-    <script src="/static/assets/candidates/circles-elec.js"></script>
+    
+    <script src="/static/assets/candidates/houseseats-circles.js"></script>
+    
     <script src="/static/assets/candidates/prep-rows.js"></script>
+
     <script src="/static/assets/candidates/ticket.js"></script>
     <script src="/static/assets/candidates/winner.js"></script>
+    <script src="/static/data/prep/st-prepTime.js"></script>
     <script src="/static/assets/candidates/rows-map.js"></script>
-    <script src="/static/assets/candidates/init.js"></script>
 
+    <script src="/static/assets/candidates/init.js"></script>
   </body>
 
 </html>

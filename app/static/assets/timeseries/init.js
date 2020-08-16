@@ -20,9 +20,9 @@ function init( stateName ) {
     stateFocusMap( data, stateName );
 
     const dataReady = prepTimeSerData( data, stateName );
+    timeSersPercUp( dataReady );
     barsPercUp( dataReady );
     barsCountUp( dataReady );
-    timeSersPercUp( dataReady );
     gaugeUp( dataReady );
     updateImgTxt( stateName );
     // dropDownYearUp ( 2016, data );

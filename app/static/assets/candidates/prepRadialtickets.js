@@ -1,11 +1,5 @@
-function prepRadialData( data, year) {
-  
-  const numRedSeats = eleVoByYr['e'+year +'r']/100*535;
-  const numBlueSeats = eleVoByYr['e'+year +'d']/100*535;
-  const numOtherSeats = 538-numRedSeats -numBlueSeats;
-
-
-  console.log('testttt :>> ', numRedSeats+' '+ numBlueSeats+' '+numOtherSeats);
+function prepRadialData( numRedSeats, numBlueSeats, numOtherSeats ) {
+  // numRedSeats, numBlueSeats, numOtherSeats
   const PI = 3.1415926535;
 
   const degrees = [];
@@ -36,30 +30,35 @@ function prepRadialData( data, year) {
       }else {
         result.push( {cos: cos( n ) * r, sin: sin( n ) * r, fill: my.blu} );
       }
-
     }
   } );
   
   
-  for ( let i = -1; i > -3; i-- ) {
+  for ( let i = -1; i > -6; i-- ) {
     result.pop()
   }
   
-  // console.log( 'result.length 538 -> chk :>> ', result.length );
+  // console.log( 'result.length :>> ', result.length );
   
   // lastly color the circles
   for ( let i = 0; i < numRedSeats; i++ ) {
     const d = result[ i ];
     d[ "fill" ] = my.red;
   }
-  
+
   // others as gold
   for ( let i = result.length-1; i > result.length-1-numOtherSeats; i-- ) {
     const d = result[ i ];
     d[ "fill" ] = my.other;
-  };
+  }
   
-  
-  console.log('data :>> ', data);
+// console.log('result[0] :>> ', result[0]);
+
+result.forEach(d =>{
+  // console.log('d :>> ', d);
+});
+
+
+
   return result;
 }

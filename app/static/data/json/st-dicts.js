@@ -1,3 +1,7 @@
+var eleVoByYr={e1976d: 53.9,e1976r: 44.6,e1980d: 9.1,e1980r: 90.9,e1984d: 2.4,e1984r: 97.6,e1988d: 20.1,e1988r: 79.2,e1992d: 68.8,e1992r: 31.2,e1996d: 70.4,e1996r: 29.6,e2000d: 49.4,e2000r: 50.4,e2004d: 46.7,e2004r: 53.2,e2008d: 67.8,e2008r: 32.2,e2012d: 61.7,e2012r: 38.3,e2016d: 42.2,e2016r: 56.5};
+
+// console.log('eleVoByYr :>> ', eleVoByYr);
+
 var prezCandsByYr = {
   p1976r: "Ford, Gerald",
   p1980r: "Reagan, Ronald",
@@ -1004,60 +1008,7 @@ var nameByStatePO = {
 };
 
 // value is the state seat count, key is state name: Colorado
-var seatsByState ={
-"Alabama": 7, 
-"Alaska": 1, 
-"Arizona": 9, 
-"Arkansas": 4, 
-"California": 53, 
-"Colorado": 7, 
-"Connecticut": 5, 
-"Delaware": 1, 
-"District of Columbia": 0, 
-"Florida": 27, 
-"Georgia": 14, 
-"Hawaii": 2, 
-"Idaho": 2, 
-"Illinois": 18, 
-"Indiana": 9, 
-"Iowa": 4, 
-"Kansas": 4, 
-"Kentucky": 6, 
-"Louisiana": 6, 
-"Maine": 2, 
-"Maryland": 8, 
-"Massachusetts": 9, 
-"Michigan": 14, 
-"Minnesota": 8, 
-"Mississippi": 4, 
-"Missouri": 8, 
-"Montana": 1, 
-"Nebraska": 3, 
-"Nevada": 4, 
-"New Hampshire": 2, 
-"New Jersey": 12, 
-"New Mexico": 3, 
-"New York": 27, 
-"North Carolina": 13, 
-"North Dakota": 1, 
-"Ohio": 16, 
-"Oklahoma": 5, 
-"Oregon": 5, 
-"Pennsylvania": 18, 
-"Rhode Island": 2, 
-"South Carolina": 7, 
-"South Dakota": 1, 
-"Tennessee": 9, 
-"Texas": 36, 
-"Utah": 4, 
-"Vermont": 1, 
-"Virginia": 11, 
-"Washington": 10, 
-"West Virginia": 3, 
-"Wisconsin": 8, 
-"Wyoming": 1, 
-
-};
+var seatsByState ={"Alabama ": 9,"Alaska ": 3,"Arizona ": 11,"Arkansas ": 6,"California ": 55,"Colorado ": 9,"Connecticut ": 7,"Delaware ": 3,"District of Columbia": 3,"Florida ": 29,"Georgia ": 16,"Hawaii ": 4,"Idaho ": 4,"Illinois ": 20,"Indiana ": 11,"Iowa ": 6,"Kansas ": 6,"Kentucky ": 8,"Louisiana ": 8,"Maine ": 4,"Maryland ": 10,"Massachusetts ": 11,"Michigan ": 16,"Minnesota ": 10,"Mississippi ": 6,"Missouri ": 10,"Montana ": 3,"Nebraska ": 5,"Nevada ": 6,"New Hampshire ": 4,"New Jersey ": 14,"New Mexico ": 5,"New York ": 29,"North Carolina ": 15,"North Dakota ": 3,"Ohio ": 18,"Oklahoma ": 7,"Oregon ": 7,"Pennsylvania ": 20,"Rhode Island ": 4,"South Carolina ": 9,"South Dakota ": 3,"Tennessee ": 11,"Texas ": 38,"Utah ": 6,"Vermont ": 3,"Virginia ": 13,"Washington ": 12,"West Virginia ": 5,"Wisconsin ": 10,"Wyoming ": 3};
 
 // console.log('test nameByStatePO :>> ', nameByStatePO);
 
