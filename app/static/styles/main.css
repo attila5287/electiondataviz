@@ -5,11 +5,12 @@
 
 .toolt1p {
   opacity: 0.5;
-  border-radius: 2rem;
+  border-radius:
+   2rem;
   padding: 4px 8px 4px 8px;
-  max-width: 45rem !important;
-  height: 10rem !important;
-  max-height: 20rem !important;
+  max-width: 25rem !important;
+  height: 6rem !important;
+  max-height: 10rem !important;
 }
 
 

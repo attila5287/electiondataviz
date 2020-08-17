@@ -29,13 +29,14 @@ function timeSersPercUp ( dataReady ) {
 
   let chartGroup = svg.append( "g" )
     .attr( "transform", `translate(${margin.left}, ${margin.top})` );
-  // Step 3:
+
+    // Step 3:
   // Import data from the .csv file
   // =================================
+
   // Step 4: Parse the data
   // Format the data and convert to numerical and date values
   // =================================
-
   let numYears = dataReady.blue.count.values.length;
 
   // console.log( 'numYears :>> ', numYears );
@@ -168,7 +169,7 @@ function timeSersPercUp ( dataReady ) {
           ${ prezCandsByYr[`p${d.ye4r}${d.nam3}`]}
         </h5>
         <hr class="my-0 border-secondary opac-30>
-        <p class="card-title my-0">
+        <p class="card-text my-0">
           ${format( d.perc )} @ ${d.ye4r}
         </p>
       </div>
@@ -356,7 +357,7 @@ function timeSersCountUp ( dataReady ) {
           ${ prezCandsByYr[`p${d.ye4r}${d.nam3}`]}
         </h5>
         <hr class="my-0 border-secondary opac-30>
-        <p class="card-title my-0">
+        <p class="card-text my-0">
           ${format( d.perc )} @ ${d.ye4r}
         </p>
       </div>

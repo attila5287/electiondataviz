@@ -74,11 +74,18 @@ function houseSeatsCirclesUp( data, year ) {
   const bluTitle = Math.round(eleVoByYr[ 'e' + year + 'r' ]*af);
   const othTitle = 538-redTitle-bluTitle;
 
-
+  
   //  prezCandsByYr
-//  p1976r: "Ford, Gerald"
+  //  p1976r: "Ford, Gerald"
 
   const mrgn = height * .07;
+  
+    const title1 = svg.append( 'text' )
+      .classed( 'text-outlined text-2xl', true )
+      .attr( 'fill', "red" )
+      .attr( 'x', width / 2 -90  )
+      .attr( 'y', height - mrgn )
+      .text( prezCandsByYr['p'+year+'r'] +': ' +redTitle );
 
   const title2 = svg.append( 'text' )
     .classed( 'text-outlined text-2xl', true )
@@ -86,13 +93,6 @@ function houseSeatsCirclesUp( data, year ) {
     .attr( 'x', width / 2 -90  )
     .attr( 'y', height - 2 * mrgn )
     .text( prezCandsByYr['p'+year+'d']+': '+bluTitle );
-
-  const title1 = svg.append( 'text' )
-    .classed( 'text-outlined text-2xl', true )
-    .attr( 'fill', "red" )
-    .attr( 'x', width / 2 -90  )
-    .attr( 'y', height - mrgn )
-    .text( prezCandsByYr['p'+year+'r'] +': ' +redTitle );
 
   const title3 = svg.append( 'text' )
     .classed( 'text-outlined text-2xl', true )
@@ -108,25 +108,22 @@ function houseSeatsCirclesUp( data, year ) {
     .tip()
     .attr( "class", "tooltip" )
     .offset( [ 40, -30 ] )
-    .html( d => `
+        .html( d => `
     <div class="card rounded-2xl bg-transparent text-bold text-balo text-light">
-
-      <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/cands/p2016d.jpg" alt="cand-img">
-
+      <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/states/${d.flag}" alt="elec-state-flag">
       <div class="card-body shadow-turqoise">
-        <h5 class="card-title text-light">
-          test
-        </h5>
-        <hr class="my-0 border-secondary opac-30>
-        <p class="card-title my-0">
-          test
-        </p>
+      <h5 class="card-title text-light">
+      </h5>
+      <hr class="my-0 border-info opac-40>
+      <p class="card-text my-0">
+      </p>
+        </div>
+        <div class="card-footer">
+          <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/cands/${d.cand_img}" alt="cand-img">
+        </div>
       </div>
-
-    </div>
     ` );
-
-
+    
   // Step 2: Create the tooltip in chartGroup.
   circlesGroup.call( toolTip );
 
