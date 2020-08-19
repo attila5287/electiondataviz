@@ -296,6 +296,9 @@ h6 {
 .rnd-large {
   border-radius: 6px;
 }
+.rnd-lg {
+  border-radius: 6px;
+}
 
 .rnd-xl {
   border-radius: 8px;

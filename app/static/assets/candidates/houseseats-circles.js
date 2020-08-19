@@ -4,22 +4,26 @@ function houseSeatsCirclesUp( data, year ) {
   if ( !svgArea.empty() ) {
     svgArea.remove();
   }
+  
   // Step 1: Set up our chart
   let svgWidth = $( `#house-seats` ).width();
-  let svgHeight = 0.5 * svgWidth;
+  let svgHeight = 0.55 * svgWidth;
+  
   let margin = {
     top: 10,
     right: 10,
-    left: 10,
+    left: 10, 
     bottom: 10,
   };
+
   let width = svgWidth - margin.left - margin.right;
   let height = svgHeight - margin.top - margin.bottom;
 
-  // Step 2: Create an SVG wrapper,
+  // Step 2: Create an SVG wrapper,---------------
   // append an SVG group that will hold our chart,
   // and shift the latter by left and top margins.
-  // =================================
+  // =============================================
+  
   let svg = d3
     .select( `#house-seats` )
     .append( "svg" )
@@ -46,7 +50,7 @@ function houseSeatsCirclesUp( data, year ) {
     .enter()
     .append( "circle" )
     .attr( "cx", d => width * 0.7 + Math.floor( Math.random() * width * 0.2 ) ) // returns a random integer from 0 to width 
-    .attr( "cx", d => height * 0.7 + Math.floor( Math.random() * height * 0.2 ) ) // returns a random integer from 0 to height 
+    .attr( "cx", d => height * 0.7 + Math.floor( Math.random() * height * 0.2 ) ) // returns a random integer from 0 to height
     .attr( "fill", d => d.fill )
     .attr( "fill-opacity", d => 0.77 )
     .attr( "stroke", d => "white" )
@@ -55,19 +59,27 @@ function houseSeatsCirclesUp( data, year ) {
     .on( "mouseover", function ( d ) {
       toolTip.show( d );
       // console.log('d :>> ', d);
+      d3.select(this)
+        .transition()
+        .duration(1000)
+        .attr("r", 14);
     } )
     // Step 4: Create "mouseout" event listener to hide tooltip
     .on( "mouseout", function ( d ) {
       toolTip.hide( d );
       // console.log('d :>> ', d);
+      d3.select(this)
+        .transition()
+        .duration(1000)
+        .attr("r", 8);
     } );
-
-
+ 
   chartGroup.selectAll( "circle" )
     .transition()
-    .duration( 2000 )
+    .duration( 3000 )
     .attr( "cx", d => xScale( d.cos * ( data.length * .5 ) + ( data.length / 2 ) ) )
-    .attr( "cy", d => yScale( d.sin ) );
+    .attr( "cy", d => yScale( d.sin ) )
+    ;
 
   const af = 535/100;  
   const redTitle = Math.round(eleVoByYr[ 'e' + year + 'd' ]*af);
@@ -79,13 +91,13 @@ function houseSeatsCirclesUp( data, year ) {
   //  p1976r: "Ford, Gerald"
 
   const mrgn = height * .07;
-  
-    const title1 = svg.append( 'text' )
-      .classed( 'text-outlined text-2xl', true )
-      .attr( 'fill', "red" )
-      .attr( 'x', width / 2 -90  )
-      .attr( 'y', height - mrgn )
-      .text( prezCandsByYr['p'+year+'r'] +': ' +redTitle );
+
+  const title1 = svg.append( 'text' )
+    .classed( 'text-outlined text-2xl', true )
+    .attr( 'fill', "red" )
+    .attr( 'x', width / 2 - 90  )
+    .attr( 'y', height - mrgn )
+    .text( prezCandsByYr['p'+year+'r'] +': ' +redTitle );
 
   const title2 = svg.append( 'text' )
     .classed( 'text-outlined text-2xl', true )
@@ -109,19 +121,17 @@ function houseSeatsCirclesUp( data, year ) {
     .attr( "class", "tooltip" )
     .offset( [ 40, -30 ] )
         .html( d => `
-    <div class="card rounded-2xl bg-transparent text-bold text-balo text-light">
+    <div class="card rounded-2xl bg-transparent text-bold text-balo">
       <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/states/${d.flag}" alt="elec-state-flag">
-      <div class="card-body shadow-turqoise">
+      <div class="card-body shadow-turqoise py-0">
       <h5 class="card-title text-light">
       </h5>
-      <hr class="my-0 border-info opac-40>
-      <p class="card-text my-0">
+      <p class="card-text my-0 py-0"> 
+      ${d.name} | ${d.winner} 
       </p>
-        </div>
-        <div class="card-footer">
-          <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/cands/${d.cand_img}" alt="cand-img">
-        </div>
       </div>
+      <img class="card-img-bottom toolt1p border-0 bg-transparent opac-60 mb-1 px-5" src="../static/img/cands/${d.cand_img}" alt="cand-img">
+    </div>
     ` );
     
   // Step 2: Create the tooltip in chartGroup.

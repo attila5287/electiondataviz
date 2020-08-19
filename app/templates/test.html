@@ -1,12 +1,13 @@
+<!DOCTYPE html>
 <html>
 
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" class="favicon" href="../static/img/election/nav2020.ico" />
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="/static/styles/theme/cerulean.css" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/x-icon" class="favicon" href="../static/img/election/favicon.ico" />
 
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/cerulean/bootstrap.min.css" />
 
@@ -15,9 +16,10 @@
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
       integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
       crossorigin="" />
@@ -26,148 +28,77 @@
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""></script>
 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- set title on route by render_template(... ,title='test') -->
+
     <!-- FONTS -->
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Baloo+2' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@800&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-    
-    <title>US Election 2020</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
 
+    <!-- title -->
+    <title>US States Time Series</title>
   </head>
-
   <style>
     #map {
-      height: 250px;
-      width: 100%;
-      margin-bottom: 4rem;
-    }
-
-    html,
-    body {
-      height: 100%;
-      max-width: 98%;
+      height: 220px;
+      width: 95%;
+      margin: 8px 8px 22px 8px;
     }
   </style>
 
-  <body class="bg-body" style="margin-top: 50px;">
+  <body class="bg-body-mini">
     <header>
-      <nav class="navbar nav-midi navbar-expand-sm navbar-dark fixed-top bg-transparent">
-        <a class="navbar-brand bg-transparent border-0 rnd-xl add-anime mx-1 p-0" href="https://electiondataviz.herokuapp.com/">
+      <nav class="navbar nav-mini navbar-expand-sm navbar-dark fixed-top bg-theme">
+        <a class="navbar-brand bg-transparent border-0 rnd-xl add-anime mx-1 p-0"
+          href="https://electiondataviz.herokuapp.com/">
           <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 30px;" alt="navbar-icon">
         </a>
-        <button class="navbar-toggler bg-theme rnd-lg" type="button" data-toggle="collapse"
-          data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-          aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-md-center text-center bg-transparent mt-2"
-          id="navbarCollapse">
-          <ul class="navbar-nav mt-2 pt-3">
-            <li class="nav-item bg-themy add-anime mx-2">
-              <a class="nav-link animated infinite pulse text-comfo" href="/candidates">
-                <i class="fas fa-users text-xl"></i>
-                <br>
-                Candidates
-              </a>
-            </li>
-            <li class="nav-item bg-themy mx-2 add-anime">
+        <div class="collapse navbar-collapse bg-theme text-center bg-theme" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
               <a class="nav-link" href="/timeseries">
-                <i class="fas fa-chart-line text-sm text-comfo mt-1">
-                  TimeSeries
-                </i>
-                <hr class="border-light my-0 opac-40 mx-2">
-                state focused
-              </a>
+                <i class="fas fa-chart-line"></i>
+                TimeSeries <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item bg-themy mx-2 add-anime">
+            <li class="nav-item">
+              <a class="nav-link" href="/candidates">
+                <i class="fas fa-users text-sm"></i>
+                Candidates</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/map" tabindex="-1" aria-disabled="true">
-                <i class="fas fa-globe-americas text-sm text-comfo mt-1 px-1">
-                  Map
-                </i>
-                <hr class="border-light my-0 opac-40 mx-2">
-                national overview
-              </a>
-            </li>
-            <li class="nav-item bg-theme text-light text-digi">
-              <p class="text-nowrap text-xs px-2 mb-0 pt-1">
-                <i>1976</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>1980</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>1984</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>1988</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>1992</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>1996</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>2000</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>2004</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>2008</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>2012</i>
-                <i class="fas fa-ellipsis-h mx-2 opac-40"></i>
-                <i>2016</i>
-              </p>
-              <input class="custom-range pt-2 mt-0 px-2 mb-0" type="range" min="1976" max="2016" step="4" id="slider">
-            </li>
-            <li class="nav-item shd-themy add-anime mx-2">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">
-                <p class="my-0 text-comfo text-xs px-1 py-0">
-                  <i class="fas fa-info-circle text-lg text-nowrap fa-pull-left ml-0 mr-1 animated infinite pulse"></i>
-                  use slider to
-                  <br class="my-0">
-                  change yrs.
-                </p>
-              </a>
-            </li>
-            <li class="nav-item shd-themy add-anime mx-2">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">
-                <p class="my-0 text-comfo text-xs px-1 py-0">
-                  <i class="fas fa-info-circle text-lg text-nowrap fa-pull-left ml-0 mr-1 animated infinite pulse"></i>
-                  updates seat #''s
-                  <br class="my-0">
-                  cand img's'
-                </p>
-              </a>
-            </li>
-            <li class="nav-item shd-themy add-anime mx-2">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">
-                <p class="my-0 text-comfo text-xs px-1 py-0">
-                  <i class="fas fa-info-circle text-lg text-nowrap fa-pull-left ml-0 mr-1 animated infinite pulse"></i>
-                  colors table rows
-                  <br class="my-0">
-                  dynamically
-                </p>
-              </a>
+                <i class="fas fa-globe-americas text-sm"></i>
+                Map</a>
             </li>
           </ul>
+          <form class="form-inline mt-2 mt-md-0">
+            <select id="opts2"></select>
+          </form>
         </div>
       </nav>
     </header>
+    <!-- <span class="countup led-lg text-light text-center" cup-end="5758736" cup-append="" cup-prepend="">5758736</span> -->
 
-    <div class="row">
-      <div class="col-md-3 text-center">
-        <table class="table table-sm bg-transparent table-borderless text-center text-comfo mt-0">
+    <div class="row mt-0">
+      <!-- table -->
+      <div class="col-md-2 text-center">
+        <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
           <thead class="bg-theme text-comfo text-light">
-            <tr>
-              <th>Flag</th>
-              <th>State</th>
-              <th>Rep</th>
-              <th>Dem</th>
-              <th>Margin</th>
-              <th>SeatCt.</th>
-              <th>PO</th>
-            </tr>
+            <tr class="thd"></tr>
           </thead>
-          <tbody>
+          <tbody class="bg-transparent">
             <tr class="tbl"></tr>
             <tr class="tbl"></tr>
             <tr class="tbl"></tr>
@@ -196,90 +127,92 @@
           </tbody>
         </table>
       </div>
-      <div class="col-md-6 text-center">
-        <div class="row">
-          <div class="col-md-12">
+
+      <div class="col-md-8 mt-0">
+        <div class="row mt-0">
+          <div class="col-md-12 mt-0">
+            <!-- main figures classed holder-animated-main  -->
+            <ul class="nav justify-content-center bg-transparent border-0 mb-1 mt-1 py-1" id="hlder-main">
+            </ul>
+          </div>
+
+          <!-- charts -->
+          <div class="col-md-6">
+            <!-- bars perc -->
+            <div class="card border-0 bg-transparent">
+              <div id="bars-perc" class="text-center bg-glass  rnd-qtr"></div>
+            </div>
+
             <!-- time series perc -->
             <div class="card border-0 bg-transparent">
               <div id="time-series-perc" class="text-center bg-glass  rnd-qtr"></div>
             </div>
-          </div>
-          <div class="col-md-12">
-            <div id="house-seats"></div>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <div class="col-md-2">
-            <div class="card bg-transparent text-center text-light rnd-3xl mx-0">
-              <img class="card-img ovrly bg-transparent text-center opac-60 rnd-3xl  mt-2 mb-1"
-                src="../static/img/cands/p2016d.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
-                id="dem-prez-img">
-              <div class="card-body bg-glass rounded-lg pt-0 pb-1 mb-1">
-                <p class=" card-text text-titlecase text-comfo rnd-2xl p-1" id="dem-prez">
-                  ...
-                </p>
-              </div>
-              <div class="card-footer text-nowrap py-0 my-0" id="dem-prez-prior">
-              </div>
-            </div>
-            <div class="card bg-transparent text-center text-light rnd-3xl mx-0">
-              <img class="card-img ovrly bg-transparent text-center opac-60 rnd-3xl  mt-2 mb-1"
-                src="../static/img/cands/vp2016d.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
-                id="dem-vp-img">
 
-              <div class="card-body bg-glass rounded-lg pt-0 pb-1 mb-1">
-                <p class=" card-text text-titlecase text-comfo rnd-2xl p-1" id="dem-vp">
-                  ...
-                </p>
-              </div>
-              <div class="card-footer text-nowrap py-0 my-0" id="dem-vp-prior">
-              </div>
+            <!-- time series cnt -->
+            <div class="card border-0 bg-transparent">
+              <div id="bars-count" class="text-center bg-glass  rnd-qtr"></div>
             </div>
-          </div>
-          <div class="col-md-8">
-            <div class="bg-glass pt-2 pb-3 px-3 rnd-2xl">
-              <div class="container shadow-before rnd-2xl bg-transparent" id="map"></div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card bg-transparent text-center text-light rnd-3xl mx-0">
-              <img class="card-img ovrly bg-transparent text-center opac-60 rnd-3xl  mt-2 mb-1"
-                src="../static/img/cands/p2016r.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
-                id="rep-prez-img">
-              <div class="card-body bg-glass rounded-lg pt-0 pb-1 mb-1">
-                <p class=" card-text text-titlecase text-comfo rnd-2xl p-1" id="rep-prez">
-                  ...
-                </p>
-              </div>
-              <div class="card-footer text-nowrap py-0 my-0" id="rep-prez-prior">
-              </div>
-            </div>
-            <div class="card bg-transparent text-center text-light rnd-3xl mx-0 p-1 mb-2">
-              <img class="card-img ovrly bg-transparent text-center opac-60 rnd-3xl  mt-2 mb-1"
-                src="../static/img/cands/vp2016r.jpg" alt="cand-img" style="box-shadow:0 0 4px 8px #01325296 inset;"
-                id="rep-vp-img">
 
-              <div class="card-body bg-glass rounded-lg pt-0 pb-1 mb-1">
-                <p class=" card-text text-titlecase text-comfo rnd-2xl p-1" id="rep-vp">
-                  ...
-                </p>
+          </div>
+          <!-- flag gauge map-->
+          <div class="col-md-6">
+            <div class="row">
+              <!-- state flag and name -->
+              <div class="col-md-4 px-0 mx-0">
+                <div class="card bg-transparent text-left text-secondary pt-1 pb-3">
+                  <div class="card-body bg-glass rnd-xl pt-0 pb-3 my-0">
+                    <div class="card-text text-center text-light text-md  mb-0 py-1">
+                      <i class="fas fa-angle-right"></i>
+                      visualizing data for:
+                      <hr class="my-1 border-light opac-30">
+                    </div>
+                    <h6
+                      class="card-title bg-black rnd-lg text-center text-comfo text-xl text-bold py-1 mb-0"
+                      id="stName">
+                      ...
+                    </h6>
+                  </div>
+                </div>>
+                <!-- flag -->
+                <div class="card bg-transparent text-center">
+                  <img class="card-img opac-30 p-4" src="../static/img/states/colorado-flag-small.png"
+                    alt="state-flag" id="stFlag" style="max-height:10rem;max-width:25rem">
+                  <div class="card-img-overlay bg-glass rnd-2xl text-center py-1 mt-4 mb-4">
+                  </div>
+                </div>
               </div>
-              <div class="card-footer text-nowrap py-0 my-0" id="rep-vp-prior"></div>
+              <!--gauge  -->
+              <div class="col-md-8">
+                <div class="card border-0 bg-transparent">
+                  <div class="card-body">
+                    <div id="gauge-swing" class="bg-glass rnd-qtr"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- demographic figures classed holder-anim-demographic  -->
+            <div class="card bg-transparent">
+              <div class="card-body bg-glass rnd-2xl">
+                <ul class="nav nav-fill bg-transparent border-0" id="hldr-diversity">
+                </ul>
+              </div>
+            </div>
+
+            <!-- map -->
+            <div class="card border-0 bg-theme rnd-qtr">
+              <div class="container bg-transparent rnd-qtr" id="map">
+              </div>
             </div>
           </div>
         </div>
+
       </div>
-      <div class="col-md-3 text-center">
-        <table class="table table-sm bg-transparent table-borderless text-center text-comfo mt-0">
+
+      <div class="col-md-2 text-center">
+        <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
           <thead class="bg-theme text-comfo text-light">
-            <tr>
-              <th>Flag</th>
-              <th>State</th>
-              <th>Rep</th>
-              <th>Dem</th>
-              <th>Margin</th>
-              <th>SeatCt.</th>
-              <th>PO</th>
+            <tr class="thd">
             </tr>
           </thead>
           <tbody>
@@ -312,126 +245,15 @@
           </tbody>
         </table>
       </div>
+
     </div>
-
-    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-transparent shd-themy text-center">
-      
-      <a class="navbar-brand text-comfo" href="electiondataviz.herokuapp.com">
-        <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 30px;" alt="navbar-icon">
-      </a>
-
-      <button class="navbar-toggler bg-theme" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-md-center" id="navbarCollapse">
-        <ul class="nav">
-          <li class="nav-item bg-theme rnd-xl disabled">
-            <h6 class="text-light opac-90 " aria-hidden="true">
-              <strong>
-                Democrats
-              </strong>
-            </h6>
-            <p class="rnd-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-              id="blue-popvote-perc">
-              00.0
-              <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
-            </p>
-          </li>
-          <li class="nav-item disabled mx-0 px-0" href="https://electiondataviz.herokuapp.com/">
-            <img class="opac-50 m-0 px-0 py-0" src="/static/img/election/ballot.png" style="height: 3rem;"
-              alt="navbar-icon">
-            <p class="text-xs text-nowrap mb-0 opac-50"><strong>Popular Vote</strong></p>
-          </li>
-          <li class="nav-item bg-theme rnd-xl disabled">
-            <h6 class="text-light opac-90 " aria-hidden="true">
-              <strong>
-                Republicans
-              </strong>
-            </h6>
-            <p class="rnd-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-              id="red-popvote-perc">
-              00.0
-              <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
-            </p>
-          </li>
-          <li class="nav-item bg-theme rnd-xl disabled">
-            <p class="led-xl mb-0 mt-2" id="sliderValue">
-              2016
-            </p>
-          </li>
-          <li class="nav-item bg-theme rnd-xl disabled">
-            <h6 class="text-light opac-90 " aria-hidden="true">
-              <strong>
-                Democrats
-              </strong>
-            </h6>
-            <p class="rnd-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-              id="blue-elecvote-perc">
-              00.0
-              <i class="fas fa-percent text-sm text-primary" aria-hidden="true"></i>
-            </p>
-          </li>
-          <li class="nav-item disabled mx-0 px-0" href="https://electiondataviz.herokuapp.com/">
-            <img class="opac-70 m-0 px-0 py-0" src="/static/img/election/ball0t.png" style="height: 4rem;"
-              alt="navbar-icon">
-          </li>
-          <li class="nav-item bg-theme rnd-xl disabled">
-            <h6 class="text-light opac-90 " aria-hidden="true">
-              <strong>
-                Republicans
-              </strong>
-            </h6>
-            <p class="rnd-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-              id="red-elecvote-perc">
-              00.0
-              <i class="fas fa-percent text-sm text-danger" aria-hidden="true"></i>
-            </p>
-          </li>
-          <li class="nav-item bg-theme rnd-xl disabled">
-            <h6 class="text-light opac-90 " aria-hidden="true">
-              <strong>
-                Democrats
-              </strong>
-            </h6>
-            <p class="rnd-lg text-center text-primary text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-              id="blue-house-seats">
-              000
-            </p>
-          </li>
-
-          <li class="nav-item disabled mx-0 px-0" href="https://electiondataviz.herokuapp.com/">
-            <img class="opac-70 m-0 px-0 py-0" src="/static/img/election/seat.png" style="height: 4rem;"
-              alt="navbar-icon">
-          </li>
-
-          <li class="nav-item bg-theme rnd-xl disabled">
-            <h6 class="text-light opac-90 " aria-hidden="true">
-              <strong>
-                Republicans
-              </strong>
-            </h6>
-            <p class="rnd-lg text-center text-danger text-larger text-digi text-nowrap bg-black pt-1 pb-1 px-1 mb-1"
-              id="red-house-seats">
-              000
-            </p>
-          </li>
-          <li class="nav-item dropup">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">Dropup</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown10">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
@@ -439,26 +261,37 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
-    <script src="/static/data/json/st-dicts.js"></script>
-
+    <script src="/static/util/abbrNum.js"></script>
+    
     <script src="/static/plugins/ddslick.js"></script>
 
-    <script src="/static/data/prep/st-prepTime.js"></script>
+    <script src="/static/data/json/st-dicts.js"></script>
 
     <script src="/static/data/geojson/us-states.js"></script>
 
-    <script src="/static/assets/candidates/prepRadial.js"></script>
-    
-    <script src="/static/assets/candidates/houseseats-circles.js"></script>
-    
-    <script src="/static/assets/candidates/prep-rows.js"></script>
-
-    <script src="/static/assets/candidates/ticket.js"></script>
-    <script src="/static/assets/candidates/winner.js"></script>
     <script src="/static/data/prep/st-prepTime.js"></script>
-    <script src="/static/assets/candidates/rows-map.js"></script>
 
-    <script src="/static/assets/candidates/init.js"></script>
+    <script src="/static/assets/dropdowns/stfocus-ddslick.js"></script>
+
+    <script src="/static/assets/timeseries/charts/st-bars.js"></script>
+    <script src="/static/assets/timeseries/charts/test.js"></script>
+
+    <script src="/static/assets/timeseries/charts/st-circles.js"></script>
+
+    <script src="/static/assets/timeseries/charts/st-gauge.js"></script>
+
+    <script src="/static/assets/leaflet/st-focused.js"></script>
+
+    <script src="/static/assets/timeseries/xtra/st-numbers.js"></script>
+
+    <script src="/static/assets/tables/tb-lightest.js"></script>
+
+    <script src="/static/plugins/count-up.js"></script>
+
+    <script src="/static/assets/timeseries/init.js"></script>
+
   </body>
 
 </html>
+
+  

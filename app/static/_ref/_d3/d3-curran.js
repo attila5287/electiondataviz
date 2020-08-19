@@ -1,4 +1,4 @@
-import {
+import { 
   select,
   csv,
   scaleLinear,
@@ -15,6 +15,7 @@ import {
 } from 'd3';
 
 import { colorLegend } from './colorLegend';
+// STEP 1 SVG WIDTH HEIGHT
 const svg = select('svg');
 
 const width = +svg.attr('width');
@@ -87,7 +88,7 @@ const render = data => {
     .x(d => xScale(xValue(d)))
     .y(d => yScale(yValue(d)))
     .curve(curveBasis);
-  
+   
   const lastYValue = d =>
     yValue(d.values[d.values.length - 1]);
   

@@ -152,7 +152,7 @@ function importPrezCSV( year ) { //second csv import w/ slider update
           attribution: '<a href="https://github.com/attila5287/electiondataviz"> @attila5287 </a> <a href="https://www.openstreetmap.org/">OpenStreetMap</a> ' +
             ' ' + '<a href="https://www.mapbox.com/">Mapbox</a>',
           tileSize: 512,
-          zoomOffset: 0
+          zoomOffset: -1
         } ).addTo( map );
     
         map.createPane( 'labels' );
