@@ -15,10 +15,10 @@ function gaugeUp (dataReady) {
   const fivePercent = round(svgWidth*0.05);
   const tenPercent = fivePercent*2;
   let margin = {
-    top: fivePercent,
-    bottom:fivePercent,
-    left: fivePercent,
-    right: fivePercent,
+    top: 10,
+    bottom:10,
+    left: 10,
+    right: 10,
   };
   
   // console.log('svgHeight :>> ', svgHeight);

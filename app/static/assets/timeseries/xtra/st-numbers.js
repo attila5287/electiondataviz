@@ -11,8 +11,7 @@ function prepStateDemo( state ) { // data prep for demographic
     'asianPerc': diversityPart2[ state ].asian,
     'nativePerc': diversityPart2[ state ].native,
   };
-    // diversityBySt[state].minTotal
-
+  
   const numcols = [ // numeric columns
     'whitePerc',
     'minTotal',
@@ -89,8 +88,8 @@ function prepStateMain( state ) { // data prep array of objs
 
   const labels = { // labels 
     'numOfSeat': 'Num House Seats',
-    'over18Perc': 'Pop. Over18',
-    'medHHI': 'Mdn. Household Inc.',
+    'over18Perc': 'Pop.Over18',
+    'medHHI': 'Mdn.Household Income',
     'medAge': 'Median Age',
     'minWage': 'Minimum Wage',
   };
@@ -106,7 +105,7 @@ function prepStateMain( state ) { // data prep array of objs
   const appends = { // after the countup not animated
     'numOfSeat': '',
     'over18Perc': ' %',
-    'medHHI': afterThousands(+medianHHIbySt[ state ])+' /yr',
+    'medHHI': afterThousands(+medianHHIbySt[ state ]),
     'medAge': ' yrs.',
     'minWage': ' /hr',
   };
@@ -156,7 +155,7 @@ function renderStateDemo ( dataReady ) { // countup st demographic
     .classed( 'text-light', true )
       ;
     li.append( "span" )
-      .classed( 'countup led-lg text-primary', true )
+      .classed( 'countup led-sm text-primary', true )
       .html(d.value + " %")
       .attr( 'cup-start', 0 )
       .attr( 'cup-end', d.value )
@@ -167,20 +166,19 @@ function renderStateDemo ( dataReady ) { // countup st demographic
 
 } 
 
-function renderStateMain ( dataReady ) { // countup st demographic
+function renderStateMain ( dataReady ) { // countup st main numbers
   // console.log('dataReady :>> ', dataReady);
   d3.select("#hlder-main").selectAll("li").selectAll("span").remove();
   d3.select("#hlder-main").selectAll("li").remove();
   dataReady.forEach(d => {
     // console.log('d :>> ', d);
-    var li = d3.select("#hlder-main").append("li").classed('nav-item bg-transparent text-md text-nowrap py-0',true);
+    var li = d3.select("#hlder-main").append("li").classed('list-group-item bg-transparent text-right text-sm py-0',true);
     li.text(d.label)
     .classed( 'text-light', true )
       ;
--+98
     li.append( "span" )
-      .classed( 'countup led-horizontal text-primary', true )
-      .html(d.value + " %")
+      .classed( 'countup led-md text-primary text-nowrap', true )
+      .html(d.value )
       .attr( 'cup-start', 0 )
       .attr( 'cup-end', d.value )
       .attr( 'cup-prepend', d.prepend )

@@ -14,6 +14,10 @@
 }
 
 
+.opac-100 {
+  opacity: 1;
+}
+
 .opac-90 {
   opacity: 0.9;
 }
@@ -289,12 +293,8 @@ h6 {
   border-radius: 50% / 50%;
 }
 
-.rnd-med {
+.rnd-md {
   border-radius: 4px;
-}
-
-.rnd-large {
-  border-radius: 6px;
 }
 .rnd-lg {
   border-radius: 6px;
@@ -732,15 +732,16 @@ h6 {
   font-family: 'Orbitron', sans-serif;
   text-shadow: 0px 0px #d1d5e9;
 }
+
 .led-md  {
   font-size: 1.25rem;
-  padding: 1px 6px 1px 4px;
+  padding: 1px 4px 1px 4px;
   border-radius: 7% / 13%;
   background-color: rgb(0, 0, 0);
   color: rgb(253, 109, 14);
   font-family: 'Orbitron', sans-serif;
-  text-shadow: 0px 0px #d1d5e9;
 }
+
 .led-sm  {
   font-size: 1rem;
   padding: 1px 6px 1px 4px;
@@ -815,8 +816,22 @@ max-height: 9rem !important;
 padding:1rem;
 border-radius:2rem;
 }
+.weather {
+    text-shadow: 2px 2px 5px rgb(167, 119, 255);
+}
 
+.weather {
+  border: 0px solid turquoise;
+  box-shadow: 0px 0px 2px #769bff;
+  border-radius: 0.25rem;
+}
 
+.weather img{
+  background-color: rgba(25, 221, 255, 0.384);
+  height: 2rem !important;
+  max-height: 3rem !important;  
+  border-radius:1rem;
+}
 .steamy {
   border: 0px solid turquoise;
   box-shadow: 0px 0px 10px #769bff, inset 0px 0px 10px #66b5ff;

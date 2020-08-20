@@ -1,3 +1,57 @@
+var dictOfTwoCities = {
+  Alabama: [ "birmingham", "montgomery" ],
+  Alaska: [ "anchorage", "juneau" ],
+  Arizona: [ "phoenix", "tucson" ],
+  Arkansas: [ "little+rock", "fort+smith" ],
+  California: [ "los+angeles", "san+diego" ],
+  Colorado: [ "denver", "colorado+springs" ],
+  Connecticut: [ "bridgeport", "new+haven" ],
+  Delaware: [ "wilmington", "dover" ],
+  "District of Columbia": [ "washington", "washington" ],
+  Florida: [ "jacksonville", "miami" ],
+  Georgia: [ "atlanta", "augusta" ],
+  Hawaii: [ "honolulu", "east+honolulu" ],
+  Idaho: [ "boise", "meridian" ],
+  Illinois: [ "chicago", "aurora" ],
+  Indiana: [ "indianapolis", "fort+wayne" ],
+  Iowa: [ "des+moines", "cedar+rapids" ],
+  Kansas: [ "wichita", "overland+park" ],
+  Kentucky: [ "louisville", "lexington" ],
+  Louisiana: [ "new+orleans", "baton+rouge" ],
+  Maine: [ "portland", "lewiston" ],
+  Maryland: [ "baltimore", "frederick" ],
+  Massachusetts: [ "boston", "worcester" ],
+  Michigan: [ "detroit", "grand+rapids" ],
+  Minnesota: [ "minneapolis", "saint+paul" ],
+  Mississippi: [ "jackson", "gulfport" ],
+  Missouri: [ "kansas+city", "saint+louis" ],
+  Montana: [ "billings", "missoula" ],
+  Nebraska: [ "omaha", "lincoln" ],
+  Nevada: [ "las+vegas", "henderson" ],
+  "New Hampshire": [ "manchester", "nashua" ],
+  "New Jersey": [ "newark", "jersey+city" ],
+  "New Mexico": [ "albuquerque", "las+cruces" ],
+  "New York": [ "new+york city", "buffalo" ],
+  "North Carolina": [ "charlotte", "raleigh" ],
+  "North Dakota": [ "fargo", "bismarck" ],
+  Ohio: [ "columbus", "cleveland" ],
+  Oklahoma: [ "oklahoma+city", "tulsa" ],
+  Oregon: [ "portland", "salem" ],
+  Pennsylvania: [ "philadelphia", "pittsburgh" ],
+  "Rhode Island": [ "providence", "cranston" ],
+  "South Carolina": [ "charleston", "columbia" ],
+  "South Dakota": [ "sioux+falls", "rapid+city" ],
+  Tennessee: [ "nashville", "memphis" ],
+  Texas: [ "houston", "san+antonio" ],
+  Utah: [ "salt+lake city", "west+valley city" ],
+  Vermont: [ "burlington", "south+burlington" ],
+  Virginia: [ "virginia+beach", "norfolk" ],
+  Washington: [ "seattle", "spokane" ],
+  "West Virginia": [ "charleston", "huntington" ],
+  Wisconsin: [ "milwaukee", "madison" ],
+  Wyoming: [ "cheyenne", "laramie" ],
+};
+// console.log('dictOfTwoCities :>> ', dictOfTwoCities);
 
 var eleVoByYr = {
   e1976d: 53.9,
@@ -109,257 +163,257 @@ var indexNoBySt = {
 // console.log('indexByState :>> ', indexNoBySt);
 
 var diversityPart2 = {
-  Alabama:  {
+  Alabama: {
     black: 26.7,
     asian: 1.3,
     native: 0.5
   },
-  Alaska:  {
+  Alaska: {
     black: 2.9,
     asian: 6.6,
     native: 14.2
   },
-  Arizona:  {
+  Arizona: {
     black: 4.1,
     asian: 3.2,
     native: 3.9
   },
-  Arkansas:  {
+  Arkansas: {
     black: 15.2,
     asian: 1.6,
     native: 0.6
   },
-  California:  {
+  California: {
     black: 5.5,
     asian: 14.4,
     native: 0.4
   },
-  Colorado:  {
+  Colorado: {
     black: 3.9,
     asian: 3.1,
     native: 0.6
   },
-  Connecticut:  {
+  Connecticut: {
     black: 9.9,
     asian: 4.5,
     native: 0.2
   },
-  Delaware:  {
+  Delaware: {
     black: 21.5,
     asian: 4,
     native: 0.2
   },
-  "District of Columbia":  {
+  "District of Columbia": {
     black: 45.3,
     asian: 4,
     native: 0.2
   },
-  Florida:  {
+  Florida: {
     black: 15.4,
     asian: 2.8,
     native: 0.2
   },
-  Georgia:  {
+  Georgia: {
     black: 31.1,
     asian: 3.9,
     native: 0.2
   },
-  Hawaii:  {
+  Hawaii: {
     black: 1.6,
     asian: 37.3,
     native: 0.1
   },
-  Idaho:  {
+  Idaho: {
     black: 0.6,
     asian: 1.3,
     native: 1.1
   },
-  Illinois:  {
+  Illinois: {
     black: 14,
     asian: 5.4,
     native: 0.1
   },
-  Indiana:  {
+  Indiana: {
     black: 9.2,
     asian: 2.2,
     native: 0.1
   },
-  Iowa:  {
+  Iowa: {
     black: 3.3,
     asian: 2.6,
     native: 0.2
   },
-  Kansas:  {
+  Kansas: {
     black: 5.5,
     asian: 2.9,
     native: 0.6
   },
-  Kentucky:  {
+  Kentucky: {
     black: 8,
     asian: 1.4,
     native: 0.2
   },
-  Louisiana:  {
+  Louisiana: {
     black: 32.1,
     asian: 1.8,
     native: 0.5
   },
-  Maine:  {
+  Maine: {
     black: 1.2,
     asian: 1.1,
     native: 0.6
   },
-  Maryland:  {
+  Maryland: {
     black: 29.4,
     asian: 6.4,
     native: 0.2
   },
-  Massachusetts:  {
+  Massachusetts: {
     black: 7,
     asian: 6.6,
     native: 0.1
   },
-  Michigan:  {
+  Michigan: {
     black: 13.6,
     asian: 3.1,
     native: 0.5
   },
-  Minnesota:  {
+  Minnesota: {
     black: 6.4,
     asian: 4.9,
     native: 1
   },
-  Mississippi:  {
+  Mississippi: {
     black: 37.9,
     asian: 0.9,
     native: 0.4
   },
-  Missouri:  {
+  Missouri: {
     black: 11.4,
     asian: 2,
     native: 0.3
   },
-  Montana:  {
+  Montana: {
     black: 0.4,
     asian: 0.7,
     native: 5.9
   },
-  Nebraska:  {
+  Nebraska: {
     black: 4.5,
     asian: 2.4,
     native: 0.7
   },
-  Nevada:  {
+  Nevada: {
     black: 8.9,
     asian: 8.3,
     native: 0.9
   },
-  "New Hampshire":  {
+  "New Hampshire": {
     black: 1.3,
     asian: 2.7,
     native: 0.1
   },
-  "New Jersey":  {
+  "New Jersey": {
     black: 12.8,
     asian: 9.8,
     native: 0.1
   },
-  "New Mexico":  {
+  "New Mexico": {
     black: 1.8,
     asian: 1.3,
     native: 8.8
   },
-  "New York":  {
+  "New York": {
     black: 14.3,
     asian: 8.7,
     native: 0.2
   },
-  "North Carolina":  {
+  "North Carolina": {
     black: 21.2,
     asian: 2.9,
     native: 1.1
   },
-  "North Dakota":  {
+  "North Dakota": {
     black: 3,
     asian: 1.7,
     native: 5.4
   },
-  Ohio:  {
+  Ohio: {
     black: 12.2,
     asian: 2.2,
     native: 0.2
   },
-  Oklahoma:  {
+  Oklahoma: {
     black: 7.2,
     asian: 2.1,
     native: 7.3
   },
-  Oregon:  {
+  Oregon: {
     black: 1.8,
     asian: 4.3,
     native: 0.9
   },
-  Pennsylvania:  {
+  Pennsylvania: {
     black: 10.7,
     asian: 3.5,
     native: 0.1
   },
-  "Rhode Island":  {
+  "Rhode Island": {
     black: 5.4,
     asian: 3.6,
     native: 0.3
   },
-  "South Carolina":  {
+  "South Carolina": {
     black: 26.8,
     asian: 1.5,
     native: 0.2
   },
-  "South Dakota":  {
+  "South Dakota": {
     black: 1.9,
     asian: 1.2,
     native: 8.6
   },
-  Tennessee:  {
+  Tennessee: {
     black: 16.6,
     asian: 1.8,
     native: 0.2
   },
-  Texas:  {
+  Texas: {
     black: 11.8,
     asian: 4.8,
     native: 0.3
   },
-  Utah:  {
+  Utah: {
     black: 1.2,
     asian: 2.4,
     native: 1
   },
-  Vermont:  {
+  Vermont: {
     black: 1.2,
     asian: 1.8,
     native: 0.3
   },
-  Virginia:  {
+  Virginia: {
     black: 18.8,
     asian: 6.4,
     native: 0.2
   },
-  Washington:  {
+  Washington: {
     black: 3.5,
     asian: 8.5,
     native: 1
   },
-  "West Virginia":  {
+  "West Virginia": {
     black: 3.9,
     asian: 0.8,
     native: 0.1
   },
-  Wisconsin:  {
+  Wisconsin: {
     black: 6.3,
     asian: 2.7,
     native: 0.8
   },
-  Wyoming:  {
+  Wyoming: {
     black: 0.9,
     asian: 0.8,
     native: 2.1
@@ -1095,17 +1149,17 @@ var seatsByState = {
 // // state_po is the state postal code provided on MIT dataset
 // let sumCheckTotal = 0;  
 // Object.keys(nameByStatePO).forEach(PO =>{
-  //   if (seatsByState[nameByStatePO[PO]] == undefined) {
-    //     // req'd for those without a seat like DC or Am.Samoa
-    //     seatByStatePO[PO] = 0;
-    //   } else { // for all states with seat
-    //     seatByStatePO[PO] = seatsByState[nameByStatePO[PO]];
-    //   }
-    //   sumCheckTotal = sumCheckTotal + seatsByState[nameByStatePO[PO]];
-    // });
-    // console.log('sumCheckTotal needs 435 :>> ', sumCheckTotal);
-    // console.log(' *** final *** seatByStatePO :>> ', seatByStatePO);
-    // -------------------------------------------------------
+//   if (seatsByState[nameByStatePO[PO]] == undefined) {
+//     // req'd for those without a seat like DC or Am.Samoa
+//     seatByStatePO[PO] = 0;
+//   } else { // for all states with seat
+//     seatByStatePO[PO] = seatsByState[nameByStatePO[PO]];
+//   }
+//   sumCheckTotal = sumCheckTotal + seatsByState[nameByStatePO[PO]];
+// });
+// console.log('sumCheckTotal needs 435 :>> ', sumCheckTotal);
+// console.log(' *** final *** seatByStatePO :>> ', seatByStatePO);
+// -------------------------------------------------------
 
 var seatByStatePO = {
   "AK": 1,
@@ -1166,6 +1220,3 @@ var seatByStatePO = {
   "WY": 1,
 };
 
-// console.log( 'test seatByStatePO copy paste for all:>> ', seatByStatePO );
-
-// console.log( 'test seatByStatePO for Colorado:>> ', seatByStatePO[ "CO" ] );

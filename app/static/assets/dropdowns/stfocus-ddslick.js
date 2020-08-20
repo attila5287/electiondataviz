@@ -1,8 +1,3 @@
-      select = document.getElementById("opts2");
-    
-      select.onchange = function () {
-        console.log('$select :>> ', $select.value);
-      };
 
 function dropDownYearUp ( slideYear, csvData ) {
   function genDDoptions ( data, year ) {
@@ -12,7 +7,9 @@ function dropDownYearUp ( slideYear, csvData ) {
       democrat: "blue",
       "democratic-farmer-labor": "blue"
     };
+
     const form4t = d3.format( '.4' );
+
     let winners = {};
     let runnerups = {};
 
@@ -113,7 +110,7 @@ function dropDownLite (defIndex) {
       }
     )
 
-    console.log('defIndex :>> ', defIndex);
+    // console.log('defIndex :>> ', defIndex);
     return {data:result,names:names};
   }
   const basicMenuReady = prepBasicMenu();
@@ -124,7 +121,7 @@ function dropDownLite (defIndex) {
     // truncateDescription: true,
     onSelected: function ( d, i ) {
       const stateName = basicMenuReady.names[ d.selectedIndex ];
-      console.log( 'stateName selected dropdown menu :>> ', stateName );
+      // console.log( 'stateName selected dropdown menu :>> ', stateName );
       // init( stateName );
       initAllFromDd( stateName );
     }
@@ -163,3 +160,10 @@ function dropDownLite (defIndex) {
   }
 }
 // dropDownLite (5);
+
+// js way of selecting an element
+// select = document.getElementById("opts2");
+
+// select.onchange = function () {
+//   console.log('$select :>> ', $select.value);
+// };

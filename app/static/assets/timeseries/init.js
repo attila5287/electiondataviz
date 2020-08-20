@@ -17,17 +17,21 @@ function init( stateName ) {
   
   const url = '../static/data/csv/president.csv';
   d3.csv( url, function ( err, data ) {
-    stateFocusMap( data, stateName );
+    weatherStateUp(stateName);
 
+    stateFocusMap( data, stateName );
+    
     const dataReady = prepTimeSerData( data, stateName );
     timeSersPercUp( dataReady );
     barsPercUp( dataReady );
     barsCountUp( dataReady );
     gaugeUp( dataReady );
     updateImgTxt( stateName );
+
     // dropDownYearUp ( 2016, data );
     const stateIndex = indexNoBySt[stateName];
     dropDownLite (stateIndex);
+
   } );
 }
 
