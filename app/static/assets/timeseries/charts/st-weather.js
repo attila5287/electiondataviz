@@ -14,8 +14,8 @@ function weatherStateUp( stateName ) { //display weather of two largest cities
     // console.log('w :>> ', w);
     const d = {// display those
       city: w.name,
-      temperature: `Temperature:  ${w.main.temp}F/${Math.round((w.main.temp-32)/180*100)}C`,
-      humidity: `Humidity: ${w.main.humidity}%`,
+      temperature: `Temperature:  ${w.main.temp}F / ${Math.round((w.main.temp-32)/180*100)}C`,
+      humidity: `Humidity is ${w.main.humidity}%`,
       description: w.weather[ 0 ].description,
       iconSrc: `http://openweathermap.org/img/wn/${w.weather[0].icon}@2x.png`,
       // TempFeelsLike: ${w.main.feels_like},
@@ -25,7 +25,7 @@ function weatherStateUp( stateName ) { //display weather of two largest cities
       // SunSet: convert2HHMM( w.sys.sunset ),
     };
 
-    console.log( 'display :>> ', d );
+    // console.log( 'display :>> ', d );
 
     d3.select('#weather-city').text(d.city);
     d3.select('#weather-description').text(d.description);
@@ -44,8 +44,8 @@ function weatherStateUp( stateName ) { //display weather of two largest cities
     // console.log('w :>> ', w);
     const d = {// display those
       city: w.name,
-      temperature: `Temperature: ${w.main.temp}F/${Math.round((w.main.temp-32)/180*100)}C`,
-      humidity: `Humidity: ${w.main.humidity}%`,
+      temperature: `Temperature is ${w.main.temp} F / ${Math.round((w.main.temp-32)/180*100)}C`,
+      humidity: `Humidity is ${w.main.humidity}%`,
       description: w.weather[ 0 ].description,
       iconSrc: `http://openweathermap.org/img/wn/${w.weather[0].icon}@2x.png`,
       // TempFeelsLike: ${w.main.feels_like},
@@ -55,7 +55,7 @@ function weatherStateUp( stateName ) { //display weather of two largest cities
       // SunSet: convert2HHMM( w.sys.sunset ),
     };
 
-    console.log( 'display :>> ', d );
+    // console.log( 'display :>> ', d );
 
     d3.select('#weather2-city').text(d.city);
     d3.select('#weather2-description').text(d.description);
@@ -83,3 +83,4 @@ function convert2HHMM( unix_timestamp ) {
   console.log( formattedTime );
   return formattedTime;
 }
+

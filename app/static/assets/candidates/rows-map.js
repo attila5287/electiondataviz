@@ -6,14 +6,14 @@ function importPrezCSV( year ) { //second csv import w/ slider update
   d3.csv( '../static/data/csv/president.csv',
     ( error, data ) => {//all functions using this csv after async csv import 
       
-      updateRows( data, 2016 );
+      updateRows( data, 2016 ); //tr elements
       slideMyYears( 2016 );
-      houseSeatsCirclesUp( data, 2016 );
+      houseSeatsCirclesUp( data, 2016 ); //d3 svg
 
       // --------------------- SLIDER ----------------
       d3.select( "#slider" ).on( "change", function () {
         updateRows( data, +this.value );
-        onlyColorUp( +this.value );
+        onlyColorUp( +this.value ); //update map colors ea. elctn
         slideMyYears( +this.value );
         houseSeatsCirclesUp( data, +this.value );
       } );
@@ -96,7 +96,7 @@ function importPrezCSV( year ) { //second csv import w/ slider update
         d3.select( "#slider" ).property( "value", slider );
       }
 
-      function onlyColorUp( selectedYear ) {
+      function onlyColorUp( selectedYear ) {//update st colors 
         // console.log( 'onlyColorUp|modify map layer for selected year :>> ', selectedYear );
         const colors = {
           republican: "red",
@@ -136,6 +136,8 @@ function importPrezCSV( year ) { //second csv import w/ slider update
         } ).addTo( map );
       
       }
+      
+      //#region MAP START// ----------------
       
         var mapboxAccessToken = "pk.eyJ1IjoiYXR0aWxhNTIiLCJhIjoiY2thOTE3N3l0MDZmczJxcjl6dzZoNDJsbiJ9.bzXjw1xzQcsIhjB_YoAuEw";
     
@@ -289,8 +291,7 @@ function importPrezCSV( year ) { //second csv import w/ slider update
           }; // console.log( 'colors[d] :>> ', partyColor[ d ] );
           return partyColor[ d ];
         }
-        
-    } );
+        //#endregion
+      // map end -----------------
+      } );
 }
-
-// importPrezCSV();

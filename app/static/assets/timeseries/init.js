@@ -18,6 +18,7 @@ function init( stateName ) {
   const url = '../static/data/csv/president.csv';
   d3.csv( url, function ( err, data ) {
     weatherStateUp(stateName);
+    suggestionsUp(data);
 
     stateFocusMap( data, stateName );
     

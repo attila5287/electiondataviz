@@ -65,27 +65,38 @@
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse bg-theme text-center bg-theme" id="navbarCollapse">
+        <div class="collapse navbar-collapse bg-theme text-center bg-theme mb-1" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link  add-anime rnd-lg " href="/timeseries">
+              <a class="nav-link add-anime rnd-lg" href="/timeseries">
                 <i class="fas fa-chart-line"></i>
                 TimeSeries <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  add-anime rnd-lg " href="/candidates">
+              <a class="nav-link add-anime rnd-lg" href="/candidates">
                 <i class="fas fa-users text-sm"></i>
                 Candidates</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link  add-anime rnd-lg " href="/map">
+            <a class="nav-link add-anime rnd-lg" href="/map">
               <i class="fas fa-globe-americas text-sm"></i>
               Map</a>
             </li>
-            <li class="nav-item weather">
-              <a class="nav-link  add-anime text-sm" href="https://github.com/attila5287">
-                <i class="fab fa-github text-lg"></i>
-                @attila5287 </a>
+            <li class="nav-item ml-2">
+              <a class="nav-link text-md text-secondary text-comfo" href="https://github.com/attila5287">
+                <i class="fab fa-github text-xl"></i>
+                 attila5287 </a>
+            </li>
+            <li class="nav-item dropdown add-anime">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Swing States</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Western Slope</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Southern</a>
+                <div class="dropdown-divider"></div>
+              </div>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -93,9 +104,16 @@
           </form>
         </div>
       </nav>
-    </header>
-    <!-- <span class="countup led-lg text-light text-center" cup-end="5758736" cup-append="" cup-prepend="">5758736</span> -->
+    </header> 
 
+    <!-- <span class="countup led-lg text-light text-center" cup-end="5758736" cup-append="" cup-prepend="">5758736</span> -->
+    <ul class="nav nav-pills nav-fill text-secondary rnd-xl mb-2" id="suggestions-dd-menu">
+        <a class="nav-item nav-link btn-outline-light st-btn py-1 my-1">Colorado</a>
+        <a class="nav-item nav-link btn-outline-light st-btn py-1 my-1">Nebraska</a>
+        <a class="nav-item nav-link btn-outline-light st-btn py-1 my-1">Wyoming</a>
+        <a class="nav-item nav-link btn-outline-light st-btn py-1 my-1">New Mexico</a>
+        <a class="nav-item nav-link btn-outline-light st-btn py-1 my-1">Utah</a>
+    </ul>
 
     <div class="row no-gutters mt-0">
       <!-- table -->
@@ -138,28 +156,28 @@
         <div class="row justify-content-around no-gutters mt-0">
           <div class="d-flex flex-row">
           <!-- main figures classed holder-animated-main  -->
-          <nav class="nav nav-pills nav-justified rnd-xl text-md text-light">
+          <nav class="nav nav-pills nav-fill align-items-center rnd-xl text-md text-light">
             <a class="nav-item bg-transparent py-0">
               <img class="img-thumbnail bg-transparent border-0 my-0 py-0"
                 src="http://openweathermap.org/img/wn/04d@2x.png" alt="city01-icon"
                 style="max-height:3rem;max-width:6rem" id="weather-img">
             </a>
 
-            <a class="nav-item weather bg-transparent py-0" id="weather-city">...</a>
-            <a class="nav-item weather bg-transparent py-0" id="weather-description">...</a>
-            <a class="nav-item weather bg-transparent py-0" id="weather-temperature">...</a>
-            <a class="nav-item weather bg-transparent py-0" id="weather-humidity">...</a>
-          </nav>
-          <nav class="nav nav-pills nav-justified rnd-xl text-md text-light py-0 my-0">
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather-city">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather-description">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather-temperature">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather-humidity">...</a>
+          </nav>  
+          <nav class="nav nav-pills nav-fill align-items-center rnd-xl text-md text-light py-0 my-0">
             <a class="nav-item bg-transparent py-0">
+              <i id="weather-description"></i>
               <img class="img-thumbnail bg-transparent border-0 my-0 py-0"
                 src="http://openweathermap.org/img/wn/04d@2x.png" alt="city02-icon"
                 style="max-height:3rem;max-width:6rem" id="weather2-img">
             </a>
-            <a class="nav-item weather bg-transparent py-0" id="weather2-city">...</a>
-            <a class="nav-item weather bg-transparent py-0" id="weather2-description">...</a>
-            <a class="nav-item weather bg-transparent py-0" id="weather2-temperature">...</a>
-            <a class="nav-item weather bg-transparent py-0" id="weather2-humidity">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather2-city">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather2-temperature">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather2-humidity">...</a>
           </nav>
         </div>
           <!-- charts -->
@@ -309,6 +327,7 @@
     <script src="/static/assets/leaflet/st-focused.js"></script>
 
     <script src="/static/assets/timeseries/xtra/st-numbers.js"></script>
+    <script src="/static/assets/timeseries/xtra/suggestions.js"></script>
 
     <script src="/static/assets/tables/tb-lightest.js"></script>
 

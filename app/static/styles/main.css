@@ -817,10 +817,7 @@ padding:1rem;
 border-radius:2rem;
 }
 .weather {
-    text-shadow: 2px 2px 5px rgb(167, 119, 255);
-}
-
-.weather {
+  text-shadow: 2px 2px 5px rgb(167, 119, 255);
   border: 0px solid turquoise;
   box-shadow: 0px 0px 2px #769bff;
   border-radius: 0.25rem;
@@ -870,7 +867,7 @@ border-radius:2rem;
 
 .bg-body-mini {
   /* background-blend-mode: darken; */
-  margin-top: 40px;
+  margin-top: 45px;
   background-position: top;
   background-repeat: repeat;
   background-size: auto;
@@ -903,8 +900,8 @@ border-radius:2rem;
 }
 
 .nav-mini{
-  height: 30px !important;
-  max-height: 40px !important;
+  height: 44px !important;
+  max-height: 45px !important;
 
 }
 
@@ -976,4 +973,12 @@ tbody td:last-child {
   filter: none;
   border: 0px solid turquoise;
   box-shadow: 0px 0px 6px #5d73ee  ,  inset 0px 0px 4px #47a8e0ad;
+}
+
+.st-btn {
+  border: 0px solid turquoise;
+  box-shadow: 0px 0px 4px #00aeff77  ,  inset 0px 0px 2px #1089daad;
+  background-image: linear-gradient(#3172ff88, #009efa55 60%, #8400ff3d);
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1.00rem;
 }

@@ -150,9 +150,9 @@ function renderStateDemo ( dataReady ) { // countup st demographic
 
   dataReady.forEach(d => {
     // console.log('d :>> ', d);
-    var li = d3.select("#hldr-diversity").append("li").classed('nav-item bg-transparent text-md py-0',true);
+    var li = d3.select("#hldr-diversity").append("li").classed('nav-item bg-transparent text-sm py-0 text-break',true);
     li.text(d.label)
-    .classed( 'text-light', true )
+    .classed( 'text-light text-break', true )
       ;
     li.append( "span" )
       .classed( 'countup led-sm text-primary', true )
