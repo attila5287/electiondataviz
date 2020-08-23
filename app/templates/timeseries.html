@@ -65,33 +65,67 @@
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse bg-theme text-center bg-theme" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse bg-theme text-center bg-theme mb-1 align-items-center" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto nav-mini">
             <li class="nav-item active">
-              <a class="nav-link" href="/timeseries">
+              <a class="nav-link add-anime rnd-lg my-sm-2  my-md-3" href="/timeseries">
                 <i class="fas fa-chart-line"></i>
                 TimeSeries <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/candidates">
+              <a class="nav-link add-anime rnd-lg my-sm-2  my-md-3" href="/candidates">
                 <i class="fas fa-users text-sm"></i>
                 Candidates</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/map" tabindex="-1" aria-disabled="true">
-                <i class="fas fa-globe-americas text-sm"></i>
-                Map</a>
+            <a class="nav-link add-anime rnd-lg my-sm-2 my-md-3" href="/map">
+              <!-- <i class="fas fa-globe-americas text-sm"></i> -->
+              <i class="fas fa-globe-americas text-sm"></i>
+              Map</a>
             </li>
+            <li class="nav-item ml-2 my-sm-2  my-md-3">
+              <a class="nav-link text-sm text-secondary text-comfo" href="https://github.com/attila5287">
+                <i class="fab fa-github text-lg"></i>
+                 attila5287 </a>
+            </li>
+            <li class="nav-item text-sm ml-2 my-sm-2  my-md-3">
+              <p class="text-secondary mb-0">
+              <i class="fas fa-info-circle text-light"></i>
+                Make a choice on menu to see suggested states...</p>
+            </li>
+            <li class="nav-item add-anime ml-2 my-sm-1 my-md-2">
+              <form class="form-inline mt-sm-1 mt-md-2">
+                <select id="suggest-menu" class="custom-select custom-select-md bg-purplish text-light  border-0">
+                </select>
+              </form>
+            </li>            
+            <li class="nav-item text-sm ml-2 my-sm-2  my-md-3">
+              <p class="text-secondary mb-0">
+              <i class="fas fa-info-circle text-light"></i>
+                Click on the rows to bring any state on board</p>
+            </li>
+            <li class="nav-item text-sm ml-2 my-sm-2  my-md-3">
+              <p class="text-secondary mb-0">
+              <i class="fas fa-info-circle text-light"></i>
+                Use dropdown with state flag fixed at the top, scroll patiently!...</p>
+            </li>
+
           </ul>
           <form class="form-inline mt-2 mt-md-0">
             <select id="opts2"></select>
           </form>
         </div>
       </nav>
-    </header>
-    <!-- <span class="countup led-lg text-light text-center" cup-end="5758736" cup-append="" cup-prepend="">5758736</span> -->
-
-    <div class="row mt-0">
+    </header> 
+    
+    <ul class="nav nav-pills nav-fill form-group text-secondary rnd-xl mb-2" id="suggested-states">
+    </ul>
+    <div class="row no-gutters mt-0">
+      <div class="col-md-12">
+        <div id="suggested-btns">
+        </div>
+      </div>
+    
       <!-- table -->
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
@@ -129,13 +163,33 @@
       </div>
 
       <div class="col-md-8 mt-0">
-        <div class="row mt-0">
-          <div class="col-md-12 mt-0">
-            <!-- main figures classed holder-animated-main  -->
-            <ul class="nav justify-content-center bg-transparent border-0 mb-1 mt-1 py-1" id="hlder-main">
-            </ul>
-          </div>
+        <div class="row justify-content-around no-gutters mt-0">
+          <div class="d-flex flex-row">
+          <!-- main figures classed holder-animated-main  -->
+          <nav class="nav nav-pills nav-fill align-items-center rnd-xl text-md text-light">
+            <a class="nav-item bg-transparent py-0">
+              <img class="img-thumbnail bg-transparent border-0 my-0 py-0"
+                src="http://openweathermap.org/img/wn/04d@2x.png" alt="city01-icon"
+                style="max-height:3rem;max-width:6rem" id="weather-img">
+            </a>
 
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather-city">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather-description">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather-temperature">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather-humidity">...</a>
+          </nav>  
+          <nav class="nav nav-pills nav-fill align-items-center rnd-xl text-md text-light py-0 my-0">
+            <a class="nav-item bg-transparent py-0">
+              <i id="weather-description"></i>
+              <img class="img-thumbnail bg-transparent border-0 my-0 py-0"
+                src="http://openweathermap.org/img/wn/04d@2x.png" alt="city02-icon"
+                style="max-height:3rem;max-width:6rem" id="weather2-img">
+            </a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather2-city">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather2-temperature">...</a>
+            <a class="nav-item weather bg-transparent px-2 py-0" id="weather2-humidity">...</a>
+          </nav>
+        </div>
           <!-- charts -->
           <div class="col-md-6">
             <!-- bars perc -->
@@ -156,29 +210,18 @@
           </div>
           <!-- flag gauge map-->
           <div class="col-md-6">
-            <div class="row">
+            <div class="row no-gutters">
               <!-- state flag and name -->
               <div class="col-md-4 px-0 mx-0">
-                <div class="card bg-transparent text-left text-secondary pt-1 pb-3">
-                  <div class="card-body bg-glass rnd-xl pt-0 pb-3 my-0">
-                    <div class="card-text text-center text-light text-md  mb-0 py-1">
-                      <i class="fas fa-angle-right"></i>
-                      visualizing data for:
-                      <hr class="my-1 border-light opac-30">
-                    </div>
-                    <h6
-                      class="card-title bg-black rnd-lg text-center text-comfo text-xl text-bold py-1 mb-0"
-                      id="stName">
-                      ...
-                    </h6>
-                  </div>
-                </div>>
-                <!-- flag -->
-                <div class="card bg-transparent text-center">
-                  <img class="card-img opac-30 p-4" src="../static/img/states/colorado-flag-small.png"
-                    alt="state-flag" id="stFlag" style="max-height:10rem;max-width:25rem">
-                  <div class="card-img-overlay bg-glass rnd-2xl text-center py-1 mt-4 mb-4">
-                  </div>
+                <div class="text-center bg-glass rnd-xl p-2">
+                  <h6 class="card-title bg-black rnd-md text-comfo text-xl text-bold my-1" id="stName"> ... </h6>
+                </div>
+                <div class="bg-glass rnd-xl p-2">
+                  <!-- main figures classed holder-animated-main  -->
+                  <ul class="list-group
+                 list-group-flush bg-transparent border-0 mb-1 mt-1 py-1" id="hlder-main">
+                  </ul>
+
                 </div>
               </div>
               <!--gauge  -->
@@ -189,19 +232,32 @@
                   </div>
                 </div>
               </div>
+
             </div>
 
-            <!-- demographic figures classed holder-anim-demographic  -->
+            <!-- demographic figures classed holder-anim-diversity-minority  -->
             <div class="card bg-transparent">
-              <div class="card-body bg-glass rnd-2xl">
-                <ul class="nav nav-fill bg-transparent border-0" id="hldr-diversity">
-                </ul>
+              <div class="row">
+                <div class="col-md-4">
+                  <img class="card-img ovrly rnd-xl opac-50" src="../static/img/states/colorado-flag-small.png"
+                    style="max-height: 8rem; max-width:16rem;" id="stFlag">
+                </div>
+
+                <div class="col-md-8">
+                  <div class="card-body bg-glass rnd-2xl">
+                    <ul class="nav nav-fill bg-transparent border-0" id="hldr-diversity">
+                    </ul>
+                  </div>
+
+                </div>
               </div>
             </div>
 
             <!-- map -->
-            <div class="card border-0 bg-theme rnd-qtr">
-              <div class="container bg-transparent rnd-qtr" id="map">
+            <!-- <div class="card border-0 bg-theme rnd-qtr"> -->
+            <div class="card border-0 bg-transparent rnd-qtr m-2">
+              <div class="card-body border-0 bg-glass rnd-qtr m-0 p-0">
+                <div class="container bg-transparent rnd-qtr opac-100" id="map"></div>
               </div>
             </div>
           </div>
@@ -261,8 +317,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
-    <script src="/static/util/abbrNum.js"></script>
-    
     <script src="/static/plugins/ddslick.js"></script>
 
     <script src="/static/data/json/st-dicts.js"></script>
@@ -274,7 +328,7 @@
     <script src="/static/assets/dropdowns/stfocus-ddslick.js"></script>
 
     <script src="/static/assets/timeseries/charts/st-bars.js"></script>
-    <script src="/static/assets/timeseries/charts/test.js"></script>
+    <script src="/static/assets/timeseries/charts/st-weather.js"></script>
 
     <script src="/static/assets/timeseries/charts/st-circles.js"></script>
 
@@ -283,6 +337,7 @@
     <script src="/static/assets/leaflet/st-focused.js"></script>
 
     <script src="/static/assets/timeseries/xtra/st-numbers.js"></script>
+    <script src="/static/assets/timeseries/xtra/suggestions.js"></script>
 
     <script src="/static/assets/tables/tb-lightest.js"></script>
 
@@ -293,4 +348,3 @@
   </body>
 
 </html>
-

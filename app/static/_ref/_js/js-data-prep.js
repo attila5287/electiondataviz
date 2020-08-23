@@ -3,8 +3,8 @@ ES6 CONST/LET EXAMPLES
 */
 // 1. Example of Scoping difference. Using "var", the variable is declared at the top of the scope, but initialized with a value at the line it was typed. It is given a value of "undefined" until it is initialized with it's actual value. By comparison, Let/Const are defined and initialized on the same line.
 // using var
-function logger() {
-  // returns "undefined", but code still runs.
+function logger() { //but code still runs
+  // returns "undefined"
   console.log(x);
   var x = "hi";
 }

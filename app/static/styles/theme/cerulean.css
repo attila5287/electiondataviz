@@ -3890,13 +3890,13 @@ input[type="button"].btn-block {
 .input-group > .form-control:not(:last-child),
 .input-group > .custom-select:not(:last-child) {
   border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .input-group > .form-control:not(:first-child),
 .input-group > .custom-select:not(:first-child) {
   border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0.5rem;
 }
 
 .input-group > .custom-file {
@@ -4212,17 +4212,17 @@ input[type="button"].btn-block {
   vertical-align: middle;
   background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border-radius: 0.75rem;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
 }
 
 .custom-select:focus {
-  border-color: #a1d6f4;
+  border-color: 0px #a1d6f4;
   outline: 0;
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
-          box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
+  -webkit-box-shadow: 0 0 0 0.0rem rgba(47, 164, 231, 0.25);
+          box-shadow: 0 0 0 0.0rem rgba(47, 164, 231, 0.25);
 }
 
 .custom-select:focus::-ms-value {
@@ -4247,7 +4247,7 @@ input[type="button"].btn-block {
 
 .custom-select:-moz-focusring {
   color: transparent;
-  text-shadow: 0 0 0 #495057;
+  text-shadow: 0 0 0 #ffffff;
 }
 
 .custom-select-sm {

@@ -19,6 +19,7 @@ function init( stateName ) {
   d3.csv( url, function ( err, data ) {
     weatherStateUp(stateName);
     suggestionsUp(data);
+    
 
     stateFocusMap( data, stateName );
     
