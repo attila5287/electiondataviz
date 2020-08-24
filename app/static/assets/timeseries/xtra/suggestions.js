@@ -88,7 +88,8 @@ const prepOptions = data => { // dropdown options
   result[ 'More Electoral Seats' ] = seatNumHigh;
   result[ 'Less Electoral Seats' ] = seatNumLow;
 
-  console.log('res :>> ', result);
+  // console.log('res :>> ', result);
+
   return result;
 };
 
@@ -101,11 +102,11 @@ function suggestionsUp( data ) {// select>options menu>dynamic loading btn's
   // <option class="px-1" value="" selected hidden >SuggestedSets</option>
   $menu
     .append('option')
-    .attr('class', 'text-comfo', true)
+    .attr('class', 'text-comfo text-light text-center', true)
     .attr('value','' )
     .attr('selected',true )
     .attr('hidden',true )
-    .text('QuickStartMenu')
+    .text("Suggestions...")
     ;
     let value = 0;
   Object.keys(dataReady).forEach(k => {// generates options

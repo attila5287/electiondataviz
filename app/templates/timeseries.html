@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
   <head>
@@ -8,8 +9,8 @@
     <link rel="icon" type="image/x-icon" class="favicon" href="../static/img/election/favicon.ico" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/cerulean/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/theme/cerulean.css"/>
+      <!-- href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/cerulean/bootstrap.min.css" /> -->
 
     <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
 
@@ -28,7 +29,6 @@
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""></script>
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <!-- set title on route by render_template(... ,title='test') -->
 
@@ -45,87 +45,90 @@
 
     <!-- title -->
     <title>US States Time Series</title>
+    <style>
+      #map {
+        height: 220px;
+        width: 95%;
+        margin: 8px 8px 22px 8px;
+      }
+    </style>
   </head>
-  <style>
-    #map {
-      height: 220px;
-      width: 95%;
-      margin: 8px 8px 22px 8px;
-    }
-  </style>
 
   <body class="bg-body-mini">
     <header>
-      <nav class="navbar nav-mini navbar-expand-sm navbar-dark fixed-top bg-theme">
+      <nav class="navbar nav-mini navbar-expand-md navbar-dark fixed-top bg-transparent bg-themy">
         <a class="navbar-brand bg-transparent border-0 rnd-xl add-anime mx-1 p-0"
-          href="https://electiondataviz.herokuapp.com/">
+          href="https://electiondataviz.herokuapp.com/"
+          >
           <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 30px;" alt="navbar-icon">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        <button class="navbar-toggler bg-theme px-3 py-2" type="button" data-toggle="collapse" data-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse bg-theme text-center bg-theme mb-1 align-items-center" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto nav-mini">
+        <div class="collapse navbar-collapse nav-mini text-center text-comfo mb-1" id="navbarCollapse">
+          <ul class="nav nav-pills nav-fill nav-mini bg-transparent mr-auto align-items-center">
             <li class="nav-item active">
-              <a class="nav-link add-anime rnd-lg my-sm-2  my-md-3" href="/timeseries">
+              <a class="nav-link add-anime shd-themy rnd-lg mt-1" href="/timeseries">
                 <i class="fas fa-chart-line"></i>
-                TimeSeries <span class="sr-only">(current)</span></a>
+                <span class="sr-only">(TimeSeries)</span>
+                TimeSeries 
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link add-anime rnd-lg my-sm-2  my-md-3" href="/candidates">
+              <a class="nav-link add-anime shd-themy rnd-lg mt-1" href="/candidates">
                 <i class="fas fa-users text-sm"></i>
                 Candidates</a>
             </li>
+            <li class="nav-item"> 
+              <a class="nav-link add-anime shd-themy rnd-lg mt-1" href="/map"> 
+                <i class="fas fa-globe-americas text-sm"></i>
+                Map
+              </a>
+            </li>
             <li class="nav-item">
-            <a class="nav-link add-anime rnd-lg my-sm-2 my-md-3" href="/map">
-              <!-- <i class="fas fa-globe-americas text-sm"></i> -->
-              <i class="fas fa-globe-americas text-sm"></i>
-              Map</a>
-            </li>
-            <li class="nav-item ml-2 my-sm-2  my-md-3">
-              <a class="nav-link text-sm text-secondary text-comfo" href="https://github.com/attila5287">
-                <i class="fab fa-github text-lg"></i>
-                 attila5287 </a>
-            </li>
-            <li class="nav-item text-sm ml-2 my-sm-2  my-md-3">
-              <p class="text-secondary mb-0">
-              <i class="fas fa-info-circle text-light"></i>
-                Make a choice on menu to see suggested states...</p>
-            </li>
-            <li class="nav-item add-anime ml-2 my-sm-1 my-md-2">
-              <form class="form-inline mt-sm-1 mt-md-2">
-                <select id="suggest-menu" class="custom-select custom-select-md bg-purplish text-light  border-0">
-                </select>
-              </form>
-            </li>            
-            <li class="nav-item text-sm ml-2 my-sm-2  my-md-3">
-              <p class="text-secondary mb-0">
-              <i class="fas fa-info-circle text-light"></i>
-                Click on the rows to bring any state on board</p>
-            </li>
-            <li class="nav-item text-sm ml-2 my-sm-2  my-md-3">
-              <p class="text-secondary mb-0">
-              <i class="fas fa-info-circle text-light"></i>
-                Use dropdown with state flag fixed at the top, scroll patiently!...</p>
-            </li>
-
+              <a class="nav-link add-anime rnd-lg text-comfo mt-1" href="https://github.com/attila5287">
+                <i class="fab fa-github text-sm"></i>
+                attila5287
+                </a>
+            </li>                        
           </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <select id="opts2"></select>
+          <form class="form-inline align-items-center bg-transparent">
+            <select 
+            id="suggest-menu"
+            class="custom-select custom-select-md text-light text-center bg-themsie add-anime border-themy mx-3"
+            >
+
+            </select>            
+            <select class="mx-3" id="opts2"></select>
           </form>
         </div>
       </nav>
-    </header> 
-    
-    <ul class="nav nav-pills nav-fill form-group text-secondary rnd-xl mb-2" id="suggested-states">
+      <!-- INFO NOTES -->
+      <div class="d-flex flex-row justify-content-between mt-0">
+        <p class="text-light text-italic text-secondary mt-0 mb-0">
+          <i class="fas fa-info-circle text-secondary"></i>
+          Click on table rows below to bring a state on board!
+        </p>
+        <p class="text-light text-italic text-secondary mt-0 mb-0">
+          <i class="fas fa-info-circle text-secondary"></i>
+          Select an option and generate buttons below with state names on the selected listr
+        </p>
+        <p class="text-light text-italic text-secondary mt-0 mb-0">
+          <i class="fas fa-info-circle text-secondary"></i>
+          Use the imaged-dropdown to choose a state to visualize all election historical data!
+        </p>
+        <p class="text-light text-italic text-secondary mt-0 mb-0 mt-0 mb-0">
+          <i class="fas fa-info-circle text-secondary"></i>
+          Click on table rows below to bring a state on board!
+        </p>
+      </div>
+    </header>
+      
+
+    <ul class="nav nav-pills nav-fill form-group text-secondary  rnd-xl" id="suggested-states">
     </ul>
     <div class="row no-gutters mt-0">
-      <div class="col-md-12">
-        <div id="suggested-btns">
-        </div>
-      </div>
-    
       <!-- table -->
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
@@ -162,34 +165,34 @@
         </table>
       </div>
 
-      <div class="col-md-8 mt-0">
-        <div class="row justify-content-around no-gutters mt-0">
-          <div class="d-flex flex-row">
+      <div class="col-md-8">
+
+        <div class="d-flex flex-row justify-content-around mt-0">
           <!-- main figures classed holder-animated-main  -->
-          <nav class="nav nav-pills nav-fill align-items-center rnd-xl text-md text-light">
+          <nav class="nav nav-pills nav-fill rnd-xl text-md text-light py-0 my-0">
             <a class="nav-item bg-transparent py-0">
               <img class="img-thumbnail bg-transparent border-0 my-0 py-0"
                 src="http://openweathermap.org/img/wn/04d@2x.png" alt="city01-icon"
-                style="max-height:3rem;max-width:6rem" id="weather-img">
+                style="max-height:2rem;max-width:4rem" id="weather-img">
             </a>
-
             <a class="nav-item weather bg-transparent px-2 py-0" id="weather-city">...</a>
             <a class="nav-item weather bg-transparent px-2 py-0" id="weather-description">...</a>
             <a class="nav-item weather bg-transparent px-2 py-0" id="weather-temperature">...</a>
             <a class="nav-item weather bg-transparent px-2 py-0" id="weather-humidity">...</a>
-          </nav>  
-          <nav class="nav nav-pills nav-fill align-items-center rnd-xl text-md text-light py-0 my-0">
+          </nav>
+          <nav class="nav nav-pills nav-fill rnd-xl text-md text-light py-0 my-0">
             <a class="nav-item bg-transparent py-0">
               <i id="weather-description"></i>
               <img class="img-thumbnail bg-transparent border-0 my-0 py-0"
                 src="http://openweathermap.org/img/wn/04d@2x.png" alt="city02-icon"
-                style="max-height:3rem;max-width:6rem" id="weather2-img">
+                style="max-height:2rem;max-width:4rem" id="weather2-img">
             </a>
             <a class="nav-item weather bg-transparent px-2 py-0" id="weather2-city">...</a>
             <a class="nav-item weather bg-transparent px-2 py-0" id="weather2-temperature">...</a>
             <a class="nav-item weather bg-transparent px-2 py-0" id="weather2-humidity">...</a>
           </nav>
         </div>
+        <div class="row justify-content-around no-gutters mt-0">
           <!-- charts -->
           <div class="col-md-6">
             <!-- bars perc -->
@@ -239,8 +242,8 @@
             <div class="card bg-transparent">
               <div class="row">
                 <div class="col-md-4">
-                  <img class="card-img ovrly rnd-xl opac-50" src="../static/img/states/colorado-flag-small.png"
-                    style="max-height: 8rem; max-width:16rem;" id="stFlag">
+                  <img class="bg-glass card-img ovrly rnd-xl opac-50 p-3" src="../static/img/states/colorado-flag-small.png"
+                    style="width:100%;max-height: 8rem; max-width:16rem;" id="stFlag">
                 </div>
 
                 <div class="col-md-8">
@@ -254,7 +257,6 @@
             </div>
 
             <!-- map -->
-            <!-- <div class="card border-0 bg-theme rnd-qtr"> -->
             <div class="card border-0 bg-transparent rnd-qtr m-2">
               <div class="card-body border-0 bg-glass rnd-qtr m-0 p-0">
                 <div class="container bg-transparent rnd-qtr opac-100" id="map"></div>
@@ -262,9 +264,8 @@
             </div>
           </div>
         </div>
-
       </div>
-
+      
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
           <thead class="bg-theme text-comfo text-light">

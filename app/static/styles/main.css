@@ -817,10 +817,11 @@ padding:1rem;
 border-radius:2rem;
 }
 .weather {
+  align-items: top;
   text-shadow: 2px 2px 5px rgb(167, 119, 255);
-  border: 0px solid turquoise;
+  /* border: 0px solid turquoise;
   box-shadow: 0px 0px 2px #769bff;
-  border-radius: 0.25rem;
+  border-radius: 0.25rem; */
 }
 
 .weather img{
@@ -865,23 +866,6 @@ border-radius:2rem;
 }
 
 
-.bg-body-mini {
-  /* background-blend-mode: darken; */
-  margin-top: 45px;
-  background-position: top;
-  background-repeat: repeat;
-  background-size: auto;
-  position: relative;
-  vertical-align: top;
-  background-image: linear-gradient(#998d99, #c4c4c4 60%, #5d476b);
-  /* background-image: url("https://www.limos4less.com/images/bg-1.jpg");
-  background-image: url("https://www.jetsetter.com/uploads/sites/7/2018/04/city-cultural-historic-building-960x960.jpeg");
-  background-image: url("https://d36tnp772eyphs.cloudfront.net/blogs/1/2017/05/12251784553_018a0b3095_k-1200x720.jpg"); */
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/United_States_Capitol_Building_at_night.jpg/1200px-United_States_Capitol_Building_at_night.jpg");
-
-  background-color: #002B36;
-}
-
 .bg-body {
   /* background-blend-mode: darken; */
   margin-top: 60px;
@@ -900,11 +884,21 @@ border-radius:2rem;
 }
 
 .nav-mini{
-  height: 44px !important;
-  max-height: 45px !important;
-
+  height: 35px !important;
+  max-height: 40px !important;
 }
-
+.bg-body-mini {
+  background-blend-mode: darken;
+  margin-top: 40px;
+  background-position: top;
+  background-repeat: repeat;
+  background-size: auto;
+  position: relative;
+  vertical-align: top;
+  background-image: linear-gradient(#998d99, #c4c4c4 60%, #5d476b);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/United_States_Capitol_Building_at_night.jpg/1200px-United_States_Capitol_Building_at_night.jpg");
+  background-color: #002B36;
+}
 /* set map, body, and html to 100% of the screen size */
 body,
 html {
@@ -953,17 +947,27 @@ tbody td:last-child {
   max-height: 40px !important;
 }
 
+.bg-themsie {
+  background-color: rgb(41, 37, 65);
+}
 .shd-themy {
   border: 0px solid turquoise;
   box-shadow: 0px 0px 2px #5d73ee  ,  inset 0px 0px 2px #47a8e0ad;
   border-radius: 0.75rem;
-  background-image: linear-gradient(#ff00ea1e, #001aff0e 60%, #0400ff09);
+  background-image: linear-gradient(#cc00ff1e, #001aff0e 60%, #0400ff09);
 }
+
+.border-themy {
+  box-shadow: 0px 0px 2px #5d73ee  ,  inset 0px 0px 3px #47a8e0ad;
+  border: 0px solid turquoise;
+  border-radius: 0.50rem;
+}
+
 .bg-themy {
   border: 0px solid turquoise;
-  box-shadow: 0px 0px 6px #5d73ee  ,  inset 0px 0px 4px #47a8e0ad;
+  box-shadow: 0px 0px 4px #5d73ee  ,  inset 0px 0px 3px #47a8e0ad;
   border-radius: 0.75rem;
-  background-image: linear-gradient(#ff00ea44, #001aff28 60%, #0400ff36);
+  background-image: linear-gradient(#ff00ea67, #001aff11 60%, #0400ff5d);
 }
 .bg-theme {
   background-image: linear-gradient(#ff00ea38, #0c3da89d 60%, #0806a3b4);
@@ -971,7 +975,7 @@ tbody td:last-child {
   -webkit-filter: none;
   filter: none;
   border: 0px solid turquoise;
-  box-shadow: 0px 0px 6px #5d73ee  ,  inset 0px 0px 4px #47a8e0ad;
+  box-shadow: 0px 0px 4px #5d73ee  ,  inset 0px 0px 3px #47a8e0ad;
 }
 
 .st-btn {
@@ -980,10 +984,4 @@ tbody td:last-child {
   background-image: linear-gradient(#002d8f88, #00000055 60%, #0077ff3d);
   font-family: 'Comfortaa', sans-serif;
   font-size: 1.00rem;
-}
-
-.bg-purplish {
-  background-color: #3d51aac5;
-  border: 0px turquoise;
-  box-shadow: 0px 0px 5px #ffffff77  ,  inset 0px 0px 5px #00098aad;
 }

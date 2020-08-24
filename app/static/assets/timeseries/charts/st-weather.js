@@ -6,7 +6,7 @@ function weatherStateUp( stateName ) { //display weather of two largest cities
   const city02 = dictOfTwoCities[ stateName ][1];
   // const api_key = "68a35fb157e72d53da67507cc3b136e8";
   const api_key = "42a5a7b661c854194cb0539e5fd1a86f";
-
+  
   // base url that will be used during the iteration by adding city at the end
   const url = "http://api.openweathermap.org/data/2.5/weather?units=Imperial&APPID=" +api_key +"&q=" +city01;
 
@@ -65,7 +65,7 @@ function weatherStateUp( stateName ) { //display weather of two largest cities
   } );
 }
 
-function convert2HHMM( unix_timestamp ) {
+function convert2HHMM( unix_timestamp ) {// returns string
   // let unix_timestamp = 1549312452
   // Create a new JavaScript Date object based on the timestamp
   // multiplied by 1000 so that the argument is in milliseconds, not seconds.
@@ -83,4 +83,3 @@ function convert2HHMM( unix_timestamp ) {
   console.log( formattedTime );
   return formattedTime;
 }
-
