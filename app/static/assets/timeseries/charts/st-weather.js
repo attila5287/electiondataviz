@@ -17,7 +17,7 @@ function weatherStateUp( stateName ) { //display weather of two largest cities
       temperature: `Temperature:  ${w.main.temp}F / ${Math.round((w.main.temp-32)/180*100)}C`,
       humidity: `Humidity is ${w.main.humidity}%`,
       description: w.weather[ 0 ].description,
-      iconSrc: `http://openweathermap.org/img/wn/${w.weather[0].icon}@2x.png`,
+      iconSrc: `/static/img/ow/${w.weather[0].icon}@2x.png`,
       // TempFeelsLike: ${w.main.feels_like},
       // WindDegree: w.wind.deg,
       // WindSpeed: w.wind.speed,
