@@ -11,12 +11,13 @@ abort	../app\routes.py	/^from flask import render_template, url_for, flash, redi
 app	../app\__init__.py	/^app = Flask(__name__)$/;"	kind:variable	line:5
 app	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:3
 app	../run.py	/^from app import app$/;"	kind:namespace	line:1
-candidates	../app\routes.py	/^def candidates():$/;"	kind:function	line:12
+candidates	../app\routes.py	/^def candidates():$/;"	kind:function	line:16
 db	../app\__init__.py	/^db = SQLAlchemy(app)$/;"	kind:variable	line:10
 db	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:3
 flash	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
+historical	../app\routes.py	/^def historical():$/;"	kind:function	line:8
 jsonify	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
-map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:16
+map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:20
 os	../app\__init__.py	/^import os$/;"	kind:namespace	line:3
 os	../app\routes.py	/^import os$/;"	kind:namespace	line:1
 redirect	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
@@ -25,6 +26,6 @@ request	../app\routes.py	/^from flask import render_template, url_for, flash, re
 routes	../app\__init__.py	/^from app import routes$/;"	kind:namespace	line:12
 routes.py	../app\routes.py	1;"	kind:file	line:1
 run.py	../run.py	1;"	kind:file	line:1
-test	../app\routes.py	/^def test():$/;"	kind:function	line:22
-timeseries	../app\routes.py	/^def timeseries():$/;"	kind:function	line:8
+test	../app\routes.py	/^def test():$/;"	kind:function	line:26
+timeseries	../app\routes.py	/^def timeseries():$/;"	kind:function	line:12
 url_for	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2

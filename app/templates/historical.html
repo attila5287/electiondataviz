@@ -62,7 +62,7 @@
           >
           <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 30px;" alt="navbar-icon">
         </a>
-        <button class="navbar-toggler bg-theme px-2 py-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        <button class="navbar-toggler bg-theme px-3 py-2" type="button" data-toggle="collapse" data-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -75,9 +75,9 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link add-anime shd-themy rnd-lg mt-1" href="/interactive">
+              <a class="nav-link add-anime shd-themy rnd-lg mt-1" href="/historical">
                 <i class="fas fa-chart-line"></i>
-                Interactive
+                Historical
               </a>
             </li>
             <li class="nav-item">
@@ -124,30 +124,10 @@
       </div>
     </header>
       
+
+    <ul class="nav nav-pills nav-fill form-group text-secondary  rnd-xl" id="suggested-states">
+    </ul>
     <div class="row no-gutters mt-0">
-      <div class="col-md-8 text-center">
-        <div class="row no-gutters mt-0">
-          <div class="col-md-12 text-center">
-          <fieldset class="form-group mx-2 mt-2 py-1 px-2 rnd-xl bg-theme shadow-turqoise text-center">
-          <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1" id="custom-keys">
-          </div>
-          <input type="range" id="slider" class="custom-range">
-          <div class="d-flex flex-row justify-content-center align-items-center">
-            <h6 class="text-nowrap shadow-turq" id="param-prev"></h6>            
-            <i class="fas fa-caret-left text-lg text-primary"></i>
-            <i class="fas fa-caret-left text-xl text-primary"></i>
-            <i class="fas fa-caret-left text-2xl text-primary"></i>
-            <h5 class="bg-black py-1 px-4 mb-2 text-digi text-primary shadow-turq rnd-xl" id="sliderValue"></h5>
-            <i class="fas fa-caret-right text-2xl text-primary"></i>
-            <i class="fas fa-caret-right text-xl text-primary"></i>
-            <i class="fas fa-caret-right text-lg text-primary"></i>
-            <h6 class="text-nowrap shadow-turq" id="param-next"></h6>            
-          </div>
-        </fieldset>
-      </div> 
-          <div class="col-md-6 text-center"><div id="hist-unemployment"></div></div>
-        </div>
-      </div>
       <!-- table -->
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
@@ -180,11 +160,12 @@
             <tr class="tbl"></tr>
             <tr class="tbl"></tr>
             <tr class="tbl"></tr>
-            <tr class="tbl"></tr>
           </tbody>
         </table>
       </div>
-
+      <div class="col-md-8 text-center">
+      </div>
+      
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
           <thead class="bg-theme text-comfo text-light">
@@ -217,10 +198,13 @@
             <tr class="tbl"></tr>
             <tr class="tbl"></tr>
             <tr class="tbl"></tr>
+            <tr class="tbl"></tr>
           </tbody>
         </table>
       </div>
+
     </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -240,12 +224,11 @@
 
     <script src="/static/data/prep/st-prepTime.js"></script>
 
-    <script src="/static/assets/dropdowns/hist-ddslick.js"></script>
+    <script src="/static/assets/dropdowns/stfocus-ddslick2.js"></script>
 
-    <script src="/static/assets/tables/tb-hist.js"></script>
+    <script src="/static/assets/tables/tb-lightest.js"></script>
 
-    <script src="/static/assets/interactive/charts/test.js"></script>
-    <script src="/static/assets/interactive/init.js"></script>
+    <script src="/static/assets/timeseries/init.js"></script>
 
   </body>
 

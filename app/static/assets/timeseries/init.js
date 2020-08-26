@@ -2,33 +2,10 @@ init( "Colorado" );
 
 
 function init( stateName ) {
-  renderStateMain( prepStateMain( stateName ) );
-  renderStateDemo( prepStateDemo( stateName ) );
 
-  var cu = new counterUp( {
-    start: 0,
-    duration: 3000,
-    intvalues: true,
-    interval: 100,
-    prepend: '€',
-    append: '.00'
-  } );
-  cu.start();
-  
   const url = '../static/data/csv/president.csv';
   d3.csv( url, function ( err, data ) {
-    weatherStateUp(stateName);
-    suggestionsUp(data);
-    
-
-    stateFocusMap( data, stateName );
-    
     const dataReady = prepTimeSerData( data, stateName );
-    timeSersPercUp( dataReady );
-    barsPercUp( dataReady );
-    barsCountUp( dataReady );
-    gaugeUp( dataReady );
-    updateImgTxt( stateName );
 
     // dropDownYearUp ( 2016, data );
     const stateIndex = indexNoBySt[stateName];

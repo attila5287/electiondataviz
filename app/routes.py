@@ -4,6 +4,10 @@ from app import app, db
 # import requests
 
 @app.route("/")
+@app.route("/historical")
+def historical():
+    return render_template('historical.html')
+  
 @app.route("/timeseries")
 def timeseries():
     return render_template('timeseries.html')
