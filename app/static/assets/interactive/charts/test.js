@@ -1,3 +1,33 @@
+  function genCustomParams(){
+    const fileNames = [//file names to pull data
+    "const-permits.csv",
+    "numjobs-nonfarmpro.csv",
+    "income-wagesalary.csv",
+    "unemployment.csv",
+    "income-percapita.csv",
+    "population.csv",
+  ];
+
+  const labels = [// name on input range
+    "Construction Permits",
+    "Num of Jobs: Non-Farm Pro",
+    "Avg Earnings:Wage Salary",
+    "Unemployment Rate",
+    "Income Per Capita",
+    "Total Population",
+  ];
+  let results=[];
+
+  for (let i = 0; i < fileNames.length; i++) {
+    results.push({ 
+      index : +i, 
+      label : labels[i], 
+      file : fileNames[i], });
+  }
+  // console.log('results :>> ', results);
+  // console.log('results0  :>> ', results[0]);
+  return results;
+  };
 function interactiveChartUp( dataReady ) {
   
   // console.log('dataReady :>> ', dataReady);
@@ -44,10 +74,11 @@ function interactiveChartUp( dataReady ) {
   let numYears = dataReady.blue.count.values.length;
 
   // console.log( 'numYears :>> ', numYears );
-  let years = [
-    d3.min( dataReady.blue.perc.values, d => d.year ),
-    d3.max( dataReady.red.perc.values, d => d.year )
-  ];
+  // let years = [
+  //   d3.min( dataReady.blue.perc.values, d => d.year ),
+  //   d3.max( dataReady.red.perc.values, d => d.year )
+  // ];
+  let years = [1976,2019]; //2019 is a max of interactive field: income
   // console.log( 'years :>> ', years );
   let lows = [
     d3.min( dataReady.blue.perc.values, d => d.perc ),
@@ -191,39 +222,6 @@ function interactiveChartUp( dataReady ) {
     } );
 
 
-  function genCustomParams(){
-    const fileNames = [//file names to pull data
-    "const-permits.csv",
-    "income-nonfarmpro.csv",
-    "income-wagesalary.csv",
-    "unemployment.csv",
-    "farm-numbers.csv",
-    "income-percapita.csv",
-    "population.csv",
-  ];
-
-  const labels = [// name on input range
-    "Construction Permits",
-    "Self-Employed Income",
-    "Wage Salary Inc Avg",
-    "Unemployment Rate",
-    "Farm Numbers",
-    "Income Per Capita",
-    "Total Population",
-  ];
-  let results=[];
-
-  for (let i = 0; i < fileNames.length; i++) {
-    results.push({ 
-      index : +i, 
-      label : labels[i], 
-      file : fileNames[i], });
-  }
-  // console.log('results :>> ', results);
-  // console.log('results0  :>> ', results[0]);
-  return results;
-  };
-
   const customParams = genCustomParams();
 
   // console.log('customParams :>> ', customParams);
@@ -248,7 +246,7 @@ function interactiveChartUp( dataReady ) {
     // adjust the text on the range slider
     // console.log('slider :>> ', slider);
     // console.log(' params[slider] :>> ',  params[+slider]);
-    let prevModulus = (+slider+6 )% customParams.length;
+    let prevModulus = (+slider+5 )% customParams.length;
     // console.log('prevZer :>> ', prevModulus);
     let nextModulus = (+slider+8 )% customParams.length;
     // console.log('nextModulus :>> ', nextModulus);
@@ -261,30 +259,85 @@ function interactiveChartUp( dataReady ) {
   // --------------------- SLIDER ----------------
   d3.select( "#slider" ).on( "input", function () {
     console.log('customParams[+this.value].file :>> ', customParams[+this.value].file);
+
     slideMyYears( +this.value , customParams);
+
     d3.csv( `../static/data/csv-int/${customParams[+this.value].file}`, function ( err, rows ) {
+      // Remove is the first <path> element from the axis group: 
+      
+      d3.select(".vertical-int").remove();
+      d3.select(".line-xtra").remove();
+
       console.log('dataReady :>> ', dataReady);
       console.log( 'rows 5 :>> ', rows[indexNoBySt[dataReady.state]] );
       let rowSt = rows[indexNoBySt[dataReady.state]]; // row with selected param/state
 
       delete rowSt.name;
-      console.log('test1 :>> ', d3.min(Object.keys(rowSt).map(year=> rowSt[year]) ));
-      console.log('test2 :>> ', d3.max( Object.keys(rowSt).map(year=> rowSt[year]) ));
+      let dataXtra = [];
+      Object.keys(rowSt).forEach(e => {
+        console.log('e :>> ', e);
+        dataXtra.push({
+          year: +e,
+          value: +rowSt[e],
+        });
+      });
 
-      let y2 = d3.scaleLinear()
+      let y2 = d3.scaleLinear() // min max values for y scale
         .domain( [ 
-          d3.min( Object.keys(rowSt).map(year=> rowSt[year])  ),
-          d3.max( Object.keys(rowSt).map(year=> rowSt[year])  ),
+          d3.min( Object.keys(rowSt).map(year=> +rowSt[year])  ),
+          d3.max( Object.keys(rowSt).map(year=> +rowSt[year])  ),
         ] )
         .range( [ height, 0 ] );      
-          // Add leftAxis to the left side of the display
-  chartGroup
-    .append( "g" )
-    .classed( 'vertical', true )
-    .call( d3
-      .axisLeft( y2 )
-      .tickSize( -width )
-      );
+
+        // Add leftAxis to the left side of the display
+      let leftAxis=  chartGroup
+          .append( "g" )
+          .classed( 'vertical-int', true )
+          .call( d3
+            .axisLeft( y2 )
+            .tickSize( -width )
+            );
+            
+
+
+  // Line generators for each line
+  var line2 = d3
+    .line()
+    .x(d => x(d.year))
+    .y(d => y2(+d.value));
+
+  // Append a path for line2
+  chartGroup.append("path")
+    .data([dataXtra])
+    .attr("d", line2)
+    .classed("line-xtra", true);
+
+  // Add the points
+  let circlesGroup = chartGroup
+    // First we need to enter in a group
+    .selectAll( "myDots" )
+    .data(
+      [ dataReady]
+    )
+    .enter()
+    .append( 'g' )
+    .style( "fill", d => "red" )
+    // Second we need to enter in the 'values' part of this group
+    .selectAll( "myPoints" )
+    .data( d => d )
+    .enter()
+    .append( "circle" )
+    .attr( "r", 7 );
+
+  // transition on page load
+  chartGroup.selectAll( "circle" )
+    .transition()
+    .delay( function ( d, i ) { return 10 * i; } )
+    .duration( 1000 )
+    .attr( "cx", d => x2( d.year ) )
+    .attr( "cy", d => y( d.value ) );
+
+
     } );
   } );
 
