@@ -4,9 +4,9 @@ from app import app, db
 # import requests
 
 @app.route("/")
-@app.route("/historical")
+@app.route("/interactive")
 def historical():
-    return render_template('historical.html')
+    return render_template('interactive.html')
   
 @app.route("/timeseries")
 def timeseries():
