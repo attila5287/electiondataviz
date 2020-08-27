@@ -1,7 +1,7 @@
 function init( stateName ) {
   const url = '../static/data/csv/president.csv';
   d3.csv( url, function ( err, data ) {
-    const dataReady = prepTimeSerData( data, stateName );
+    const dataReady = prepInteractiveData( data, stateName );
     // console.log('votes :>> ', votes);
 
     interactiveChartUp(dataReady);

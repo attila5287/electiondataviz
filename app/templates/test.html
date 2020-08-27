@@ -162,11 +162,11 @@
         </table>
       </div>
       <div class="col-md-8 text-center">
-          <fieldset class="form-group mx-2 mt-2 py-1 px-2 rnd-xl bg-theme shadow-turqoise text-center">
-          <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1" id="custom-keys">
+        <fieldset class="form-group mx-2 mt-2 py-1 px-2 rnd-xl bg-theme shadow-turqoise text-center">
+        <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1" id="custom-keys">
           </div>
           <input type="range" id="slider" class="custom-range">
-          <div class="d-flex flex-row justify-content-center align-items-center">
+          <div class="d-flex flex-row justify-content-between align-items-center">
             <h6 class="text-nowrap shadow-turq" id="param-prev"></h6>            
             <i class="fas fa-caret-left text-2xl text-primary"></i>
             <i class="fas fa-caret-left text-2xl text-primary"></i>
@@ -177,6 +177,22 @@
           </div>
         </fieldset>
         <div id="interactive-chart"></div>
+      <div class="row">
+
+        <div class="col-md-4 offset-md-4">
+
+          <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-center mx-2 mt-2 py-1 px-2 ">
+            <input class="custom-range px-4 mb-3 mt-2" type="range" id="switch" value="1">
+
+            <div class="btn-group" role="group" aria-label="Button group">
+
+              <span class="btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0" type="button" id="switch-count"> Vote Count </span>
+              <span class="btn btn-outline-light  px-4 text-comfo text-2xl rnd-lg" type="button" id="switch-perc"> Vote Perc. </span>
+              
+            </div>
+          </fieldset>
+        </div>
+      </div>
       </div>
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
@@ -231,12 +247,16 @@
 
     <script src="/static/data/json/st-dicts.js"></script>
 
-    <script src="/static/data/prep/st-prepTime.js"></script>
+    <script src="/static/data/prep/st-prepInteractive.js"></script>
+    <script src="/static/data/prep/st-prepCustomParams.js"></script>
 
     <script src="/static/assets/dropdowns/st-mini-ddslick.js"></script>
 
     <script src="/static/assets/tables/tb-hist.js"></script>
 
+    <script src="/static/assets/interactive/xtra/custom-labels.js"></script>
+    <script src="/static/assets/interactive/charts/line-circles.js"></script>
+    <script src="/static/assets/interactive/charts/bars.js"></script>
     <script src="/static/assets/interactive/charts/test.js"></script>
     <script src="/static/assets/interactive/init.js"></script>
 

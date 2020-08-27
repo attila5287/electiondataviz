@@ -1,11 +1,5 @@
-function interactiveChartUp( dataReady) {// new approach state
-  let dict = {
-        0: 'perc',
-        1: 'count'
-      };
-      let switchKey = dict[document.getElementById("switch").value];
-        const
-         svgArea = d3.select( `#interactive-chart` ).select( "svg" );
+    function barsVotePercUp( dataReady, switchKey ) {
+      const svgArea = d3.select( `#interactive-chart` ).select( "svg" );
       // clear svg is not empty
       if ( !svgArea.empty() ) {
         svgArea.remove();
@@ -61,7 +55,6 @@ function interactiveChartUp( dataReady) {// new approach state
       let x = d3.scaleTime()
         .domain( years )
         .range( [ 0, width ] );
-        
       let y = d3.scaleLinear()
         .domain( [ d3.min( lows, d => d * 1 ), d3.max( highs, d => d * 1 ) ] )
         .range( [ height, 0 ] );
@@ -159,19 +152,19 @@ function interactiveChartUp( dataReady) {// new approach state
         .attr( "class", "tooltip" )
         .offset( [ 40, -30 ] )
         .html( d => `
-    <div class="card rounded-2xl bg-transparent text-bold text-balo text-light">
-      <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/cands/p${d.ye4r}${d.nam3}.jpg" alt="cand-img">
-      <div class="card-body shadow-turqoise">
-        <h5 class="card-title text-light">
-          ${prezCandsByYr[ `p${d.ye4r}${d.nam3}` ]}
-        </h5>
-        <hr class="my-0 border-secondary opac-30>
-        <p class="card-title my-0">
-          ${format( d.value )} @ ${d.ye4r}
-        </p>
-      </div>
-    </div>
-     ` );
+        <div class="card rounded-2xl bg-transparent text-bold text-balo text-light">
+        <img class="card-img-top toolt1p border-0 bg-transparent opac-60 mb-0" src="../static/img/cands/p${d.ye4r}${d.nam3}.jpg" alt="cand-img">
+        <div class="card-body shadow-turqoise">
+          <h5 class="card-title text-light">
+            ${prezCandsByYr[ `p${d.ye4r}${d.nam3}` ]}
+          </h5>
+          <hr class="my-0 border-secondary opac-30>
+          <p class="card-title my-0">
+            ${format( d.value )} @ ${d.ye4r}
+          </p>
+        </div>
+        </div>
+        ` );
 
       barsGroup.call( toolTip );
       barsGroup.on( "mouseover", function ( d, i ) {
@@ -193,64 +186,10 @@ function interactiveChartUp( dataReady) {// new approach state
             .duration( 1000 )
             .attr( "fill", colors[ data.name ] );
         } );
-  switchUpdate();      
-  function switchUpdate () {
-    d3.select( "#switch" )
-      .attr( "min", 0 )
-      .attr( "max", 1 )
-      .attr( "step", 1 )
-      .property( "value", 1 );
-
-    let switchCounter = 0;
-
-    const switchStyles = {
-      0: "btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0",
-      1: "btn btn-outline-light pl-2 px-4 text-comfo text-2xl rnd-lg"
-    };
-
-    d3.select( "#switch" ).on( "change", function () {
-        
-      userInput = +this.value;
-      console.log('userInput :>> ', userInput );
-      
-      // console.log('test switch :>> ', +this.value);
-      let m0d = switchCounter % 2; // first btn 
-      switchCounter = switchCounter + 1;
-      console.log( 'switchCounter :>> ', switchCounter );
-      let mod = switchCounter % 2; // second btn
-      // console.log('m0d :>> ', m0d);
-      // console.log('mod :>> ', mod);
-      d3.select( '#switch-perc' ).attr( "class", switchStyles[ m0d ] ).text( 'Vote Perc.' );
-
-      d3.select( '#switch-count' ).attr( "class", switchStyles[ mod ] ).text( 'Vote Count' );
-      
-    } );
-  }
-
-  const customParams = genCustomParams();
-  // console.log('customParams :>> ', customParams);
-
-updateParamLabels ( customParams);
-
-  // --------------------- SLIDER ----------------
-  function slideMyYears( slider, params ) {
-    lineCirclesUpdate( slider, customParams, dataReady, height,width, chartGroup, x );
-    d3.select( "#slider" ).property( "value", slider );
-    // so that code wont fail at zero
-    let prevModulus = ( +slider + 5 ) % customParams.length;
-    let nextModulus = ( +slider + 8 ) % customParams.length;
-
-    d3.select( "#param-prev" ).text( params[ +prevModulus ].label );
-    d3.select( "#sliderValue" ).text( params[ slider ].label );
-    d3.select( "#param-next" ).text( params[ +nextModulus ].label );
-
-    // --------------------- SLIDER ----------------
-    d3.select( "#slider" ).on( "input", function () {
-      slideMyYears( +this.value, customParams );
-      console.log( 'customParams[+this.value].file :>> ', customParams[ +this.value ].file );
-      lineCirclesUpdate( +this.value, customParams, dataReady, height, width, chartGroup, x );
-    } );
-
-  }
-  slideMyYears( 0, customParams );
-}
+      return {
+        height,
+        chartGroup,
+        width,
+        x
+      };
+    }
