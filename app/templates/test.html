@@ -125,27 +125,6 @@
     </header>
       
     <div class="row no-gutters mt-0">
-      <div class="col-md-8 text-center">
-        <div class="row no-gutters mt-0">
-          <div class="col-md-12 text-center">
-          <fieldset class="form-group mx-2 mt-2 py-1 px-2 rnd-xl bg-theme shadow-turqoise text-center">
-          <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1" id="custom-keys">
-          </div>
-          <input type="range" id="slider" class="custom-range">
-          <div class="d-flex flex-row justify-content-center align-items-center">
-            <h6 class="text-nowrap shadow-turq" id="param-prev"></h6>            
-            <i class="fas fa-caret-left text-2xl text-primary"></i>
-            <i class="fas fa-caret-left text-2xl text-primary"></i>
-            <h5 class="bg-black py-1 px-4 mb-2 text-digi text-primary shadow-turq rnd-xl" id="sliderValue"></h5>
-            <i class="fas fa-caret-right text-2xl text-primary"></i>
-            <i class="fas fa-caret-right text-2xl text-primary"></i>
-            <h6 class="text-nowrap shadow-turq" id="param-next"></h6>            
-          </div>
-        </fieldset>
-      </div> 
-          <div class="col-md-6 text-center"><div id="hist-unemployment"></div></div>
-        </div>
-      </div>
       <!-- table -->
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
@@ -182,7 +161,23 @@
           </tbody>
         </table>
       </div>
-
+      <div class="col-md-8 text-center">
+          <fieldset class="form-group mx-2 mt-2 py-1 px-2 rnd-xl bg-theme shadow-turqoise text-center">
+          <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1" id="custom-keys">
+          </div>
+          <input type="range" id="slider" class="custom-range">
+          <div class="d-flex flex-row justify-content-center align-items-center">
+            <h6 class="text-nowrap shadow-turq" id="param-prev"></h6>            
+            <i class="fas fa-caret-left text-2xl text-primary"></i>
+            <i class="fas fa-caret-left text-2xl text-primary"></i>
+            <h5 class="bg-black py-1 px-4 mb-2 text-digi text-primary shadow-turq rnd-xl" id="sliderValue"></h5>
+            <i class="fas fa-caret-right text-2xl text-primary"></i>
+            <i class="fas fa-caret-right text-2xl text-primary"></i>
+            <h6 class="text-nowrap shadow-turq" id="param-next"></h6>            
+          </div>
+        </fieldset>
+        <div id="interactive-chart"></div>
+      </div>
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
           <thead class="bg-theme text-comfo text-light">

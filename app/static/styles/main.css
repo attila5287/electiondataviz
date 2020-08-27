@@ -595,10 +595,11 @@ h6 {
 
 .vertical-int text {
   font-family: 'Baloo 2';
-  font-size: 0.85rem;
+  font-size: 1.00rem;
   font-weight: bold;
   fill: #5d7afa;
-  text-shadow: 2px 3px #ff14ff60;
+  fill: #aaaaff;
+  text-shadow: 2px 3px #ff14ff98;
 }
 
 .vertical line {
@@ -1007,4 +1008,10 @@ tbody td:last-child {
   stroke:#aaaaff;
   stroke-width: 3px;
   fill: none;
+}
+
+.circles-xtra {
+  stroke:rgb(0, 0, 0);
+  stroke-width: 1px;
+  fill: #aaaaff;
 }
