@@ -306,16 +306,16 @@
           // .append( "path" )
           //   .attr( "d", line2 )
           //   .classed( "line-xtra", true );
-          var u = chartGroup
+          var lineGroup = chartGroup
             .selectAll(".line-xtra")
             .data([dataXtra], function(d){ return d });
             
           // Updata the line
-            u
+            lineGroup
             .enter()
          .append("path")
          .attr("class","line-xtra")
-         .merge(u)
+         .merge(lineGroup)
          .transition()
          .duration(2000)
          .attr("d", line2)
