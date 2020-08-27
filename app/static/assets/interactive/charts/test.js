@@ -309,19 +309,19 @@
           var u = chartGroup
             .selectAll(".line-xtra")
             .data([dataXtra], function(d){ return d });
-
-       // Updata the line
-       u
-       .enter()
-    .append("path")
-    .attr("class","line-xtra")
-    .merge(u)
-    .transition()
-    .duration(3000)
-    .attr("d", line2)
-      .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 2.5);
+            
+          // Updata the line
+            u
+            .enter()
+         .append("path")
+         .attr("class","line-xtra")
+         .merge(u)
+         .transition()
+         .duration(2000)
+         .attr("d", line2)
+           .attr("fill", "none")
+           .attr("stroke", "steelblue")
+           .attr("stroke-width", 2.5);
            // -------------------------------------------
             // ---- circles from now on-------------------
           // append circles to data points
@@ -358,8 +358,8 @@
               circleTooltip.show( d );
               d3.select( this )
                 .transition()
-                .duration( 1000 )
-                .attr( "r", 20 )
+                .duration( 2000 )
+                .attr( "r", 15 )
                 .attr( "fill", "lightblue" );
             } )
 
