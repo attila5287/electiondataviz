@@ -82,8 +82,8 @@ function houseSeatsCirclesUp( data, year ) {
     ;
 
   const af = 535/100;  
-  const redTitle = Math.round(eleVoByYr[ 'e' + year + 'd' ]*af);
-  const bluTitle = Math.round(eleVoByYr[ 'e' + year + 'r' ]*af);
+  const redTitle = Math.round(eleVoByYr[ 'e' + year + 'r' ]*af);
+  const bluTitle = Math.round(eleVoByYr[ 'e' + year + 'd' ]*af);
   const othTitle = 538-redTitle-bluTitle;
 
   

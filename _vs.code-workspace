@@ -1,0 +1,11 @@
+{
+    "folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.fontFamily": "'Operator Mono Light', Consolas, 'Courier New', monospace",
+		"editor.cursorStyle": "block-outline"
+	}
+}
