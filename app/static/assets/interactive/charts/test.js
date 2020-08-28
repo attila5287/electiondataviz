@@ -1,4 +1,9 @@
-function interactiveChartUp( data, index ) { // new approach state
+function interactiveChartUp( data, index ) { // same data change key      
+  const dict = {
+      0: 'perc',
+      1: 'count'
+    };
+  const switchKey = dict[ index ];
   let svgWidth = $( `#interactive-chart` ).width();
   let svgHeight = 0.40 * svgWidth;
   let margin = {
@@ -21,6 +26,7 @@ function interactiveChartUp( data, index ) { // new approach state
   let x = d3.scaleTime()
     .domain( [ 1976, 2019 ] )
     .range( [ 0, width ] );
+    
   let axisTop = chartGroup
     .append( "g" )
     .attr( "transform", `translate(0, ${0})` )
@@ -29,14 +35,14 @@ function interactiveChartUp( data, index ) { // new approach state
       // .duration(3000)
       .axisTop( x )
       .ticks( 5 )
-      .tickFormat( d3.format( ".4" ) )
+      .tickFormat( d3.format(data[dict[ index ]].format  ) )
       .tickSize( -height )
     )
     .classed( 'horizontal ', true );
     
+
+
     updateBarsOnly( data, index );
-
-
   let switchCounter = 0;
 
   const switchStyles = {
@@ -97,12 +103,14 @@ function interactiveChartUp( data, index ) { // new approach state
       0: 'perc',
       1: 'count'
     };
-    const switchKey = dict[ index ];
+    const switchKey = dict[ index ]; // switch vals 0 or 1
 
     let lows = [
       d3.min( data[ switchKey ].blue.values, d => +d.value ),
       d3.min( data[ switchKey ].red.values, d => +d.value )
     ];
+
+    console.log('lows :>> ', lows);
     let highs = [
       d3.max( data[ switchKey ].blue.values, d => +d.value ),
       d3.max( data[ switchKey ].red.values, d => +d.value )
@@ -111,7 +119,7 @@ function interactiveChartUp( data, index ) { // new approach state
     // Step 5: Create Scales
     //=============================================
     let y = d3.scaleLinear()
-      .domain( [ d3.min( lows, d => d * 1 ), d3.max( highs, d => d * 1 ) ] )
+      .domain( [ d3.min( lows, d => d * 0.95 ), d3.max( highs, d => d * 1 ) ] )
       .range( [ height, 0 ] );
 
 
@@ -174,23 +182,34 @@ function interactiveChartUp( data, index ) { // new approach state
       .attr( "stroke", d => "#000" )
       .attr( "stroke-width", d => "2px" )
       .attr( "stroke-opacity", d => "0.5" )
-      .attr( "height", d => height - y( 0 ) )
+      .attr( "height", d => height - y( +d.value*0.25 ) )
       .attr( "width", d => width * 0.04 );
+
+        console.log('height :>> ', height);
+      // d3.select("svg").selectAll("rect")
+      //   .each(function(d, i) {
+          
+      //     console.log("element", this);
+      //     console.log("data", d);
+      //     console.log("index", i);
+          
+      //   });
 
     // Animation
     svg.selectAll( "rect" )
       .transition()
       .duration( 2000 )
-      .attr( "y", d => y( d.value ) )
+      .attr( "y", d => y( +d.value ) )
       .attr( "height", function ( d ) {
-        return height - y( d.value );
+        return height - y( +d.value );
       } )
       .delay( function ( d, i ) {
-        // console.log(i); 
+        console.log(i); 
+        console.log('d.height :>> ', d);
         return ( i * 30 );
       } );
 
-    const format = d3.format( "," );
+    const format = d3.format(data[switchKey].format);
 
     let toolTip = d3
       .tip()

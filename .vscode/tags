@@ -5,6 +5,8 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 Flask	../app\__init__.py	/^from flask import Flask$/;"	kind:namespace	line:1
+Flask	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^from flask import Flask, render_template, jsonify$/;"	kind:namespace	line:1
+Flask	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
 Py_ConditionalCheck.py	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_ConditionalCheck.py	1;"	kind:file	line:1
 Py_HelloVariableWorld.py	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	1;"	kind:file	line:1
 SQLAlchemy	../app\__init__.py	/^from flask_sqlalchemy import SQLAlchemy$/;"	kind:namespace	line:2
@@ -12,22 +14,36 @@ __init__.py	../app\__init__.py	1;"	kind:file	line:1
 abort	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
 age	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^age = 25$/;"	kind:variable	line:9
 app	../app\__init__.py	/^app = Flask(__name__)$/;"	kind:variable	line:5
+app	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^app = Flask(__name__)$/;"	kind:variable	line:4
+app	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^app = Flask(__name__)$/;"	kind:variable	line:4
 app	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:3
 app	../run.py	/^from app import app$/;"	kind:namespace	line:1
+app.py	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	1;"	kind:file	line:1
+app.py	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	1;"	kind:file	line:1
 candidates	../app\routes.py	/^def candidates():$/;"	kind:function	line:16
 country	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^country = "United States"$/;"	kind:variable	line:6
 daily_wage	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^daily_wage = hourly_wage * 8$/;"	kind:variable	line:15
+data	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^def data():$/;"	kind:function	line:13
+data	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^def data():$/;"	kind:function	line:12
 db	../app\__init__.py	/^db = SQLAlchemy(app)$/;"	kind:variable	line:10
 db	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:3
 flash	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
+hello	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^def hello():$/;"	kind:function	line:8
+hello	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^def hello():$/;"	kind:function	line:7
 historical	../app\routes.py	/^def historical():$/;"	kind:function	line:8
 hourly_wage	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^hourly_wage = 15$/;"	kind:variable	line:12
+jsonify	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^from flask import Flask, render_template, jsonify$/;"	kind:namespace	line:1
+jsonify	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
 jsonify	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
 map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:20
 name	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^name = "Jacob Deming"$/;"	kind:variable	line:3
 os	../app\__init__.py	/^import os$/;"	kind:namespace	line:3
 os	../app\routes.py	/^import os$/;"	kind:namespace	line:1
+pd	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^import pandas as pd$/;"	kind:namespace	line:2
+pd	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^import pandas as pd$/;"	kind:namespace	line:2
 redirect	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
+render_template	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^from flask import Flask, render_template, jsonify$/;"	kind:namespace	line:1
+render_template	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
 render_template	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
 request	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
 routes	../app\__init__.py	/^from app import routes$/;"	kind:namespace	line:12
