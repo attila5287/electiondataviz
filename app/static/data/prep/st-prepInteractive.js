@@ -1,10 +1,10 @@
 function prepInteractiveData( data, state ) { // 
+  console.log('data :>> ', data);
   // console.log( 'state :>> ', state );
   const colors = {
     republican: "red",
     democrat: "blue"
   };
-  let winners = {};
 
   const nested = d3.nest()
     .key( d => d.year )
@@ -62,9 +62,9 @@ function prepInteractiveData( data, state ) { //
     } );
 
     redPerc[ "year" ] = +d.key;
-    redPerc[ "value" ] = redCount[ "value" ] / sumEach;
+    redPerc[ "value" ] = +redCount[ "value" ] / sumEach;
     bluePerc[ "year" ] = +d.key;
-    bluePerc[ "value" ] = blueCount[ "value" ] / sumEach;
+    bluePerc[ "value" ] = +blueCount[ "value" ] / sumEach;
 
     // these four only req'd for tooltip to show img's
     redPerc[ "ye4r" ] = +d.key;
@@ -92,5 +92,8 @@ function prepInteractiveData( data, state ) { //
       red: redsP,
     }
   };
+
+  console.log('timeSeri :>> ', timeSeriesData);
   return timeSeriesData;
+
 }

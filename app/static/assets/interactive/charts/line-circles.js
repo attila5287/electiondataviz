@@ -1,5 +1,5 @@
-    function lineCirclesUpdate( selection , params, dataReady, height, width, chartGroup, x) {
-      d3.csv( `../static/data/csv-int/${params[ selection ].file}`, function ( err, rows ) {
+    function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, chartGroup, x) {
+      d3.csv( `../static/data/csv-int/${params[ selectedIndex ].file}`, function ( err, rows ) {
         // Remove is the first <path> element from the axis group: 
         d3.select( ".vertical-int" ).remove();
         // d3.select( ".line-xtra" ).remove();
@@ -36,7 +36,7 @@
         // Line generators for each line
         var line2 = d3
           .line()
-          .x( d => x( d.year ) )
+          .x( d => x( +d.year ) )
           .y( d => y2( +d.value ) );
 
         // // Append a path for line2
