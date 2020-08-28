@@ -1,11 +1,11 @@
 function interactiveChartUp( dataReady) {// new approach state
-  let dict = {
+      let dict = {
         0: 'perc',
         1: 'count'
       };
       let switchKey = dict[document.getElementById("switch").value];
-        const
-         svgArea = d3.select( `#interactive-chart` ).select( "svg" );
+      console.log('switchKey :>> ', switchKey);
+        const svgArea = d3.select( `#interactive-chart` ).select( "svg" );
       // clear svg is not empty
       if ( !svgArea.empty() ) {
         svgArea.remove();
@@ -16,7 +16,7 @@ function interactiveChartUp( dataReady) {// new approach state
       let margin = {
         top: 20,
         right: 50,
-        left: 50,
+        left: 65,
         bottom: 25,
       };
       let width = svgWidth - margin.left - margin.right;
@@ -40,12 +40,10 @@ function interactiveChartUp( dataReady) {// new approach state
       // =================================
       // req'd before sumEach
       let parseTime = d3.timeFormat( "%Y" );
-      // Format the data
-      //Step 4-cont'd:  prep data from csv to {name:[{date/value}]}
-      let numYears = +dataReady[switchKey].blue.values.length;
-
-      // console.log( 'numYears :>> ', numYears );
       let years = [ 1976, 2019 ]; //2019 is a max of interactive field: income
+      let numYears = +dataReady[switchKey].blue.values.length;
+      // console.log( 'numYears :>> ', numYears );
+      
 
       // console.log( 'years :>> ', years );
       let lows = [
@@ -193,8 +191,7 @@ function interactiveChartUp( dataReady) {// new approach state
             .duration( 1000 )
             .attr( "fill", colors[ data.name ] );
         } );
-  switchUpdate();      
-  function switchUpdate () {
+  
     d3.select( "#switch" )
       .attr( "min", 0 )
       .attr( "max", 1 )
@@ -225,13 +222,12 @@ function interactiveChartUp( dataReady) {// new approach state
       d3.select( '#switch-count' ).attr( "class", switchStyles[ mod ] ).text( 'Vote Count' );
       
     } );
-  }
 
   const customParams = genCustomParams();
   // console.log('customParams :>> ', customParams);
 
-updateParamLabels ( customParams);
-
+  updateParamLabels ( customParams);
+  
   // --------------------- SLIDER ----------------
   function slideMyYears( slider, params ) {
     lineCirclesUpdate( slider, customParams, dataReady, height,width, chartGroup, x );

@@ -5,7 +5,8 @@
 		}
 	],
 	"settings": {
-		"editor.fontFamily": "'Operator Mono Light', Consolas, 'Courier New', monospace",
-		"editor.cursorStyle": "block-outline"
+		"editor.fontFamily": "'Victor Mono', 'Operator Mono Light', Consolas, 'Courier New', monospace",
+		"editor.cursorStyle": "block",
+		"editor.cursorBlinking": "expand"
 	}
 }
