@@ -1,44 +1,37 @@
-  function updateBarsOnly( data, index, height, width, chartGroup, x, svg ) {
-    
-    let dict = {
-      0: 'perc',
-      1: 'count'
-    };
-    let switchKey = dict[ index ]; // switch vals 0 or 1
-    let format = d3.format(data[switchKey].formatY);
-    let yScale = yScaleUp( data, switchKey, height );// updates u axis
+  function updateBarsOnly( data, height, width, chartGroup, x,yScale, svg, yAxis ) {
+    let format = d3.format(data.formatY);
+    yScale = yScaleUp( data, height );// updates u axis
 
-    // Add rightAxis to the right side of the display
-    let rightAxis = d3
-      .axisRight( yScale )
-      .tickFormat( format );
+      // function used for updating xAxis var upon click on axis label
+    yAxis =  renderAxes(yScale, yAxis);
+    function renderAxes(newYScale, yAxis) {
+        let newAxis = d3
+          .axisRight( newYScale )
+          .tickFormat( format );
+      
+        yAxis.transition()
+          .duration(1000)
+          .call(newAxis);
+      
+        return yAxis;
+    }
 
-    chartGroup
-      .append( "g" )
-      .attr( "transform", `translate(${width}, 0)` )
-      .classed( 'vertical', true )
-      .call( rightAxis ) ;
-
-    let titleDict = {
-      0: 'Percentage',
-      1: 'Count'
-    };
     // Step 9: Title  
     // ==============================================
     chartGroup.append( "text" )
       .attr( "transform", `translate(${width / 2}, ${height + 15})` )
-      .text( `Vote ${titleDict[ index ]} ${data.state}` )
+      .text( `Vote ${data.title} ${data.state}` )
       .classed( 'title', true );
 
     // Step 10: Bars
     // ==============================================
     let colors = {};
-    colors[ data[ switchKey ].blue.name ] = "#01018B";
-    colors[ data[ switchKey ].red.name ] = "#8A0101";
+    colors[ data.blue.name ] = "#01018B";
+    colors[ data.red.name ] = "#8A0101";
 
 
     // trick to show the second grp offsett behind first
-    data[ switchKey ].blue.values.forEach( d => {
+    data.blue.values.forEach( d => {
       // console.log('d :>> ', d);
       d.year = d.year + 1.5;
     } );
@@ -47,8 +40,8 @@
       // First we need to enter in a group
       .selectAll( "myBarGroup" )
       .data(
-        [ data[ switchKey ].blue,
-          data[ switchKey ].red
+        [ data.blue,
+          data.red,
         ]
       )
       .enter()
@@ -133,16 +126,16 @@
           .attr( "fill", colors[ data.name ] );
       } );
   }
-function yScaleUp ( data, switchKey, height ) {
+function yScaleUp ( data, height ) {
   let lows = [
-    d3.min( data[ switchKey ].blue.values, d => +d.value ),
-    d3.min( data[ switchKey ].red.values, d => +d.value )
+    d3.min( data.blue.values, d => +d.value ),
+    d3.min( data.red.values, d => +d.value )
   ];
 
   console.log( 'lows :>> ', lows );
   let highs = [
-    d3.max( data[ switchKey ].blue.values, d => +d.value ),
-    d3.max( data[ switchKey ].red.values, d => +d.value )
+    d3.max( data.blue.values, d => +d.value ),
+    d3.max( data.red.values, d => +d.value )
   ];
 
   // Step 5: Create Scales

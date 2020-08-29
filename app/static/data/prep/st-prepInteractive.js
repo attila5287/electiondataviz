@@ -1,4 +1,4 @@
-function prepInteractiveData( data, state ) { // 
+function prepInteractiveData( data, state ) { // prepTimeSeries->new key 
   console.log('data :>> ', data);
   // console.log( 'state :>> ', state );
   const colors = {
@@ -87,11 +87,13 @@ function prepInteractiveData( data, state ) { //
       blue: bluesV,
       red: redsV,
       formatY:  "," ,
+      title: 'Count',
     },
     perc : {
       blue: bluesP,
       red: redsP,
       formatY:  ".4" ,
+      title: 'Percentage',
     }
   };
 

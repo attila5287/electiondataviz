@@ -1,10 +1,10 @@
 function interactiveChartUp( data ) { // same data change key      
   let index = 0;
-  const dict = {
+  const keys = {
       0: 'perc',
       1: 'count'
     };
-  const switchKey = dict[ index ];
+  const switchKey = keys[ index ];
   let svgWidth = $( `#interactive-chart` ).width();
   let svgHeight = 0.40 * svgWidth;
   let margin = {
@@ -36,13 +36,41 @@ function interactiveChartUp( data ) { // same data change key
       // .duration(3000)
       .axisTop( xScale )
       .ticks( 5 )
-      .tickFormat( d3.format(data[dict[ index ]].formatY  ) )
+      .tickFormat( d3.format(data[switchKey].formatY  ) )
       .tickSize( -height )
     )
     .classed( 'horizontal ', true )
   ;
-    
-  updateBarsOnly( data, index, height, width, chartGroup, xScale, svg );
+
+  let lows = [
+    d3.min( data[switchKey].blue.values, d => +d.value ),
+    d3.min( data[switchKey].red.values, d => +d.value ),
+  ];
+
+  console.log( 'lows :>> ', lows );
+  let highs = [
+    d3.max( data[switchKey].blue.values, d => +d.value ),
+    d3.max( data[switchKey].red.values, d => +d.value ),
+  ];
+
+  // Step 5: Create Scales
+  //=============================================
+  let yScale = d3.scaleLinear()
+    .domain( [ d3.min( lows, d => d * 0.95 ), d3.max( highs, d => d * 1 ) ] )
+    .range( [ height, 0 ] )
+    ;
+
+  let rightAxis = d3
+    .axisRight( yScale )
+    .tickFormat( d3.format(data[switchKey].formatY) );
+
+  let yAxis = chartGroup
+    .append( "g" )
+    .attr( "transform", `translate(${width}, 0)` )
+    .classed( 'vertical', true )
+    .call( rightAxis );
+
+  updateBarsOnly( data[switchKey], height, width, chartGroup, xScale,yScale, svg, yAxis);
 
   let switchCounter = 0;
 
@@ -61,8 +89,12 @@ function interactiveChartUp( data ) { // same data change key
 
   d3.select( "#switch" ).on( "change", function () {
     let userInput = +this.value;
-    updateBarsOnly( data, userInput, height, width, chartGroup, xScale, svg );
+
+    let dataSelected = data[keys[userInput]];
     console.log( 'userInput :>> ', userInput );
+
+    updateBarsOnly( dataSelected, height, width, chartGroup, xScale,yScale, svg, yAxis );
+    
 
     console.log( 'test switch :>> ', +this.value );
     let m0d = switchCounter % 2; // first btn 
