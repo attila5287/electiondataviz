@@ -86,12 +86,12 @@ function prepInteractiveData( data, state ) { //
     count : {
       blue: bluesV,
       red: redsV,
-      format:  "," ,
+      formatY:  "," ,
     },
     perc : {
       blue: bluesP,
       red: redsP,
-      format:  ".4" ,
+      formatY:  ".4" ,
     }
   };
 
