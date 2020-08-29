@@ -4,8 +4,8 @@
       0: 'perc',
       1: 'count'
     };
-    const switchKey = dict[ index ]; // switch vals 0 or 1
-    const format = d3.format(data[switchKey].formatY);
+    let switchKey = dict[ index ]; // switch vals 0 or 1
+    let format = d3.format(data[switchKey].formatY);
     let yScale = yScaleUp( data, switchKey, height );// updates u axis
 
     // Add rightAxis to the right side of the display
