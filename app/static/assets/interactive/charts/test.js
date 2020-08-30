@@ -1,10 +1,8 @@
-function interactiveChartUp( data ) { // same data change key      
+function interactiveChartUp( data ) { // data change key      
+  console.log('data :>> ', data);
+    
   let index = 0;
-  const keys = {
-      0: 'perc',
-      1: 'count'
-    };
-  const switchKey = keys[ index ];
+  const switchKey = data.keys[ index ];
   let svgWidth = $( `#interactive-chart` ).width();
   let svgHeight = 0.40 * svgWidth;
   let margin = {
@@ -36,33 +34,22 @@ function interactiveChartUp( data ) { // same data change key
       // .duration(3000)
       .axisTop( xScale )
       .ticks( 5 )
-      .tickFormat( d3.format(data[switchKey].formatY  ) )
+      .tickFormat( d3.format(".4" ) )
       .tickSize( -height )
     )
     .classed( 'horizontal ', true )
   ;
 
-  let lows = [
-    d3.min( data[switchKey].blue.values, d => +d.value ),
-    d3.min( data[switchKey].red.values, d => +d.value ),
-  ];
-
-  console.log( 'lows :>> ', lows );
-  let highs = [
-    d3.max( data[switchKey].blue.values, d => +d.value ),
-    d3.max( data[switchKey].red.values, d => +d.value ),
-  ];
-
   // Step 5: Create Scales
   //=============================================
   let yScale = d3.scaleLinear()
-    .domain( [ d3.min( lows, d => d * 0.95 ), d3.max( highs, d => d * 1 ) ] )
+    .domain( data.domains[switchKey] )
     .range( [ height, 0 ] )
     ;
 
   let rightAxis = d3
     .axisRight( yScale )
-    .tickFormat( d3.format(data[switchKey].formatY) );
+    .tickFormat( d3.format(data.formats[switchKey]) );
 
   let yAxis = chartGroup
     .append( "g" )
@@ -70,7 +57,32 @@ function interactiveChartUp( data ) { // same data change key
     .classed( 'vertical', true )
     .call( rightAxis );
 
-  updateBarsOnly( data[switchKey], height, width, chartGroup, xScale,yScale, svg, yAxis);
+    // Add the points
+  let barsGroup = chartGroup
+    // First we need to enter in a group
+    .selectAll( "myBarGroup" )
+    .data(data.set)
+    .enter()
+    .append( 'g' )
+    .style( "fill", d =>  d.fillColor  )
+    .selectAll( "myBars" )
+    .data( d => d.values )
+    .enter().append( "rect" )
+    .attr( "class", "myBars" )
+    .attr( "x", d => xScale( d.year ) )
+    .attr( "y", d => yScale( 0 ) )
+    .attr( "stroke", d => "#000" )
+    .attr( "stroke-width", d => "2px" )
+    .attr( "stroke-opacity", d => "0.5" )
+    .attr( "height", d => height - yScale( +d[switchKey] ) )
+    .attr( "width", d => width * 0.04 )
+    ;
+
+  barsGroup.each(d=>{
+    // console.log('d :>> ', d);
+    // console.log('yScale(d.value) :>> ', yScale(d.value));
+  });
+  updateBarsOnly( data,switchKey, height, width, chartGroup, yScale, svg, yAxis, barsGroup);
 
   let switchCounter = 0;
 
@@ -93,9 +105,8 @@ function interactiveChartUp( data ) { // same data change key
     let dataSelected = data[keys[userInput]];
     console.log( 'userInput :>> ', userInput );
 
-    updateBarsOnly( dataSelected, height, width, chartGroup, xScale,yScale, svg, yAxis );
+    updateBarsOnly( data, data.keys[userInput], height, width, chartGroup, yScale, svg, yAxis, barsGroup );
     
-
     console.log( 'test switch :>> ', +this.value );
     let m0d = switchCounter % 2; // first btn 
     switchCounter = switchCounter + 1;
@@ -103,7 +114,6 @@ function interactiveChartUp( data ) { // same data change key
     let mod = switchCounter % 2; // second btn
     // console.log('m0d :>> ', m0d);
     // console.log('mod :>> ', mod);
-
 
     d3.select( '#switch-perc' ).attr( "class", switchStyles[ m0d ] ).text( 'Vote Perc.' );
     d3.select( '#switch-count' ).attr( "class", switchStyles[ mod ] ).text( 'Vote Count' );
@@ -129,6 +139,4 @@ function interactiveChartUp( data ) { // same data change key
     } );
 
   }
-
-
 }

@@ -1,4 +1,5 @@
 
+
 function init( stateName ) {
   const url = '../static/data/csv/president.csv';
   d3.csv( url, function ( err, data ) {
