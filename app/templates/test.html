@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html>
 
@@ -126,42 +126,7 @@
     </header>
       
     <div class="row no-gutters mt-0">
-
-      <div class="col-md-8 text-center">
-        <fieldset class="form-group mx-2 mt-2 py-1 px-2 rnd-xl bg-theme shadow-turqoise text-center">
-        <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1" id="custom-keys">
-          </div>
-          <input type="range" id="slider" class="custom-range">
-          <div class="d-flex flex-row justify-content-between align-items-center">
-            <h6 class="text-nowrap shadow-turq" id="param-prev"></h6>            
-            <i class="fas fa-caret-left text-2xl text-primary"></i>
-            <i class="fas fa-caret-left text-2xl text-primary"></i>
-            <h5 class="bg-black py-1 px-4 mb-2 text-digi text-primary shadow-turq rnd-xl" id="sliderValue"></h5>
-            <i class="fas fa-caret-right text-2xl text-primary"></i>
-            <i class="fas fa-caret-right text-2xl text-primary"></i>
-            <h6 class="text-nowrap shadow-turq" id="param-next"></h6>            
-          </div>
-        </fieldset>
-        <div id="interactive-chart">
-          <svg>  </svg>  
-        </div>
-      <div class="row">
-
-        <div class="col-md-4 offset-md-4">
-
-          <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-center mx-2 mt-2 py-1 px-2 ">
-            <input class="custom-range px-4 mb-3 mt-2" type="range" id="switch" min="0" max="1" step="1" value="0">
-
-            <div class="btn-group" role="group" aria-label="Button group">
-
-              <span class="btn btn-outline-light  px-4 text-comfo text-2xl rnd-lg" type="button" id="switch-perc"> Vote Perc% </span>              
-              <span class="btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0" type="button" id="switch-count"> Vote Count </span>
-            </div>
-          </fieldset>
-        </div>
-      </div>
-      </div>
-            <!-- table -->
+      <!-- table states -->
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
           <thead class="bg-theme text-comfo text-light">
@@ -197,6 +162,42 @@
           </tbody>
         </table>
       </div>
+    <!--interactive chart -->
+      <div class="col-md-8 text-center">
+        <fieldset class="form-group mx-2 mt-2 py-1 px-2 rnd-xl bg-theme shadow-turqoise text-center">
+        <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1" id="custom-keys">
+          </div>
+          <input type="range" id="slider" class="custom-range">
+          <div class="d-flex flex-row justify-content-between align-items-center">
+            <h6 class="text-nowrap shadow-turq" id="param-prev"></h6>            
+            <i class="fas fa-caret-left text-2xl text-primary"></i>
+            <i class="fas fa-caret-left text-2xl text-primary"></i>
+            <h5 class="bg-black py-1 px-4 mb-2 text-digi text-primary shadow-turq rnd-xl" id="sliderValue"></h5>
+            <i class="fas fa-caret-right text-2xl text-primary"></i>
+            <i class="fas fa-caret-right text-2xl text-primary"></i>
+            <h6 class="text-nowrap shadow-turq" id="param-next"></h6>            
+          </div>
+        </fieldset>
+        <div id="interactive-chart">
+          <svg>  </svg>  
+        </div>
+      <div class="row">
+
+        <div class="col-md-4 offset-md-4">
+
+          <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-center mx-2 mt-2 py-1 px-2 ">
+            <input class="custom-range px-4 mb-3 mt-2" type="range" id="switch" min="0" max="1" step="1" value="0">
+
+            <div class="btn-group" role="group" aria-label="Button group">
+
+              <span class="btn btn-outline-light  px-4 text-comfo text-2xl rnd-lg" type="button" id="switch-perc"> Vote Perc% </span>              
+              <span class="btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0" type="button" id="switch-count"> Vote Count </span>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      </div>
+      <!-- table states 27-51 -->
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
           <thead class="bg-theme text-comfo text-light">

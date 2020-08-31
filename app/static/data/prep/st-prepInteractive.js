@@ -49,18 +49,19 @@ function prepInteractiveData( data, state ) { // prepTimeSeries->new key
   rSeries.values.push( red );
   bSeries.values.push( blue );
   } );
-// year and count/perc  are necessary for data viz
-// ye4r and nam3 only needed for extravaganza tooltip
-const keys = { 0 : 'perc', 1 : 'count',};
-let result = { // zero 1 are switch keys on the 
-    state: state,
+  // year and count/perc  are necessary for data viz
+  // ye4r and nam3 only needed for extravaganza tooltip
+  const keys = { 0 : 'perc', 1 : 'count',};
+  let result = { 
+    main : [bSeries, rSeries] , // blue first to keep behind
+    name: state,
     keys: keys,
     formats: { 'perc' : ".0%", 'count' : ",",},
+    colors: {"r" :  "#8A0101","d" : "#01018B",},
     titles: { 
       perc : `Vote Percentage ${state}`, 
       'count' : `Vote Count for  ${state}`, 
     },
-    set : [rSeries,bSeries] ,
     domains: generateDomains( keys, bSeries, rSeries ),
   };
 

@@ -5,8 +5,7 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
     // d3.select( ".line-xtra" ).remove();
 
     // console.log( 'dataReady :>> ', dataReady );
-    // console.log( 'rows 5 :>> ', rows[ indexNoBySt[ dataReady.state ] ] );
-    let rowSt = rows[ indexNoBySt[ dataReady.state ] ]; // row with selected param/state
+    let rowSt = rows[ indexNoBySt[ dataReady.name ] ]; // row with selected param/state
 
     delete rowSt.name;
 

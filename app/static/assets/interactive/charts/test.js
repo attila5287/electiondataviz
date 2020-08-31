@@ -3,36 +3,42 @@ function interactiveChartUp( data ) { // data change key
   let index = 0; // default selection for base chart-> bars
   const switchKey = data.keys[ index ]; // perc or count
   let svgWidth = $( `#interactive-chart` ).width();
-  let svgHeight = 0.40 * svgWidth; // larger than chart
+  let svgHeight = 0.40 * svgWidth;  // larger than chart
   let margin = { //margin for text-titles and axis ticks
     top: 20,
     right: 50,
     left: 65,
     bottom: 25,
   };
-  // chart height and width 
+  // step1 svg chart height and width 
+  //---------------------------------
   let width = svgWidth - margin.left - margin.right;
   let height = svgHeight - margin.top - margin.bottom;
-  let svg = d3 // append svg
+  let svg = d3 // select svg on html doc
     .select( `#interactive-chart` )
     .select( "svg" )
     .classed( "my-2 mx-0", true )
     .attr( "width", svgWidth )
     .attr( "height", svgHeight );
-  // main group that holds chart
+  // step2 main group that holds chart
+  // =================================
   let chartGroup = svg.append( "g" )
     .attr( "transform", `translate(${margin.left}, ${margin.top})` );
-
-  let title = chartGroup // append initial change with input 
+  // append initial change with input 
+  // step2-title
+  // =================================
+  let title = chartGroup 
     .append( "text" )
     .attr( "transform", `translate(${width / 2}, ${height + 15})` )
     .text( `${data.titles[ switchKey ]}` )
     .classed( 'title', true );
-
+  // TODO min max years auto
+  // years are the max min years 
   let xScale = d3.scaleTime()
     .domain( [ 1976, 2019 ] )
     .range( [ 0, width ] );
     
+  // axis text for X-> year  
   let axisTop = chartGroup
     .append( "g" )
     .attr( "transform", `translate(0, ${0})` )
@@ -68,7 +74,7 @@ function interactiveChartUp( data ) { // data change key
   let barsGroup = chartGroup
     // First we need to enter in a group
     .selectAll( "myBarGroup" )
-    .data(data.set)
+    .data(data.main)
     .enter()
     .append( 'g' )
     .style( "fill", d =>  d.fillColor  )
@@ -89,7 +95,7 @@ function interactiveChartUp( data ) { // data change key
     // console.log('d :>> ', d);
     // console.log('yScale(d.value) :>> ', yScale(d.value));
   });
-  updateBarsOnly( data,switchKey, height, width, chartGroup, yScale, svg, yAxis, barsGroup);
+  updateBarsOnly( data,switchKey, height, width, chartGroup, yScale, yAxis, barsGroup, title);
 
   let switchCounter = 0;
 
@@ -112,15 +118,13 @@ function interactiveChartUp( data ) { // data change key
     let dataSelected = data.keys[userInput];
     console.log( 'userInput :>> ', userInput );
 
-    updateBarsOnly( data, data.keys[userInput], height, width, chartGroup, yScale, svg, yAxis, barsGroup );
+    updateBarsOnly( data, data.keys[userInput], height, width, chartGroup, yScale, yAxis, barsGroup, title );
     
     console.log( 'test switch :>> ', +this.value );
     let m0d = switchCounter % 2; // first btn 
     switchCounter = switchCounter + 1;
     console.log( 'switchCounter :>> ', switchCounter );
     let mod = switchCounter % 2; // second btn
-    // console.log('m0d :>> ', m0d);
-    // console.log('mod :>> ', mod);
 
     d3.select( '#switch-perc' ).attr( "class", switchStyles[ m0d ] ).text( 'Vote Perc.' );
     d3.select( '#switch-count' ).attr( "class", switchStyles[ mod ] ).text( 'Vote Count' );
