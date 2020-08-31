@@ -1,4 +1,4 @@
-function dropDownLite (defIndex) {
+function ddInteractive (defIndex) {// dropdown for interactive
   // console.log('test drop down lite :>> ');
   function prepBasicMenu(){ 
     const result=[];  // generate dropdown menu with req'd keys
@@ -30,7 +30,7 @@ function dropDownLite (defIndex) {
     onSelected: function ( d, i ) {
       const stateName = basicMenuReady.names[ d.selectedIndex ];
       // console.log( 'stateName selected dropdown menu :>> ', stateName );
-      // init( stateName );
+      initAllFromDd( stateName );
     }
   } );
   
@@ -38,29 +38,13 @@ function dropDownLite (defIndex) {
 
 
   function initAllFromDd ( stateName ) {
-
-    var cu = new counterUp( {
-      start: 0,
-      duration: 3000,
-      intvalues: true,
-      interval: 100,
-      prepend: '€',
-      append: '.00'
-    } );
-    cu.start();
-
     const url = '../static/data/csv/president.csv';
     d3.csv( url, function ( err, data ) {
-      stateFocusMap( data, stateName );
-
-      const dataReady = prepTimeSerData( data, stateName );
-      barsPercUp( dataReady );
-      barsCountUp( dataReady );
-      timeSersPercUp( dataReady );
-      gaugeUp( dataReady );
-      updateImgTxt( stateName );
-      // dropDownYearUp ( 2016, data );
-      const stateIndex = indexNoBySt[ stateName ];
+      const dataReady = prepInteractiveData( data, stateName );
+      // import csv once then render by input within the func
+      interactiveChartUp(dataReady);
+      // import csv once then render by input within the func
+      
     } );
   }
 }

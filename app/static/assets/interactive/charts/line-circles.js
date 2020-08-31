@@ -1,15 +1,17 @@
-function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, chartGroup, x) {
+function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, chartGroup, xScale, yScale, leftAxis) {
+  var parseTime = d3.timeParse("%Y");
   d3.csv( `../static/data/csv-int/${params[ selectedIndex ].file}`, function ( err, rows ) {
     // Remove is the first <path> element from the axis group: 
-    d3.select( ".vertical-int" ).remove();
+    // d3.select( ".vertical-int" ).remove();
     // d3.select( ".line-xtra" ).remove();
 
+    
     // console.log( 'dataReady :>> ', dataReady );
     let rowSt = rows[ indexNoBySt[ dataReady.name ] ]; // row with selected param/state
-
     delete rowSt.name;
 
     let dataXtra = [];
+    
     Object.keys( rowSt ).forEach( e => {
       // console.log( 'e :>> ', e );
       dataXtra.push( {
@@ -19,37 +21,21 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
     } )
     ;
 
-    let y2 = d3.scaleLinear() // min max values for y scale
+    yScale = d3.scaleLinear() // min max values for y scale
       .domain( [
         d3.min( Object.keys( rowSt ).map( year => +rowSt[ year ] ) ),
         d3.max( Object.keys( rowSt ).map( year => +rowSt[ year ] ) ),
       ] )
       .range( [ height, 0 ] )
     ;
-
-    // Add leftAxis to the left side of the display
-    let leftAxis = chartGroup
-      .append( "g" )
-      .classed( 'vertical-int', true )
-      .transition()
-      .duration(2000)
-      .call( d3
-        .axisLeft( y2 )
-        .tickSize( -width )
-      )
-    ;
     // Line generators for each line
     var line2 = d3
       .line()
-      .x( d => x( +d.year ) )
-      .y( d => y2( +d.value ) );
+      .x( d => xScale( parseTime(+d.year) ) )
+      .y( d => yScale( +d.value ) );
 
-    // // Append a path for line2
-    // chartGroup
-    // .data( [ dataXtra ] )
-    // .append( "path" )
-    //   .attr( "d", line2 )
-    //   .classed( "line-xtra", true );
+    leftAxis = renderAxesParam(yScale, leftAxis, width);
+
     var lineGroup = chartGroup
       .selectAll(".line-xtra")
       .data([dataXtra], function(d){ return d });
@@ -80,8 +66,8 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
       ;
       // -------------------------------------------
       // ---- circles from now on-------------------
-    console.log('width :>> ', width);
-    let radius = function adjustRadius(width){
+      let radius = function adjustRadius(width){
+        // console.log('width :>> ', width);
       let dynamicRadius = {// radius per width
         smallScreen : "5",
         largeScreen : "5",
@@ -93,7 +79,7 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
         r = dynamicRadius.smallScreen = "7";
       }  
       return r;
-    }; 
+      }; 
 
     // append circles to data points
     var circlesGroup = chartGroup.selectAll( "circle" )
@@ -148,9 +134,24 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
     chartGroup.selectAll( "circle" )
       .transition()
       .duration( 1000 )
-      .attr( "cx", d => x( d.year ) )
-      .attr( "cy", d => y2( d.value ) );
+      .delay((d,i)=> i*Math.round(Math.random()*80))
+      .attr( "cx", d => xScale( parseTime(d.year) ) )
+      .attr( "cy", d => yScale( +d.value ) );
 
 
   } );
 }
+const renderAxesParam = (newYScale, lAxis, width) => {
+  let newAxis = d3
+    .axisLeft( newYScale )
+    .tickSize( -width )
+    // .tickFormat( d3.format(format) )
+    ;
+  
+  lAxis
+    .transition()
+    .duration(500)
+    .call(newAxis);
+  
+  return lAxis;
+};

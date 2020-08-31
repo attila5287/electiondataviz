@@ -586,7 +586,8 @@ h6 {
 }
 .vertical-int line {
   stroke: #5d7afa;
-  stroke-opacity: 0.3;
+  stroke-width: 3px;
+  stroke-opacity: 0.2;
 }
 
 .vertical-int path {
@@ -595,7 +596,7 @@ h6 {
 
 .vertical-int text {
   font-family: 'Baloo 2';
-  font-size: 1.00rem;
+  font-size: 0.85rem;
   font-weight: bold;
   fill: #5d7afa;
   fill: #aaaaff;
@@ -603,8 +604,9 @@ h6 {
 }
 
 .vertical line {
-  stroke: rgb(255, 255, 255);
-  stroke-opacity: 0.2;
+  stroke: #5d7afa;
+  stroke-width: 3px;
+  stroke-opacity: 0.5;
 }
 
 .vertical path {
@@ -612,19 +614,34 @@ h6 {
 }
 
 .vertical text {
+  font-size: 0.85rem;
   font-family: 'Comfortaa';
-  fill: #cbcdce;
-  text-shadow: 1px 2px #032757;
+  font-weight: bold;
+  fill: #be8abe;
+  text-shadow: 2px 3px #1205ff;
 }
-
 .horizontal line {
-  stroke: rgb(10, 55, 153);
+  stroke: rgb(10, 55, 153); 
   stroke-width: 2px;
   stroke-opacity: 0.2;
 }
 
 .horizontal path {
   stroke-width: 0px;
+}
+
+
+.horizontal-int line {
+  stroke: rgb(10, 55, 153);
+  stroke-width: 2px;
+  stroke-opacity: 0.2;
+}
+.horizontal-int text {
+  font-size: 0.75rem;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  fill: #356ff6;
+  text-shadow: 2px 3px #ff002b80;
 }
 
 .horizontal text {
