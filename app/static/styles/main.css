@@ -1006,12 +1006,12 @@ tbody td:last-child {
 }
 .line-xtra {
   stroke:#aaaaff;
-  stroke-width: 3px;
   fill: none;
 }
 
 .circles-xtra {
   stroke:rgb(0, 0, 0);
+  stroke-opacity: 0.5;
   stroke-width: 1px;
   fill: #aaaaff;
 }

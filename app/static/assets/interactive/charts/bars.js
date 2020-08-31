@@ -1,16 +1,11 @@
-function updateBarsOnly( data, chosenYAxis,  height, width, chartGroup, yScale, svg, yAxis, barsGroup ) {// bar chart update
+function updateBarsOnly( data, chosenYAxis,  height, width, chartGroup, yScale, svg, yAxis, barsGroup, title ) {// bar chart update
   let format = data.formats[chosenYAxis];
   yScale = yScaleUp( data, height );// updates u axis
   yAxis =  renderAxes(yScale, yAxis, data.formats[chosenYAxis]);
 
-  chartGroup.append( "text" )
-    .attr( "transform", `translate(${width / 2}, ${height + 15})` )
-    .text( `Vote ${data.title} ${data.state}` )
-    .classed( 'title', true )
-  ;
-
-
   barsGroup = renderUpBars( chosenYAxis, barsGroup, yScale, height );
+  
+  title = renderUpTitleBottom( title,chartGroup, width, height, data, chosenYAxis );
 
   barsGroup.each((d,i)=>{
     // console.log('d :>> ', d);
@@ -22,7 +17,7 @@ function renderUpBars ( chosenYAxis,barsGroup, newYScale, height ) {
   barsGroup
     .transition()
     .duration( 2000 )
-    .delay(  ( d, i )=>  i * 10  )
+    .delay(  ( d, i )=>  i * 100  )
     .attr( "y", d => newYScale( +d[chosenYAxis] ) )
     .attr( "height",   d => height - newYScale( +d[chosenYAxis] ) )
     ;
@@ -39,10 +34,10 @@ function yScaleUp ( data, height ) {
 function renderAxes(newYScale, yAxis, format) {
       let newAxis = d3
         .axisRight( newYScale )
-        .tickFormat( format );
+        .tickFormat( d3.format(format) );
     
       yAxis.transition()
-        .duration(1000)
+        .duration(2000)
         .call(newAxis);
     
       return yAxis;
@@ -93,3 +88,10 @@ function enableTooltip()  {
 }
 
 }
+function renderUpTitleBottom ( title,chartGroup, width, height, data, chosenYAxis ) {
+  return chartGroup.select( "text" )
+    .attr( "transform", `translate(${width / 2}, ${height + 15})` )
+    .text( `${data.titles[ chosenYAxis ]}` )
+    .classed( 'title', true );
+}
+

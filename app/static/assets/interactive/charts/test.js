@@ -1,27 +1,34 @@
 function interactiveChartUp( data ) { // data change key      
-  console.log('data :>> ', data);
-    
-  let index = 0;
-  const switchKey = data.keys[ index ];
+  // console.log('data :>> ', data);
+  let index = 0; // default selection for base chart-> bars
+  const switchKey = data.keys[ index ]; // perc or count
   let svgWidth = $( `#interactive-chart` ).width();
-  let svgHeight = 0.40 * svgWidth;
-  let margin = {
+  let svgHeight = 0.40 * svgWidth; // larger than chart
+  let margin = { //margin for text-titles and axis ticks
     top: 20,
     right: 50,
     left: 65,
     bottom: 25,
   };
+  // chart height and width 
   let width = svgWidth - margin.left - margin.right;
   let height = svgHeight - margin.top - margin.bottom;
-  let svg = d3
+  let svg = d3 // append svg
     .select( `#interactive-chart` )
     .select( "svg" )
     .classed( "my-2 mx-0", true )
     .attr( "width", svgWidth )
     .attr( "height", svgHeight );
-
+  // main group that holds chart
   let chartGroup = svg.append( "g" )
     .attr( "transform", `translate(${margin.left}, ${margin.top})` );
+
+  let title = chartGroup // append initial change with input 
+    .append( "text" )
+    .attr( "transform", `translate(${width / 2}, ${height + 15})` )
+    .text( `${data.titles[ switchKey ]}` )
+    .classed( 'title', true );
+
   let xScale = d3.scaleTime()
     .domain( [ 1976, 2019 ] )
     .range( [ 0, width ] );
@@ -102,7 +109,7 @@ function interactiveChartUp( data ) { // data change key
   d3.select( "#switch" ).on( "change", function () {
     let userInput = +this.value;
 
-    let dataSelected = data[keys[userInput]];
+    let dataSelected = data.keys[userInput];
     console.log( 'userInput :>> ', userInput );
 
     updateBarsOnly( data, data.keys[userInput], height, width, chartGroup, yScale, svg, yAxis, barsGroup );
@@ -130,7 +137,7 @@ function interactiveChartUp( data ) { // data change key
     d3.select( "#param-prev" ).text( params[ +prevModulus ].label );
     d3.select( "#sliderValue" ).text( params[ slider ].label );
     d3.select( "#param-next" ).text( params[ +nextModulus ].label );
-
+    
     // --------------------- SLIDER ----------------
     d3.select( "#slider" ).on( "input", function () {
       slideMyYears( +this.value, customParams );

@@ -55,7 +55,7 @@ const keys = { 0 : 'perc', 1 : 'count',};
 let result = { // zero 1 are switch keys on the 
     state: state,
     keys: keys,
-    formats: { 'perc' : ".4", 'count' : ",",},
+    formats: { 'perc' : ".0%", 'count' : ",",},
     titles: { 
       perc : `Vote Percentage ${state}`, 
       'count' : `Vote Count for  ${state}`, 

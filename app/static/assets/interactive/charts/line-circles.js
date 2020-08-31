@@ -9,6 +9,7 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
     let rowSt = rows[ indexNoBySt[ dataReady.state ] ]; // row with selected param/state
 
     delete rowSt.name;
+
     let dataXtra = [];
     Object.keys( rowSt ).forEach( e => {
       // console.log( 'e :>> ', e );
@@ -16,23 +17,28 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
         year: +e,
         value: +rowSt[ e ],
       } );
-    } );
+    } )
+    ;
 
     let y2 = d3.scaleLinear() // min max values for y scale
       .domain( [
         d3.min( Object.keys( rowSt ).map( year => +rowSt[ year ] ) ),
         d3.max( Object.keys( rowSt ).map( year => +rowSt[ year ] ) ),
       ] )
-      .range( [ height, 0 ] );
+      .range( [ height, 0 ] )
+    ;
 
     // Add leftAxis to the left side of the display
     let leftAxis = chartGroup
       .append( "g" )
       .classed( 'vertical-int', true )
+      .transition()
+      .duration(2000)
       .call( d3
         .axisLeft( y2 )
         .tickSize( -width )
-      );
+      )
+    ;
     // Line generators for each line
     var line2 = d3
       .line()
@@ -49,27 +55,55 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
       .selectAll(".line-xtra")
       .data([dataXtra], function(d){ return d });
       
+    let sw = function adjustStrokeWidth(width){
+      let dynamicSw = {// radius per width
+        smallScreen : "1.25",
+        largeScreen : "2.75",
+      };
+      let strokeWidth =   ""; // faster with string
+      if (width<500) {
+        strokeWidth =   dynamicSw.smallScreen; // faster with string
+      } else {
+        strokeWidth =  dynamicSw.largeScreen; // faster with string
+      }
+      return strokeWidth;
+    };
     // Updata the line
-      lineGroup
+    lineGroup
       .enter()
-    .append("path")
-    .attr("class","line-xtra")
-    .merge(lineGroup)
-    .transition()
-    .duration(2000)
-    .attr("d", line2)
-      .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 2.5);
+      .append("path")
+      .attr("class","line-xtra")
+      .merge(lineGroup)
+      .transition()
+      .duration(1000)
+      .attr("d", line2)
+      .attr("stroke-width", sw(width))
+      ;
       // -------------------------------------------
       // ---- circles from now on-------------------
+    console.log('width :>> ', width);
+    let radius = function adjustRadius(width){
+      let dynamicRadius = {// radius per width
+        smallScreen : "5",
+        largeScreen : "5",
+      };
+      let r ="";   // strings faster
+      if (width<500) {
+        r = dynamicRadius.smallScreen = "5";
+      } else {
+        r = dynamicRadius.smallScreen = "7";
+      }  
+      return r;
+    }; 
+
     // append circles to data points
     var circlesGroup = chartGroup.selectAll( "circle" )
       .data( dataXtra )
       .enter()
       .append( "circle" )
-      .classed( "circles-xtra", "7" )
-      .attr( "r", "7" );
+      .classed( "circles-xtra", true )
+      .attr( "r", radius(width) );
+      
 
     let circleTooltip = d3
       .tip()
