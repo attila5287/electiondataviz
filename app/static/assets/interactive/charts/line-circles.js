@@ -60,6 +60,7 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
       .attr("class","line-xtra")
       .merge(lineGroup)
       .transition()
+      .ease(d3.easeElastic)
       .duration(1000)
       .attr("d", line2)
       .attr("stroke-width", sw(width))
@@ -87,7 +88,9 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
       .enter()
       .append( "circle" )
       .classed( "circles-xtra", true )
-      .attr( "r", radius(width) );
+      .attr( "r", radius(width) )
+      .attr( "cx", d => xScale( parseTime(d.year) ) )
+      ;
       
 
     let circleTooltip = d3
@@ -116,9 +119,10 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
         circleTooltip.show( d );
         d3.select( this )
           .transition()
-          .duration( 2000 )
+          .duration( 1000 )
           .attr( "r", 15 )
-          .attr( "fill", "lightblue" );
+          .attr( "fill", "lightblue" )
+          ;
       } )
 
       .on( "mouseout", function () {
@@ -134,8 +138,8 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
     chartGroup.selectAll( "circle" )
       .transition()
       .duration( 1000 )
+      .ease( d3.easeElastic )
       .delay((d,i)=> i*Math.round(Math.random()*80))
-      .attr( "cx", d => xScale( parseTime(d.year) ) )
       .attr( "cy", d => yScale( +d.value ) );
 
 
@@ -150,7 +154,8 @@ const renderAxesParam = (newYScale, lAxis, width) => {
   
   lAxis
     .transition()
-    .duration(500)
+    .ease(d3.easeBounce) 
+    .duration(1500)
     .call(newAxis);
   
   return lAxis;

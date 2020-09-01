@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html>
 
@@ -17,7 +17,8 @@
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
       integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
 
@@ -125,7 +126,7 @@
     </header>
       
     <div class="row no-gutters mt-0">
-      <!-- table -->
+      <!-- table states -->
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
           <thead class="bg-theme text-comfo text-light">
@@ -160,7 +161,8 @@
             <tr class="tbl"></tr>
           </tbody>
         </table>
-      </div>
+      </div>      
+    <!--interactive chart -->
       <div class="col-md-8 text-center">
         <fieldset class="form-group mx-2 mt-2 py-1 px-2 rnd-xl bg-theme shadow-turqoise text-center">
         <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2 mx-1" id="custom-keys">
@@ -184,18 +186,18 @@
         <div class="col-md-4 offset-md-4">
 
           <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-center mx-2 mt-2 py-1 px-2 ">
-            <input class="custom-range px-4 mb-3 mt-2" type="range" id="switch" min="0" max="1" value="1">
+            <input class="custom-range px-4 mb-3 mt-2" type="range" id="switch" min="0" max="1" step="1" value="0">
 
             <div class="btn-group" role="group" aria-label="Button group">
 
+              <span class="btn btn-outline-light  px-4 text-comfo text-2xl rnd-lg" type="button" id="switch-perc"> Vote Perc% </span>              
               <span class="btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0" type="button" id="switch-count"> Vote Count </span>
-              <span class="btn btn-outline-light  px-4 text-comfo text-2xl rnd-lg" type="button" id="switch-perc"> Vote Perc. </span>
-              
             </div>
           </fieldset>
         </div>
       </div>
       </div>
+      <!-- table states 27-51 -->
       <div class="col-md-2 text-center">
         <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
           <thead class="bg-theme text-comfo text-light">
@@ -257,9 +259,9 @@
     <script src="/static/assets/tables/tb-hist.js"></script>
 
     <script src="/static/assets/interactive/xtra/custom-labels.js"></script>
-    <script src="/static/assets/interactive/charts/line-circles.js"></script>
     <script src="/static/assets/interactive/charts/bars.js"></script>
-    <script src="/static/assets/interactive/charts/test.js"></script>
+    <script src="/static/assets/interactive/charts/line-circles.js"></script>
+    <script src="/static/assets/interactive/charts/int-main.js"></script>
     <script src="/static/assets/interactive/init.js"></script>
 
   </body>

@@ -21,6 +21,7 @@ const yScaleUp = ( data, height, chosenYAxis ) => { // y scale
 const renderUpBars = ( chosenYAxis, barsGroup, newYScale, height ) => { // main function to render bars with updated data
   barsGroup
     .transition()
+    .ease(d3.easeBounce)    // control the speed of the transition
     .delay( ( d, i ) => i * Math.round( Math.random() * 100 ) )
     .duration( 3000 )
     .attr( "y", d => newYScale( +d[ chosenYAxis ] ) )
