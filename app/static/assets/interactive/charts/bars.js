@@ -1,13 +1,14 @@
-function updateBarsOnly( data, chosenYAxis, height, width, chartGroup, yScale, yAxis, barsGroup, title ) { // bar chart update
+function updateBarsOnly( data, chosenYAxis, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth ) { // bar chart update
   // barsGroup.each((d,i)=>{ console.log('d :>> ', d);});
 
   let format = data.formats[ chosenYAxis ]; // req'd for d3-format
   let formatd3 = d3.format( format ); // function for d3-format
+
   yScale = yScaleUp( data, height, chosenYAxis ); // updates u axis
   yAxis = renderAxes( yScale, yAxis, data.formats[ chosenYAxis ] );
   title = renderUpTitleBottom( title, chartGroup, width, height, data, chosenYAxis );
   barsGroup = renderUpBars( chosenYAxis, barsGroup, yScale, height );
-  barsGroup = enableTooltip( barsGroup, chosenYAxis, formatd3, data );
+  barsGroup = enableTooltip( barsGroup, chosenYAxis, formatd3, data, barWidth );
 }
 // change Y axis dynamically: start with updating data y-scale
 // step 0 pre-requisite of main fuction and many more fuctions
@@ -42,7 +43,7 @@ const renderAxes = ( newYScale, yAxis, format ) => {
 
   return yAxis;
 };
-const enableTooltip = ( barsGroup, chosenYAxis, format, data ) => {
+const enableTooltip = ( barsGroup, chosenYAxis, format, data, barWidth ) => {
 
   // bootstrap card HTML as inner
   let genBS4Card = d => `
@@ -63,7 +64,7 @@ const enableTooltip = ( barsGroup, chosenYAxis, format, data ) => {
   let toolTip = d3
     .tip()
     .attr( "class", "tooltip" )
-    .offset( [ 40, -30 ] )
+    .offset( [ 60, -40 ] )
     .html( genBS4Card );
 
   barsGroup.call( toolTip );
@@ -76,7 +77,9 @@ const enableTooltip = ( barsGroup, chosenYAxis, format, data ) => {
       d3.select( this )
         .transition()
         .duration( 500 )
-        .attr( "fill", "coral" );
+        .attr( "fill", "coral" )
+        .attr( "width", barWidth*1.5 )
+        ;
     } )
     // onmouseout event
     .on( "mouseout", function ( d, i ) {
@@ -84,7 +87,9 @@ const enableTooltip = ( barsGroup, chosenYAxis, format, data ) => {
       d3.select( this )
         .transition()
         .duration( 1000 )
-        .attr( "fill", data.colors[ d.nam3 ] );
+        .attr( "fill", data.colors[ d.nam3 ] )
+        .attr( "width", barWidth )
+        ;
     } );
   return barsGroup;
 };

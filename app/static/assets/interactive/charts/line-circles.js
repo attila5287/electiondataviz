@@ -73,11 +73,11 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
         smallScreen : "5",
         largeScreen : "5",
       };
-      let r ="";   // strings faster
+      let r =10;   // strings faster
       if (width<500) {
-        r = dynamicRadius.smallScreen = "5";
+        r = dynamicRadius.smallScreen = 5;
       } else {
-        r = dynamicRadius.smallScreen = "7";
+        r = dynamicRadius.smallScreen = 7;
       }  
       return r;
       }; 
@@ -88,6 +88,7 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
       .enter()
       .append( "circle" )
       .classed( "circles-xtra", true )
+      .attr( "fill", "#aaaaff" )
       .attr( "r", radius(width) )
       .attr( "cx", d => xScale( parseTime(d.year) ) )
       ;
@@ -120,7 +121,7 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
         d3.select( this )
           .transition()
           .duration( 1000 )
-          .attr( "r", 15 )
+          .attr( "r", radius(width)*4 )
           .attr( "fill", "lightblue" )
           ;
       } )
@@ -130,8 +131,8 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
         d3.select( this )
           .transition()
           .duration( 1000 )
-          .attr( "r", 10 )
-          .attr( "fill", "red" );
+          .attr( "r", radius(width) )
+          .attr( "fill", "#aaaaff" );
       } );
 
     // transition on page load

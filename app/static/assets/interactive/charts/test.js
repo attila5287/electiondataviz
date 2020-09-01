@@ -1,21 +1,25 @@
 function interactiveChartUp( data ) { // data change key      
-  
-  var svgArea = d3
-  .select( "#interactive-chart" )
-  .select("svg");  
-  
-  if (!svgArea.empty()) {
-  svgArea.remove();
+
+  const removePrevSvg = () => {
+    var svgArea = d3 // remove svg when diff. state chosen
+      .select( "#interactive-chart" )
+      .select( "svg" );
+
+    if ( !svgArea.empty() ) {
+      svgArea.remove();    
     }
-  const customParams = genCustomParams();
+  };
+  removePrevSvg();  
+
+  const customParams = genCustomParams(); // custom parameters to compare 
+  
+  // default switch value is 0: percentage
   let index = 0; // default selection for base chart-> bars
 
   d3.csv( `../static/data/csv-int/${customParams[ index ].file}`, function ( err, dataCircles ) {
 
-    // console.log( 'data :>> ', data );
-
     const switchKey = data.keys[ index ]; // perc or count
-    const baseDomain = data.domainsYr[switchKey];
+    const baseDomain = data.domainsYr[switchKey]; // bound to data attr
     
 
 
@@ -92,6 +96,7 @@ function interactiveChartUp( data ) { // data change key
       .classed( 'vertical', true )
       .call( rightAxis );
 
+    const barWidth = width * 0.04;
     // Add the points
     let barsGroup = chartGroup
       // First we need to enter in a group
@@ -110,7 +115,7 @@ function interactiveChartUp( data ) { // data change key
       .attr( "stroke-width", d => "1px" )
       .attr( "stroke-opacity", d => "0.5" )
       .attr( "height", d => height - yScale( +d[ switchKey ] ) )
-      .attr( "width", d => width * 0.04 );
+      .attr( "width", d => barWidth );
 
     barsGroup.each( d => {
       // console.log('d :>> ', d);
@@ -118,25 +123,25 @@ function interactiveChartUp( data ) { // data change key
     } );
     
 
-    updateBarsOnly( data, switchKey, height, width, chartGroup, yScale, yAxis, barsGroup, title );
+    updateBarsOnly( data, switchKey, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );
 
     let switchCounter = 0;
 
-    const switchStyles = {
+    const switchStyles = {// bootstrap class names for btns
       0: "btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0",
       1: "btn btn-outline-light pl-2 px-4 text-comfo text-2xl rnd-lg"
     };
 
-    updateParamLabels( customParams );
+    updateParamLabels( customParams ); //all choices for circles-chart
     
 
-    d3.select( "#switch" ).on( "change", function () {
+    d3.select( "#switch" ).on( "change", function () {// bars perc/count
       let userInput = +this.value;
 
       let dataSelected = data.keys[ userInput ];
       console.log( 'userInput :>> ', userInput );
 
-      updateBarsOnly( data, data.keys[ userInput ], height, width, chartGroup, yScale, yAxis, barsGroup, title );
+      updateBarsOnly( data, data.keys[ userInput ], height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );
 
       console.log( 'test switch :>> ', +this.value );
       let m0d = switchCounter % 2; // first btn 
@@ -188,6 +193,8 @@ function interactiveChartUp( data ) { // data change key
 
     }
   } );
+
+
 }
 
 function compareYearsMinMax( baseDomain, dataCircles ) {

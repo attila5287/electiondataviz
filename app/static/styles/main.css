@@ -1030,5 +1030,5 @@ tbody td:last-child {
   stroke:rgb(0, 0, 0);
   stroke-opacity: 0.5;
   stroke-width: 1px;
-  fill: #aaaaff;
+  /* fill: #aaaaff; */
 }
