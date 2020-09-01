@@ -1,6 +1,7 @@
+
 function interactiveChartUp( data ) { // data change key      
 
-  const removePrevSvg = () => {
+  const removePrevSvg = () => {// tabula rasa for new chart
     var svgArea = d3 // remove svg when diff. state chosen
       .select( "#interactive-chart" )
       .select( "svg" );
@@ -12,130 +13,45 @@ function interactiveChartUp( data ) { // data change key
   removePrevSvg();  
 
   const customParams = genCustomParams(); // custom parameters to compare 
-  
-  // default switch value is 0: percentage
-  let index = 0; // default selection for base chart-> bars
+  let index = 0; // default selection for bars-> 0:perc
 
   d3.csv( `../static/data/csv-int/${customParams[ index ].file}`, function ( err, dataCircles ) {
 
     const switchKey = data.keys[ index ]; // perc or count
     const baseDomain = data.domainsYr[switchKey]; // bound to data attr
     
-
-
-    let svgWidth = $( `#interactive-chart` ).width();
-    let svgHeight = 0.40 * svgWidth; // larger than chart
-    let margin = { //margin for text-titles and axis ticks
-      top: 20,
-      right: 50,
-      left: 65,
-      bottom: 25,
-    };
     // step1 svg chart height and width 
-    //---------------------------------
-    let width = svgWidth - margin.left - margin.right;
-    // console.log('width :>> ', width);
-    let height = svgHeight - margin.top - margin.bottom;
-    let svg = d3 // select svg on html doc
-      .select( `#interactive-chart` )
-      .append( "svg" )
-      .classed( "my-2 mx-0", true )
-      .attr( "width", svgWidth )
-      .attr( "height", svgHeight );
+
+    let { svgWidth, margin, svgHeight } = resizeChartContainer();
+    
+    // create svg element on HTML doc per bundle of basic chart settings
+    let { svg, width, height } = appendAutoSizedSVG( svgWidth, margin, svgHeight );
 
 
     // step2 main group that holds chart
     // =================================
-    let chartGroup = svg.append( "g" )
-      .attr( "transform", `translate(${margin.left}, ${margin.top})` );
-    // append initial change with input 
-    // step2-title
-    // =================================
-    let title = chartGroup
-      .append( "text" )
-      .attr( "transform", `translate(${width / 2}, ${height + 15})` )
-      .text( `${data.titles[ switchKey ]}` )
-      .classed( 'title', true );
-      
-    const adjustedDomain = compareYearsMinMax( baseDomain, dataCircles );
-    
-    var parseTime = d3.timeParse("%Y");
-    
-    let xScale = d3.scaleTime()
-      .domain(d3.extent(adjustedDomain, d => parseTime(d)))
-      .range( [ 0, width ] );
-
-    // axis text for X-> year  
-    let axisTop = chartGroup
-      .append( "g" )
-      .attr( "transform", `translate(0, ${0})` )
-      .call( d3
-        // .transition()
-        // .duration(3000)
-        .axisTop( xScale )
-        .ticks( d3.timeYear.every(4) )
-        .tickFormat( d3.timeFormat("%Y") )
-        .tickSize( -height )
-      )
-      .classed( 'horizontal-int', true );
-
+    let { chartGroup, title } = genChartGroupTitle( svg, margin, width, height, data, switchKey );
     // Step 5: Create Scales
     //=============================================
-    let yScale = d3.scaleLinear()
-      .domain( data.domains[ switchKey ] )
-      .range( [ height, 0 ] );
+    var parseTime = d3.timeParse("%Y");
 
-    let rightAxis = d3
-      .axisRight( yScale )
-      .tickSize( -width )
-      .tickFormat( d3.format( data.formats[ switchKey ] ) );
-
-    let yAxis = chartGroup
-      .append( "g" )
-      .attr( "transform", `translate(${width}, 0)` )
-      .classed( 'vertical', true )
-      .call( rightAxis );
-
-    const barWidth = width * 0.04;
-    // Add the points
-    let barsGroup = chartGroup
-      // First we need to enter in a group
-      .selectAll( "myBarGroup" )
-      .data( data.main )
-      .enter()
-      .append( 'g' )
-      .style( "fill", d => d.fillColor )
-      .selectAll( "myBars" )
-      .data( d => d.values )
-      .enter().append( "rect" )
-      .attr( "class", "myBars" )
-      .attr( "x", d => xScale( parseTime(d.year) ) )
-      .attr( "y", d => yScale( 0 ) )
-      .attr( "stroke", d => "#424abb" )
-      .attr( "stroke-width", d => "1px" )
-      .attr( "stroke-opacity", d => "0.5" )
-      .attr( "height", d => height - yScale( +d[ switchKey ] ) )
-      .attr( "width", d => barWidth );
-
-    barsGroup.each( d => {
-      // console.log('d :>> ', d);
-      // console.log('yScale(d.value) :>> ', yScale(d.value));
-    } );
+    let comparedMinMax = compareYearsMinMax( baseDomain, dataCircles );
     
+    let xScale = rescaleX( comparedMinMax, parseTime, width, chartGroup, height );
+    let { yScale, yAxis } = rescaleY( data, switchKey, height, width, chartGroup );
 
+      // append bars group with size sensitive bar width
+    var { barsGroup, barWidth } = barsGroupUp( width, chartGroup, data, xScale, parseTime, yScale, height, switchKey );
+
+        
     updateBarsOnly( data, switchKey, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );
-
-    let switchCounter = 0;
-
-    const switchStyles = {// bootstrap class names for btns
-      0: "btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0",
-      1: "btn btn-outline-light pl-2 px-4 text-comfo text-2xl rnd-lg"
-    };
-
     updateParamLabels( customParams ); //all choices for circles-chart
-    
 
+    
+    let switchCounter = 0;
     d3.select( "#switch" ).on( "change", function () {// bars perc/count
+      const switchStyles = dictBS4ClassNames(); // bootstrap classes
+      
       let userInput = +this.value;
 
       let dataSelected = data.keys[ userInput ];
@@ -195,6 +111,115 @@ function interactiveChartUp( data ) { // data change key
   } );
 
 
+}
+
+function resizeChartContainer () {
+  let svgWidth = $( `#interactive-chart` ).width();
+  let svgHeight = 0.40 * svgWidth; // larger than chart
+  let margin = {
+    top: 20,
+    right: 50,
+    left: 65,
+    bottom: 25,
+  };
+  return { svgWidth, margin, svgHeight };
+}
+
+function dictBS4ClassNames () {
+  return {
+    0: "btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0",
+    1: "btn btn-outline-light pl-2 px-4 text-comfo text-2xl rnd-lg"
+  };
+}
+
+function rescaleY ( data, switchKey, height, width, chartGroup ) {
+  let yScale = d3.scaleLinear()
+    .domain( data.domains[ switchKey ] )
+    .range( [ height, 0 ] );
+
+  let rightAxis = d3
+    .axisRight( yScale )
+    .tickSize( -width )
+    .tickFormat( d3.format( data.formats[ switchKey ] ) );
+
+  let yAxis = chartGroup
+    .append( "g" )
+    .attr( "transform", `translate(${width}, 0)` )
+    .classed( 'vertical', true )
+    .call( rightAxis );
+  return { yScale, yAxis };
+}
+
+function rescaleX ( comparedMinMax, parseTime, width, chartGroup, height ) {
+  let xScale = d3.scaleTime()
+    .domain( d3.extent( comparedMinMax, d => parseTime( d ) ) )
+    .range( [ 0, width ] );
+
+  // axis text for X-> year  
+  let axisTop = chartGroup
+    .append( "g" )
+    .attr( "transform", `translate(0, ${0})` )
+    .call( d3
+      // .transition()
+      // .duration(3000)
+      .axisTop( xScale )
+      .ticks( d3.timeYear.every( 4 ) )
+      .tickFormat( d3.timeFormat( "%Y" ) )
+      .tickSize( -height )
+    )
+    .classed( 'horizontal-int', true );
+  return xScale;
+}
+
+function barsGroupUp ( width, chartGroup, data, xScale, parseTime, yScale, height, switchKey ) {
+  const barWidth = width * 0.04;
+  // Add the points
+  let barsGroup = chartGroup
+    // First we need to enter in a group
+    .selectAll( "myBarGroup" )
+    .data( data.main )
+    .enter()
+    .append( 'g' )
+    .style( "fill", d => d.fillColor )
+    .selectAll( "myBars" )
+    .data( d => d.values )
+    .enter().append( "rect" )
+    .attr( "class", "myBars" )
+    .attr( "x", d => xScale( parseTime( d.year ) ) )
+    .attr( "y", d => yScale( 0 ) )
+    .attr( "stroke", d => "#424abb" )
+    .attr( "stroke-width", d => "1px" )
+    .attr( "stroke-opacity", d => "0.5" )
+    .attr( "height", d => height - yScale( +d[ switchKey ] ) )
+    .attr( "width", d => barWidth );
+  return { barsGroup, barWidth };
+}
+
+function genChartGroupTitle ( svg, margin, width, height, data, switchKey ) {
+  let chartGroup = svg.append( "g" )
+    .attr( "transform", `translate(${margin.left}, ${margin.top})` );
+
+  // step2-title
+  // =================================
+  let title = chartGroup
+    .append( "text" )
+    .attr( "transform", `translate(${width / 2}, ${height + 15})` )
+    .text( `${data.titles[ switchKey ]}` )
+    .classed( 'title', true );
+  return { chartGroup, title };
+}
+
+function appendAutoSizedSVG ( svgWidth, margin, svgHeight ) {
+  let width = svgWidth - margin.left - margin.right;
+  // console.log('width :>> ', width);
+  let height = svgHeight - margin.top - margin.bottom;
+  let svg = d3 // select svg on html doc
+    .select( `#interactive-chart` )
+    .append( "svg" )
+    .classed( "my-2 mx-0", true )
+    .attr( "width", svgWidth )
+    .attr( "height", svgHeight );
+  return { svg, width, height };
 }
 
 function compareYearsMinMax( baseDomain, dataCircles ) {
