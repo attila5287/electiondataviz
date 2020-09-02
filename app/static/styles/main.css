@@ -614,12 +614,13 @@ h6 {
 }
 
 .vertical text {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-family: 'Comfortaa';
   font-weight: bold;
-  fill: #be8abe;
-  text-shadow: 2px 3px #1205ff;
+  fill: #ff0000ab;
+  text-shadow: 2px 2px #357cff55;
 }
+
 .horizontal line {
   stroke: rgb(10, 55, 153); 
   stroke-width: 2px;
@@ -630,12 +631,12 @@ h6 {
   stroke-width: 0px;
 }
 
-
 .horizontal-int line {
   stroke: rgb(10, 55, 153);
   stroke-width: 2px;
   stroke-opacity: 0.2;
 }
+
 .horizontal-int text {
   font-size: 0.75rem;
   font-family: 'Orbitron', sans-serif;

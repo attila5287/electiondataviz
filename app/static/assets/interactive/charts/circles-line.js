@@ -93,6 +93,13 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
       .attr( "cx", d => xScale( parseTime(d.year) ) )
       ;
       
+    let ctr = 0;
+    circlesGroup.each(c => {
+      // console.log('c :>> ', c);
+      ctr = ctr+1;
+    });
+    
+    console.log('ctr :>> ', ctr);
 
     let circleTooltip = d3
       .tip()

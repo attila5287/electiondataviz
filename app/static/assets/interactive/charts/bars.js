@@ -1,5 +1,11 @@
-function updateBarsOnly( data, chosenYAxis, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth ) { // bar chart update
-  // barsGroup.each((d,i)=>{ console.log('d :>> ', d);});
+function renderBarsUpdated( data, chosenYAxis, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth ) { // bar chart update
+  let counterBG = 0;
+  barsGroup.each((d,i)=>{ 
+    // console.log('d :>> ', d);
+    counterBG = counterBG +1;
+  }
+  );
+  console.log('counterBG :>> ', counterBG);
 
   let format = data.formats[ chosenYAxis ]; // req'd for d3-format
   let formatd3 = d3.format( format ); // function for d3-format
@@ -7,7 +13,7 @@ function updateBarsOnly( data, chosenYAxis, height, width, chartGroup, yScale, y
   yScale = yScaleUp( data, height, chosenYAxis ); // updates u axis
   yAxis = renderAxes( yScale, yAxis, data.formats[ chosenYAxis ] );
   title = renderUpTitleBottom( title, chartGroup, width, height, data, chosenYAxis );
-  barsGroup = renderUpBars( chosenYAxis, barsGroup, yScale, height );
+  barsGroup = renderUpBars( chosenYAxis, barsGroup, yScale, height );// render bars with updated data
   barsGroup = enableTooltip( barsGroup, chosenYAxis, formatd3, data, barWidth );
 }
 // change Y axis dynamically: start with updating data y-scale

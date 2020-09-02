@@ -5,7 +5,7 @@ function init( stateName ) {
     const dataReady = prepInteractiveData( data, stateName );
 
     // import csv once then render by input within the func
-    interactiveChartUp(dataReady);
+    main(dataReady);
     // import csv once then render by input within the func
     ddInteractive (indexNoBySt[stateName]);
 

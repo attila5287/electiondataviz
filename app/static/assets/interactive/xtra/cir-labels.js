@@ -1,4 +1,20 @@
-function genCustomParams() {// custom parameters for connected line-circle time series
+function renderLineCircleLabels ( params) {
+  // labels for slider from 0 to number of parameters  
+  d3.select( "#custom-keys" )
+    .selectAll( "i" )
+    .data( params )
+    .enter()
+    .append( "i" )
+    .html( d => `<i>${d.index}</i>` );
+
+  d3.select( "#slider" )
+    .attr( "min", 0 )
+    .attr( "max", Object.keys( params ).length - 1 )
+    .attr( "step", 1 )
+    .property( "value", 0 ); // def selection
+}
+
+function prepLineCircleLabels() {// custom parameters for connected line-circle time series
       const fileNames = [ //file names to pull data
         "const-permits.csv",
         "numjobs-nonfarmpro.csv",
@@ -28,4 +44,5 @@ function genCustomParams() {// custom parameters for connected line-circle time 
       // console.log('results :>> ', results);
       // console.log('results0  :>> ', results[0]);
       return results;
-  };
+      
+};

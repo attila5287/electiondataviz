@@ -1,3 +1,4 @@
+var counterDD = 0; // dont call init when default selection made
 function ddInteractive (defIndex) {// dropdown for interactive
   // console.log('test drop down lite :>> ');
   function prepBasicMenu(){ 
@@ -22,6 +23,7 @@ function ddInteractive (defIndex) {// dropdown for interactive
     return {data:result,names:names};
   }
   const basicMenuReady = prepBasicMenu();
+  ;
   $( '#opts2' ).ddslick('destroy');
   $( '#opts2' ).ddslick( {
     data: basicMenuReady.data,
@@ -30,7 +32,12 @@ function ddInteractive (defIndex) {// dropdown for interactive
     onSelected: function ( d, i ) {
       const stateName = basicMenuReady.names[ d.selectedIndex ];
       // console.log( 'stateName selected dropdown menu :>> ', stateName );
-      initAllFromDd( stateName );
+      if (counterDD == 0) {
+        // console.log('-dropdown default selection ' );
+      } else {
+        initAllFromDd( stateName );
+      }
+      counterDD = counterDD +1;
     }
   } );
   
@@ -40,9 +47,10 @@ function ddInteractive (defIndex) {// dropdown for interactive
   function initAllFromDd ( stateName ) {
     const url = '../static/data/csv/president.csv';
     d3.csv( url, function ( err, data ) {
+      console.log(' init from dropdown :>> ');
       const dataReady = prepInteractiveData( data, stateName );
       // import csv once then render by input within the func
-      interactiveChartUp(dataReady);
+      main(dataReady);
       // import csv once then render by input within the func
       
     } );
