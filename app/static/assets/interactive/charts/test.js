@@ -261,7 +261,7 @@ const compareYearsMinMax = ( baseDomain, dataCircles ) => {
 
   return res;
 }
-// --------------------- SLIDER ----------------
+
 function handlerInputLineCircles( slider, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis ) {
   
   lineCirclesUpdate( slider, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis );

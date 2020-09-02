@@ -1,5 +1,5 @@
 var counterDD = 0; // dont call init when default selection made
-function ddInteractive (defIndex) {// dropdown for interactive
+function dropdownMini (defIndex) {// dropdown for interactive
   // console.log('test drop down lite :>> ');
   function prepBasicMenu(){ 
     const result=[];  // generate dropdown menu with req'd keys
@@ -22,8 +22,9 @@ function ddInteractive (defIndex) {// dropdown for interactive
     // console.log('defIndex :>> ', defIndex);
     return {data:result,names:names};
   }
+  
   const basicMenuReady = prepBasicMenu();
-  ;
+
   $( '#opts2' ).ddslick('destroy');
   $( '#opts2' ).ddslick( {
     data: basicMenuReady.data,
@@ -42,8 +43,6 @@ function ddInteractive (defIndex) {// dropdown for interactive
   } );
   
   //  document.body.style.backgroundImage = "url('../../imgimg_tree.png')"; 
-
-
   function initAllFromDd ( stateName ) {
     const url = '../static/data/csv/president.csv';
     d3.csv( url, function ( err, data ) {

@@ -3,8 +3,7 @@ function renderBarsUpdated( data, chosenYAxis, height, width, chartGroup, yScale
   barsGroup.each((d,i)=>{ 
     // console.log('d :>> ', d);
     counterBG = counterBG +1;
-  }
-  );
+  });
   console.log('counterBG :>> ', counterBG);
 
   let format = data.formats[ chosenYAxis ]; // req'd for d3-format
