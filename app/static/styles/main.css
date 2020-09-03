@@ -1,3 +1,4 @@
+
 .navbar {
   height: 45px !important;
   max-height: 55px !important;
@@ -760,6 +761,29 @@ h6 {
   font-family: 'Orbitron', sans-serif;
   text-shadow: 0px 0px #d1d5e9;
 }
+
+.custrange-yearsel  {
+  font-size: 1.50rem;
+  padding: 1px 6px 1px 4px;
+  margin: 1px 6px 4px 4px;
+  border-radius: 7% / 13%;
+  background-color: rgb(0, 0, 0);
+  color: rgb(253, 109, 14);
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0px 0px #d1d5e9;
+}
+.custrange-year  {
+  font-size: 1.00rem;
+  padding: 1px 6px 1px 4px;
+  margin: 1px 6px 4px 4px;
+  padding: 1px 6px 1px 4px;
+  border-radius: 7% / 13%;
+  background-color: rgb(0, 0, 0);
+  color: rgb(253, 109, 14);
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0px 0px #d1d5e9;
+}
+
 .led-lg  {
   font-size: 1.50rem;
   padding: 1px 6px 1px 4px;
@@ -1032,4 +1056,31 @@ tbody td:last-child {
   stroke-opacity: 0.5;
   stroke-width: 1px;
   /* fill: #aaaaff; */
+}
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    padding: 0 5px;
+}
+.jackpot line {
+  stroke: #5d7afa;
+  stroke-width: 3px;
+  stroke-opacity: 0.2;
+}
+
+.jackpot path {
+  stroke: #5d7afa;
+  stroke-width: 4px;
+  stroke-linecap: nice;
+  stroke-opacity: 0.2;
+}
+
+.jackpot text {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1.50rem;
+  font-weight: bold;
+  fill: #5d7afa;
+  fill: #aaaaff;
+  text-shadow: 2px 3px #ff14ff98;
 }

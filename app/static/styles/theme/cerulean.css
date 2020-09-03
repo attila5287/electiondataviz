@@ -4415,6 +4415,21 @@ input[type="button"].btn-block {
   -moz-appearance: none;
        appearance: none;
 }
+.custom-range::-moz-range-thumb {
+  width: 1rem;
+  height: 2rem;
+  color: white;
+  border-radius: 1rem 1rem 0.5rem 0.5rem;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d564df), color-stop(60%, #6c14fb), to(#380885));
+
+  background-image: linear-gradient(#f277f6, #6a2470 60%, #531e55);
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -moz-appearance: none;
+  appearance: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .custom-range::-moz-range-thumb {

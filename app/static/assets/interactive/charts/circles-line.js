@@ -99,7 +99,7 @@ function lineCirclesUpdate( selectedIndex , params, dataReady, height, width, ch
       ctr = ctr+1;
     });
     
-    console.log('ctr :>> ', ctr);
+    // console.log('ctr :>> ', ctr);
 
     let circleTooltip = d3
       .tip()
