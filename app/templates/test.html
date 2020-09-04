@@ -96,6 +96,7 @@
            </form>
          </div>
        </nav>
+
        <!-- INFO NOTES -->
        <div class="d-flex flex-row justify-content-between mt-0">
          <p class="text-light text-italic text-secondary mt-0 mb-0">
@@ -104,11 +105,11 @@
          </p>
          <p class="text-light text-italic text-secondary mt-0 mb-0">
            <i class="fas fa-info-circle text-secondary"></i>
-           Select an option and generate buttons below with state names on the selected listr
+           Slider determines the key parameter to visualize as a second layer
          </p>
          <p class="text-light text-italic text-secondary mt-0 mb-0">
            <i class="fas fa-info-circle text-secondary"></i>
-           Use the imaged-dropdown to choose a state to visualize all election historical data!
+           Bar chart -base layer- are presidential voting data os selected state
          </p>
          <p class="text-light text-italic text-secondary mt-0 mb-0 mt-0 mb-0">
            <i class="fas fa-info-circle text-secondary"></i>
@@ -173,12 +174,12 @@
                <input class="custom-range px-4 mb-3 mt-2" type="range" id="switch" min="0" max="1" step="1" value="0">
 
                <div class="btn-group" role="group" aria-label="Button group">
-
-                 <span class="btn btn-outline-light  px-4 text-comfo text-2xl rnd-lg" type="button" id="switch-perc">
-                   Vote Perc% </span>
                  <span
                    class="btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0"
-                   type="button" id="switch-count"> Vote Count </span>
+                   type="button" id="switch-perc"> Vote Prc% </span>
+
+                 <span class="btn btn-outline-light  px-4 text-comfo text-2xl rnd-lg" type="button" id="switch-count">
+                   Vote Cnt </span>
                </div>
              </fieldset>
            </div>
@@ -274,17 +275,20 @@
 
      <script src="/static/data/json/st-dicts.js"></script>
 
+     
      <script src="/static/assets/interactive/xtra/bar-prep.js"></script>
      <script src="/static/assets/interactive/xtra/cir-labels.js"></script>
-
+     
      <script src="/static/assets/dropdowns/int-ddslick.js"></script>
-
+     
      <script src="/static/assets/tables/tb-int.js"></script>
-
+     
      <script src="/static/assets/interactive/charts/bars.js"></script>
      <script src="/static/assets/interactive/charts/circles-line.js"></script>
      <script src="/static/assets/interactive/charts/test.js"></script>
      <script src="/static/assets/interactive/xtra/years.js"></script>
+     <script src="/static/assets/interactive/xtra/devco.js"></script>
+     <script src="/static/assets/interactive/xtra/bea-api.js"></script>
      <script src="/static/assets/interactive/init.js"></script>
 
    </body>

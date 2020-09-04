@@ -685,3 +685,5 @@ app/_js-d3/ckwan-dash/dashboard.html
 app/_js-d3/ckwan-dash/functions.js
 app/_js-d3/ckwan-dash/topbar.js
 app/_js-d3/ckwan-dash/us.json
+app/static/assets/interactive/xtra/bea_api
+app/static/assets/interactive/xtra/devco.js

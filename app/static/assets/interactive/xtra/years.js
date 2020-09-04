@@ -187,7 +187,7 @@ function yearSelectEnd() {
 
     } else {
       // errMsgStart = 'Start year should come before end';
-      errMsgEnd   = 'End year should come after start <hr> try again';
+      errMsgEnd   = 'End year should come after start';
       // d3.select('#errYrSt').text(errMsgStart);
       d3.select('#errYrEnd').text(errMsgEnd);
       alert(errMsgEnd)
