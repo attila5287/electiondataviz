@@ -32,7 +32,8 @@ function yearSelectStart() {
   let axisGroup = plotGroup.append( 'g' )
     .classed( 'jackpot', true );
 
-  function jackpotRight( userInput, axG,  parseTime, height ) {
+  function jackpotLeft( userInput, axG,  parseTime, height ) {
+  
     let scale = d3.scaleTime()
       .domain( [ parseTime(userInput-1), parseTime(userInput+1) ] )
       .range( [ height , 0 ] );
@@ -48,17 +49,62 @@ function yearSelectStart() {
      .ease( d3.easeElastic )
      .duration( 1500 )
      .call( axis );
-    }
+  }
     
-    jackpotRight( defIndex, axisGroup, parseTime, height );
-    d3.select( '#yearStart' )
-      .on( 'change', function () {
-        checkStartEndYears();
-        console.log( '+this.value :>> ', +this.value );
-        jackpotRight( +this.value, axisGroup,  parseTime, height );
-    } )
+  jackpotLeft( defIndex, axisGroup, parseTime, height );
+  d3.select( '#yearStart' )
+    .on( 'change', function () {
+      console.log( 'left start year:>> ', +this.value );
+
+      jackpotLeft( +this.value, axisGroup,  parseTime, height );
+    if (checkStartEndYears(+this.value)) {
+          jackpotLeft( +this.value, axisGroup,  parseTime, height );
+          
+          console.log( 'IF year str :>> ', +this.value );
+        } else {
+          
+          console.log( 'ELSE year str :>> ', +this.value );
+          
+          jackpotLeft( +this.value-1, axisGroup,  parseTime, height );
+
+
+        }
+  } )
+    
+
+  function checkStartEndYears(userInput) {
+    // let start = +$( `#yearStart` )[0].value;
+    let end = +$( `#yearEnd` )[0].value;
+    // console.log('start :>> ', +start);
+    console.log('end :>> ', +end);
+    let errMsgStart='';
+    let errMsgEnd='';
+
+    if (userInput<end) {
+      let pass= 'year input check'
+      console.log('pass :>> ', pass);
+      d3.select('#errYrSt').text('');
+      d3.select('#errYrEnd').text('');
+
+      return true;
+    } else {
+      errMsgStart = 'Start year should come before end';
+      // errMsgEnd   = 'End year should come after start <hr> try again';
+      d3.select('#errYrSt').text(errMsgStart);
+      // d3.select('#errYrEnd').text(errMsgEnd);
+      alert(errMsgStart);
+      // alert(errMsgEnd);
+      // let x = 1976*1;
+      // let z = 2019*1;
+      d3.select('#yearStart').attr('value', +userInput-1);
+      // d3.select('#yearEnd').attr('value', userInput+1);
+
+      return false;
+  }
+  } 
 }
-yearSelectStart()
+yearSelectStart();
+
 
 function yearSelectEnd() {
   const defIndex = 2020;
@@ -112,33 +158,46 @@ function yearSelectEnd() {
     jackpotRight( defIndex, axisGroup, parseTime, height );
     d3.select( '#yearEnd' )
       .on( 'change', function () {
-        checkStartEndYears();
-        console.log( '+this.value :>> ', +this.value );
-        jackpotRight( +this.value, axisGroup,  parseTime, height );
-    } )
-}
-yearSelectEnd()
-function checkStartEndYears() {
-  let start = +$( `#yearStart` )[0].value;
-  let end = +$( `#yearEnd` )[0].value;
-  // console.log('start :>> ', +start);
-  // console.log('end :>> ', +end);
-  let errMsgStart='';
-  let errMsgEnd='';
-  
-  if (start<end) {
-    let pass= 'year input check'
-    console.log('pass :>> ', pass);
-    d3.select('#errYrSt').text('');
-    d3.select('#errYrEnd').text('');
-  } else {
-    errMsgStart = 'Start year should come before end';
-    errMsgEnd   = 'End year should come after start';
-    d3.select('#errYrSt').text(errMsgStart);
-    d3.select('#errYrEnd').text(errMsgEnd);
-    d3.select('#yearStart').attr('value', 1976);
-    d3.select('#yearEnd').attr('value', 2019);
+        
+        if (checkStartEndYears(+this.value)) {
+          jackpotRight( +this.value, axisGroup,  parseTime, height );
+          console.log( 'IF year end right :>> ', +this.value );
+        } else {
+          console.log( 'ELSE year end right :>> ', +this.value );
+          jackpotRight( +this.value-1, axisGroup,  parseTime, height );
+        }
 
+    } )
+
+  function checkStartEndYears(userInput) {
+    let start = +$( `#yearStart` )[0].value;
+    // let end = +$( `#yearEnd` )[0].value;
+    // console.log('start :>> ', +start);
+    // console.log('end :>> ', +end);
+    let errMsgStart='';
+    let errMsgEnd='';
+
+    if (userInput>start) {
+      let pass= 'year input check'
+      console.log('pass :>> ', pass);
+      d3.select('#errYrSt').text('');
+      d3.select('#errYrEnd').text('');
+
+      return true;
+
+    } else {
+      // errMsgStart = 'Start year should come before end';
+      errMsgEnd   = 'End year should come after start <hr> try again';
+      // d3.select('#errYrSt').text(errMsgStart);
+      d3.select('#errYrEnd').text(errMsgEnd);
+      alert(errMsgEnd)
+      // let x = 1976*1;
+      // let z = 2019*1;
+      // d3.select('#yearStart').attr('value', x);
+      d3.select('#yearEnd').attr('value', userInput+1);
+
+      return false;
   }
-  }
-checkStartEndYears();
+  } 
+}
+yearSelectEnd();
