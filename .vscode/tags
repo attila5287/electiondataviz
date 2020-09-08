@@ -20,6 +20,7 @@ app	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:3
 app	../run.py	/^from app import app$/;"	kind:namespace	line:1
 app.py	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	1;"	kind:file	line:1
 app.py	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	1;"	kind:file	line:1
+bea_api	../app\routes.py	/^def bea_api(index_bea):$/;"	kind:function	line:31
 candidates	../app\routes.py	/^def candidates():$/;"	kind:function	line:16
 country	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^country = "United States"$/;"	kind:variable	line:6
 daily_wage	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^daily_wage = hourly_wage * 8$/;"	kind:variable	line:15
@@ -46,11 +47,12 @@ render_template	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/
 render_template	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
 render_template	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
 request	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
+requests	../app\routes.py	/^import requests$/;"	kind:namespace	line:4
 routes	../app\__init__.py	/^from app import routes$/;"	kind:namespace	line:12
 routes.py	../app\routes.py	1;"	kind:file	line:1
 run.py	../run.py	1;"	kind:file	line:1
 satisfied	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^satisfied = True$/;"	kind:variable	line:18
-test	../app\routes.py	/^def test():$/;"	kind:function	line:26
+test	../app\routes.py	/^def test():$/;"	kind:function	line:25
 timeseries	../app\routes.py	/^def timeseries():$/;"	kind:function	line:12
 url_for	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
 x	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_ConditionalCheck.py	/^x = 1$/;"	kind:variable	line:1

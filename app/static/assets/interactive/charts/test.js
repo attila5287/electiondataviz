@@ -50,8 +50,7 @@ function main( data ) { // data change key
         dataCircles.push({
           // name: r.GeoName,
           year: +r.TimePeriod,
-    
-          
+          value: +r.DataValue.replace(",", ""),
         });
       });
     
