@@ -14,23 +14,54 @@ function renderLineCircleLabels ( params) {
     .property( "value", 0 ); // def selection
 }
 
-function prepLineCircleLabels() {// custom parameters for connected line-circle time series
-      const fileNames = [ //file names to pull data
+function prepLineCircleLab3ls() {// custom parameters for connected line-circle time series
+      const fileNames = [//file names to pull data
+        "income-percapita.csv",
         "const-permits.csv",
         "numjobs-nonfarmpro.csv",
         "income-wagesalary.csv",
         "unemployment.csv",
-        "income-percapita.csv",
         "population.csv",
       ];
   
-      const labels = [ // name on input range
+      const labels = [//name on input range
+        "Income Per Capita",
         "Construction Permits",
         "Num of Jobs: Non-Farm Pro",
         "Avg Earnings:Wage Salary",
         "Unemployment Rate",
+        "Total Population",
+      ];
+      let results = [];
+  
+      for ( let i = 0; i < fileNames.length; i++ ) {
+        results.push( {
+          index: +i,
+          label: labels[ i ],
+          file: fileNames[ i ],
+        } );
+      }
+      // console.log('results :>> ', results);
+      // console.log('results0  :>> ', results[0]);
+      return results;
+      
+};
+
+function prepLabelsBEA() {// custom parameters for connected 
+  // line-circle time series
+  
+      const fileNames = [//file names to pull data
+        urlPersonalIncome,
+        urlPopulation,
+        urlCompEeByIndNAICS,
+        urlCompEeByIndSIC,
+      ];
+  
+      const labels = [//name on input range
         "Income Per Capita",
         "Total Population",
+        "Comp.of Emp.by NAICS Ind.",
+        "Comp.of Emp.by SIC Ind.",
       ];
       let results = [];
   

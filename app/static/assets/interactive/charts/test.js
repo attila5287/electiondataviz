@@ -1,6 +1,8 @@
-
 // slider determines the parameter to compare: unemplotment rate, wage avg etc.
 function main( data ) { // data change key      
+  let defNm = data.name;
+  // console.log('selectedName :>> ', defNm);
+  
   // step 0-a : remove svg from prev init-state-selection  
   //=========================================================
   const removePrevSvg = () => {// tabula rasa for new chart
@@ -16,15 +18,51 @@ function main( data ) { // data change key
   
   // step 0-b : prep for top layer chart //generate objects with labels to display on page also  API/ URL for test file URL 
   //=========================================================
-  const customParams = prepLineCircleLabels(); 
-  renderLineCircleLabels( customParams ); //all choices for circles-chart
+  // const customParams = prepLineCircleLabels(); 
+    const customParams = prepLabelsBEA(); 
+    renderLineCircleLabels( customParams ); //all choices for circles-chart
+    //=========================================================
+    let index = 0; // default selection for bars-> {0:perc 1:count}
+    d3.json( `${customParams[ index ].file}`, importLineCircle );
+    // ================ async handler ================
+    // ===============================================
+    function importLineCircle( err, json ) { 
+      // console.log('chk err? :>> ', err);
+      // let defNm = "Colorado"; // default name for time series
+      const showFirst = (list) =>list[0];
+      const showLast = (list) =>list[list.length-1];
+      console.log('bea api services JSON format :>> ', json);
+      let results = json.BEAAPI.Results;
+      // console.log('results :>> ', results);
+      
+      let statsName = json.BEAAPI.Results.Statistic;
+      // console.log('statsName :>> ', statsName);
+    
+      let statsLongNm = json.BEAAPI.Results.PublicTable;
+      // console.log('statsLongNm :>> ', statsLongNm);
+    
+      let filtered = json.BEAAPI.Results.Data.filter(d=> d.GeoName == defNm); 
+      // console.log('filtered by name :>> ', filtered);
+      
+      let dataCircles = []; // 
+    
+      filtered.forEach(r => {// obj.s w/ {year/value} fields
+        dataCircles.push({
+          // name: r.GeoName,
+          year: +r.TimePeriod,
+    
+          
+        });
+      });
+    
+      console.log('dataCircles :>> ', dataCircles);
+      let firstYear = +dataCircles[0].year;
+      let lastYear = +dataCircles[dataCircles.length-1].year;
 
-  // step 0-c1 : import top layer csv not to use to render chart but to check years axis if larger than 1976-2016
-  //=========================================================
-  let index = 0; // default selection for bars-> {0:perc 1:count}
-  d3.csv( `../static/data/csv-int/${customParams[ index ].file}`, importLineCircle );
-  function importLineCircle( err, dataCircles ) {
-    // step 0-c2 default selection of perc/count for bars
+      // console.log('first :>> ', firstYear  );
+      // console.log('last :>> ', lastYear  );
+
+      // step 0-c2 default selection of perc/count for bars
     //=========================================================
     const switchKey = data.keys[ index ]; // perc or count
     
@@ -86,16 +124,18 @@ function main( data ) { // data change key
     handlerInputLineCircles( 0, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis );
   
   } 
+   // ================================================
+   // ================================================
 }
 
 
 const appendCirclesAxisY =  ( dataCircles, data, height, chartGroup, width )=> {// default Y axis for line circle chart
-  let dCircles = dataCircles[ indexNoBySt[ data.name ] ]; // row with 
+  [ indexNoBySt[ data.name ] ]; // row with  
   let yScaleCircles = d3.scaleLinear() // min max values for y scale
     .domain( [
-      d3.min( Object.keys( dCircles ).map( year => +dCircles[ year ] ) ),
-      d3.max( Object.keys( dCircles ).map( year => +dCircles[ year ] ) ),
-    ] )
+        d3.min( dataCircles.map( d => +d.value ) ),
+        d3.max( dataCircles.map( d => +d.value ) ),
+      ] )
     .range( [ height, 0 ] );
 
   // Add leftAxis to the left side of the display
@@ -120,11 +160,8 @@ function appendBarsAxisY ( data, switchKey, height, width, chartGroup ) {// defa
 }
 
 function handlerInputBars ( userInput, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth ) {
-  const switchStyles = styleDictBtns(); //bootstrap cls //bootstrap classes buttons for switch->bars thus renders selection highlighted
+  const switchStyles = styleDictBtns(); //bootstrap cls//bootstrap classes buttons for switch->bars thus renders selection highlighted//returns a dictionary
 
-
-
-  // returns a dictionary
   // console.log( 'userInput :>> ', userInput );
   const dataSelected = data.keys[ userInput ];
 
@@ -215,8 +252,8 @@ function sizeConfigsUp () {// updates outer height width
 
 const styleDictBtns =  () => {//bootstrap classes buttons for switch->bars thus renders selection highlighted
   return {// returns a dictionary
-    0: "btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0",
-    1: "btn btn-outline-light pl-2 px-4 text-comfo text-2xl rnd-lg"
+    0: "btn btn-outline-light pl-2 px-4 text-comfo text-2xl rnd-lg",
+    1: "btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0",
   };
 }
 
@@ -249,10 +286,10 @@ const appendAutoSizedSVG = ( svgWidth, margin, svgHeight ) => {
 const compareYearsMinMax = ( baseDomain, dataCircles ) => {
   // console.log( 'baseDomain :>> ', baseDomain );
 
-  const allKeys = Object.keys( dataCircles[ 0 ] );
-  delete allKeys.name;
-  const minParams = d3.min( allKeys.map( d => +d ) );
-  const maxParams = d3.max( allKeys.map( d => +d ) );
+  // console.log('dataCircles :>> ', dataCircles);
+
+  const minParams = d3.min( dataCircles.map( d => +d.year ) );
+  const maxParams = d3.max( dataCircles.map( d => +d.year ) );
 
   const res = [
     d3.min( [ baseDomain[ 0 ], minParams ] ) - 1,
@@ -265,12 +302,12 @@ const compareYearsMinMax = ( baseDomain, dataCircles ) => {
 function handlerInputLineCircles( slider, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis ) {
   
   lineCirclesUpdate( slider, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis );
-
+  
   // slider determines the parameter to compare
   d3.select( "#slider" ).property( "value", slider );
   // so that code wont fail at zero
-  let prevModulus = ( +slider + 5 ) % customParams.length;
-  let nextModulus = ( +slider + 8 ) % customParams.length;
+  let prevModulus = ( +slider + customParams.length-1 ) % customParams.length;
+  let nextModulus = ( +slider + customParams.length+1 ) % customParams.length;
 
   d3.select( "#param-prev" ).text( customParams[ +prevModulus ].label );
   d3.select( "#sliderValue" ).text( customParams[ slider ].label );

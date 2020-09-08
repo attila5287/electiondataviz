@@ -1,7 +1,5 @@
  <!DOCTYPE html>
-
  <html>
-
    <head>
      <!-- Required meta tags -->
      <meta charset="utf-8">
@@ -44,7 +42,6 @@
        }
      </style>
    </head>
-
    <body class="bg-body-mini">
      <header>
        <nav class="navbar nav-mini navbar-expand-md navbar-dark fixed-top bg-transparent bg-themy">
@@ -117,7 +114,16 @@
          </p>
        </div>
      </header>
-
+     <div class="row no-gutters">
+       <div class="col-8 offset-2">
+        <div class="form-group px-4 py-3 bg-theme rnd-2xl  text-center">
+          <label for="api-menu" class="text-sm text-comfo text-light text-italic">Select a parameter for time series to pull from API services of  https://apps.bea.gov/ </label>
+          <select id="api-menu" class="custom-select">
+            <!-- <option>Text</option>  -->
+          </select>
+        </div>
+      </div>
+    </div>
      <div class="row no-gutters">
        <!--interactive chart -->
        <div class="col-md-8 text-center">
@@ -126,8 +132,7 @@
              <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-right">
                <div class="row no-gutters">
                  <div class="col-4">
-                   <input class="custrange-vertical cv-left mx-0 px-0" type="range" id="yearStart" orient="vertical" min="1970"
-                     max="2019" step="1" value="1976">
+                   <input class="custrange-vertical cv-left mx-0 px-0" type="range" id="yearStart" orient="vertical" min="1929" max="2019" step="1" value="1976">
                   </div>
                  <div class="col-8" id="jackpotYrStart">
                 </div>
@@ -158,7 +163,7 @@
                  <div class="col-8" id="jackpotYrEnd">
                 </div>
                 <div class="col-4">
-                  <input class="custrange-vertical cv-right mx-0 px-0" type="range" id="yearEnd" orient="vertical" min="1970"
+                  <input class="custrange-vertical cv-right mx-0 px-0" type="range" id="yearEnd" orient="vertical" min="1929"
                     max="2019" step="1" value="2019">
                  </div>
                </div>
@@ -176,10 +181,11 @@
                <div class="btn-group" role="group" aria-label="Button group">
                  <span
                    class="btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0"
-                   type="button" id="switch-perc"> Vote Prc% </span>
+                   type="button" 
+                   id="switch-perc"> Vote Prc% </span>
 
-                 <span class="btn btn-outline-light  px-4 text-comfo text-2xl rnd-lg" type="button" id="switch-count">
-                   Vote Cnt </span>
+                 <span class="btn btn-outline-light px-4 text-comfo text-2xl rnd-lg" type="button" 
+                 id="switch-count">Vote Cnt </span>
                </div>
              </fieldset>
            </div>
@@ -289,6 +295,7 @@
      <script src="/static/assets/interactive/xtra/years.js"></script>
      <script src="/static/assets/interactive/xtra/devco.js"></script>
      <script src="/static/assets/interactive/xtra/bea-api.js"></script>
+     <script src="/static/assets/interactive/xtra/bea-test.js"></script>
      <script src="/static/assets/interactive/init.js"></script>
 
    </body>

@@ -1,10 +1,11 @@
-function yearSelectStart() {
-  const defIndex = 1976;
+function yearSelectStart(defIndex) {
+  // const defIndex = 1976;
+  // console.log('yr start :>> ', defIndex);
 
   let $yearStart = d3.select( '#yearStart' );
   $yearStart.attr( 'value', defIndex );
   
-  console.log( 'userInput :>> ', defIndex );
+  // console.log( 'userInput :>> ', defIndex );
   let parseTime = d3.timeParse( "%Y" ); // display only year
 
   let width = $( `#jackpotYrStart` ).width();
@@ -103,15 +104,13 @@ function yearSelectStart() {
   }
   } 
 }
-yearSelectStart();
-
-
-function yearSelectEnd() {
-  const defIndex = 2020;
-
+function yearSelectEnd(defIndex) {
+  // const defIndex = 2020;
+  // console.log('yr end  :>> ', defIndex);
+      
   let $yearEnd = d3.select( '#yearEnd' );
   $yearEnd.attr( 'value', defIndex );
-  console.log( 'userInput :>> ', defIndex );
+  // console.log( 'userInput :>> ', defIndex );
   let parseTime = d3.timeParse( "%Y" ); // display only year
 
   let width = $( `#jackpotYrEnd` ).width();
@@ -200,4 +199,5 @@ function yearSelectEnd() {
   }
   } 
 }
-yearSelectEnd();
+yearSelectStart(1976);
+yearSelectEnd(2020);
