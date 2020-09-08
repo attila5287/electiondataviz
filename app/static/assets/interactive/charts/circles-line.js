@@ -3,7 +3,7 @@ function lineCirclesUpdate( selectedIndex, params, dataReady, height, width, cha
   const showLast = list => list[ list.length - 1 ];
   // ================================
   var parseTime = d3.timeParse( "%Y" );
-  d3.json( `${params[ selectedIndex ].file}`, function ( err, dataAPI ) {
+  d3.json( `/bea/api/${selectedIndex}`, function ( err, dataAPI ) {
     // console.log( 'dataReady :>> ', dataReady );
     // let selState = dataAPI[ indexNoBySt[ dataReady.name ] ]; // row with selected param/state
     let filtered = dataAPI.BEAAPI.Results.Data.filter( d => d.GeoName == dataReady.name );
@@ -28,7 +28,7 @@ function lineCirclesUpdate( selectedIndex, params, dataReady, height, width, cha
       .range( [ height, 0 ] );
 
     var line = d3 //Line generator function
-      .line()
+      .line() 
       .x( d => xScale( parseTime( +d.year ) ) )
       .y( d => yScale( +d.value ) );
 

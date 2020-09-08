@@ -23,7 +23,7 @@ function main( data ) { // data change key
     renderLineCircleLabels( customParams ); //all choices for circles-chart
     //=========================================================
     let index = 0; // default selection for bars-> {0:perc 1:count}
-    d3.json( `${customParams[ index ].file}`, importLineCircle );
+    d3.json( `/bea/api/${index}`, importLineCircle );
     // ================ async handler ================
     // ===============================================
     function importLineCircle( err, json ) { 
@@ -32,16 +32,17 @@ function main( data ) { // data change key
       const showFirst = (list) =>list[0];
       const showLast = (list) =>list[list.length-1];
       console.log('bea api services JSON format :>> ', json);
-      let results = json.BEAAPI.Results;
-      // console.log('results :>> ', results);
       
-      let statsName = json.BEAAPI.Results.Statistic;
+      let results = json;
+      
+      console.log('results :>> ', results);
+      
       // console.log('statsName :>> ', statsName);
     
-      let statsLongNm = json.BEAAPI.Results.PublicTable;
+      let statsLongNm = results.PublicTable;
       // console.log('statsLongNm :>> ', statsLongNm);
     
-      let filtered = json.BEAAPI.Results.Data.filter(d=> d.GeoName == defNm); 
+      let filtered = results.Data.filter(d=> d.GeoName == defNm); 
       // console.log('filtered by name :>> ', filtered);
       
       let dataCircles = []; // 

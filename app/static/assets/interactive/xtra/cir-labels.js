@@ -51,10 +51,10 @@ function prepLabelsBEA() {// custom parameters for connected
   // line-circle time series
   
       const fileNames = [//file names to pull data
-        urlPersonalIncome,
-        urlPopulation,
-        urlCompEeByIndNAICS,
-        urlCompEeByIndSIC,
+        'urlPersonalIncome',
+        'urlPopulation',
+        'urlCompEeByIndNAICS',
+        'urlCompEeByIndSIC',
       ];
   
       const labels = [//name on input range
