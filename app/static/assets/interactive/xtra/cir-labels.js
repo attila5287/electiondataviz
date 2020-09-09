@@ -63,8 +63,8 @@ function prepLabelsBEA() {// custom parameters for connected
         "Comp.of Emp.by NAICS Ind.",
         "Comp.of Emp.by SIC Ind.",
       ];
+
       let results = [];
-  
       for ( let i = 0; i < fileNames.length; i++ ) {
         results.push( {
           index: +i,

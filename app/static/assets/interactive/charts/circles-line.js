@@ -1,24 +1,49 @@
 function lineCirclesUpdate( selectedIndex, params, dataReady, height, width, chartGroup, xScale, yScale, leftAxis ) {
   // ================================
-  const showLast = list => list[ list.length - 1 ];
-  // ================================
   var parseTime = d3.timeParse( "%Y" );
-  d3.json( `/bea/api/${selectedIndex}`, function ( err, dataAPI ) {
-    // console.log( 'dataReady :>> ', dataReady );
-    // let selState = dataAPI[ indexNoBySt[ dataReady.name ] ]; // row with selected param/state
+  d3.json( `/bea/api/${selectedIndex}`, function ( err, 
+    dataAPI ) {
+      d3.selectAll('.beanotes').remove();
+    // ================================
+
+    const half = Math.round(dataAPI.Notes[0].NoteText.length*0.5);
+
+    let dataOverview = [ //key info below API selector
+      `Statistic: ${dataAPI.Statistic}`,
+      `Table: ${dataAPI.PublicTable}`,
+      `Units: ${dataAPI.UnitOfMeasure}`,
+      `Notes: ${dataAPI.Notes[0].NoteText.substring(0,half)}...`,
+      `...${dataAPI.Notes[0].NoteText.substring(half,2*half)}`,
+    ];
+      
+    var notes = d3.select('#bea-notes')
+      .selectAll('.classed')
+      .data(dataOverview);
+    
+    notes
+      .exit()
+      .remove();
+
+    notes
+      .enter()
+      .append('i')
+      .classed('beanotes fas fa-info-circle text-secondary', true)
+      .append('i')
+      .classed('beanotes text-secondary', true)
+      .text(d=>d)
+    ;
+    
+    // ================================
     let filtered = dataAPI.Data.filter( d => d.GeoName == dataReady.name );
-    console.log( 'filtered -> ', showLast(filtered) );
 
     let dataXtra = []; // 
     filtered.forEach( r => { // obj.s w/ {year/value} fields
-      // console.log('r :>> ', +r.DataValue);
-      // console.log('r :>> ', r.DataValue.replaceAll(",", ""));
       dataXtra.push( {
         year: +r.TimePeriod,
         value: +r.DataValue.replaceAll(",", ""),
       } );
     } );
-    console.log( 'dataXtra :>> ', dataXtra );
+    // console.log( 'dataXtra :>> ', dataXtra );
 
     yScale = d3.scaleLinear() // min max values for y scale
       .domain( [

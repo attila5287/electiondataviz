@@ -1,6 +1,8 @@
-
 // slider determines the parameter to compare: unemplotment rate, wage avg etc.
-function main( data ) { // data change key      
+function main( data ) { // data change key
+  let selectedName = data.name;
+  // console.log('selectedName :>> ', selectedName);
+  
   // step 0-a : remove svg from prev init-state-selection  
   //=========================================================
   const removePrevSvg = () => {// tabula rasa for new chart
@@ -16,86 +18,100 @@ function main( data ) { // data change key
   
   // step 0-b : prep for top layer chart //generate objects with labels to display on page also  API/ URL for test file URL 
   //=========================================================
-  const customParams = prepLineCircleLabels(); 
+  // const customParams = prepLineCircleLabels(); 
+  const customParams = prepLabelsBEA(); 
   renderLineCircleLabels( customParams ); //all choices for circles-chart
-
-  // step 0-c1 : import top layer csv not to use to render chart but to check years axis if larger than 1976-2016
   //=========================================================
   let index = 0; // default selection for bars-> {0:perc 1:count}
-  d3.csv( `../static/data/csv-int/${customParams[ index ].file}`, importLineCircle );
-  function importLineCircle( err, dataCircles ) {
-    // step 0-c2 default selection of perc/count for bars
-    //=========================================================
-    const switchKey = data.keys[ index ]; // perc or count
-    
-    // step 1-a: declare svg chart height,width per container size
-    //=========================================================
-    let { svgWidth, margin, svgHeight } = sizeConfigsUp();// updates outer height width
-    
-    // step 1-b : create svg element on HTML doc per above sizing lets
-    // width and height is where the visual placed at
-    //=========================================================
-    let { svg, width, height } = appendAutoSizedSVG( svgWidth, margin, svgHeight );
-    // step 2 : main group that holds chart and default bar tile
-    //=========================================================
-    let { chartGroup, title } = genChartGroupTitle( svg, margin, width, height, data, switchKey );
-
-    // Step 3:left axis belongs to circles line chart 
-    //=========================================================
-    let parseTime = d3.timeParse("%Y"); // display only year
-    // append bars group with size sensitive bar width
-    const baseDomain = data.domainsYr[switchKey]; //years domain for def bars received within data
-
-    // compare years-> Xmin Xmax of two data source
-    let sharedMinMax = compareYearsMinMax( baseDomain, dataCircles );
-    let {xScale, xAxis, axisTop} = appendSharedAxisX( sharedMinMax, parseTime, width, height, chartGroup );
-    
-    // step 4: right axis on the chart for bars
-    //=========================================================
-    let { yScale, yAxis } = appendBarsAxisY( data, switchKey, height, width, chartGroup );
-    
-    // step 5: default y scale for circles then append leftAxis 
-    //=========================================================
-    let { yScaleCircles, leftAxis } = appendCirclesAxisY( dataCircles, data, height, chartGroup, width );
-    
-    // step 6: render bars with default selection 0->animation
-    // ===================================================
-    let { barsGroup, barWidth } = renderBarsDef( width, chartGroup, data, xScale, parseTime, yScale, height, switchKey );
-    
-    // step 7: handle event and animate transition
-    // ===================================================
-    let switchCounter = 0;// this was req'd for styling two buttons
-    d3.select( "#switch" ).on( "change",function () {// determines bar chart percentage or count
-      const switchValue = +this.value;
-      // handler function for input element-> Vote Perc-Vote Count
-      switchCounter = handlerInputBars(switchValue, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );// modifies switch counter+1
-    });
-    // step 8: run interactive chart with default selection
-    // ===================================================
-    handlerInputBars(0, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );
-    
-    // step 9: input element for line circles Y values-axis
-    // ===================================================
-    d3.select( "#slider" ) // slider determines bars Y axis
-      .on( "change", function () {// event handler if changed
-        handlerInputLineCircles( +this.value, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis  );
-    } );
-
-    // step 10: runs with default selection 
-    // ===================================================
-    handlerInputLineCircles( 0, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis );
+  d3.json( `/bea/api/${index}`, importLineCircle );
+  // ================ async response handler ================
+  function importLineCircle( err, response ) { // 
+    // console.log('test :>> ' );
+    // console.log('chk err? :>> ', err);
   
+    let filtered = response.Data.filter(d=> d.GeoName == selectedName); 
+    // console.log('filtered by name :>> ', filtered);
+    
+    let dataCircles = []; // 
+    dataCircles = filtered.map(r => {// obj.s w/ {year/value} fields
+      return {
+        year: +r.TimePeriod,
+        value: +r.DataValue.replace(",", ""),
+      };
+    });
+  
+  // step 0-c2 default selection of perc/count for bars
+  //=========================================================
+  const switchKey = data.keys[ index ]; // perc or count
+  
+  // step 1-a: declare svg chart height,width per container size
+  //=========================================================
+  let { svgWidth, margin, svgHeight } = sizeConfigsUp();// updates outer height width
+  
+  // step 1-b : create svg element on HTML doc per above sizing lets
+  // width and height is where the visual placed at
+  //=========================================================
+  let { svg, width, height } = appendAutoSizedSVG( svgWidth, margin, svgHeight );
+  
+  // step 2 : main group that holds chart and default bar tile
+  //=========================================================
+  let { chartGroup, title } = genChartGroupTitle( svg, margin, width, height, data, switchKey );
+
+  // Step 3:left axis belongs to circles line chart 
+  //=========================================================
+  let parseTime = d3.timeParse("%Y"); // display only year
+  // append bars group with size sensitive bar width
+  const baseDomain = data.domainsYr[switchKey]; //years domain for def bars received within data
+
+  // compare years-> Xmin Xmax of two data source
+  let sharedMinMax = compareYearsMinMax( baseDomain, dataCircles );
+  let {xScale, xAxis, axisTop} = appendSharedAxisX( sharedMinMax, parseTime, width, height, chartGroup );
+  
+  // step 4: right axis on the chart for bars
+  //=========================================================
+  let { yScale, yAxis } = appendBarsAxisY( data, switchKey, height, width, chartGroup );
+  
+  // step 5: default y scale for circles then append leftAxis 
+  //=========================================================
+  let { yScaleCircles, leftAxis } = appendCirclesAxisY( dataCircles, data, height, chartGroup, width );
+  
+  // step 6: render bars with default selection 0->animation
+  // ===================================================
+  let { barsGroup, barWidth } = renderBarsDef( width, chartGroup, data, xScale, parseTime, yScale, height, switchKey );
+  
+  // step 7: handle event and animate transition
+  // ===================================================
+  let switchCounter = 0;// this was req'd for styling two buttons
+  d3.select( "#switch" ).on( "change",function () {// determines bar chart percentage or count
+    const switchValue = +this.value;
+    // handler function for input element-> Vote Perc-Vote Count
+    switchCounter = handlerInputBars(switchValue, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );// modifies switch counter+1
+  });
+  // step 8: run interactive chart with default selection
+  // ===================================================
+  handlerInputBars(0, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );
+  
+  // step 9: input element for line circles Y values-axis
+  // ===================================================
+  d3.select( "#slider" ) // slider determines bars Y axis
+    .on( "change", function () {// event handler if changed
+      handlerInputLineCircles( +this.value, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis  );
+  } );
+
+  // step 10: runs with default selection 
+  // ===================================================
+  handlerInputLineCircles( 0, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis );
+
   } 
+  // ================================================
 }
-
-
 const appendCirclesAxisY =  ( dataCircles, data, height, chartGroup, width )=> {// default Y axis for line circle chart
-  let dCircles = dataCircles[ indexNoBySt[ data.name ] ]; // row with 
+  [ indexNoBySt[ data.name ] ]; // row with  
   let yScaleCircles = d3.scaleLinear() // min max values for y scale
     .domain( [
-      d3.min( Object.keys( dCircles ).map( year => +dCircles[ year ] ) ),
-      d3.max( Object.keys( dCircles ).map( year => +dCircles[ year ] ) ),
-    ] )
+        d3.min( dataCircles.map( d => +d.value ) ),
+        d3.max( dataCircles.map( d => +d.value ) ),
+      ] )
     .range( [ height, 0 ] );
 
   // Add leftAxis to the left side of the display
@@ -120,15 +136,12 @@ function appendBarsAxisY ( data, switchKey, height, width, chartGroup ) {// defa
 }
 
 function handlerInputBars ( userInput, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth ) {
-  const switchStyles = styleDictBtns(); //bootstrap cls //bootstrap classes buttons for switch->bars thus renders selection highlighted
+  const switchStyles = styleDictBtns(); //bootstrap cls//bootstrap classes buttons for switch->bars thus renders selection highlighted//returns a dictionary
 
-
-
-  // returns a dictionary
   // console.log( 'userInput :>> ', userInput );
   const dataSelected = data.keys[ userInput ];
 
-  console.log( 'test switch :>> ', userInput );
+  // console.log( 'test switch :>> ', userInput );
   let m0d = switchCounter % 2; // first btn 
   switchCounter = switchCounter + 1;
   let mod = switchCounter % 2; // second btn
@@ -215,8 +228,8 @@ function sizeConfigsUp () {// updates outer height width
 
 const styleDictBtns =  () => {//bootstrap classes buttons for switch->bars thus renders selection highlighted
   return {// returns a dictionary
-    0: "btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0",
-    1: "btn btn-outline-light pl-2 px-4 text-comfo text-2xl rnd-lg"
+    0: "btn btn-outline-light pl-2 px-4 text-comfo text-2xl rnd-lg",
+    1: "btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0",
   };
 }
 
@@ -249,10 +262,10 @@ const appendAutoSizedSVG = ( svgWidth, margin, svgHeight ) => {
 const compareYearsMinMax = ( baseDomain, dataCircles ) => {
   // console.log( 'baseDomain :>> ', baseDomain );
 
-  const allKeys = Object.keys( dataCircles[ 0 ] );
-  delete allKeys.name;
-  const minParams = d3.min( allKeys.map( d => +d ) );
-  const maxParams = d3.max( allKeys.map( d => +d ) );
+  // console.log('dataCircles :>> ', dataCircles);
+
+  const minParams = d3.min( dataCircles.map( d => +d.year ) );
+  const maxParams = d3.max( dataCircles.map( d => +d.year ) );
 
   const res = [
     d3.min( [ baseDomain[ 0 ], minParams ] ) - 1,
@@ -265,12 +278,12 @@ const compareYearsMinMax = ( baseDomain, dataCircles ) => {
 function handlerInputLineCircles( slider, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis ) {
   
   lineCirclesUpdate( slider, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis );
-
+  
   // slider determines the parameter to compare
   d3.select( "#slider" ).property( "value", slider );
   // so that code wont fail at zero
-  let prevModulus = ( +slider + 5 ) % customParams.length;
-  let nextModulus = ( +slider + 8 ) % customParams.length;
+  let prevModulus = ( +slider + customParams.length-1 ) % customParams.length;
+  let nextModulus = ( +slider + customParams.length+1 ) % customParams.length;
 
   d3.select( "#param-prev" ).text( customParams[ +prevModulus ].label );
   d3.select( "#sliderValue" ).text( customParams[ slider ].label );

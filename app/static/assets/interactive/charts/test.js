@@ -1,7 +1,7 @@
 // slider determines the parameter to compare: unemplotment rate, wage avg etc.
-function main( data ) { // data change key      
-  let defNm = data.name;
-  // console.log('selectedName :>> ', defNm);
+function main( data ) { // data change key
+  let selectedName = data.name;
+  // console.log('selectedName :>> ', selectedName);
   
   // step 0-a : remove svg from prev init-state-selection  
   //=========================================================
@@ -19,116 +19,92 @@ function main( data ) { // data change key
   // step 0-b : prep for top layer chart //generate objects with labels to display on page also  API/ URL for test file URL 
   //=========================================================
   // const customParams = prepLineCircleLabels(); 
-    const customParams = prepLabelsBEA(); 
-    renderLineCircleLabels( customParams ); //all choices for circles-chart
-    //=========================================================
-    let index = 0; // default selection for bars-> {0:perc 1:count}
-    d3.json( `/bea/api/${index}`, importLineCircle );
-    // ================ async handler ================
-    // ===============================================
-    function importLineCircle( err, json ) { 
-      // console.log('chk err? :>> ', err);
-      // let defNm = "Colorado"; // default name for time series
-      const showFirst = (list) =>list[0];
-      const showLast = (list) =>list[list.length-1];
-      console.log('bea api services JSON format :>> ', json);
-      
-      let results = json;
-      
-      console.log('results :>> ', results);
-      
-      // console.log('statsName :>> ', statsName);
-    
-      let statsLongNm = results.PublicTable;
-      // console.log('statsLongNm :>> ', statsLongNm);
-    
-      let filtered = results.Data.filter(d=> d.GeoName == defNm); 
-      // console.log('filtered by name :>> ', filtered);
-      
-      let dataCircles = []; // 
-    
-      filtered.forEach(r => {// obj.s w/ {year/value} fields
-        dataCircles.push({
-          // name: r.GeoName,
-          year: +r.TimePeriod,
-          value: +r.DataValue.replace(",", ""),
-        });
-      });
-    
-      console.log('dataCircles :>> ', dataCircles);
-      let firstYear = +dataCircles[0].year;
-      let lastYear = +dataCircles[dataCircles.length-1].year;
-
-      // console.log('first :>> ', firstYear  );
-      // console.log('last :>> ', lastYear  );
-
-      // step 0-c2 default selection of perc/count for bars
-    //=========================================================
-    const switchKey = data.keys[ index ]; // perc or count
-    
-    // step 1-a: declare svg chart height,width per container size
-    //=========================================================
-    let { svgWidth, margin, svgHeight } = sizeConfigsUp();// updates outer height width
-    
-    // step 1-b : create svg element on HTML doc per above sizing lets
-    // width and height is where the visual placed at
-    //=========================================================
-    let { svg, width, height } = appendAutoSizedSVG( svgWidth, margin, svgHeight );
-    // step 2 : main group that holds chart and default bar tile
-    //=========================================================
-    let { chartGroup, title } = genChartGroupTitle( svg, margin, width, height, data, switchKey );
-
-    // Step 3:left axis belongs to circles line chart 
-    //=========================================================
-    let parseTime = d3.timeParse("%Y"); // display only year
-    // append bars group with size sensitive bar width
-    const baseDomain = data.domainsYr[switchKey]; //years domain for def bars received within data
-
-    // compare years-> Xmin Xmax of two data source
-    let sharedMinMax = compareYearsMinMax( baseDomain, dataCircles );
-    let {xScale, xAxis, axisTop} = appendSharedAxisX( sharedMinMax, parseTime, width, height, chartGroup );
-    
-    // step 4: right axis on the chart for bars
-    //=========================================================
-    let { yScale, yAxis } = appendBarsAxisY( data, switchKey, height, width, chartGroup );
-    
-    // step 5: default y scale for circles then append leftAxis 
-    //=========================================================
-    let { yScaleCircles, leftAxis } = appendCirclesAxisY( dataCircles, data, height, chartGroup, width );
-    
-    // step 6: render bars with default selection 0->animation
-    // ===================================================
-    let { barsGroup, barWidth } = renderBarsDef( width, chartGroup, data, xScale, parseTime, yScale, height, switchKey );
-    
-    // step 7: handle event and animate transition
-    // ===================================================
-    let switchCounter = 0;// this was req'd for styling two buttons
-    d3.select( "#switch" ).on( "change",function () {// determines bar chart percentage or count
-      const switchValue = +this.value;
-      // handler function for input element-> Vote Perc-Vote Count
-      switchCounter = handlerInputBars(switchValue, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );// modifies switch counter+1
-    });
-    // step 8: run interactive chart with default selection
-    // ===================================================
-    handlerInputBars(0, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );
-    
-    // step 9: input element for line circles Y values-axis
-    // ===================================================
-    d3.select( "#slider" ) // slider determines bars Y axis
-      .on( "change", function () {// event handler if changed
-        handlerInputLineCircles( +this.value, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis  );
-    } );
-
-    // step 10: runs with default selection 
-    // ===================================================
-    handlerInputLineCircles( 0, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis );
+  const customParams = prepLabelsBEA(); 
+  renderLineCircleLabels( customParams ); //all choices for circles-chart
+  //=========================================================
+  let index = 0; // default selection for bars-> {0:perc 1:count}
+  d3.json( `/bea/api/${index}`, importLineCircle );
+  // ================ async response handler ================
+  function importLineCircle( err, response ) { // 
+    // console.log('test :>> ' );
+    // console.log('chk err? :>> ', err);
   
+    let filtered = response.Data.filter(d=> d.GeoName == selectedName); 
+    // console.log('filtered by name :>> ', filtered);
+    
+    let dataCircles = []; // 
+    dataCircles = filtered.map(r => {// obj.s w/ {year/value} fields
+      return {
+        year: +r.TimePeriod,
+        value: +r.DataValue.replace(",", ""),
+      };
+    });
+  
+  // step 0-c2 default selection of perc/count for bars
+  //=========================================================
+  const switchKey = data.keys[ index ]; // perc or count
+  
+  // step 1-a: declare svg chart height,width per container size
+  //=========================================================
+  let { svgWidth, margin, svgHeight } = sizeConfigsUp();// updates outer height width
+  
+  // step 1-b : create svg element on HTML doc per above sizing lets
+  // width and height is where the visual placed at
+  //=========================================================
+  let { svg, width, height } = appendAutoSizedSVG( svgWidth, margin, svgHeight );
+  
+  // step 2 : main group that holds chart and default bar tile
+  //=========================================================
+  let { chartGroup, title } = genChartGroupTitle( svg, margin, width, height, data, switchKey );
+
+  // Step 3:left axis belongs to circles line chart 
+  //=========================================================
+  let parseTime = d3.timeParse("%Y"); // display only year
+  // append bars group with size sensitive bar width
+  const baseDomain = data.domainsYr[switchKey]; //years domain for def bars received within data
+
+  // compare years-> Xmin Xmax of two data source
+  let sharedMinMax = compareYearsMinMax( baseDomain, dataCircles );
+  let {xScale, xAxis, axisTop} = appendSharedAxisX( sharedMinMax, parseTime, width, height, chartGroup );
+  
+  // step 4: right axis on the chart for bars
+  //=========================================================
+  let { yScale, yAxis } = appendBarsAxisY( data, switchKey, height, width, chartGroup );
+  
+  // step 5: default y scale for circles then append leftAxis 
+  //=========================================================
+  let { yScaleCircles, leftAxis } = appendCirclesAxisY( dataCircles, data, height, chartGroup, width );
+  
+  // step 6: render bars with default selection 0->animation
+  // ===================================================
+  let { barsGroup, barWidth } = renderBarsDef( width, chartGroup, data, xScale, parseTime, yScale, height, switchKey );
+  
+  // step 7: handle event and animate transition
+  // ===================================================
+  let switchCounter = 0;// this was req'd for styling two buttons
+  d3.select( "#switch" ).on( "change",function () {// determines bar chart percentage or count
+    const switchValue = +this.value;
+    // handler function for input element-> Vote Perc-Vote Count
+    switchCounter = handlerInputBars(switchValue, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );// modifies switch counter+1
+  });
+  // step 8: run interactive chart with default selection
+  // ===================================================
+  handlerInputBars(0, data, switchCounter, height, width, chartGroup, yScale, yAxis, barsGroup, title, barWidth );
+  
+  // step 9: input element for line circles Y values-axis
+  // ===================================================
+  d3.select( "#slider" ) // slider determines bars Y axis
+    .on( "change", function () {// event handler if changed
+      handlerInputLineCircles( +this.value, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis  );
+  } );
+
+  // step 10: runs with default selection 
+  // ===================================================
+  handlerInputLineCircles( 0, customParams, data, height, width, chartGroup, xScale, yScaleCircles, leftAxis );
+
   } 
-   // ================================================
-   // ================================================
+  // ================================================
 }
-
-
 const appendCirclesAxisY =  ( dataCircles, data, height, chartGroup, width )=> {// default Y axis for line circle chart
   [ indexNoBySt[ data.name ] ]; // row with  
   let yScaleCircles = d3.scaleLinear() // min max values for y scale

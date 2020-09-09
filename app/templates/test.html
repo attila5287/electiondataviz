@@ -123,75 +123,9 @@
           </select>
         </div>
       </div>
-    </div> -->
+    </div>
      <div class="row no-gutters">
-       <!--interactive chart -->
-       <div class="col-md-8 text-center">
-         <div class="row">
-           <div class="col-sm-2">
-             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-right">
-               <div class="row no-gutters">
-                 <div class="col-4">
-                   <input class="custrange-vertical cv-left mx-0 px-0" type="range" id="yearStart" orient="vertical" min="1929" max="2019" step="1" value="1976">
-                  </div>
-                 <div class="col-8" id="jackpotYrStart">
-                </div>
-               </div>
-             </fieldset>
-             <p class="text-light text-italic" id="errYrSt"></p>
-           </div>
-           <div class="col-sm-8">
-             <fieldset class="form-group py-1 px-2 rnd-xl bg-theme shadow-turqoise text-center">
-               <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2"
-                 id="custom-keys">
-               </div>
-               <input type="range" id="slider" class="custom-range">
-               <div class="d-flex flex-row justify-content-between align-items-center">
-                 <h6 class="shadow-turq" id="param-prev"></h6>
-                 <p>
-                   <i class="fas fa-caret-left text-2xl text-primary"></i>
-                   <h5 class="bg-black py-1 px-2 mb-1 text-digi text-primary shadow-turq rnd-xl" id="sliderValue"></h5>
-                   <i class="fas fa-caret-right text-2xl text-primary"></i>
-                 </p>
-                 <h6 class="shadow-turq" id="param-next"></h6>
-               </div>
-             </fieldset>
-           </div>
-           <div class="col-sm-2">
-             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-right">
-               <div class="row no-gutters">
-                 <div class="col-8" id="jackpotYrEnd">
-                </div>
-                <div class="col-4">
-                  <input class="custrange-vertical cv-right mx-0 px-0" type="range" id="yearEnd" orient="vertical" min="1929"
-                    max="2019" step="1" value="2019">
-                 </div>
-               </div>
-             </fieldset>
-             <p class="text-light text-italic" id="errYrEnd"></p>
-           </div>
-         </div>
-         <div id="interactive-chart"></div>
-         <div class="row">
-           <div class="col-md-4 offset-md-4">
-
-             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-center mx-2 mt-2 py-1 px-2 ">
-               <input class="custom-range px-4 mb-3 mt-2" type="range" id="switch" min="0" max="1" step="1" value="0">
-
-               <div class="btn-group" role="group" aria-label="Button group">
-                 <span
-                   class="btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0"
-                   type="button" 
-                   id="switch-perc"> Vote Prc% </span>
-
-                 <span class="btn btn-outline-light px-4 text-comfo text-2xl rnd-lg" type="button" 
-                 id="switch-count">Vote Cnt </span>
-               </div>
-             </fieldset>
-           </div>
-         </div>
-       </div>
-       <!-- table states -->
+              <!-- table states -->
        <div class="col-md-2 text-center">
          <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
            <thead class="bg-theme text-comfo text-light">
@@ -227,6 +161,75 @@
            </tbody>
          </table>
        </div>
+       <!--interactive chart -->
+       <div class="col-md-8 text-center">
+         <div class="row">
+           <div class="col-sm-2">
+             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-right">
+               <div class="row no-gutters">
+                 <div class="col-4">
+                   <input class="custrange-vertical cv-left mx-0 px-0" type="range" id="yearStart" orient="vertical" min="1929" max="2019" step="1" value="1976">
+                  </div>
+                 <div class="col-8" id="jackpotYrStart">
+                </div>
+               </div>
+             </fieldset>
+             <p class="text-light text-italic" id="errYrSt"></p>
+           </div>
+           <div class="col-sm-8">
+             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-center py-1 px-2">
+               <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2"
+                 id="custom-keys">
+               </div>
+               <input type="range" id="slider" class="custom-range">
+               <div class="d-flex flex-row justify-content-between align-items-center">
+                 <h6 class="shadow-turq" id="param-prev"></h6>
+                 <p>
+                   <i class="fas fa-caret-left text-2xl text-primary"></i>
+                   <h5 class="bg-black py-1 px-2 mb-1 text-digi text-primary shadow-turq rnd-xl" id="sliderValue"></h5>
+                   <i class="fas fa-caret-right text-2xl text-primary"></i>
+                 </p>
+                 <h6 class="shadow-turq" id="param-next"></h6>
+               </div>
+             </fieldset>
+             <!-- BEA TABLE NOTES -->
+             <div class="d-flex flex-row justify-content-between mt-0 mb-0" id="bea-notes"></div>             
+            </div>
+           <div class="col-sm-2">
+             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-right">
+               <div class="row no-gutters">
+                 <div class="col-8" id="jackpotYrEnd">
+                </div>
+                <div class="col-4">
+                  <input class="custrange-vertical cv-right mx-0 px-0" type="range" id="yearEnd" orient="vertical" min="1929"
+                    max="2019" step="1" value="2019">
+                 </div>
+               </div>
+             </fieldset>
+             <p class="text-light text-italic" id="errYrEnd"></p>
+           </div>
+         </div>
+         <div id="interactive-chart"></div>
+         <div class="row">
+           <div class="col-md-4 offset-md-4">
+
+             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-center mx-2 mt-2 py-1 px-2 ">
+               <input class="custom-range px-4 mb-3 mt-2" type="range" id="switch" min="0" max="1" step="1" value="0">
+
+               <div class="btn-group" role="group" aria-label="Button group">
+                 <span
+                   class="btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0"
+                   type="button" 
+                   id="switch-perc"> Vote Prc% </span>
+
+                 <span class="btn btn-outline-light px-4 text-comfo text-2xl rnd-lg" type="button" 
+                 id="switch-count">Vote Cnt </span>
+               </div>
+             </fieldset>
+           </div>
+         </div>
+       </div>
+
        <!-- table states 27-51 -->
        <div class="col-md-2 text-center">
          <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
