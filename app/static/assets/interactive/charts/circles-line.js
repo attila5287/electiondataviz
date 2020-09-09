@@ -6,7 +6,7 @@ function lineCirclesUpdate( selectedIndex, params, dataReady, height, width, cha
   d3.json( `/bea/api/${selectedIndex}`, function ( err, dataAPI ) {
     // console.log( 'dataReady :>> ', dataReady );
     // let selState = dataAPI[ indexNoBySt[ dataReady.name ] ]; // row with selected param/state
-    let filtered = dataAPI.BEAAPI.Results.Data.filter( d => d.GeoName == dataReady.name );
+    let filtered = dataAPI.Data.filter( d => d.GeoName == dataReady.name );
     console.log( 'filtered -> ', showLast(filtered) );
 
     let dataXtra = []; // 
