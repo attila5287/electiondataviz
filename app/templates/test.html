@@ -33,14 +33,7 @@
      <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
 
      <!-- title -->
-     <title>US States Time Series</title>
-     <style>
-       #map {
-         height: 220px;
-         width: 95%;
-         margin: 8px 8px 22px 8px;
-       }
-     </style>
+     <title>Simulation</title>
    </head>
    <body class="bg-body-mini">
      <header>
@@ -50,8 +43,7 @@
            <img class="m-0 px-0 py-0" src="/static/img/election/navIconTest.png" style="height: 30px;"
              alt="navbar-icon">
          </a>
-         <button class="navbar-toggler bg-theme px-2 py-1" type="button" data-toggle="collapse"
-           data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+         <button class="navbar-toggler bg-theme px-2 py-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
            aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -68,7 +60,7 @@
                  <i class="fas fa-chart-line"></i>
                  Interactive
                </a>
-             </li>
+              </li>
              <li class="nav-item">
                <a class="nav-link add-anime shd-themy rnd-lg mt-1" href="/candidates">
                  <i class="fas fa-users text-sm"></i>
@@ -93,7 +85,6 @@
            </form>
          </div>
        </nav>
-
        <!-- INFO NOTES -->
        <div class="d-flex flex-row justify-content-between mt-0">
          <p class="text-light text-italic text-secondary mt-0 mb-0">
@@ -114,19 +105,9 @@
          </p>
        </div>
      </header>
-     <!-- <div class="row no-gutters">
-       <div class="col-8 offset-2">
-        <div class="form-group px-4 py-3 bg-theme rnd-2xl  text-center">
-          <label for="api-menu" class="text-sm text-comfo text-light text-italic">Select a parameter for time series to pull from API services of  https://apps.bea.gov/ </label>
-          <select id="api-menu" class="custom-select">
-            <!-- <option>Text</option>  -->
-          </select>
-        </div>
-      </div>
-    </div>
      <div class="row no-gutters">
-              <!-- table states -->
-       <div class="col-md-2 text-center">
+      <!-- table states -->  
+       <div class="col-md-3 text-center">
          <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
            <thead class="bg-theme text-comfo text-light">
              <tr class="thd"></tr>
@@ -162,76 +143,9 @@
          </table>
        </div>
        <!--interactive chart -->
-       <div class="col-md-8 text-center">
-         <div class="row">
-           <div class="col-sm-2">
-             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-right">
-               <div class="row no-gutters">
-                 <div class="col-4">
-                   <input class="custrange-vertical cv-left mx-0 px-0" type="range" id="yearStart" orient="vertical" min="1929" max="2019" step="1" value="1976">
-                  </div>
-                 <div class="col-8" id="jackpotYrStart">
-                </div>
-               </div>
-             </fieldset>
-             <p class="text-light text-italic" id="errYrSt"></p>
-           </div>
-           <div class="col-sm-8">
-             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-center py-1 px-2">
-               <div class="d-flex flex-row justify-content-between text-light text-center text-sm text-digi mt-2"
-                 id="custom-keys">
-               </div>
-               <input type="range" id="slider" class="custom-range">
-               <div class="d-flex flex-row justify-content-between align-items-center">
-                 <h6 class="shadow-turq" id="param-prev"></h6>
-                 <p>
-                   <i class="fas fa-caret-left text-2xl text-primary"></i>
-                   <h5 class="bg-black py-1 px-2 mb-1 text-digi text-primary shadow-turq rnd-xl" id="sliderValue"></h5>
-                   <i class="fas fa-caret-right text-2xl text-primary"></i>
-                 </p>
-                 <h6 class="shadow-turq" id="param-next"></h6>
-               </div>
-             </fieldset>
-             <!-- BEA TABLE NOTES -->
-             <div class="d-flex flex-row justify-content-between mt-0 mb-0" id="bea-notes"></div>             
-            </div>
-           <div class="col-sm-2">
-             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-right">
-               <div class="row no-gutters">
-                 <div class="col-8" id="jackpotYrEnd">
-                </div>
-                <div class="col-4">
-                  <input class="custrange-vertical cv-right mx-0 px-0" type="range" id="yearEnd" orient="vertical" min="1929"
-                    max="2019" step="1" value="2019">
-                 </div>
-               </div>
-             </fieldset>
-             <p class="text-light text-italic" id="errYrEnd"></p>
-           </div>
-         </div>
-         <div id="interactive-chart"></div>
-         <div class="row">
-           <div class="col-md-4 offset-md-4">
-
-             <fieldset class="form-group rnd-xl bg-theme shadow-turqoise text-center mx-2 mt-2 py-1 px-2 ">
-               <input class="custom-range px-4 mb-3 mt-2" type="range" id="switch" min="0" max="1" step="1" value="0">
-
-               <div class="btn-group" role="group" aria-label="Button group">
-                 <span
-                   class="btn btn-outline-secondary text-secondary disabled px-4 text-comfo text-2xl rnd-lg border-0"
-                   type="button" 
-                   id="switch-perc"> Vote Prc% </span>
-
-                 <span class="btn btn-outline-light px-4 text-comfo text-2xl rnd-lg" type="button" 
-                 id="switch-count">Vote Cnt </span>
-               </div>
-             </fieldset>
-           </div>
-         </div>
-       </div>
-
+       <div class="col-md-6 text-center"></div>
        <!-- table states 27-51 -->
-       <div class="col-md-2 text-center">
+       <div class="col-md-3 text-center">
          <table class="table table-sm bg-transparent table-borderless text-center text-comfo">
            <thead class="bg-theme text-comfo text-light">
              <tr class="thd">
@@ -279,26 +193,12 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
      </script>
-
-     <script src="/static/plugins/ddslick.js"></script>
-
+     <!-- basics -->
      <script src="/static/data/json/st-dicts.js"></script>
-
-     
-     <script src="/static/assets/interactive/xtra/bar-prep.js"></script>
-     <script src="/static/assets/interactive/xtra/cir-labels.js"></script>
-     
+     <script src="/static/plugins/ddslick.js"></script>
      <script src="/static/assets/dropdowns/int-ddslick.js"></script>
-     
      <script src="/static/assets/tables/tb-int.js"></script>
-     
-     <script src="/static/assets/interactive/charts/bars.js"></script>
-     <script src="/static/assets/interactive/charts/circles-line.js"></script>
-     <script src="/static/assets/interactive/charts/test.js"></script>
-
-     <script src="/static/assets/interactive/xtra/years.js"></script>
-
-     <script src="/static/assets/interactive/init.js"></script>
+     <!-- specifics -->
 
    </body>
 
