@@ -31,9 +31,6 @@ def test():
 @app.route("/bea/api/<int:index_bea>")
 def bea_api(index_bea):
   pass
-  print('\n welcome back home, attila! \n')
-  msg = '(BEA) U.S. Bureau of \nEconomic Analysis: ' + str(index_bea)
-
   # urls stores in env. vars of heroku and local-test
   listURL = [ #list of urls w/ API key
     'urlPersonalIncome',
@@ -42,7 +39,7 @@ def bea_api(index_bea):
     'urlCompEeByIndSIC', 
   ]
   
-  try: # urls to request data for d3 viz on screen
+  try: #urls to request data for d3 viz on screen
     pass
     url = os.environ.get(listURL[index_bea])
     
@@ -52,9 +49,8 @@ def bea_api(index_bea):
     
   # use the stored url->response obj of req's library
   response = requests.get(url)
+  # print(response.status_code)
   
-  # Print status code 
-  print(response.status_code)
   # don't publish other records |with api only data-instructions
   return jsonify(response.json()['BEAAPI']['Results'])
   
@@ -62,19 +58,11 @@ def bea_api(index_bea):
 @app.route('/data')
 def data():
   pass
-  csvpath = url_for('static', filename="unemployment.csv")
-  # csvpath = os.path.join('static/data/csv-int/unemployment.csv')
-  
-  # Method 2: Improved Reading using CSV module
-  with open(csvpath, newline='') as csvfile:
-    # CSV reader specifies delimiter and variable that holds
-    csvreader = csv.reader(csvfile, delimiter=',')
-
-    print(csvreader)
-
-    #  Each row is read as a row
-    for row in csvreader:
+  with open(url_for('static', filename='data/unemployment.csv'), newline='') as csvfile:
+    pass
+    reader = csv.DictReader(csvfile)
+    for row in reader:
       pass
-      print(row)
-
+      print(row['name'])
+  
   return jsonify([{'k':'v'}])

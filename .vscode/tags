@@ -46,7 +46,7 @@ daily_wage	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.p
 dashboard	../app\_js-d3\_disp.py	/^def dashboard():$/;"	kind:function	line:1311
 data	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^def data():$/;"	kind:function	line:13
 data	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^def data():$/;"	kind:function	line:12
-data	../app\routes.py	/^def data():$/;"	kind:function	line:63
+data	../app\routes.py	/^def data():$/;"	kind:function	line:59
 db	../app\__init__.py	/^db = SQLAlchemy(app)$/;"	kind:variable	line:10
 db	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:4
 ddslick_master	../app\_js-d3\_disp.py	/^def ddslick_master():$/;"	kind:function	line:774
