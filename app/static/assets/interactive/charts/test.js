@@ -1,7 +1,7 @@
 // slider determines the parameter to compare: unemplotment rate, wage avg etc.
 function main( data ) { // data change key
   let selectedName = data.name;
-  // console.log('selectedName :>> ', selectedName);
+  console.log('selectedName :>> ', selectedName);
   
   // step 0-a : remove svg from prev init-state-selection  
   //=========================================================

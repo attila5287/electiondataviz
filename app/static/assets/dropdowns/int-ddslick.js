@@ -1,17 +1,17 @@
 var counterDD = 0; // dont call init when default selection made
-function dropdownMini (defIndex) {// dropdown for interactive
+function dropdownMini  (defIndex) {// dropdown for interactive
   // console.log('test drop down lite :>> ');
   function prepBasicMenu(){ 
     const result=[];  // generate dropdown menu with req'd keys
     const names =[];  // names req'd for init selected state flag
 
     Object.keys(seatsByState).forEach(k => {
-      const name = k;
+      let name = k;
       names.push(name)
       result.push({
         text: name,
         // description: '',
-        description: `Num of Seats: ${seatsByState[ k ]}`,
+        description: `Electoral Votes: ${seatsByState[ name ]}`,
         value: name,
         selected: false,
         imageSrc: '/static/img/states/' + name.toLowerCase().replace( ' ', '-' ) + '-flag-small.png',

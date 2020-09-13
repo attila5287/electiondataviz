@@ -7,53 +7,142 @@
 Flask	../app\__init__.py	/^from flask import Flask$/;"	kind:namespace	line:1
 Flask	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^from flask import Flask, render_template, jsonify$/;"	kind:namespace	line:1
 Flask	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
+LowInStckStyler	../app\_js-d3\_disp.py	/^    def LowInStckStyler(yes_or_no):$/;"	kind:function	line:360
+LowInStckStylerGrid	../app\_js-d3\_disp.py	/^    def LowInStckStylerGrid(yes_or_no):$/;"	kind:function	line:435
+LowInvIconizer	../app\_js-d3\_disp.py	/^    def LowInvIconizer(yes_or_no):$/;"	kind:function	line:465
+OutInvIconizer	../app\_js-d3\_disp.py	/^    def OutInvIconizer(yes_or_no):$/;"	kind:function	line:480
+OutOfStckStyler	../app\_js-d3\_disp.py	/^    def OutOfStckStyler(yes_or_no):$/;"	kind:function	line:405
+OutOfStckStylerGrid	../app\_js-d3\_disp.py	/^    def OutOfStckStylerGrid(yes_or_no):$/;"	kind:function	line:420
 Py_ConditionalCheck.py	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_ConditionalCheck.py	1;"	kind:file	line:1
 Py_HelloVariableWorld.py	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	1;"	kind:file	line:1
 SQLAlchemy	../app\__init__.py	/^from flask_sqlalchemy import SQLAlchemy$/;"	kind:namespace	line:2
+UnitInvOutIconizer	../app\_js-d3\_disp.py	/^    def UnitInvOutIconizer(yes_or_no):$/;"	kind:function	line:390
+UnitInvOutStyler	../app\_js-d3\_disp.py	/^    def UnitInvOutStyler(yes_or_no):$/;"	kind:function	line:375
+YesNoIconizer	../app\_js-d3\_disp.py	/^    def YesNoIconizer(yes_or_no):$/;"	kind:function	line:450
 __init__.py	../app\__init__.py	1;"	kind:file	line:1
-abort	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
+_disp.py	../app\_js-d3\_disp.py	1;"	kind:file	line:1
+abort	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:3
+about	../app\_js-d3\_disp.py	/^def about():$/;"	kind:function	line:184
+account	../app\_js-d3\_disp.py	/^def account():$/;"	kind:function	line:265
 age	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^age = 25$/;"	kind:variable	line:9
 app	../app\__init__.py	/^app = Flask(__name__)$/;"	kind:variable	line:5
 app	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^app = Flask(__name__)$/;"	kind:variable	line:4
 app	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^app = Flask(__name__)$/;"	kind:variable	line:4
-app	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:3
+app	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:4
 app	../run.py	/^from app import app$/;"	kind:namespace	line:1
 app.py	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	1;"	kind:file	line:1
 app.py	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	1;"	kind:file	line:1
-bea_api	../app\routes.py	/^def bea_api(index_bea):$/;"	kind:function	line:31
-candidates	../app\routes.py	/^def candidates():$/;"	kind:function	line:16
+bea_api	../app\routes.py	/^def bea_api(index_bea):$/;"	kind:function	line:32
+candidates	../app\routes.py	/^def candidates():$/;"	kind:function	line:17
+codecs	../app\_js-d3\_disp.py	/^import codecs$/;"	kind:namespace	line:8
+color_finder	../app\_js-d3\_disp.py	/^def color_finder():$/;"	kind:function	line:688
 country	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^country = "United States"$/;"	kind:variable	line:6
+create_item	../app\_js-d3\_disp.py	/^def create_item():$/;"	kind:function	line:190
+createall_squares	../app\_js-d3\_disp.py	/^def createall_squares():$/;"	kind:function	line:1023
+csv	../app\_js-d3\_disp.py	/^import csv$/;"	kind:namespace	line:7
+csv	../app\routes.py	/^import csv$/;"	kind:namespace	line:1
+csv_feed	../app\_js-d3\_disp.py	/^def csv_feed():$/;"	kind:function	line:141
 daily_wage	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^daily_wage = hourly_wage * 8$/;"	kind:variable	line:15
+dashboard	../app\_js-d3\_disp.py	/^def dashboard():$/;"	kind:function	line:1311
 data	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^def data():$/;"	kind:function	line:13
 data	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^def data():$/;"	kind:function	line:12
+data	../app\routes.py	/^def data():$/;"	kind:function	line:63
 db	../app\__init__.py	/^db = SQLAlchemy(app)$/;"	kind:variable	line:10
-db	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:3
-flash	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
+db	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:4
+ddslick_master	../app\_js-d3\_disp.py	/^def ddslick_master():$/;"	kind:function	line:774
+defaultdict	../app\_js-d3\_disp.py	/^from collections import defaultdict$/;"	kind:namespace	line:3
+delete_item	../app\_js-d3\_disp.py	/^def delete_item(item_id):$/;"	kind:function	line:33
+delete_post	../app\_js-d3\_disp.py	/^def delete_post(post_id):$/;"	kind:function	line:328
+display_mainitem	../app\_js-d3\_disp.py	/^def display_mainitem(square_id):$/;"	kind:function	line:1139
+edit_item	../app\_js-d3\_disp.py	/^def edit_item(item_id):$/;"	kind:function	line:43
+fetch_d3_grid	../app\_js-d3\_disp.py	/^def fetch_d3_grid(square_id):$/;"	kind:function	line:1386
+fetch_ddslick	../app\_js-d3\_disp.py	/^def fetch_ddslick(manufacturer):$/;"	kind:function	line:1290
+fetch_ddslick_square	../app\_js-d3\_disp.py	/^def fetch_ddslick_square(square_id):$/;"	kind:function	line:1330
+fetch_itemattrs_bysqr	../app\_js-d3\_disp.py	/^def fetch_itemattrs_bysqr(square_id):$/;"	kind:function	line:806
+fetch_items4bubble_bysqr	../app\_js-d3\_disp.py	/^def fetch_items4bubble_bysqr(square_id):$/;"	kind:function	line:941
+fetch_mainavlb_count	../app\_js-d3\_disp.py	/^def fetch_mainavlb_count(square_id):$/;"	kind:function	line:918
+fetch_mainavlb_perc	../app\_js-d3\_disp.py	/^def fetch_mainavlb_perc(square_id):$/;"	kind:function	line:896
+fetch_manuf_bysqr	../app\_js-d3\_disp.py	/^def fetch_manuf_bysqr(square_id):$/;"	kind:function	line:855
+fetch_manuf_info	../app\_js-d3\_disp.py	/^def fetch_manuf_info(square_id):$/;"	kind:function	line:1193
+fetch_mostcommon_attr	../app\_js-d3\_disp.py	/^def fetch_mostcommon_attr(square_id):$/;"	kind:function	line:1236
+fetch_square_all	../app\_js-d3\_disp.py	/^def fetch_square_all():$/;"	kind:function	line:1455
+fetch_square_info	../app\_js-d3\_disp.py	/^def fetch_square_info(square_id):$/;"	kind:function	line:979
+fetchitems_by	../app\_js-d3\_disp.py	/^def fetchitems_by(manufacturer):$/;"	kind:function	line:780
+filterby_manuf	../app\_js-d3\_disp.py	/^def filterby_manuf(item_manufacturer):$/;"	kind:function	line:492
+findnext_byid	../app\_js-d3\_disp.py	/^def findnext_byid(item_id=10):$/;"	kind:function	line:536
+flash	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:3
 hello	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^def hello():$/;"	kind:function	line:8
 hello	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^def hello():$/;"	kind:function	line:7
-historical	../app\routes.py	/^def historical():$/;"	kind:function	line:8
+historical	../app\routes.py	/^def historical():$/;"	kind:function	line:9
+home	../app\_js-d3\_disp.py	/^def home():$/;"	kind:function	line:178
 hourly_wage	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^hourly_wage = 15$/;"	kind:variable	line:12
+inject_LowInvBts4Grid	../app\_js-d3\_disp.py	/^def inject_LowInvBts4Grid():$/;"	kind:function	line:432
+inject_LowInvButtons	../app\_js-d3\_disp.py	/^def inject_LowInvButtons():$/;"	kind:function	line:357
+inject_LowInvIcons	../app\_js-d3\_disp.py	/^def inject_LowInvIcons():$/;"	kind:function	line:462
+inject_OutInvBtns4Grid	../app\_js-d3\_disp.py	/^def inject_OutInvBtns4Grid():$/;"	kind:function	line:417
+inject_OutInvButtons	../app\_js-d3\_disp.py	/^def inject_OutInvButtons():$/;"	kind:function	line:402
+inject_OutInvIcons	../app\_js-d3\_disp.py	/^def inject_OutInvIcons():$/;"	kind:function	line:477
+inject_TableHeaders	../app\_js-d3\_disp.py	/^def inject_TableHeaders():$/;"	kind:function	line:339
+inject_UnitInvOutIconizer	../app\_js-d3\_disp.py	/^def inject_UnitInvOutIconizer():$/;"	kind:function	line:387
+inject_UnitInvOutStyler	../app\_js-d3\_disp.py	/^def inject_UnitInvOutStyler():$/;"	kind:function	line:372
+inject_YesNoIcons	../app\_js-d3\_disp.py	/^def inject_YesNoIcons():$/;"	kind:function	line:447
+inv_home	../app\_js-d3\_disp.py	/^def inv_home():$/;"	kind:function	line:164
+inv_lister	../app\_js-d3\_disp.py	/^def inv_lister():$/;"	kind:function	line:70
+json	../app\_js-d3\_disp.py	/^import json$/;"	kind:namespace	line:9
 jsonify	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^from flask import Flask, render_template, jsonify$/;"	kind:namespace	line:1
 jsonify	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
-jsonify	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
-map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:20
+jsonify	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:3
+login	../app\_js-d3\_disp.py	/^def login():$/;"	kind:function	line:227
+logout	../app\_js-d3\_disp.py	/^def logout():$/;"	kind:function	line:243
+map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:21
+mark_as_lowinv	../app\_js-d3\_disp.py	/^def mark_as_lowinv(item_id):$/;"	kind:function	line:112
+mark_as_outofstock	../app\_js-d3\_disp.py	/^def mark_as_outofstock(item_id):$/;"	kind:function	line:84
 name	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^name = "Jacob Deming"$/;"	kind:variable	line:3
+new_post	../app\_js-d3\_disp.py	/^def new_post():$/;"	kind:function	line:287
 os	../app\__init__.py	/^import os$/;"	kind:namespace	line:3
-os	../app\routes.py	/^import os$/;"	kind:namespace	line:1
+os	../app\_js-d3\_disp.py	/^import os$/;"	kind:namespace	line:5
+os	../app\routes.py	/^import os$/;"	kind:namespace	line:2
 pd	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^import pandas as pd$/;"	kind:namespace	line:2
 pd	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^import pandas as pd$/;"	kind:namespace	line:2
-redirect	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
+percEmUp	../app\_js-d3\_disp.py	/^from squares.utils import percEmUp$/;"	kind:namespace	line:2
+post	../app\_js-d3\_disp.py	/^def post(post_id):$/;"	kind:function	line:301
+random	../app\_js-d3\_disp.py	/^import random$/;"	kind:namespace	line:4
+random_populate	../app\_js-d3\_disp.py	/^def random_populate(square_id):$/;"	kind:function	line:1048
+redir3ct_url	../app\_js-d3\_disp.py	/^    def redir3ct_url(default='inv_lister'):$/;"	kind:function	line:115
+redir3ct_url	../app\_js-d3\_disp.py	/^    def redir3ct_url(default='inv_lister'):$/;"	kind:function	line:540
+redir3ct_url	../app\_js-d3\_disp.py	/^    def redir3ct_url(default='inv_lister'):$/;"	kind:function	line:717
+redir3ct_url	../app\_js-d3\_disp.py	/^    def redir3ct_url(default='inv_lister'):$/;"	kind:function	line:87
+redir3ct_url	../app\_js-d3\_disp.py	/^    def redir3ct_url(default='sqr_home'):$/;"	kind:function	line:748
+redirect	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:3
+register	../app\_js-d3\_disp.py	/^def register():$/;"	kind:function	line:209
 render_template	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^from flask import Flask, render_template, jsonify$/;"	kind:namespace	line:1
 render_template	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
-render_template	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
-request	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
-requests	../app\routes.py	/^import requests$/;"	kind:namespace	line:4
+render_template	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:3
+request	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:3
+requests	../app\routes.py	/^import requests$/;"	kind:namespace	line:5
 routes	../app\__init__.py	/^from app import routes$/;"	kind:namespace	line:12
 routes.py	../app\routes.py	1;"	kind:file	line:1
 run.py	../run.py	1;"	kind:file	line:1
 satisfied	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^satisfied = True$/;"	kind:variable	line:18
-test	../app\routes.py	/^def test():$/;"	kind:function	line:25
-timeseries	../app\routes.py	/^def timeseries():$/;"	kind:function	line:12
-url_for	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:2
+save_picture	../app\_js-d3\_disp.py	/^def save_picture(form_picture):$/;"	kind:function	line:248
+secrets	../app\_js-d3\_disp.py	/^import secrets$/;"	kind:namespace	line:6
+show_item	../app\_js-d3\_disp.py	/^def show_item(item_id):$/;"	kind:function	line:64
+showonly_invlow	../app\_js-d3\_disp.py	/^def showonly_invlow():$/;"	kind:function	line:508
+showonly_invout	../app\_js-d3\_disp.py	/^def showonly_invout():$/;"	kind:function	line:522
+sqr_home	../app\_js-d3\_disp.py	/^def sqr_home():$/;"	kind:function	line:998
+square_byid	../app\_js-d3\_disp.py	/^def square_byid(square_id):$/;"	kind:function	line:602
+square_byid_lite	../app\_js-d3\_disp.py	/^def square_byid_lite(square_id):$/;"	kind:function	line:645
+test	../app\_js-d3\_disp.py	/^def test():$/;"	kind:function	line:797
+test	../app\routes.py	/^def test():$/;"	kind:function	line:26
+test_info_board	../app\_js-d3\_disp.py	/^def test_info_board():$/;"	kind:function	line:1176
+timeseries	../app\routes.py	/^def timeseries():$/;"	kind:function	line:13
+unit_mainitem_low	../app\_js-d3\_disp.py	/^def unit_mainitem_low(unique_tag, item_id):$/;"	kind:function	line:714
+unit_mainitem_out	../app\_js-d3\_disp.py	/^def unit_mainitem_out(unique_tag, item_id):$/;"	kind:function	line:745
+unit_nextitem	../app\_js-d3\_disp.py	/^def unit_nextitem(unique_tag, item_id):$/;"	kind:function	line:562
+unit_show_mainitem	../app\_js-d3\_disp.py	/^def unit_show_mainitem(unique_tag):$/;"	kind:function	line:591
+unit_update_maininvout	../app\_js-d3\_disp.py	/^def unit_update_maininvout(unique_tag):$/;"	kind:function	line:581
+update_invstatus	../app\_js-d3\_disp.py	/^def update_invstatus(square_id):$/;"	kind:function	line:1156
+update_post	../app\_js-d3\_disp.py	/^def update_post(post_id):$/;"	kind:function	line:308
+url_for	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:3
 x	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_ConditionalCheck.py	/^x = 1$/;"	kind:variable	line:1
 y	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_ConditionalCheck.py	/^y = 10$/;"	kind:variable	line:2
