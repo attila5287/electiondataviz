@@ -1,0 +1,40 @@
+# projectLayout: take a quick look at below tree for better understanding of the boilerplate if any further questions contact dev
+
+displaytracker
+│
+├── squares/
+│   ├── __init__.py
+│   ├── forms.py
+│   ├── config.py
+│   ├── models.py
+│   ├── routes.py
+│   ├── site.db
+│   │
+│   ├── static/
+│   │   └── profile_pics/
+│   │   │   ├── admin.png
+│   │   │   ├── custom.png
+│   │   │   └── default.png
+│   │   ├── holder-js.js
+│   │   ├── jquery-3.js
+│   │   ├── popper.js
+│   │   └── main.css
+│   │
+│   └── templates/
+│       ├── map.html
+│       ├── candidates.html
+│       ├── timeseries.html
+│       ├── interactive.html
+│       └──user_posts.html
+│           
+│       
+├── .gitignore 
+├── LICENSE
+├── project_tree.txt
+├── README.md
+└── run.py
+
+
+https://github.com/attila5287/displaytracker
+
+github: @attila5287

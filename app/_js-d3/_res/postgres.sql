@@ -1,3 +1,11 @@
+CREATE TABLE "description" (
+  "id"	SERIAL NOT NULL PRIMARY KEY,
+  "Notes"	VARCHAR(256),
+  "PublicTable"	VARCHAR(256),	
+  "Statistic"	VARCHAR(256),	
+  "UnitOfMeasure"	VARCHAR(256)
+  	);
+
 CREATE TABLE "unemployment" (
   "id"	SERIAL NOT NULL PRIMARY KEY,
   "GeoName"	VARCHAR(32) UNIQUE,

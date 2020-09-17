@@ -142,7 +142,7 @@ function handlerInputBars ( userInput, data, switchCounter, height, width, chart
   const dataSelected = data.keys[ userInput ];
 
   // console.log( 'test switch :>> ', userInput );
-  let m0d = switchCounter % 2; // first btn 
+  let m0d = switchCounter % 2; 
   switchCounter = switchCounter + 1;
   let mod = switchCounter % 2; // second btn
 

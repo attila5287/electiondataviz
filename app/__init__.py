@@ -9,4 +9,5 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['FLASK_ENV'] = os.environ.get('FLASK_ENV')
 db = SQLAlchemy(app)
 
+
 from app import routes
