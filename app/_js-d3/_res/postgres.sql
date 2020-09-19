@@ -1,5 +1,7 @@
+DROP TABLE public.description CASCADE;
 CREATE TABLE "description" (
   "id"	SERIAL NOT NULL PRIMARY KEY,
+  "url"	VARCHAR(256),
   "Notes"	VARCHAR(256),
   "PublicTable"	VARCHAR(256),	
   "Statistic"	VARCHAR(256),	
