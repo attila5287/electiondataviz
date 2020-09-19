@@ -12,6 +12,7 @@ Bcrypt	../app\_coreyFB\10-Password-Reset-Email\flaskblog\__init__.py	/^from flas
 Bcrypt	../app\_coreyFB\11-Blueprints\flaskblog\__init__.py	/^from flask_bcrypt import Bcrypt$/;"	kind:namespace	line:3
 Bcrypt	../app\_coreyFB\12-Error-Pages\flaskblog\__init__.py	/^from flask_bcrypt import Bcrypt$/;"	kind:namespace	line:3
 Bcrypt	../app\_coreyFB\boiler_plate\flaskblog\__init__.py	/^from flask_bcrypt import Bcrypt$/;"	kind:namespace	line:3
+Blueprint	../New folder\routes - Copy.py	/^from flask import render_template, url_for, flash, request, Blueprint$/;"	kind:namespace	line:1
 Blueprint	../app\_coreyFB\11-Blueprints\flaskblog\main\routes.py	/^from flask import render_template, request, Blueprint$/;"	kind:namespace	line:1
 Blueprint	../app\_coreyFB\11-Blueprints\flaskblog\users\routes.py	/^from flask import render_template, url_for, flash, redirect, request, Blueprint$/;"	kind:namespace	line:1
 Blueprint	../app\_coreyFB\12-Error-Pages\flaskblog\errors\handlers.py	/^from flask import Blueprint, render_template$/;"	kind:namespace	line:1
@@ -357,6 +358,8 @@ TextAreaField	../app\_coreyFB\10-Password-Reset-Email\flaskblog\forms.py	/^from 
 TextAreaField	../app\_coreyFB\11-Blueprints\flaskblog\posts\forms.py	/^from wtforms import StringField, SubmitField, TextAreaField$/;"	kind:namespace	line:2
 TextAreaField	../app\_coreyFB\12-Error-Pages\flaskblog\posts\forms.py	/^from wtforms import StringField, SubmitField, TextAreaField$/;"	kind:namespace	line:2
 TextAreaField	../app\_coreyFB\boiler_plate\flaskblog\posts\forms.py	/^from wtforms import StringField, SubmitField, TextAreaField$/;"	kind:namespace	line:2
+TimesheetForm	../New folder\forms - Copy.py	/^class TimesheetForm(FlaskForm):$/;"	kind:class	line:8
+TimesheetForm	../New folder\routes - Copy.py	/^from jam.timesheet.forms import TimesheetForm$/;"	kind:namespace	line:2
 Unit	../app\_js-d3\_dispM.py	/^class Unit(db.Model):$/;"	kind:class	line:274
 UnitInvOutIconizer	../app\_js-d3\_dispR.py	/^    def UnitInvOutIconizer(yes_or_no):$/;"	kind:function	line:391
 UnitInvOutStyler	../app\_js-d3\_dispR.py	/^    def UnitInvOutStyler(yes_or_no):$/;"	kind:function	line:376
@@ -476,6 +479,7 @@ __repr__	../app\_js-d3\_dispM.py	/^    def __repr__(self):$/;"	kind:member	line:
 __repr__	../app\_js-d3\_dispM.py	/^    def __repr__(self):$/;"	kind:member	line:299
 __repr__	../app\_js-d3\_dispM.py	/^    def __repr__(self):$/;"	kind:member	line:33
 __repr__	../app\models.py	/^    def __repr__(self):$/;"	kind:member	line:13
+__rpr__	../New folder\forms - Copy.py	/^    def __rpr__(self):$/;"	kind:member	line:66
 __tablename__	../app\_js-d3\_dispM.py	/^    __tablename__ = 'square'$/;"	kind:variable	line:263
 __tablename__	../app\_js-d3\_dispM.py	/^    __tablename__ = 'unit'$/;"	kind:variable	line:278
 _berM.py	../app\_js-d3\_berM.py	1;"	kind:file	line:1
@@ -512,6 +516,22 @@ account	../app\_coreyFB\boiler_plate\flaskblog\users\routes.py	/^def account():$
 account	../app\_js-d3\_dispR.py	/^def account():$/;"	kind:function	line:266
 add_task	../app\_js-d3\_ndoRt.py	/^def add_task():$/;"	kind:function	line:99
 age	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^age = 25$/;"	kind:variable	line:9
+ap_beg_01	../New folder\forms - Copy.py	/^    ap_beg_01 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:12
+ap_beg_02	../New folder\forms - Copy.py	/^    ap_beg_02 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:19
+ap_beg_03	../New folder\forms - Copy.py	/^    ap_beg_03 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:26
+ap_beg_03	../New folder\forms - Copy.py	/^    ap_beg_03 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:33
+ap_beg_04	../New folder\forms - Copy.py	/^    ap_beg_04 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:40
+ap_beg_05	../New folder\forms - Copy.py	/^    ap_beg_05 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:47
+ap_beg_06	../New folder\forms - Copy.py	/^    ap_beg_06 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:54
+ap_beg_07	../New folder\forms - Copy.py	/^    ap_beg_07 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:61
+ap_fin_01	../New folder\forms - Copy.py	/^    ap_fin_01 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:15
+ap_fin_02	../New folder\forms - Copy.py	/^    ap_fin_02 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:22
+ap_fin_03	../New folder\forms - Copy.py	/^    ap_fin_03 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:29
+ap_fin_03	../New folder\forms - Copy.py	/^    ap_fin_03 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:36
+ap_fin_04	../New folder\forms - Copy.py	/^    ap_fin_04 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:43
+ap_fin_05	../New folder\forms - Copy.py	/^    ap_fin_05 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:50
+ap_fin_06	../New folder\forms - Copy.py	/^    ap_fin_06 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:57
+ap_fin_07	../New folder\forms - Copy.py	/^    ap_fin_07 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:64
 api_desc	../app\routes.py	/^def api_desc():$/;"	kind:function	line:85
 api_menu	../app\routes.py	/^def api_menu():$/;"	kind:function	line:136
 app	../app\__init__.py	/^app = Flask(__name__)$/;"	kind:variable	line:5
@@ -565,6 +585,8 @@ bcrypt	../app\_coreyFB\boiler_plate\flaskblog\__init__.py	/^bcrypt = Bcrypt()$/;
 bcrypt	../app\_coreyFB\boiler_plate\flaskblog\users\routes.py	/^from flaskblog import db, bcrypt$/;"	kind:namespace	line:3
 bea_api	../app\routes.py	/^def bea_api(index_bea):$/;"	kind:function	line:43
 body_type	../app\_js-d3\_berM.py	/^    body_type = db.Column(db.String(16), nullable=False, default='3')$/;"	kind:variable	line:14
+calc_daily_total	../New folder\forms - Copy.py	/^    def calc_daily_total(self):$/;"	kind:member	line:140
+calc_daily_totals	../New folder\forms - Copy.py	/^    def calc_daily_totals(self):$/;"	kind:member	line:70
 candidates	../app\routes.py	/^def candidates():$/;"	kind:function	line:26
 catalog_fullname	../app\_js-d3\_dispM.py	/^    catalog_fullname = db.Column(db.String(256))$/;"	kind:variable	line:42
 catalog_no	../app\_js-d3\_dispM.py	/^    catalog_no = db.Column(db.String(32))$/;"	kind:variable	line:41
@@ -619,6 +641,7 @@ create_app	../app\_coreyFB\boiler_plate\flaskblog\__init__.py	/^def create_app(c
 create_app	../app\_coreyFB\boiler_plate\run.py	/^from flaskblog import create_app$/;"	kind:namespace	line:1
 create_item	../app\_js-d3\_dispR.py	/^def create_item():$/;"	kind:function	line:191
 create_proday	../app\_js-d3\_ndoRp.py	/^def create_proday():$/;"	kind:function	line:57
+create_timesheet	../New folder\routes - Copy.py	/^def create_timesheet():$/;"	kind:function	line:9
 createall_squares	../app\_js-d3\_dispR.py	/^def createall_squares():$/;"	kind:function	line:1024
 csv	../app\_js-d3\_dispR.py	/^import csv$/;"	kind:namespace	line:7
 csv	../app\routes.py	/^import csv$/;"	kind:namespace	line:1
@@ -808,6 +831,7 @@ fetchitems_by	../app\_js-d3\_dispR.py	/^def fetchitems_by(manufacturer):$/;"	kin
 filterby_manuf	../app\_js-d3\_dispR.py	/^def filterby_manuf(item_manufacturer):$/;"	kind:function	line:493
 findnext_byid	../app\_js-d3\_dispR.py	/^def findnext_byid(item_id=10):$/;"	kind:function	line:537
 first_act_done	../app\_js-d3\_ndoRp.py	/^def first_act_done(proday_id):$/;"	kind:function	line:126
+flash	../New folder\routes - Copy.py	/^from flask import render_template, url_for, flash, request, Blueprint$/;"	kind:namespace	line:1
 flash	../app\_coreyFB\03-Forms-and-Validation\flaskblog.py	/^from flask import Flask, render_template, url_for, flash, redirect$/;"	kind:namespace	line:1
 flash	../app\_coreyFB\04-Database\flaskblog.py	/^from flask import Flask, render_template, url_for, flash, redirect$/;"	kind:namespace	line:2
 flash	../app\_coreyFB\05-Package-Structure\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect$/;"	kind:namespace	line:1
@@ -828,6 +852,7 @@ flaskblog.py	../app\_coreyFB\01-Getting-Started\flaskblog.py	1;"	kind:file	line:
 flaskblog.py	../app\_coreyFB\02-Templates\flaskblog.py	1;"	kind:file	line:1
 flaskblog.py	../app\_coreyFB\03-Forms-and-Validation\flaskblog.py	1;"	kind:file	line:1
 flaskblog.py	../app\_coreyFB\04-Database\flaskblog.py	1;"	kind:file	line:1
+forms - Copy.py	../New folder\forms - Copy.py	1;"	kind:file	line:1
 forms.py	../app\_coreyFB\03-Forms-and-Validation\forms.py	1;"	kind:file	line:1
 forms.py	../app\_coreyFB\04-Database\forms.py	1;"	kind:file	line:1
 forms.py	../app\_coreyFB\05-Package-Structure\flaskblog\forms.py	1;"	kind:file	line:1
@@ -857,6 +882,22 @@ has_flatbill	../app\_js-d3\_dispM.py	/^    has_flatbill = db.Column(db.String(32
 has_meshback	../app\_js-d3\_dispM.py	/^    has_meshback = db.Column(db.String(32))$/;"	kind:variable	line:53
 hello	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^def hello():$/;"	kind:function	line:8
 hello	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^def hello():$/;"	kind:function	line:7
+hh_beg_01	../New folder\forms - Copy.py	/^    hh_beg_01 = IntegerField(default='09')$/;"	kind:variable	line:10
+hh_beg_02	../New folder\forms - Copy.py	/^    hh_beg_02 = IntegerField(default='09')$/;"	kind:variable	line:17
+hh_beg_03	../New folder\forms - Copy.py	/^    hh_beg_03 = IntegerField(default='09')$/;"	kind:variable	line:24
+hh_beg_03	../New folder\forms - Copy.py	/^    hh_beg_03 = IntegerField(default='09')$/;"	kind:variable	line:31
+hh_beg_04	../New folder\forms - Copy.py	/^    hh_beg_04 = IntegerField(default='09')$/;"	kind:variable	line:38
+hh_beg_05	../New folder\forms - Copy.py	/^    hh_beg_05 = IntegerField(default='09')$/;"	kind:variable	line:45
+hh_beg_06	../New folder\forms - Copy.py	/^    hh_beg_06 = IntegerField(default='09')$/;"	kind:variable	line:52
+hh_beg_07	../New folder\forms - Copy.py	/^    hh_beg_07 = IntegerField(default='09')$/;"	kind:variable	line:59
+hh_fin_01	../New folder\forms - Copy.py	/^    hh_fin_01 = IntegerField(default='09')$/;"	kind:variable	line:13
+hh_fin_02	../New folder\forms - Copy.py	/^    hh_fin_02 = IntegerField(default='09')$/;"	kind:variable	line:20
+hh_fin_03	../New folder\forms - Copy.py	/^    hh_fin_03 = IntegerField(default='09')$/;"	kind:variable	line:27
+hh_fin_03	../New folder\forms - Copy.py	/^    hh_fin_03 = IntegerField(default='09')$/;"	kind:variable	line:34
+hh_fin_04	../New folder\forms - Copy.py	/^    hh_fin_04 = IntegerField(default='09')$/;"	kind:variable	line:41
+hh_fin_05	../New folder\forms - Copy.py	/^    hh_fin_05 = IntegerField(default='09')$/;"	kind:variable	line:48
+hh_fin_06	../New folder\forms - Copy.py	/^    hh_fin_06 = IntegerField(default='09')$/;"	kind:variable	line:55
+hh_fin_07	../New folder\forms - Copy.py	/^    hh_fin_07 = IntegerField(default='09')$/;"	kind:variable	line:62
 historical	../app\routes.py	/^def historical():$/;"	kind:function	line:16
 hom3	../app\_js-d3\_ndoRp.py	/^def hom3():$/;"	kind:function	line:32
 home	../app\_coreyFB\01-Getting-Started\flaskblog.py	/^def home():$/;"	kind:function	line:7
@@ -1048,6 +1089,22 @@ manufacturer	../app\_js-d3\_dispM.py	/^    manufacturer = db.Column(db.String(32
 map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:31
 mark_as_lowinv	../app\_js-d3\_dispR.py	/^def mark_as_lowinv(item_id):$/;"	kind:function	line:113
 mark_as_outofstock	../app\_js-d3\_dispR.py	/^def mark_as_outofstock(item_id):$/;"	kind:function	line:85
+mm_beg_01	../New folder\forms - Copy.py	/^    mm_beg_01 = IntegerField(default='00')$/;"	kind:variable	line:11
+mm_beg_02	../New folder\forms - Copy.py	/^    mm_beg_02 = IntegerField(default='00')$/;"	kind:variable	line:18
+mm_beg_03	../New folder\forms - Copy.py	/^    mm_beg_03 = IntegerField(default='00')$/;"	kind:variable	line:25
+mm_beg_03	../New folder\forms - Copy.py	/^    mm_beg_03 = IntegerField(default='00')$/;"	kind:variable	line:32
+mm_beg_04	../New folder\forms - Copy.py	/^    mm_beg_04 = IntegerField(default='00')$/;"	kind:variable	line:39
+mm_beg_05	../New folder\forms - Copy.py	/^    mm_beg_05 = IntegerField(default='00')$/;"	kind:variable	line:46
+mm_beg_06	../New folder\forms - Copy.py	/^    mm_beg_06 = IntegerField(default='00')$/;"	kind:variable	line:53
+mm_beg_07	../New folder\forms - Copy.py	/^    mm_beg_07 = IntegerField(default='00')$/;"	kind:variable	line:60
+mm_fin_01	../New folder\forms - Copy.py	/^    mm_fin_01 = IntegerField(default='00')$/;"	kind:variable	line:14
+mm_fin_02	../New folder\forms - Copy.py	/^    mm_fin_02 = IntegerField(default='00')$/;"	kind:variable	line:21
+mm_fin_03	../New folder\forms - Copy.py	/^    mm_fin_03 = IntegerField(default='00')$/;"	kind:variable	line:28
+mm_fin_03	../New folder\forms - Copy.py	/^    mm_fin_03 = IntegerField(default='00')$/;"	kind:variable	line:35
+mm_fin_04	../New folder\forms - Copy.py	/^    mm_fin_04 = IntegerField(default='00')$/;"	kind:variable	line:42
+mm_fin_05	../New folder\forms - Copy.py	/^    mm_fin_05 = IntegerField(default='00')$/;"	kind:variable	line:49
+mm_fin_06	../New folder\forms - Copy.py	/^    mm_fin_06 = IntegerField(default='00')$/;"	kind:variable	line:56
+mm_fin_07	../New folder\forms - Copy.py	/^    mm_fin_07 = IntegerField(default='00')$/;"	kind:variable	line:63
 model	../app\_js-d3\_berM.py	/^    model = db.Column(db.String(16), nullable=False, default='Mustang')$/;"	kind:variable	line:12
 models.py	../app\_coreyFB\05-Package-Structure\flaskblog\models.py	1;"	kind:file	line:1
 models.py	../app\_coreyFB\06-Login-Auth\flaskblog\models.py	1;"	kind:file	line:1
@@ -1218,6 +1275,7 @@ remember	../app\_coreyFB\10-Password-Reset-Email\flaskblog\forms.py	/^    rememb
 remember	../app\_coreyFB\11-Blueprints\flaskblog\users\forms.py	/^    remember = BooleanField('Remember Me')$/;"	kind:variable	line:34
 remember	../app\_coreyFB\12-Error-Pages\flaskblog\users\forms.py	/^    remember = BooleanField('Remember Me')$/;"	kind:variable	line:34
 remember	../app\_coreyFB\boiler_plate\flaskblog\users\forms.py	/^    remember = BooleanField('Remember Me')$/;"	kind:variable	line:34
+render_template	../New folder\routes - Copy.py	/^from flask import render_template, url_for, flash, request, Blueprint$/;"	kind:namespace	line:1
 render_template	../app\_coreyFB\02-Templates\flaskblog.py	/^from flask import Flask, render_template, url_for$/;"	kind:namespace	line:1
 render_template	../app\_coreyFB\03-Forms-and-Validation\flaskblog.py	/^from flask import Flask, render_template, url_for, flash, redirect$/;"	kind:namespace	line:1
 render_template	../app\_coreyFB\04-Database\flaskblog.py	/^from flask import Flask, render_template, url_for, flash, redirect$/;"	kind:namespace	line:2
@@ -1242,6 +1300,7 @@ render_template	../app\_js-d3\_ndoRp.py	/^from flask import (render_template, ur
 render_template	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^from flask import Flask, render_template, jsonify$/;"	kind:namespace	line:1
 render_template	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
 render_template	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:4
+request	../New folder\routes - Copy.py	/^from flask import render_template, url_for, flash, request, Blueprint$/;"	kind:namespace	line:1
 request	../app\_coreyFB\06-Login-Auth\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect, request$/;"	kind:namespace	line:1
 request	../app\_coreyFB\07-User-Account-Profile-Pic\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect, request$/;"	kind:namespace	line:4
 request	../app\_coreyFB\08-Posts\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort$/;"	kind:namespace	line:4
@@ -1271,6 +1330,7 @@ routes	../app\_coreyFB\07-User-Account-Profile-Pic\flaskblog\__init__.py	/^from 
 routes	../app\_coreyFB\08-Posts\flaskblog\__init__.py	/^from flaskblog import routes$/;"	kind:namespace	line:15
 routes	../app\_coreyFB\09-Pagination\flaskblog\__init__.py	/^from flaskblog import routes$/;"	kind:namespace	line:15
 routes	../app\_coreyFB\10-Password-Reset-Email\flaskblog\__init__.py	/^from flaskblog import routes$/;"	kind:namespace	line:23
+routes - Copy.py	../New folder\routes - Copy.py	1;"	kind:file	line:1
 routes.py	../app\_coreyFB\05-Package-Structure\flaskblog\routes.py	1;"	kind:file	line:1
 routes.py	../app\_coreyFB\06-Login-Auth\flaskblog\routes.py	1;"	kind:file	line:1
 routes.py	../app\_coreyFB\07-User-Account-Profile-Pic\flaskblog\routes.py	1;"	kind:file	line:1
@@ -1390,6 +1450,7 @@ test	../app\routes.py	/^def test():$/;"	kind:function	line:37
 test_info_board	../app\_js-d3\_dispR.py	/^def test_info_board():$/;"	kind:function	line:1177
 third_act_done	../app\_js-d3\_ndoRp.py	/^def third_act_done(proday_id):$/;"	kind:function	line:195
 timeseries	../app\routes.py	/^def timeseries():$/;"	kind:function	line:21
+timesheet	../New folder\routes - Copy.py	/^timesheet = Blueprint('timesheet', __name__)$/;"	kind:variable	line:4
 title	../app\_coreyFB\04-Database\flaskblog.py	/^    title = db.Column(db.String(100), nullable=False)$/;"	kind:variable	line:26
 title	../app\_coreyFB\05-Package-Structure\flaskblog\models.py	/^    title = db.Column(db.String(100), nullable=False)$/;"	kind:variable	line:19
 title	../app\_coreyFB\06-Login-Auth\flaskblog\models.py	/^    title = db.Column(db.String(100), nullable=False)$/;"	kind:variable	line:25
@@ -1426,6 +1487,7 @@ update_proday	../app\_js-d3\_ndoRp.py	/^def update_proday(proday_id):$/;"	kind:f
 update_task	../app\_js-d3\_ndoRt.py	/^def update_task(task_id):$/;"	kind:function	line:60
 update_via_wtforms	../app\_js-d3\_dispM.py	/^    def update_via_wtforms(self, form):$/;"	kind:member	line:167
 url	../app\models.py	/^    url = db.Column(db.String(16), nullable=False, default='Ford')$/;"	kind:variable	line:6
+url_for	../New folder\routes - Copy.py	/^from flask import render_template, url_for, flash, request, Blueprint$/;"	kind:namespace	line:1
 url_for	../app\_coreyFB\02-Templates\flaskblog.py	/^from flask import Flask, render_template, url_for$/;"	kind:namespace	line:1
 url_for	../app\_coreyFB\03-Forms-and-Validation\flaskblog.py	/^from flask import Flask, render_template, url_for, flash, redirect$/;"	kind:namespace	line:1
 url_for	../app\_coreyFB\04-Database\flaskblog.py	/^from flask import Flask, render_template, url_for, flash, redirect$/;"	kind:namespace	line:2
