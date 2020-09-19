@@ -52,7 +52,7 @@ DataRequired	../app\_coreyFB\12-Error-Pages\flaskblog\posts\forms.py	/^from wtfo
 DataRequired	../app\_coreyFB\12-Error-Pages\flaskblog\users\forms.py	/^from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError$/;"	kind:namespace	line:4
 DataRequired	../app\_coreyFB\boiler_plate\flaskblog\posts\forms.py	/^from wtforms.validators import DataRequired$/;"	kind:namespace	line:3
 DataRequired	../app\_coreyFB\boiler_plate\flaskblog\users\forms.py	/^from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError$/;"	kind:namespace	line:4
-Description	../app\models.py	/^class Description(db.Model):$/;"	kind:class	line:4
+Description	../app\models.py	/^class Description(db.Model):$/;"	kind:class	line:3
 Email	../app\_coreyFB\03-Forms-and-Validation\forms.py	/^from wtforms.validators import DataRequired, Length, Email, EqualTo$/;"	kind:namespace	line:3
 Email	../app\_coreyFB\04-Database\forms.py	/^from wtforms.validators import DataRequired, Length, Email, EqualTo$/;"	kind:namespace	line:3
 Email	../app\_coreyFB\05-Package-Structure\flaskblog\forms.py	/^from wtforms.validators import DataRequired, Length, Email, EqualTo$/;"	kind:namespace	line:3
@@ -203,7 +203,7 @@ Message	../app\_coreyFB\11-Blueprints\flaskblog\users\utils.py	/^from flask_mail
 Message	../app\_coreyFB\12-Error-Pages\flaskblog\users\utils.py	/^from flask_mail import Message$/;"	kind:namespace	line:6
 Message	../app\_coreyFB\boiler_plate\flaskblog\users\utils.py	/^from flask_mail import Message$/;"	kind:namespace	line:6
 MetaData	../app\_js-d3\_berM.py	/^from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey$/;"	kind:namespace	line:1
-Notes	../app\models.py	/^    Notes = db.Column(db.String(16), nullable=False, default='Mustang')$/;"	kind:variable	line:8
+Notes	../app\models.py	/^    Notes = db.Column(db.String(16), nullable=False, default='Mustang')$/;"	kind:variable	line:7
 OutInvIconizer	../app\_js-d3\_dispR.py	/^    def OutInvIconizer(yes_or_no):$/;"	kind:function	line:481
 OutOfStckStyler	../app\_js-d3\_dispR.py	/^    def OutOfStckStyler(yes_or_no):$/;"	kind:function	line:406
 OutOfStckStylerGrid	../app\_js-d3\_dispR.py	/^    def OutOfStckStylerGrid(yes_or_no):$/;"	kind:function	line:421
@@ -258,7 +258,7 @@ PostForm	../app\_coreyFB\boiler_plate\flaskblog\posts\forms.py	/^class PostForm(
 PostForm	../app\_coreyFB\boiler_plate\flaskblog\posts\routes.py	/^from flaskblog.posts.forms import PostForm$/;"	kind:namespace	line:6
 ProDayForm	../app\_js-d3\_ndoRp.py	/^from nodaysoff.prodays.forms import ProDayForm $/;"	kind:namespace	line:6
 Proday	../app\_js-d3\_ndoRp.py	/^from nodaysoff.models import Proday, User$/;"	kind:namespace	line:5
-PublicTable	../app\models.py	/^    PublicTable = db.Column($/;"	kind:variable	line:9
+PublicTable	../app\models.py	/^    PublicTable = db.Column($/;"	kind:variable	line:8
 Py_ConditionalCheck.py	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_ConditionalCheck.py	1;"	kind:file	line:1
 Py_HelloVariableWorld.py	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	1;"	kind:file	line:1
 RegistrationForm	../app\_coreyFB\03-Forms-and-Validation\flaskblog.py	/^from forms import RegistrationForm, LoginForm$/;"	kind:namespace	line:2
@@ -316,7 +316,7 @@ Serializer	../app\_coreyFB\12-Error-Pages\flaskblog\models.py	/^from itsdangerou
 Serializer	../app\_coreyFB\boiler_plate\flaskblog\models.py	/^from itsdangerous import TimedJSONWebSignatureSerializer as Serializer$/;"	kind:namespace	line:2
 Serializer	../app\_js-d3\_berM.py	/^from itsdangerous import TimedJSONWebSignatureSerializer as Serializer$/;"	kind:namespace	line:3
 Square	../app\_js-d3\_dispM.py	/^class Square(db.Model):$/;"	kind:class	line:260
-Statistic	../app\models.py	/^    Statistic = db.Column(db.String(16), nullable=False, default='3')$/;"	kind:variable	line:11
+Statistic	../app\models.py	/^    Statistic = db.Column(db.String(16), nullable=False, default='3')$/;"	kind:variable	line:10
 String	../app\_js-d3\_berM.py	/^from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey$/;"	kind:namespace	line:1
 StringField	../app\_coreyFB\03-Forms-and-Validation\forms.py	/^from wtforms import StringField, PasswordField, SubmitField, BooleanField$/;"	kind:namespace	line:2
 StringField	../app\_coreyFB\04-Database\forms.py	/^from wtforms import StringField, PasswordField, SubmitField, BooleanField$/;"	kind:namespace	line:2
@@ -360,7 +360,7 @@ TextAreaField	../app\_coreyFB\boiler_plate\flaskblog\posts\forms.py	/^from wtfor
 Unit	../app\_js-d3\_dispM.py	/^class Unit(db.Model):$/;"	kind:class	line:274
 UnitInvOutIconizer	../app\_js-d3\_dispR.py	/^    def UnitInvOutIconizer(yes_or_no):$/;"	kind:function	line:391
 UnitInvOutStyler	../app\_js-d3\_dispR.py	/^    def UnitInvOutStyler(yes_or_no):$/;"	kind:function	line:376
-UnitOfMeasure	../app\models.py	/^    UnitOfMeasure = db.Column(db.String(16), nullable=False, default='0')$/;"	kind:variable	line:12
+UnitOfMeasure	../app\models.py	/^    UnitOfMeasure = db.Column(db.String(16), nullable=False, default='0')$/;"	kind:variable	line:11
 UpdateAccountForm	../app\_coreyFB\07-User-Account-Profile-Pic\flaskblog\forms.py	/^class UpdateAccountForm(FlaskForm):$/;"	kind:class	line:38
 UpdateAccountForm	../app\_coreyFB\07-User-Account-Profile-Pic\flaskblog\routes.py	/^from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm$/;"	kind:namespace	line:6
 UpdateAccountForm	../app\_coreyFB\08-Posts\flaskblog\forms.py	/^class UpdateAccountForm(FlaskForm):$/;"	kind:class	line:40
@@ -446,6 +446,7 @@ __init__.py	../app\_coreyFB\boiler_plate\flaskblog\errors\__init__.py	1;"	kind:f
 __init__.py	../app\_coreyFB\boiler_plate\flaskblog\main\__init__.py	1;"	kind:file	line:1
 __init__.py	../app\_coreyFB\boiler_plate\flaskblog\posts\__init__.py	1;"	kind:file	line:1
 __init__.py	../app\_coreyFB\boiler_plate\flaskblog\users\__init__.py	1;"	kind:file	line:1
+__jsonable__	../app\models.py	/^    def __jsonable__(self, index):$/;"	kind:member	line:16
 __repr__	../app\_coreyFB\04-Database\flaskblog.py	/^    def __repr__(self):$/;"	kind:member	line:20
 __repr__	../app\_coreyFB\04-Database\flaskblog.py	/^    def __repr__(self):$/;"	kind:member	line:31
 __repr__	../app\_coreyFB\05-Package-Structure\flaskblog\models.py	/^    def __repr__(self):$/;"	kind:member	line:13
@@ -474,7 +475,7 @@ __repr__	../app\_js-d3\_dispM.py	/^    def __repr__(self):$/;"	kind:member	line:
 __repr__	../app\_js-d3\_dispM.py	/^    def __repr__(self):$/;"	kind:member	line:269
 __repr__	../app\_js-d3\_dispM.py	/^    def __repr__(self):$/;"	kind:member	line:299
 __repr__	../app\_js-d3\_dispM.py	/^    def __repr__(self):$/;"	kind:member	line:33
-__repr__	../app\models.py	/^    def __repr__(self):$/;"	kind:member	line:14
+__repr__	../app\models.py	/^    def __repr__(self):$/;"	kind:member	line:13
 __tablename__	../app\_js-d3\_dispM.py	/^    __tablename__ = 'square'$/;"	kind:variable	line:263
 __tablename__	../app\_js-d3\_dispM.py	/^    __tablename__ = 'unit'$/;"	kind:variable	line:278
 _berM.py	../app\_js-d3\_berM.py	1;"	kind:file	line:1
@@ -485,7 +486,7 @@ _ndoRt.py	../app\_js-d3\_ndoRt.py	1;"	kind:file	line:1
 abort	../app\_coreyFB\08-Posts\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort$/;"	kind:namespace	line:4
 abort	../app\_coreyFB\09-Pagination\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort$/;"	kind:namespace	line:4
 abort	../app\_coreyFB\10-Password-Reset-Email\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort$/;"	kind:namespace	line:4
-abort	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:5
+abort	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:4
 about	../app\_coreyFB\01-Getting-Started\flaskblog.py	/^def about():$/;"	kind:function	line:12
 about	../app\_coreyFB\02-Templates\flaskblog.py	/^def about():$/;"	kind:function	line:27
 about	../app\_coreyFB\03-Forms-and-Validation\flaskblog.py	/^def about():$/;"	kind:function	line:30
@@ -511,7 +512,8 @@ account	../app\_coreyFB\boiler_plate\flaskblog\users\routes.py	/^def account():$
 account	../app\_js-d3\_dispR.py	/^def account():$/;"	kind:function	line:266
 add_task	../app\_js-d3\_ndoRt.py	/^def add_task():$/;"	kind:function	line:99
 age	../app\_js-d3\12_JS\02_Evr_PythonToJavaScript\Py_HelloVariableWorld.py	/^age = 25$/;"	kind:variable	line:9
-api_desc	../app\routes.py	/^def api_desc():$/;"	kind:function	line:74
+api_desc	../app\routes.py	/^def api_desc():$/;"	kind:function	line:85
+api_menu	../app\routes.py	/^def api_menu():$/;"	kind:function	line:136
 app	../app\__init__.py	/^app = Flask(__name__)$/;"	kind:variable	line:5
 app	../app\_coreyFB\01-Getting-Started\flaskblog.py	/^app = Flask(__name__)$/;"	kind:variable	line:2
 app	../app\_coreyFB\02-Templates\flaskblog.py	/^app = Flask(__name__)$/;"	kind:variable	line:2
@@ -541,7 +543,7 @@ app	../app\_coreyFB\12-Error-Pages\run.py	/^app = create_app()$/;"	kind:variable
 app	../app\_coreyFB\boiler_plate\run.py	/^app = create_app()$/;"	kind:variable	line:3
 app	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^app = Flask(__name__)$/;"	kind:variable	line:4
 app	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^app = Flask(__name__)$/;"	kind:variable	line:4
-app	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:6
+app	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:5
 app	../run.py	/^from app import app$/;"	kind:namespace	line:1
 app.py	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	1;"	kind:file	line:1
 app.py	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	1;"	kind:file	line:1
@@ -561,14 +563,13 @@ bcrypt	../app\_coreyFB\12-Error-Pages\flaskblog\__init__.py	/^bcrypt = Bcrypt()$
 bcrypt	../app\_coreyFB\12-Error-Pages\flaskblog\users\routes.py	/^from flaskblog import db, bcrypt$/;"	kind:namespace	line:3
 bcrypt	../app\_coreyFB\boiler_plate\flaskblog\__init__.py	/^bcrypt = Bcrypt()$/;"	kind:variable	line:11
 bcrypt	../app\_coreyFB\boiler_plate\flaskblog\users\routes.py	/^from flaskblog import db, bcrypt$/;"	kind:namespace	line:3
-bea_api	../app\routes.py	/^def bea_api(index_bea):$/;"	kind:function	line:38
+bea_api	../app\routes.py	/^def bea_api(index_bea):$/;"	kind:function	line:43
 body_type	../app\_js-d3\_berM.py	/^    body_type = db.Column(db.String(16), nullable=False, default='3')$/;"	kind:variable	line:14
-candidates	../app\routes.py	/^def candidates():$/;"	kind:function	line:22
+candidates	../app\routes.py	/^def candidates():$/;"	kind:function	line:26
 catalog_fullname	../app\_js-d3\_dispM.py	/^    catalog_fullname = db.Column(db.String(256))$/;"	kind:variable	line:42
 catalog_no	../app\_js-d3\_dispM.py	/^    catalog_no = db.Column(db.String(32))$/;"	kind:variable	line:41
-closing	../app\routes.py	/^from contextlib import closing$/;"	kind:namespace	line:1
 codecs	../app\_js-d3\_dispR.py	/^import codecs$/;"	kind:namespace	line:8
-codecs	../app\routes.py	/^import codecs$/;"	kind:namespace	line:3
+codecs	../app\routes.py	/^import codecs$/;"	kind:namespace	line:2
 col_count	../app\_js-d3\_dispM.py	/^    col_count = db.Column(db.Integer)$/;"	kind:variable	line:267
 color_finder	../app\_js-d3\_dispR.py	/^def color_finder():$/;"	kind:function	line:689
 color_primary	../app\_js-d3\_dispM.py	/^    color_primary = db.Column(db.String(32))$/;"	kind:variable	line:43
@@ -620,7 +621,7 @@ create_item	../app\_js-d3\_dispR.py	/^def create_item():$/;"	kind:function	line:
 create_proday	../app\_js-d3\_ndoRp.py	/^def create_proday():$/;"	kind:function	line:57
 createall_squares	../app\_js-d3\_dispR.py	/^def createall_squares():$/;"	kind:function	line:1024
 csv	../app\_js-d3\_dispR.py	/^import csv$/;"	kind:namespace	line:7
-csv	../app\routes.py	/^import csv$/;"	kind:namespace	line:2
+csv	../app\routes.py	/^import csv$/;"	kind:namespace	line:1
 csv_feed	../app\_js-d3\_dispR.py	/^def csv_feed():$/;"	kind:function	line:142
 current_app	../app\_coreyFB\11-Blueprints\flaskblog\models.py	/^from flask import current_app$/;"	kind:namespace	line:3
 current_app	../app\_coreyFB\11-Blueprints\flaskblog\users\utils.py	/^from flask import url_for, current_app$/;"	kind:namespace	line:5
@@ -714,7 +715,7 @@ db	../app\_js-d3\_dispM.py	/^from squares import db, login_manager$/;"	kind:name
 db	../app\_js-d3\_ndoRp.py	/^from nodaysoff import db$/;"	kind:namespace	line:4
 db	../app\_js-d3\_ndoRt.py	/^from nodaysoff import db$/;"	kind:namespace	line:5
 db	../app\models.py	/^from app import db$/;"	kind:namespace	line:1
-db	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:6
+db	../app\routes.py	/^from app import app, db$/;"	kind:namespace	line:5
 ddslick_master	../app\_js-d3\_dispR.py	/^def ddslick_master():$/;"	kind:function	line:775
 default	../app\_js-d3\_dispM.py	/^                            default=datetime.utcnow)$/;"	kind:variable	line:29
 default	../app\_js-d3\_dispM.py	/^                           default='default.png')$/;"	kind:variable	line:17
@@ -822,7 +823,7 @@ flash	../app\_coreyFB\12-Error-Pages\flaskblog\users\routes.py	/^from flask impo
 flash	../app\_coreyFB\boiler_plate\flaskblog\posts\routes.py	/^from flask import (render_template, url_for, flash,$/;"	kind:namespace	line:1
 flash	../app\_coreyFB\boiler_plate\flaskblog\users\routes.py	/^from flask import render_template, url_for, flash, redirect, request, Blueprint$/;"	kind:namespace	line:1
 flash	../app\_js-d3\_ndoRp.py	/^from flask import (render_template, url_for, flash,$/;"	kind:namespace	line:1
-flash	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:5
+flash	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:4
 flaskblog.py	../app\_coreyFB\01-Getting-Started\flaskblog.py	1;"	kind:file	line:1
 flaskblog.py	../app\_coreyFB\02-Templates\flaskblog.py	1;"	kind:file	line:1
 flaskblog.py	../app\_coreyFB\03-Forms-and-Validation\flaskblog.py	1;"	kind:file	line:1
@@ -856,7 +857,7 @@ has_flatbill	../app\_js-d3\_dispM.py	/^    has_flatbill = db.Column(db.String(32
 has_meshback	../app\_js-d3\_dispM.py	/^    has_meshback = db.Column(db.String(32))$/;"	kind:variable	line:53
 hello	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^def hello():$/;"	kind:function	line:8
 hello	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^def hello():$/;"	kind:function	line:7
-historical	../app\routes.py	/^def historical():$/;"	kind:function	line:14
+historical	../app\routes.py	/^def historical():$/;"	kind:function	line:16
 hom3	../app\_js-d3\_ndoRp.py	/^def hom3():$/;"	kind:function	line:32
 home	../app\_coreyFB\01-Getting-Started\flaskblog.py	/^def home():$/;"	kind:function	line:7
 home	../app\_coreyFB\02-Templates\flaskblog.py	/^def home():$/;"	kind:function	line:22
@@ -901,7 +902,7 @@ id	../app\_js-d3\_dispM.py	/^    id = db.Column(db.Integer, primary_key=True)$/;
 id	../app\_js-d3\_dispM.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	kind:variable	line:264
 id	../app\_js-d3\_dispM.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	kind:variable	line:39
 id	../app\_js-d3\_dispM.py	/^    id = db.Column(db.Integer, unique=True, primary_key=True)$/;"	kind:variable	line:280
-id	../app\models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	kind:variable	line:6
+id	../app\models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	kind:variable	line:5
 image_file	../app\_coreyFB\04-Database\flaskblog.py	/^    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')$/;"	kind:variable	line:16
 image_file	../app\_coreyFB\05-Package-Structure\flaskblog\models.py	/^    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')$/;"	kind:variable	line:9
 image_file	../app\_coreyFB\06-Login-Auth\flaskblog\models.py	/^    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')$/;"	kind:variable	line:15
@@ -943,7 +944,7 @@ is_youth	../app\_js-d3\_dispM.py	/^    is_youth = db.Column(db.String(32))$/;"	k
 json	../app\_js-d3\_dispR.py	/^import json$/;"	kind:namespace	line:9
 jsonify	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^from flask import Flask, render_template, jsonify$/;"	kind:namespace	line:1
 jsonify	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
-jsonify	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:5
+jsonify	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:4
 just_ran_out	../app\_js-d3\_dispM.py	/^    def just_ran_out(self):$/;"	kind:member	line:112
 load_user	../app\_coreyFB\06-Login-Auth\flaskblog\models.py	/^def load_user(user_id):$/;"	kind:function	line:7
 load_user	../app\_coreyFB\07-User-Account-Profile-Pic\flaskblog\models.py	/^def load_user(user_id):$/;"	kind:function	line:7
@@ -1044,7 +1045,7 @@ mainitem_out	../app\_js-d3\_dispM.py	/^    def mainitem_out(self):$/;"	kind:memb
 mainitem_restck	../app\_js-d3\_dispM.py	/^    def mainitem_restck(self):$/;"	kind:member	line:293
 make	../app\_js-d3\_berM.py	/^    make = db.Column(db.String(16), nullable=False, default='Ford')$/;"	kind:variable	line:11
 manufacturer	../app\_js-d3\_dispM.py	/^    manufacturer = db.Column(db.String(32))$/;"	kind:variable	line:40
-map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:26
+map_states	../app\routes.py	/^def map_states():$/;"	kind:function	line:31
 mark_as_lowinv	../app\_js-d3\_dispR.py	/^def mark_as_lowinv(item_id):$/;"	kind:function	line:113
 mark_as_outofstock	../app\_js-d3\_dispR.py	/^def mark_as_outofstock(item_id):$/;"	kind:function	line:85
 model	../app\_js-d3\_berM.py	/^    model = db.Column(db.String(16), nullable=False, default='Mustang')$/;"	kind:variable	line:12
@@ -1085,7 +1086,7 @@ os	../app\_coreyFB\boiler_plate\flaskblog\config.py	/^import os$/;"	kind:namespa
 os	../app\_coreyFB\boiler_plate\flaskblog\users\utils.py	/^import os$/;"	kind:namespace	line:2
 os	../app\_js-d3\_dispR.py	/^import os$/;"	kind:namespace	line:5
 os	../app\_js-d3\_ndoRt.py	/^import os $/;"	kind:namespace	line:8
-os	../app\routes.py	/^import os$/;"	kind:namespace	line:4
+os	../app\routes.py	/^import os$/;"	kind:namespace	line:3
 password	../app\_coreyFB\03-Forms-and-Validation\forms.py	/^    password = PasswordField('Password', validators=[DataRequired()])$/;"	kind:variable	line:11
 password	../app\_coreyFB\03-Forms-and-Validation\forms.py	/^    password = PasswordField('Password', validators=[DataRequired()])$/;"	kind:variable	line:20
 password	../app\_coreyFB\04-Database\flaskblog.py	/^    password = db.Column(db.String(60), nullable=False)$/;"	kind:variable	line:17
@@ -1165,6 +1166,7 @@ posts	../app\_coreyFB\boiler_plate\flaskblog\models.py	/^    posts = db.relation
 posts	../app\_coreyFB\boiler_plate\flaskblog\posts\routes.py	/^posts = Blueprint('posts', __name__)$/;"	kind:variable	line:8
 posts	../app\_js-d3\_berM.py	/^    posts = db.relationship('Post', backref='author', lazy=True)$/;"	kind:variable	line:36
 posts	../app\_js-d3\_dispM.py	/^    posts = db.relationship('Post', backref='author', lazy=True)$/;"	kind:variable	line:19
+prepMyCSV	../app\utils.py	/^def prepMyCSV(csv_dict):$/;"	kind:function	line:2
 proday	../app\_js-d3\_ndoRp.py	/^def proday(proday_id):$/;"	kind:function	line:71
 proday_demo	../app\_js-d3\_ndoRp.py	/^def proday_demo():$/;"	kind:function	line:10
 prodays	../app\_js-d3\_ndoRp.py	/^prodays = Blueprint('prodays', __name__)$/;"	kind:variable	line:7
@@ -1192,7 +1194,7 @@ redirect	../app\_coreyFB\10-Password-Reset-Email\flaskblog\routes.py	/^from flas
 redirect	../app\_coreyFB\11-Blueprints\flaskblog\users\routes.py	/^from flask import render_template, url_for, flash, redirect, request, Blueprint$/;"	kind:namespace	line:1
 redirect	../app\_coreyFB\12-Error-Pages\flaskblog\users\routes.py	/^from flask import render_template, url_for, flash, redirect, request, Blueprint$/;"	kind:namespace	line:1
 redirect	../app\_coreyFB\boiler_plate\flaskblog\users\routes.py	/^from flask import render_template, url_for, flash, redirect, request, Blueprint$/;"	kind:namespace	line:1
-redirect	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:5
+redirect	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:4
 register	../app\_coreyFB\03-Forms-and-Validation\flaskblog.py	/^def register():$/;"	kind:function	line:35
 register	../app\_coreyFB\04-Database\flaskblog.py	/^def register():$/;"	kind:function	line:63
 register	../app\_coreyFB\05-Package-Structure\flaskblog\routes.py	/^def register():$/;"	kind:function	line:35
@@ -1239,7 +1241,7 @@ render_template	../app\_coreyFB\boiler_plate\flaskblog\users\routes.py	/^from fl
 render_template	../app\_js-d3\_ndoRp.py	/^from flask import (render_template, url_for, flash,$/;"	kind:namespace	line:1
 render_template	../app\_js-d3\int-hw\hw01\Data-Journalism-and-D3-master\app.py	/^from flask import Flask, render_template, jsonify$/;"	kind:namespace	line:1
 render_template	../app\_js-d3\int-hw\hw02\Data-Journalism-and-D3-master\app.py	/^from flask import Flask,render_template,jsonify$/;"	kind:namespace	line:1
-render_template	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:5
+render_template	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:4
 request	../app\_coreyFB\06-Login-Auth\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect, request$/;"	kind:namespace	line:1
 request	../app\_coreyFB\07-User-Account-Profile-Pic\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect, request$/;"	kind:namespace	line:4
 request	../app\_coreyFB\08-Posts\flaskblog\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort$/;"	kind:namespace	line:4
@@ -1251,8 +1253,8 @@ request	../app\_coreyFB\12-Error-Pages\flaskblog\main\routes.py	/^from flask imp
 request	../app\_coreyFB\12-Error-Pages\flaskblog\users\routes.py	/^from flask import render_template, url_for, flash, redirect, request, Blueprint$/;"	kind:namespace	line:1
 request	../app\_coreyFB\boiler_plate\flaskblog\main\routes.py	/^from flask import render_template, request, Blueprint$/;"	kind:namespace	line:1
 request	../app\_coreyFB\boiler_plate\flaskblog\users\routes.py	/^from flask import render_template, url_for, flash, redirect, request, Blueprint$/;"	kind:namespace	line:1
-request	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:5
-requests	../app\routes.py	/^import requests$/;"	kind:namespace	line:7
+request	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:4
+requests	../app\routes.py	/^import requests$/;"	kind:namespace	line:6
 reset_request	../app\_coreyFB\10-Password-Reset-Email\flaskblog\routes.py	/^def reset_request():$/;"	kind:function	line:174
 reset_request	../app\_coreyFB\11-Blueprints\flaskblog\users\routes.py	/^def reset_request():$/;"	kind:function	line:81
 reset_request	../app\_coreyFB\12-Error-Pages\flaskblog\users\routes.py	/^def reset_request():$/;"	kind:function	line:81
@@ -1384,10 +1386,10 @@ taskdemodone	../app\_js-d3\_ndoRt.py	/^def taskdemodone(task_id):$/;"	kind:funct
 tasks	../app\_js-d3\_ndoRt.py	/^tasks = Blueprint('tasks', __name__)$/;"	kind:variable	line:9
 tasks_list	../app\_js-d3\_ndoRt.py	/^def tasks_list():$/;"	kind:function	line:80
 test	../app\_js-d3\_dispR.py	/^def test():$/;"	kind:function	line:798
-test	../app\routes.py	/^def test():$/;"	kind:function	line:31
+test	../app\routes.py	/^def test():$/;"	kind:function	line:37
 test_info_board	../app\_js-d3\_dispR.py	/^def test_info_board():$/;"	kind:function	line:1177
 third_act_done	../app\_js-d3\_ndoRp.py	/^def third_act_done(proday_id):$/;"	kind:function	line:195
-timeseries	../app\routes.py	/^def timeseries():$/;"	kind:function	line:18
+timeseries	../app\routes.py	/^def timeseries():$/;"	kind:function	line:21
 title	../app\_coreyFB\04-Database\flaskblog.py	/^    title = db.Column(db.String(100), nullable=False)$/;"	kind:variable	line:26
 title	../app\_coreyFB\05-Package-Structure\flaskblog\models.py	/^    title = db.Column(db.String(100), nullable=False)$/;"	kind:variable	line:19
 title	../app\_coreyFB\06-Login-Auth\flaskblog\models.py	/^    title = db.Column(db.String(100), nullable=False)$/;"	kind:variable	line:25
@@ -1423,7 +1425,7 @@ update_post	../app\_js-d3\_dispR.py	/^def update_post(post_id):$/;"	kind:functio
 update_proday	../app\_js-d3\_ndoRp.py	/^def update_proday(proday_id):$/;"	kind:function	line:78
 update_task	../app\_js-d3\_ndoRt.py	/^def update_task(task_id):$/;"	kind:function	line:60
 update_via_wtforms	../app\_js-d3\_dispM.py	/^    def update_via_wtforms(self, form):$/;"	kind:member	line:167
-url	../app\models.py	/^    url = db.Column(db.String(16), nullable=False, default='Ford')$/;"	kind:variable	line:7
+url	../app\models.py	/^    url = db.Column(db.String(16), nullable=False, default='Ford')$/;"	kind:variable	line:6
 url_for	../app\_coreyFB\02-Templates\flaskblog.py	/^from flask import Flask, render_template, url_for$/;"	kind:namespace	line:1
 url_for	../app\_coreyFB\03-Forms-and-Validation\flaskblog.py	/^from flask import Flask, render_template, url_for, flash, redirect$/;"	kind:namespace	line:1
 url_for	../app\_coreyFB\04-Database\flaskblog.py	/^from flask import Flask, render_template, url_for, flash, redirect$/;"	kind:namespace	line:2
@@ -1444,7 +1446,7 @@ url_for	../app\_coreyFB\boiler_plate\flaskblog\users\routes.py	/^from flask impo
 url_for	../app\_coreyFB\boiler_plate\flaskblog\users\utils.py	/^from flask import url_for, current_app$/;"	kind:namespace	line:5
 url_for	../app\_js-d3\_dispM.py	/^from flask import url_for$/;"	kind:namespace	line:4
 url_for	../app\_js-d3\_ndoRp.py	/^from flask import (render_template, url_for, flash,$/;"	kind:namespace	line:1
-url_for	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:5
+url_for	../app\routes.py	/^from flask import render_template, url_for, flash, redirect, request, abort, jsonify$/;"	kind:namespace	line:4
 user_id	../app\_coreyFB\04-Database\flaskblog.py	/^    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)$/;"	kind:variable	line:29
 user_id	../app\_coreyFB\05-Package-Structure\flaskblog\models.py	/^    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)$/;"	kind:variable	line:22
 user_id	../app\_coreyFB\06-Login-Auth\flaskblog\models.py	/^    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)$/;"	kind:variable	line:28
@@ -1502,6 +1504,7 @@ utility_processor	../app\_js-d3\_ndoRt.py	/^def utility_processor():$/;"	kind:fu
 utils.py	../app\_coreyFB\11-Blueprints\flaskblog\users\utils.py	1;"	kind:file	line:1
 utils.py	../app\_coreyFB\12-Error-Pages\flaskblog\users\utils.py	1;"	kind:file	line:1
 utils.py	../app\_coreyFB\boiler_plate\flaskblog\users\utils.py	1;"	kind:file	line:1
+utils.py	../app\utils.py	1;"	kind:file	line:1
 validate_email	../app\_coreyFB\06-Login-Auth\flaskblog\forms.py	/^    def validate_email(self, email):$/;"	kind:member	line:22
 validate_email	../app\_coreyFB\07-User-Account-Profile-Pic\flaskblog\forms.py	/^    def validate_email(self, email):$/;"	kind:member	line:24
 validate_email	../app\_coreyFB\07-User-Account-Profile-Pic\flaskblog\forms.py	/^    def validate_email(self, email):$/;"	kind:member	line:52

@@ -1,7 +1,7 @@
 // slider determines the parameter to compare: unemplotment rate, wage avg etc.
 function main( data ) { // data change key
   let selectedName = data.name;
-  // console.log('selectedName :>> ', selectedName);
+  console.log('selectedName :>> ', selectedName);
   
   // step 0-a : remove svg from prev init-state-selection  
   //=========================================================
@@ -142,7 +142,7 @@ function handlerInputBars ( userInput, data, switchCounter, height, width, chart
   const dataSelected = data.keys[ userInput ];
 
   // console.log( 'test switch :>> ', userInput );
-  let m0d = switchCounter % 2; // frst btn
+  let m0d = switchCounter % 2; 
   switchCounter = switchCounter + 1;
   let mod = switchCounter % 2; // second btn
 
@@ -262,7 +262,7 @@ const appendAutoSizedSVG = ( svgWidth, margin, svgHeight ) => {
 const compareYearsMinMax = ( baseDomain, dataCircles ) => {
   // console.log( 'baseDomain :>> ', baseDomain );
 
-  // console.log('dataCircles :>> ', dataCircles);
+  console.log('dataCircles :>> ', dataCircles);
 
   const minParams = d3.min( dataCircles.map( d => +d.year ) );
   const maxParams = d3.max( dataCircles.map( d => +d.year ) );

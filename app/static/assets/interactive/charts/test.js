@@ -262,7 +262,7 @@ const appendAutoSizedSVG = ( svgWidth, margin, svgHeight ) => {
 const compareYearsMinMax = ( baseDomain, dataCircles ) => {
   // console.log( 'baseDomain :>> ', baseDomain );
 
-  // console.log('dataCircles :>> ', dataCircles);
+  console.log('dataCircles :>> ', dataCircles);
 
   const minParams = d3.min( dataCircles.map( d => +d.year ) );
   const maxParams = d3.max( dataCircles.map( d => +d.year ) );

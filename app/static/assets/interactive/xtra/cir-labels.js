@@ -51,17 +51,23 @@ function prepLabelsBEA() {// custom parameters for connected
   // line-circle time series
   
       const fileNames = [//file names to pull data
-        'urlPersonalIncome',
-        'urlPopulation',
-        'urlCompEeByIndNAICS',
-        'urlCompEeByIndSIC',
+        // 'urlPersonalIncome',
+        // 'urlPopulation',
+        'bea/api/0',
+        'bea/api/1',
+        'bea/api/2',
+        'bea/api/3',
+        'bea/api/4',
+        'bea/api/5',
       ];
   
       const labels = [//name on input range
         "Income Per Capita",
         "Total Population",
-        "Comp.of Emp.by NAICS Ind.",
-        "Comp.of Emp.by SIC Ind.",
+        "BLS:Unemployment Rate", 
+        "Construction Permits", 
+        "Wage-Salary Income", 
+        "Num. of Non-Farm Jobs", 
       ];
 
       let results = [];
