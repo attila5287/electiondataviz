@@ -138,6 +138,20 @@ def api_menu():
     pass
     menu = [  # same attr's with BEA api
         {
+            'url': 'direct-from-BEA-API',
+            'Notes'	: 'Per capita personal income is total personal income divided by total midyear population.', 
+            'PublicTable': "SAINC1 Per Capita Personal Income",  # table name(s)
+            'Statistic': "per capita income",  # parameter
+            'UnitOfMeasure':	"dollars",
+        },
+        {
+            'url': 'direct-from-BEA-API',
+            'Notes'	: 'Census Bureau midyear population estimate. Estimates for 2010-2019 reflect Census Bureau midyear state population estimates available as of December 2019.',
+            'PublicTable': "SAINC1 Total Population",  # table name(s)
+            'Statistic': "number of persons",  # parameter
+            'UnitOfMeasure':	"count",
+        },
+        {
             'url': 'https://gist.githubusercontent.com/attila5287/0c460b8fc707a0ec16973a7b363db562/raw/f148922c210c0d440db293712476dccc1dd4a05f/unemployment.csv',
             'Notes'	: 'Bureau Of Labor and Statistics',
             'PublicTable': "BLS:Unemployment Rate",  # table name(s)
@@ -163,7 +177,7 @@ def api_menu():
             'Notes'	: "Number of jobs for non-farm propriety",
             'PublicTable': "Num. of Non-Farm Jobs",  # table name(s)
             'Statistic': "Number of Jobs",  # parameter
-            'UnitOfMeasure':	"percentage",
+            'UnitOfMeasure':	"count",
         },
     ]
     return jsonify(menu)

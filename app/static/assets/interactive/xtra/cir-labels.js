@@ -14,45 +14,10 @@ function renderLineCircleLabels ( params) {
     .property( "value", 0 ); // def selection
 }
 
-function prepLineCircleLab3ls() {// custom parameters for connected line-circle time series
-      const fileNames = [//file names to pull data
-        "income-percapita.csv",
-        "const-permits.csv",
-        "numjobs-nonfarmpro.csv",
-        "income-wagesalary.csv",
-        "unemployment.csv",
-        "population.csv",
-      ];
-  
-      const labels = [//name on input range
-        "Income Per Capita",
-        "Construction Permits",
-        "Num of Jobs: Non-Farm Pro",
-        "Avg Earnings:Wage Salary",
-        "Unemployment Rate",
-        "Total Population",
-      ];
-      let results = [];
-  
-      for ( let i = 0; i < fileNames.length; i++ ) {
-        results.push( {
-          index: +i,
-          label: labels[ i ],
-          file: fileNames[ i ],
-        } );
-      }
-      // console.log('results :>> ', results);
-      // console.log('results0  :>> ', results[0]);
-      return results;
-      
-};
-
 function prepLabelsBEA() {// custom parameters for connected 
   // line-circle time series
   
-      const fileNames = [//file names to pull data
-        // 'urlPersonalIncome',
-        // 'urlPopulation',
+      const urls = [//url names to pull data
         'bea/api/0',
         'bea/api/1',
         'bea/api/2',
@@ -62,20 +27,20 @@ function prepLabelsBEA() {// custom parameters for connected
       ];
   
       const labels = [//name on input range
-        "Income Per Capita",
-        "Total Population",
+        "BEA:Income Per Capita",
+        "BEA:Total Population",
+        "BEA:Construction Permits", 
+        "BEA:Wage-Salary Income", 
+        "BEA:Num.of Non-Farm Jobs", 
         "BLS:Unemployment Rate", 
-        "Construction Permits", 
-        "Wage-Salary Income", 
-        "Num. of Non-Farm Jobs", 
       ];
 
       let results = [];
-      for ( let i = 0; i < fileNames.length; i++ ) {
+      for ( let i = 0; i < urls.length; i++ ) {
         results.push( {
           index: +i,
           label: labels[ i ],
-          file: fileNames[ i ],
+          url: urls[ i ],
         } );
       }
       // console.log('results :>> ', results);
