@@ -532,8 +532,8 @@ ap_fin_04	../New folder\forms - Copy.py	/^    ap_fin_04 = SelectField(choices=[(
 ap_fin_05	../New folder\forms - Copy.py	/^    ap_fin_05 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:50
 ap_fin_06	../New folder\forms - Copy.py	/^    ap_fin_06 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:57
 ap_fin_07	../New folder\forms - Copy.py	/^    ap_fin_07 = SelectField(choices=[('0', 'a'), ('12', 'p')])$/;"	kind:variable	line:64
-api_desc	../app\routes.py	/^def api_desc():$/;"	kind:function	line:85
-api_menu	../app\routes.py	/^def api_menu():$/;"	kind:function	line:136
+api_desc	../app\routes.py	/^def api_desc():$/;"	kind:function	line:129
+api_menu	../app\routes.py	/^def api_menu():$/;"	kind:function	line:180
 app	../app\__init__.py	/^app = Flask(__name__)$/;"	kind:variable	line:5
 app	../app\_coreyFB\01-Getting-Started\flaskblog.py	/^app = Flask(__name__)$/;"	kind:variable	line:2
 app	../app\_coreyFB\02-Templates\flaskblog.py	/^app = Flask(__name__)$/;"	kind:variable	line:2

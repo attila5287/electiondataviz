@@ -29,10 +29,10 @@ function prepLabelsBEA() {// custom parameters for connected
       const labels = [//name on input range
         "BEA:Income Per Capita",
         "BEA:Total Population",
+        "BLS:Unemployment Rate", 
         "BEA:Construction Permits", 
         "BEA:Wage-Salary Income", 
         "BEA:Num.of Non-Farm Jobs", 
-        "BLS:Unemployment Rate", 
       ];
 
       let results = [];
