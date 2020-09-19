@@ -5,16 +5,14 @@ function main( data ) { // data change key
   
   // step 0-a : remove svg from prev init-state-selection  
   //=========================================================
-  const removePrevSvg = () => {// tabula rasa for new chart
     let svgArea = d3 // remove svg when diff. state chosen
       .select( "#interactive-chart" )
       .select( "svg" );
 
     if ( !svgArea.empty() ) {
+      console.log('re create svg :>> ');
       svgArea.remove();    
     }
-  };
-  removePrevSvg();  
   
   // step 0-b : prep for top layer chart //generate objects with labels to display on page also  API/ URL for test file URL 
   //=========================================================
@@ -247,6 +245,17 @@ const genChartGroupTitle = ( svg, margin, width, height, data, switchKey ) => {
 }
 
 const appendAutoSizedSVG = ( svgWidth, margin, svgHeight ) => {
+    // step 0-a : remove svg from prev init-state-selection  
+  //=========================================================
+    let svgArea = d3 // remove svg when diff. state chosen
+      .select( "#interactive-chart" )
+      .select( "svg" );
+
+    if ( !svgArea.empty() ) {
+      console.log('re create svg :>> ');
+      svgArea.remove();    
+    }
+
   let width = svgWidth - margin.left - margin.right;
   // console.log('width :>> ', width);
   let height = svgHeight - margin.top - margin.bottom;
